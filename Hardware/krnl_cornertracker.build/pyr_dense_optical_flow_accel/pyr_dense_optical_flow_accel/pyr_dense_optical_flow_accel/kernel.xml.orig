@@ -1,0 +1,32 @@
+<root versionMajor="1" versionMinor="5">
+    <kernel name="pyr_dense_optical_flow_accel" language="c" vlnv="xilinx.com:hls:pyr_dense_optical_flow_accel:1.0" attributes="" hash="" preferredWorkGroupSizeMultiple="0" workGroupSize="1" debug="false" compileOptions="-I /tools/Xilinx/Vitis/2020.1/workspace/test_fast/src -I /tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include -I /tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/build" profileType="none" hwControlProtocol="ap_ctrl_chain" interrupt="true">
+        <ports>
+            <port name="M_AXI_GMEM1" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="32"/>
+            <port name="M_AXI_GMEM2" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="32"/>
+            <port name="M_AXI_GMEM3" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="32"/>
+            <port name="M_AXI_GMEM4" portType="addressable" mode="master" base="0x0" range="0xFFFFFFFF" dataWidth="32"/>
+            <port name="S_AXI_CONTROL" portType="addressable" mode="slave" base="0x0" range="0x1000" dataWidth="32"/>
+        </ports>
+        <args>
+            <arg id="0" name="_current_img" addressQualifier="1" port="M_AXI_GMEM1" hostOffset="0x0" hostSize="0x8" offset="0x10" size="0x8" type="void*"/>
+            <arg id="1" name="_next_image" addressQualifier="1" port="M_AXI_GMEM2" hostOffset="0x0" hostSize="0x8" offset="0x1C" size="0x8" type="void*"/>
+            <arg id="2" name="_streamFlowin" addressQualifier="1" port="M_AXI_GMEM3" hostOffset="0x0" hostSize="0x8" offset="0x28" size="0x8" type="void*"/>
+            <arg id="3" name="_streamFlowout" addressQualifier="1" port="M_AXI_GMEM4" hostOffset="0x0" hostSize="0x8" offset="0x34" size="0x8" type="void*"/>
+            <arg id="4" name="level" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x40" size="0x4" type="unsigned int"/>
+            <arg id="5" name="scale_up_flag" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x48" size="0x4" type="unsigned int"/>
+            <arg id="6" name="scale_in" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x50" size="0x4" type="float"/>
+            <arg id="7" name="init_flag" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x58" size="0x4" type="unsigned int"/>
+            <arg id="8" name="cur_img_rows" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x60" size="0x4" type="unsigned int"/>
+            <arg id="9" name="cur_img_cols" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x68" size="0x4" type="unsigned int"/>
+            <arg id="10" name="next_img_rows" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x70" size="0x4" type="unsigned int"/>
+            <arg id="11" name="next_img_cols" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x78" size="0x4" type="unsigned int"/>
+            <arg id="12" name="flow_rows" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x80" size="0x4" type="unsigned int"/>
+            <arg id="13" name="flow_cols" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x88" size="0x4" type="unsigned int"/>
+            <arg id="14" name="flow_iter_rows" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x90" size="0x4" type="unsigned int"/>
+            <arg id="15" name="flow_iter_cols" addressQualifier="0" port="S_AXI_CONTROL" hostOffset="0x0" hostSize="0x4" offset="0x98" size="0x4" type="unsigned int"/>
+        </args>
+        <compileWorkGroupSize x="1" y="1" z="1"/>
+        <maxWorkGroupSize x="1" y="1" z="1"/>
+    </kernel>
+</root>
+

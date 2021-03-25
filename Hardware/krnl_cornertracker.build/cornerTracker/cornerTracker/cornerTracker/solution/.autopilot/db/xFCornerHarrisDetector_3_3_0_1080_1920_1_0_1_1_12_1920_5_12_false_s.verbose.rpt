@@ -1,0 +1,3069 @@
+
+
+================================================================
+== Vitis HLS Report for 'xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_s'
+================================================================
+* Date:           Thu Mar 25 14:57:25 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        cornerTracker
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 4.133 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+---------+---------+----------+
+    |  Latency (cycles) |   Latency (absolute)  |      Interval     | Pipeline |
+    |   min   |   max   |    min    |    max    |   min   |   max   |   Type   |
+    +---------+---------+-----------+-----------+---------+---------+----------+
+    |  2092817|  2092817| 13.953 ms | 13.953 ms |  2092805|  2092805| dataflow |
+    +---------+---------+-----------+-----------+---------+---------+----------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+---------+-----------+-----------+---------+---------+---------+
+        |                                                                                                                                     |                                                                                                                                  |  Latency (cycles) |   Latency (absolute)  |      Interval     | Pipeline|
+        |                                                               Instance                                                              |                                                              Module                                                              |   min   |   max   |    min    |    max    |   min   |   max   |   Type  |
+        +-------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+---------+-----------+-----------+---------+---------+---------+
+        |xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_U0                                                                                         |xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s                                                                                       |  2089093|  2089093| 13.928 ms | 13.928 ms |  2089093|  2089093|   none  |
+        |Sobel_0_3_0_2_1080_1920_1_false_U0                                                                                                   |Sobel_0_3_0_2_1080_1920_1_false_s                                                                                                 |  2082004|  2082004| 13.881 ms | 13.881 ms |  2082004|  2082004|   none  |
+        |boxFilter_0_3_2_1080_1920_1_false_26_U0                                                                                              |boxFilter_0_3_2_1080_1920_1_false_26                                                                                              |  2092804|  2092804| 13.953 ms | 13.953 ms |  2092804|  2092804|   none  |
+        |boxFilter_0_3_2_1080_1920_1_false_27_U0                                                                                              |boxFilter_0_3_2_1080_1920_1_false_27                                                                                              |  2092804|  2092804| 13.953 ms | 13.953 ms |  2092804|  2092804|   none  |
+        |boxFilter_0_3_2_1080_1920_1_false_U0                                                                                                 |boxFilter_0_3_2_1080_1920_1_false_s                                                                                               |  2092804|  2092804| 13.953 ms | 13.953 ms |  2092804|  2092804|   none  |
+        |xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_U0                                                                                      |xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s                                                                                    |  2083321|  2083321| 13.890 ms | 13.890 ms |  2083321|  2083321|   none  |
+        |xFThreshold_5_1080_1920_5_1_12_1920_U0                                                                                               |xFThreshold_5_1080_1920_5_1_12_1920_s                                                                                             |  2077921|  2077921| 13.853 ms | 13.853 ms |  2077921|  2077921|   none  |
+        |xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25_U0                                                                                      |xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25                                                                                      |     2161|  2080081| 14.407 us | 13.868 ms |     2161|  2080081|   none  |
+        |xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_U0                                                                                         |xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                       |     2161|  2080081| 14.407 us | 13.868 ms |     2161|  2080081|   none  |
+        |xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_U0                                                                                       |xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                     |     2161|  2080081| 14.407 us | 13.868 ms |     2161|  2080081|   none  |
+        |xFDuplicate_2_1080_1920_3_1_5_1920_24_U0                                                                                             |xFDuplicate_2_1080_1920_3_1_5_1920_24                                                                                             |  2076841|  2076841| 13.846 ms | 13.846 ms |  2076841|  2076841|   none  |
+        |xFDuplicate_2_1080_1920_3_1_5_1920_U0                                                                                                |xFDuplicate_2_1080_1920_3_1_5_1920_s                                                                                              |  2076841|  2076841| 13.846 ms | 13.846 ms |  2076841|  2076841|   none  |
+        |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0                                                         |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50                                                         |        0|        0|    0 ns   |    0 ns   |        0|        0|   none  |
+        |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc_U0  |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc  |        0|        0|    0 ns   |    0 ns   |        0|        0|   none  |
+        +-------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+---------+-----------+-----------+---------+---------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      36|    -|
+|FIFO             |        -|     -|    4059|    2747|    -|
+|Instance         |       33|    11|    4925|    8438|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|      36|    -|
+|Register         |        -|     -|       6|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |       33|    11|    8990|   11257|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        5|  ~0  |       1|       4|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+----+------+------+-----+
+    |                                                               Instance                                                              |                                                              Module                                                              | BRAM_18K| DSP|  FF  |  LUT | URAM|
+    +-------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+----+------+------+-----+
+    |Sobel_0_3_0_2_1080_1920_1_false_U0                                                                                                   |Sobel_0_3_0_2_1080_1920_1_false_s                                                                                                 |        3|   0|   410|  1167|    0|
+    |boxFilter_0_3_2_1080_1920_1_false_26_U0                                                                                              |boxFilter_0_3_2_1080_1920_1_false_26                                                                                              |        6|   1|   849|  1138|    0|
+    |boxFilter_0_3_2_1080_1920_1_false_27_U0                                                                                              |boxFilter_0_3_2_1080_1920_1_false_27                                                                                              |        6|   1|   849|  1138|    0|
+    |boxFilter_0_3_2_1080_1920_1_false_U0                                                                                                 |boxFilter_0_3_2_1080_1920_1_false_s                                                                                               |        6|   1|   849|  1138|    0|
+    |xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_U0                                                                                      |xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s                                                                                    |        0|   5|   218|   329|    0|
+    |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc_U0  |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc  |        0|   0|     3|    92|    0|
+    |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0                                                         |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50                                                         |        0|   0|     3|   101|    0|
+    |xFDuplicate_2_1080_1920_3_1_5_1920_24_U0                                                                                             |xFDuplicate_2_1080_1920_3_1_5_1920_24                                                                                             |        0|   0|    64|   231|    0|
+    |xFDuplicate_2_1080_1920_3_1_5_1920_U0                                                                                                |xFDuplicate_2_1080_1920_3_1_5_1920_s                                                                                              |        0|   0|    64|   213|    0|
+    |xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_U0                                                                                         |xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s                                                                                       |       12|   0|  1109|  1827|    0|
+    |xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_U0                                                                                       |xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                     |        0|   1|   131|   236|    0|
+    |xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25_U0                                                                                      |xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25                                                                                      |        0|   1|   132|   293|    0|
+    |xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_U0                                                                                         |xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                       |        0|   1|   131|   266|    0|
+    |xFThreshold_5_1080_1920_5_1_12_1920_U0                                                                                               |xFThreshold_5_1080_1920_5_1_12_1920_s                                                                                             |        0|   0|   113|   269|    0|
+    +-------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+----+------+------+-----+
+    |Total                                                                                                                                |                                                                                                                                  |       33|  11|  4925|  8438|    0|
+    +-------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------+----+------+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +-------------------+---------+----+----+-----+------+-----+---------+
+    |        Name       | BRAM_18K| FF | LUT| URAM| Depth| Bits| Size:D*B|
+    +-------------------+---------+----+----+-----+------+-----+---------+
+    |gradx1_mat_data_U  |        0|  99|   0|    -|     2|   16|       32|
+    |gradx2_mat_data_U  |        0|  99|   0|    -|     2|   16|       32|
+    |gradx2g_data_U     |        0|  99|   0|    -|     2|   16|       32|
+    |gradx_2_cols_c_U   |        0|  99|   0|    -|     4|   11|       44|
+    |gradx_2_data_U     |        0|  99|   0|    -|     2|   16|       32|
+    |gradx_2_rows_c_U   |        0|  99|   0|    -|     4|   11|       44|
+    |gradx_mat_data_U   |        0|  99|   0|    -|     2|   16|       32|
+    |gradxy_cols_c_U    |        0|  99|   0|    -|     4|   11|       44|
+    |gradxy_data_U      |        0|  99|   0|    -|     2|   16|       32|
+    |gradxy_rows_c_U    |        0|  99|   0|    -|     4|   11|       44|
+    |gradxyg_data_U     |        0|  99|   0|    -|     2|   16|       32|
+    |grady1_mat_data_U  |        0|  99|   0|    -|     2|   16|       32|
+    |grady2_mat_data_U  |        0|  99|   0|    -|     2|   16|       32|
+    |grady2g_data_U     |        0|  99|   0|    -|     2|   16|       32|
+    |grady_2_cols_c_U   |        0|  99|   0|    -|     4|   11|       44|
+    |grady_2_data_U     |        0|  99|   0|    -|     2|   16|       32|
+    |grady_2_rows_c_U   |        0|  99|   0|    -|     4|   11|       44|
+    |grady_mat_data_U   |        0|  99|   0|    -|     2|   16|       32|
+    |img_height_c27_U   |        0|  99|   0|    -|     3|   11|       33|
+    |img_height_c28_U   |        0|  99|   0|    -|     3|   11|       33|
+    |img_height_c31_U   |        0|  99|   0|    -|     2|   11|       22|
+    |img_height_c32_U   |        0|  99|   0|    -|     2|   11|       22|
+    |img_height_c35_U   |        0|  99|   0|    -|     2|   11|       22|
+    |img_height_c37_U   |        0|  99|   0|    -|     3|   11|       33|
+    |img_height_c39_U   |        0|  99|   0|    -|     2|   11|       22|
+    |img_height_c41_U   |        0|  99|   0|    -|     2|   11|       22|
+    |img_height_c_U     |        0|  99|   0|    -|     2|   11|       22|
+    |img_width_c29_U    |        0|  99|   0|    -|     3|   11|       33|
+    |img_width_c30_U    |        0|  99|   0|    -|     3|   11|       33|
+    |img_width_c33_U    |        0|  99|   0|    -|     2|   11|       22|
+    |img_width_c34_U    |        0|  99|   0|    -|     2|   11|       22|
+    |img_width_c36_U    |        0|  99|   0|    -|     2|   11|       22|
+    |img_width_c38_U    |        0|  99|   0|    -|     3|   11|       33|
+    |img_width_c40_U    |        0|  99|   0|    -|     2|   11|       22|
+    |img_width_c42_U    |        0|  99|   0|    -|     2|   11|       22|
+    |img_width_c_U      |        0|  99|   0|    -|     2|   11|       22|
+    |p_src_mat_1_c_U    |        0|  99|   0|    -|     2|   11|       22|
+    |p_src_mat_2_c_U    |        0|  99|   0|    -|     2|   11|       22|
+    |p_threshold_c_U    |        0|  99|   0|    -|     7|   16|      112|
+    |score_data_U       |        0|  99|   0|    -|     2|   32|       64|
+    |thresh_data_U      |        0|  99|   0|    -|     2|   32|       64|
+    +-------------------+---------+----+----+-----+------+-----+---------+
+    |Total              |        0|4059|   0|    0|   105|  558|     1394|
+    +-------------------+---------+----+----+-----+------+-----+---------+
+
+    * Expression: 
+    +--------------------------------------------------------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |                                                                   Variable Name                                                                  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------------------------------------------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |Sobel_0_3_0_2_1080_1920_1_false_U0_ap_ready_count                                                                                                 |     +    |   0|  0|   9|           2|           1|
+    |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0_ap_ready_count                                                       |     +    |   0|  0|   9|           2|           1|
+    |Sobel_0_3_0_2_1080_1920_1_false_U0_ap_start                                                                                                       |    and   |   0|  0|   2|           1|           1|
+    |ap_idle                                                                                                                                           |    and   |   0|  0|   2|           1|           1|
+    |ap_sync_ready                                                                                                                                     |    and   |   0|  0|   2|           1|           1|
+    |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc_U0_start_full_n  |    and   |   0|  0|   2|           1|           1|
+    |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0_ap_start                                                             |    and   |   0|  0|   2|           1|           1|
+    |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0_start_full_n                                                         |    and   |   0|  0|   2|           1|           1|
+    |xFDuplicate_2_1080_1920_3_1_5_1920_24_U0_start_full_n                                                                                             |    and   |   0|  0|   2|           1|           1|
+    |ap_sync_Sobel_0_3_0_2_1080_1920_1_false_U0_ap_ready                                                                                               |    or    |   0|  0|   2|           1|           1|
+    |ap_sync_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0_ap_ready                                                     |    or    |   0|  0|   2|           1|           1|
+    +--------------------------------------------------------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                                                                                                                             |          |   0|  0|  36|          13|          11|
+    +--------------------------------------------------------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------------------------------------------------------------------------------+----+-----------+-----+-----------+
+    |                                                Name                                               | LUT| Input Size| Bits| Total Bits|
+    +---------------------------------------------------------------------------------------------------+----+-----------+-----+-----------+
+    |Sobel_0_3_0_2_1080_1920_1_false_U0_ap_ready_count                                                  |   9|          2|    2|          4|
+    |ap_sync_reg_Sobel_0_3_0_2_1080_1920_1_false_U0_ap_ready                                            |   9|          2|    1|          2|
+    |ap_sync_reg_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0_ap_ready  |   9|          2|    1|          2|
+    |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0_ap_ready_count        |   9|          2|    2|          4|
+    +---------------------------------------------------------------------------------------------------+----+-----------+-----+-----------+
+    |Total                                                                                              |  36|          8|    6|         12|
+    +---------------------------------------------------------------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------------------------------------------------------------------------+---+----+-----+-----------+
+    |                                                Name                                               | FF| LUT| Bits| Const Bits|
+    +---------------------------------------------------------------------------------------------------+---+----+-----+-----------+
+    |Sobel_0_3_0_2_1080_1920_1_false_U0_ap_ready_count                                                  |  2|   0|    2|          0|
+    |ap_sync_reg_Sobel_0_3_0_2_1080_1920_1_false_U0_ap_ready                                            |  1|   0|    1|          0|
+    |ap_sync_reg_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0_ap_ready  |  1|   0|    1|          0|
+    |xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0_ap_ready_count        |  2|   0|    2|          0|
+    +---------------------------------------------------------------------------------------------------+---+----+-----+-----------+
+    |Total                                                                                              |  6|   0|    6|          0|
+    +---------------------------------------------------------------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------------+-----+-----+------------+---------------------------------------------------------------------------------+--------------+
+|         RTL Ports         | Dir | Bits|  Protocol  |                                  Source Object                                  |    C Type    |
++---------------------------+-----+-----+------------+---------------------------------------------------------------------------------+--------------+
+|in_harris_mat_419_dout     |  in |    8|   ap_fifo  |                                in_harris_mat_419                                |    pointer   |
+|in_harris_mat_419_empty_n  |  in |    1|   ap_fifo  |                                in_harris_mat_419                                |    pointer   |
+|in_harris_mat_419_read     | out |    1|   ap_fifo  |                                in_harris_mat_419                                |    pointer   |
+|out_harris_mat_420_din     | out |    8|   ap_fifo  |                                out_harris_mat_420                               |    pointer   |
+|out_harris_mat_420_full_n  |  in |    1|   ap_fifo  |                                out_harris_mat_420                               |    pointer   |
+|out_harris_mat_420_write   | out |    1|   ap_fifo  |                                out_harris_mat_420                               |    pointer   |
+|p_read                     |  in |   11|   ap_none  |                                      p_read                                     |    scalar    |
+|p_read_ap_vld              |  in |    1|   ap_none  |                                      p_read                                     |    scalar    |
+|p_read1                    |  in |   11|   ap_none  |                                     p_read1                                     |    scalar    |
+|p_read1_ap_vld             |  in |    1|   ap_none  |                                     p_read1                                     |    scalar    |
+|img_height                 |  in |   11|   ap_none  |                                    img_height                                   |    scalar    |
+|img_height_ap_vld          |  in |    1|   ap_none  |                                    img_height                                   |    scalar    |
+|img_width                  |  in |   11|   ap_none  |                                    img_width                                    |    scalar    |
+|img_width_ap_vld           |  in |    1|   ap_none  |                                    img_width                                    |    scalar    |
+|p_threshold                |  in |   16|   ap_none  |                                   p_threshold                                   |    scalar    |
+|p_threshold_ap_vld         |  in |    1|   ap_none  |                                   p_threshold                                   |    scalar    |
+|ap_clk                     |  in |    1| ap_ctrl_hs | xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> | return value |
+|ap_rst                     |  in |    1| ap_ctrl_hs | xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> | return value |
+|ap_start                   |  in |    1| ap_ctrl_hs | xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> | return value |
+|ap_done                    | out |    1| ap_ctrl_hs | xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> | return value |
+|ap_ready                   | out |    1| ap_ctrl_hs | xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> | return value |
+|ap_idle                    | out |    1| ap_ctrl_hs | xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> | return value |
+|ap_continue                |  in |    1| ap_ctrl_hs | xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> | return value |
++---------------------------+-----+-----+------------+---------------------------------------------------------------------------------+--------------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 2
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 15
+* Pipeline : 0
+* Dataflow Pipeline: 1
+  DF-Pipeline-0: Size = 15, States = { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 }
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 15 
+15 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.90>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%p_threshold_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %p_threshold" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 16 'read' 'p_threshold_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%img_width_read = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %img_width" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 17 'read' 'img_width_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%img_height_read = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %img_height" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 18 'read' 'img_height_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%p_read13 = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %p_read1" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 19 'read' 'p_read13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%p_read_7 = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %p_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 20 'read' 'p_read_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%img_width_c42 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 21 'alloca' 'img_width_c42' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%img_height_c41 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 22 'alloca' 'img_height_c41' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%img_width_c40 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 23 'alloca' 'img_width_c40' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%img_height_c39 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 24 'alloca' 'img_height_c39' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%img_width_c38 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 25 'alloca' 'img_width_c38' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%img_height_c37 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 26 'alloca' 'img_height_c37' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%img_width_c36 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 27 'alloca' 'img_width_c36' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%img_height_c35 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 28 'alloca' 'img_height_c35' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%img_width_c34 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 29 'alloca' 'img_width_c34' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%img_width_c33 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 30 'alloca' 'img_width_c33' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%img_height_c32 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 31 'alloca' 'img_height_c32' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%img_height_c31 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 32 'alloca' 'img_height_c31' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%gradxy_cols_c = alloca i64"   --->   Operation 33 'alloca' 'gradxy_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%gradxy_rows_c = alloca i64"   --->   Operation 34 'alloca' 'gradxy_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%grady_2_cols_c = alloca i64"   --->   Operation 35 'alloca' 'grady_2_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%grady_2_rows_c = alloca i64"   --->   Operation 36 'alloca' 'grady_2_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%gradx_2_cols_c = alloca i64"   --->   Operation 37 'alloca' 'gradx_2_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%gradx_2_rows_c = alloca i64"   --->   Operation 38 'alloca' 'gradx_2_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%p_threshold_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 39 'alloca' 'p_threshold_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.90> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 7> <FIFO>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%img_width_c30 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 40 'alloca' 'img_width_c30' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 41 [1/1] (0.00ns)   --->   "%img_width_c29 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 41 'alloca' 'img_width_c29' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 42 [1/1] (0.00ns)   --->   "%img_width_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 42 'alloca' 'img_width_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 43 [1/1] (0.00ns)   --->   "%img_height_c28 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 43 'alloca' 'img_height_c28' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 44 [1/1] (0.00ns)   --->   "%img_height_c27 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 44 'alloca' 'img_height_c27' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 45 [1/1] (0.00ns)   --->   "%img_height_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 45 'alloca' 'img_height_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 46 [1/1] (0.00ns)   --->   "%p_src_mat_2_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 46 'alloca' 'p_src_mat_2_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 47 [1/1] (0.00ns)   --->   "%p_src_mat_1_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 47 'alloca' 'p_src_mat_1_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 48 [1/1] (0.00ns)   --->   "%gradx_2_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:73]   --->   Operation 48 'alloca' 'gradx_2_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 49 [1/1] (0.00ns)   --->   "%grady_2_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:74]   --->   Operation 49 'alloca' 'grady_2_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%gradxy_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:75]   --->   Operation 50 'alloca' 'gradxy_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 51 [1/1] (0.00ns)   --->   "%gradx2g_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:76]   --->   Operation 51 'alloca' 'gradx2g_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%grady2g_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:77]   --->   Operation 52 'alloca' 'grady2g_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 53 [1/1] (0.00ns)   --->   "%gradxyg_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:78]   --->   Operation 53 'alloca' 'gradxyg_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 54 [1/1] (0.00ns)   --->   "%score_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:79]   --->   Operation 54 'alloca' 'score_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 55 [1/1] (0.00ns)   --->   "%thresh_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:80]   --->   Operation 55 'alloca' 'thresh_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 56 [1/1] (0.00ns)   --->   "%gradx_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:132]   --->   Operation 56 'alloca' 'gradx_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 57 [1/1] (0.00ns)   --->   "%grady_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:133]   --->   Operation 57 'alloca' 'grady_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 58 [1/1] (0.00ns)   --->   "%gradx1_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:134]   --->   Operation 58 'alloca' 'gradx1_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 59 [1/1] (0.00ns)   --->   "%grady1_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:135]   --->   Operation 59 'alloca' 'grady1_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 60 [1/1] (0.00ns)   --->   "%gradx2_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:136]   --->   Operation 60 'alloca' 'gradx2_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 61 [1/1] (0.00ns)   --->   "%grady2_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:137]   --->   Operation 61 'alloca' 'grady2_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 62 [1/1] (1.90ns)   --->   "%call_ln503 = call void @xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false>.entry50, i11 %p_read_7, i11 %p_read13, i11 %img_height_read, i11 %img_width_read, i16 %p_threshold_read, i11 %p_src_mat_1_c, i11 %p_src_mat_2_c, i11 %img_height_c, i11 %img_height_c27, i11 %img_height_c28, i11 %img_width_c, i11 %img_width_c29, i11 %img_width_c30, i16 %p_threshold_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 62 'call' 'call_ln503' <Predicate = true> <Delay = 1.90> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 63 [2/2] (0.00ns)   --->   "%call_ln148 = call void @Sobel<0, 3, 0, 2, 1080, 1920, 1, false>, i8 %in_harris_mat_419, i16 %gradx_mat_data, i16 %grady_mat_data, i11 %p_src_mat_1_c, i11 %p_src_mat_2_c, void %call_ln503" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 63 'call' 'call_ln148' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 0.00>
+ST_3 : Operation 64 [1/2] (0.00ns)   --->   "%call_ln148 = call void @Sobel<0, 3, 0, 2, 1080, 1920, 1, false>, i8 %in_harris_mat_419, i16 %gradx_mat_data, i16 %grady_mat_data, i11 %p_src_mat_1_c, i11 %p_src_mat_2_c, void %call_ln503" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 64 'call' 'call_ln148' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 65 [2/2] (0.00ns)   --->   "%call_ln151 = call void @xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>24, i16 %gradx_mat_data, i16 %gradx1_mat_data, i16 %gradx2_mat_data, i11 %img_height_c27, i11 %img_width_c29, i11 %img_height_c31, i11 %img_height_c32, i11 %img_width_c33, i11 %img_width_c34, void %call_ln148" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:151]   --->   Operation 65 'call' 'call_ln151' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_4 : Operation 66 [2/2] (0.00ns)   --->   "%call_ln154 = call void @xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>, i16 %grady_mat_data, i16 %grady1_mat_data, i16 %grady2_mat_data, i11 %img_height_c28, i11 %img_width_c30, i11 %img_height_c35, i11 %img_width_c36, void %call_ln148" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:154]   --->   Operation 66 'call' 'call_ln154' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 0.00>
+ST_5 : Operation 67 [1/2] (0.00ns)   --->   "%call_ln151 = call void @xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>24, i16 %gradx_mat_data, i16 %gradx1_mat_data, i16 %gradx2_mat_data, i11 %img_height_c27, i11 %img_width_c29, i11 %img_height_c31, i11 %img_height_c32, i11 %img_width_c33, i11 %img_width_c34, void %call_ln148" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:151]   --->   Operation 67 'call' 'call_ln151' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_5 : Operation 68 [1/2] (0.00ns)   --->   "%call_ln154 = call void @xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>, i16 %grady_mat_data, i16 %grady1_mat_data, i16 %grady2_mat_data, i11 %img_height_c28, i11 %img_width_c30, i11 %img_height_c35, i11 %img_width_c36, void %call_ln148" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:154]   --->   Operation 68 'call' 'call_ln154' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 6 <SV = 5> <Delay = 0.00>
+ST_6 : Operation 69 [2/2] (0.00ns)   --->   "%call_ln157 = call void @xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>25, i16 %gradx1_mat_data, i16 %gradx_2_data, i11 %img_height_c31, i11 %img_width_c33, i11 %img_height_c37, i11 %img_width_c38, void %call_ln151" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:157]   --->   Operation 69 'call' 'call_ln157' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_6 : Operation 70 [2/2] (0.00ns)   --->   "%call_ln160 = call void @xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>, i16 %grady1_mat_data, i16 %grady_2_data, i11 %img_height_c35, i11 %img_width_c36, void %call_ln154" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:160]   --->   Operation 70 'call' 'call_ln160' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_6 : Operation 71 [2/2] (0.00ns)   --->   "%call_ln163 = call void @xFMultiply<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>, i16 %gradx2_mat_data, i16 %grady2_mat_data, i16 %gradxy_data, i11 %img_height_c32, i11 %img_width_c34, void %call_ln154, void %call_ln151" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:163]   --->   Operation 71 'call' 'call_ln163' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 7 <SV = 6> <Delay = 0.00>
+ST_7 : Operation 72 [1/1] (0.00ns)   --->   "%call_ln502 = call void @xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false>_Block__ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii.exit1_proc, i11 %img_height_c, i11 %img_width_c, i11 %gradx_2_rows_c, i11 %gradx_2_cols_c, i11 %grady_2_rows_c, i11 %grady_2_cols_c, i11 %gradxy_rows_c, i11 %gradxy_cols_c, void %call_ln503, void %call_ln503" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 72 'call' 'call_ln502' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_7 : Operation 73 [1/2] (0.00ns)   --->   "%call_ln157 = call void @xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>25, i16 %gradx1_mat_data, i16 %gradx_2_data, i11 %img_height_c31, i11 %img_width_c33, i11 %img_height_c37, i11 %img_width_c38, void %call_ln151" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:157]   --->   Operation 73 'call' 'call_ln157' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_7 : Operation 74 [1/2] (0.00ns)   --->   "%call_ln160 = call void @xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>, i16 %grady1_mat_data, i16 %grady_2_data, i11 %img_height_c35, i11 %img_width_c36, void %call_ln154" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:160]   --->   Operation 74 'call' 'call_ln160' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_7 : Operation 75 [1/2] (0.00ns)   --->   "%call_ln163 = call void @xFMultiply<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>, i16 %gradx2_mat_data, i16 %grady2_mat_data, i16 %gradxy_data, i11 %img_height_c32, i11 %img_width_c34, void %call_ln154, void %call_ln151" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:163]   --->   Operation 75 'call' 'call_ln163' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 8 <SV = 7> <Delay = 0.00>
+ST_8 : Operation 76 [2/2] (0.00ns)   --->   "%call_ln167 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>26, i16 %gradx_2_data, i16 %gradx2g_data, i11 %gradx_2_rows_c, i11 %gradx_2_cols_c, void %call_ln157, void %call_ln502, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:167]   --->   Operation 76 'call' 'call_ln167' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_8 : Operation 77 [2/2] (0.00ns)   --->   "%call_ln168 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>27, i16 %grady_2_data, i16 %grady2g_data, i11 %grady_2_rows_c, i11 %grady_2_cols_c, void %call_ln160, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:168]   --->   Operation 77 'call' 'call_ln168' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_8 : Operation 78 [2/2] (0.00ns)   --->   "%call_ln169 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>, i16 %gradxy_data, i16 %gradxyg_data, i11 %gradxy_rows_c, i11 %gradxy_cols_c, void %call_ln163, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:169]   --->   Operation 78 'call' 'call_ln169' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 9 <SV = 8> <Delay = 0.00>
+ST_9 : Operation 79 [1/2] (0.00ns)   --->   "%call_ln167 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>26, i16 %gradx_2_data, i16 %gradx2g_data, i11 %gradx_2_rows_c, i11 %gradx_2_cols_c, void %call_ln157, void %call_ln502, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:167]   --->   Operation 79 'call' 'call_ln167' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_9 : Operation 80 [1/2] (0.00ns)   --->   "%call_ln168 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>27, i16 %grady_2_data, i16 %grady2g_data, i11 %grady_2_rows_c, i11 %grady_2_cols_c, void %call_ln160, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:168]   --->   Operation 80 'call' 'call_ln168' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_9 : Operation 81 [1/2] (0.00ns)   --->   "%call_ln169 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>, i16 %gradxy_data, i16 %gradxyg_data, i11 %gradxy_rows_c, i11 %gradxy_cols_c, void %call_ln163, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:169]   --->   Operation 81 'call' 'call_ln169' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 10 <SV = 9> <Delay = 0.00>
+ST_10 : Operation 82 [2/2] (0.00ns)   --->   "%call_ln171 = call void @xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920>, i16 %gradx2g_data, i16 %grady2g_data, i16 %gradxyg_data, i32 %score_data, i11 %img_height_c37, i11 %img_width_c38, i11 %img_height_c39, i11 %img_width_c40, void %call_ln169, void %call_ln168, void %call_ln167, void %call_ln167" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:171]   --->   Operation 82 'call' 'call_ln171' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 11 <SV = 10> <Delay = 0.00>
+ST_11 : Operation 83 [1/2] (0.00ns)   --->   "%call_ln171 = call void @xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920>, i16 %gradx2g_data, i16 %grady2g_data, i16 %gradxyg_data, i32 %score_data, i11 %img_height_c37, i11 %img_width_c38, i11 %img_height_c39, i11 %img_width_c40, void %call_ln169, void %call_ln168, void %call_ln167, void %call_ln167" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:171]   --->   Operation 83 'call' 'call_ln171' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 12 <SV = 11> <Delay = 0.00>
+ST_12 : Operation 84 [2/2] (0.00ns)   --->   "%call_ln174 = call void @xFThreshold<5, 1080, 1920, 5, 1, 12, 1920>, i32 %score_data, i32 %thresh_data, i16 %p_threshold_c, i11 %img_height_c39, i11 %img_width_c40, i11 %img_height_c41, i11 %img_width_c42, void %call_ln171, void %call_ln171" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 84 'call' 'call_ln174' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 13 <SV = 12> <Delay = 0.00>
+ST_13 : Operation 85 [1/2] (0.00ns)   --->   "%call_ln174 = call void @xFThreshold<5, 1080, 1920, 5, 1, 12, 1920>, i32 %score_data, i32 %thresh_data, i16 %p_threshold_c, i11 %img_height_c39, i11 %img_width_c40, i11 %img_height_c41, i11 %img_width_c42, void %call_ln171, void %call_ln171" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 85 'call' 'call_ln174' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 14 <SV = 13> <Delay = 0.00>
+ST_14 : Operation 86 [2/2] (0.00ns)   --->   "%call_ln176 = call void @xFMaxSuppression<5, 0, 1080, 1920, 5, 0, 1, 12, 1>, i32 %thresh_data, i8 %out_harris_mat_420, i11 %img_height_c41, i11 %img_width_c42, void %call_ln174, void %call_ln174" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:176]   --->   Operation 86 'call' 'call_ln176' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 15 <SV = 14> <Delay = 0.00>
+ST_15 : Operation 87 [1/1] (0.00ns)   --->   "%specdataflowpipeline_ln0 = specdataflowpipeline void @_ssdm_op_SpecDataflowPipeline, i32, i32, void @empty_18"   --->   Operation 87 'specdataflowpipeline' 'specdataflowpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 88 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %in_harris_mat_419, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 88 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 89 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %out_harris_mat_420, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 89 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 90 [1/1] (0.00ns)   --->   "%empty = specchannel i32 @_ssdm_op_SpecChannel, void @gradx_2_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx_2_data, i16 %gradx_2_data"   --->   Operation 90 'specchannel' 'empty' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 91 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx_2_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 91 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 92 [1/1] (0.00ns)   --->   "%empty_66 = specchannel i32 @_ssdm_op_SpecChannel, void @grady_2_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady_2_data, i16 %grady_2_data"   --->   Operation 92 'specchannel' 'empty_66' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 93 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady_2_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 93 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 94 [1/1] (0.00ns)   --->   "%empty_67 = specchannel i32 @_ssdm_op_SpecChannel, void @gradxy_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradxy_data, i16 %gradxy_data"   --->   Operation 94 'specchannel' 'empty_67' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 95 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradxy_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 95 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 96 [1/1] (0.00ns)   --->   "%empty_68 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx2g_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx2g_data, i16 %gradx2g_data"   --->   Operation 96 'specchannel' 'empty_68' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 97 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx2g_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 97 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 98 [1/1] (0.00ns)   --->   "%empty_69 = specchannel i32 @_ssdm_op_SpecChannel, void @grady2g_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady2g_data, i16 %grady2g_data"   --->   Operation 98 'specchannel' 'empty_69' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 99 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady2g_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 99 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 100 [1/1] (0.00ns)   --->   "%empty_70 = specchannel i32 @_ssdm_op_SpecChannel, void @gradxyg_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradxyg_data, i16 %gradxyg_data"   --->   Operation 100 'specchannel' 'empty_70' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 101 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradxyg_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 101 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 102 [1/1] (0.00ns)   --->   "%empty_71 = specchannel i32 @_ssdm_op_SpecChannel, void @score_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i32 %score_data, i32 %score_data"   --->   Operation 102 'specchannel' 'empty_71' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 103 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %score_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 103 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 104 [1/1] (0.00ns)   --->   "%empty_72 = specchannel i32 @_ssdm_op_SpecChannel, void @thresh_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i32 %thresh_data, i32 %thresh_data"   --->   Operation 104 'specchannel' 'empty_72' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 105 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %thresh_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 105 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 106 [1/1] (0.00ns)   --->   "%empty_73 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx_mat_data, i16 %gradx_mat_data"   --->   Operation 106 'specchannel' 'empty_73' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 107 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 107 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 108 [1/1] (0.00ns)   --->   "%empty_74 = specchannel i32 @_ssdm_op_SpecChannel, void @grady_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady_mat_data, i16 %grady_mat_data"   --->   Operation 108 'specchannel' 'empty_74' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 109 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 109 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 110 [1/1] (0.00ns)   --->   "%empty_75 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx1_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx1_mat_data, i16 %gradx1_mat_data"   --->   Operation 110 'specchannel' 'empty_75' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 111 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx1_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 111 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 112 [1/1] (0.00ns)   --->   "%empty_76 = specchannel i32 @_ssdm_op_SpecChannel, void @grady1_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady1_mat_data, i16 %grady1_mat_data"   --->   Operation 112 'specchannel' 'empty_76' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 113 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady1_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 113 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 114 [1/1] (0.00ns)   --->   "%empty_77 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx2_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx2_mat_data, i16 %gradx2_mat_data"   --->   Operation 114 'specchannel' 'empty_77' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 115 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx2_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 115 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 116 [1/1] (0.00ns)   --->   "%empty_78 = specchannel i32 @_ssdm_op_SpecChannel, void @grady2_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady2_mat_data, i16 %grady2_mat_data"   --->   Operation 116 'specchannel' 'empty_78' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 117 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady2_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 117 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 118 [1/1] (0.00ns)   --->   "%empty_79 = specchannel i32 @_ssdm_op_SpecChannel, void @p_src_mat_OC_1_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %p_src_mat_1_c, i11 %p_src_mat_1_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 118 'specchannel' 'empty_79' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 119 [1/1] (0.00ns)   --->   "%specinterface_ln148 = specinterface void @_ssdm_op_SpecInterface, i11 %p_src_mat_1_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 119 'specinterface' 'specinterface_ln148' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 120 [1/1] (0.00ns)   --->   "%empty_80 = specchannel i32 @_ssdm_op_SpecChannel, void @p_src_mat_OC_2_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %p_src_mat_2_c, i11 %p_src_mat_2_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 120 'specchannel' 'empty_80' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 121 [1/1] (0.00ns)   --->   "%specinterface_ln148 = specinterface void @_ssdm_op_SpecInterface, i11 %p_src_mat_2_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 121 'specinterface' 'specinterface_ln148' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 122 [1/1] (0.00ns)   --->   "%empty_81 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c, i11 %img_height_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 122 'specchannel' 'empty_81' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 123 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 123 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 124 [1/1] (0.00ns)   --->   "%empty_82 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c27_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c27, i11 %img_height_c27" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 124 'specchannel' 'empty_82' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 125 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c27, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 125 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 126 [1/1] (0.00ns)   --->   "%empty_83 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c28_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c28, i11 %img_height_c28" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 126 'specchannel' 'empty_83' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 127 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c28, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 127 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 128 [1/1] (0.00ns)   --->   "%empty_84 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c, i11 %img_width_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 128 'specchannel' 'empty_84' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 129 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 129 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 130 [1/1] (0.00ns)   --->   "%empty_85 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c29_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c29, i11 %img_width_c29" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 130 'specchannel' 'empty_85' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 131 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c29, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 131 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 132 [1/1] (0.00ns)   --->   "%empty_86 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c30_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c30, i11 %img_width_c30" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 132 'specchannel' 'empty_86' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 133 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c30, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 133 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 134 [1/1] (0.00ns)   --->   "%empty_87 = specchannel i32 @_ssdm_op_SpecChannel, void @p_threshold_c_str, i32, void @p_str, void @p_str, i32, i32, i16 %p_threshold_c, i16 %p_threshold_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 134 'specchannel' 'empty_87' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 135 [1/1] (0.00ns)   --->   "%specinterface_ln174 = specinterface void @_ssdm_op_SpecInterface, i16 %p_threshold_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 135 'specinterface' 'specinterface_ln174' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 136 [1/1] (0.00ns)   --->   "%empty_88 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx_2_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %gradx_2_rows_c, i11 %gradx_2_rows_c"   --->   Operation 136 'specchannel' 'empty_88' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 137 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %gradx_2_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 137 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 138 [1/1] (0.00ns)   --->   "%empty_89 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx_2_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %gradx_2_cols_c, i11 %gradx_2_cols_c"   --->   Operation 138 'specchannel' 'empty_89' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 139 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %gradx_2_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 139 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 140 [1/1] (0.00ns)   --->   "%empty_90 = specchannel i32 @_ssdm_op_SpecChannel, void @grady_2_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %grady_2_rows_c, i11 %grady_2_rows_c"   --->   Operation 140 'specchannel' 'empty_90' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 141 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %grady_2_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 141 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 142 [1/1] (0.00ns)   --->   "%empty_91 = specchannel i32 @_ssdm_op_SpecChannel, void @grady_2_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %grady_2_cols_c, i11 %grady_2_cols_c"   --->   Operation 142 'specchannel' 'empty_91' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 143 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %grady_2_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 143 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 144 [1/1] (0.00ns)   --->   "%empty_92 = specchannel i32 @_ssdm_op_SpecChannel, void @gradxy_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %gradxy_rows_c, i11 %gradxy_rows_c"   --->   Operation 144 'specchannel' 'empty_92' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 145 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %gradxy_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 145 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 146 [1/1] (0.00ns)   --->   "%empty_93 = specchannel i32 @_ssdm_op_SpecChannel, void @gradxy_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %gradxy_cols_c, i11 %gradxy_cols_c"   --->   Operation 146 'specchannel' 'empty_93' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 147 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %gradxy_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 147 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 148 [1/1] (0.00ns)   --->   "%empty_94 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c31_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c31, i11 %img_height_c31" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 148 'specchannel' 'empty_94' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 149 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c31, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 149 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 150 [1/1] (0.00ns)   --->   "%empty_95 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c32_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c32, i11 %img_height_c32" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 150 'specchannel' 'empty_95' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 151 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c32, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 151 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 152 [1/1] (0.00ns)   --->   "%empty_96 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c33_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c33, i11 %img_width_c33" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 152 'specchannel' 'empty_96' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 153 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c33, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 153 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 154 [1/1] (0.00ns)   --->   "%empty_97 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c34_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c34, i11 %img_width_c34" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 154 'specchannel' 'empty_97' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 155 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c34, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 155 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 156 [1/1] (0.00ns)   --->   "%empty_98 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c35_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c35, i11 %img_height_c35" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 156 'specchannel' 'empty_98' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 157 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c35, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 157 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 158 [1/1] (0.00ns)   --->   "%empty_99 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c36_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c36, i11 %img_width_c36" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 158 'specchannel' 'empty_99' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 159 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c36, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 159 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 160 [1/1] (0.00ns)   --->   "%empty_100 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c37_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c37, i11 %img_height_c37" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 160 'specchannel' 'empty_100' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 161 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c37, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 161 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 162 [1/1] (0.00ns)   --->   "%empty_101 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c38_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c38, i11 %img_width_c38" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 162 'specchannel' 'empty_101' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 163 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c38, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 163 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 164 [1/1] (0.00ns)   --->   "%empty_102 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c39_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c39, i11 %img_height_c39" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 164 'specchannel' 'empty_102' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 165 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c39, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 165 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 166 [1/1] (0.00ns)   --->   "%empty_103 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c40_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c40, i11 %img_width_c40" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 166 'specchannel' 'empty_103' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 167 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c40, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 167 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 168 [1/1] (0.00ns)   --->   "%empty_104 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c41_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c41, i11 %img_height_c41" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 168 'specchannel' 'empty_104' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 169 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c41, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 169 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 170 [1/1] (0.00ns)   --->   "%empty_105 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c42_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c42, i11 %img_width_c42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 170 'specchannel' 'empty_105' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 171 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c42, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 171 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 172 [1/2] (0.00ns)   --->   "%call_ln176 = call void @xFMaxSuppression<5, 0, 1080, 1920, 5, 0, 1, 12, 1>, i32 %thresh_data, i8 %out_harris_mat_420, i11 %img_height_c41, i11 %img_width_c42, void %call_ln174, void %call_ln174" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:176]   --->   Operation 172 'call' 'call_ln176' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_15 : Operation 173 [1/1] (0.00ns)   --->   "%ret_ln178 = ret" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:178]   --->   Operation 173 'ret' 'ret_ln178' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+STG Binding: 
+---------------- STG Properties BEGIN ----------------
+- Is combinational: 0
+- Is one-state seq: 0
+- Is datapath-only: 0
+- Is pipelined: 0
+- Is top level: 0
+Port [ Return ] is wired: 1; IO mode=ap_ctrl_hs:ce=0
+Port [ in_harris_mat_419]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=3; pingpong=0; private_global=0; IO mode=ap_fifo:ce=0
+Port [ out_harris_mat_420]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=3; pingpong=0; private_global=0; IO mode=ap_fifo:ce=0
+Port [ p_read]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ p_read1]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ img_height]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ img_width]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ p_threshold]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+---------------- STG Properties END ------------------
+
+---------------- Datapath Model BEGIN ----------------
+
+<LifeTime>
+<method=bitvector/>
+p_threshold_read         (read                ) [ 0000000000000000]
+img_width_read           (read                ) [ 0000000000000000]
+img_height_read          (read                ) [ 0000000000000000]
+p_read13                 (read                ) [ 0000000000000000]
+p_read_7                 (read                ) [ 0000000000000000]
+img_width_c42            (alloca              ) [ 0011111111111111]
+img_height_c41           (alloca              ) [ 0011111111111111]
+img_width_c40            (alloca              ) [ 0011111111111111]
+img_height_c39           (alloca              ) [ 0011111111111111]
+img_width_c38            (alloca              ) [ 0011111111111111]
+img_height_c37           (alloca              ) [ 0011111111111111]
+img_width_c36            (alloca              ) [ 0011111111111111]
+img_height_c35           (alloca              ) [ 0011111111111111]
+img_width_c34            (alloca              ) [ 0011111111111111]
+img_width_c33            (alloca              ) [ 0011111111111111]
+img_height_c32           (alloca              ) [ 0011111111111111]
+img_height_c31           (alloca              ) [ 0011111111111111]
+gradxy_cols_c            (alloca              ) [ 0011111111111111]
+gradxy_rows_c            (alloca              ) [ 0011111111111111]
+grady_2_cols_c           (alloca              ) [ 0011111111111111]
+grady_2_rows_c           (alloca              ) [ 0011111111111111]
+gradx_2_cols_c           (alloca              ) [ 0011111111111111]
+gradx_2_rows_c           (alloca              ) [ 0011111111111111]
+p_threshold_c            (alloca              ) [ 0111111111111111]
+img_width_c30            (alloca              ) [ 0111111111111111]
+img_width_c29            (alloca              ) [ 0111111111111111]
+img_width_c              (alloca              ) [ 0111111111111111]
+img_height_c28           (alloca              ) [ 0111111111111111]
+img_height_c27           (alloca              ) [ 0111111111111111]
+img_height_c             (alloca              ) [ 0111111111111111]
+p_src_mat_2_c            (alloca              ) [ 0111111111111111]
+p_src_mat_1_c            (alloca              ) [ 0111111111111111]
+gradx_2_data             (alloca              ) [ 0011111111111111]
+grady_2_data             (alloca              ) [ 0011111111111111]
+gradxy_data              (alloca              ) [ 0011111111111111]
+gradx2g_data             (alloca              ) [ 0011111111111111]
+grady2g_data             (alloca              ) [ 0011111111111111]
+gradxyg_data             (alloca              ) [ 0011111111111111]
+score_data               (alloca              ) [ 0011111111111111]
+thresh_data              (alloca              ) [ 0011111111111111]
+gradx_mat_data           (alloca              ) [ 0011111111111111]
+grady_mat_data           (alloca              ) [ 0011111111111111]
+gradx1_mat_data          (alloca              ) [ 0011111111111111]
+grady1_mat_data          (alloca              ) [ 0011111111111111]
+gradx2_mat_data          (alloca              ) [ 0011111111111111]
+grady2_mat_data          (alloca              ) [ 0011111111111111]
+call_ln503               (call                ) [ 0000000000000000]
+call_ln148               (call                ) [ 0000000000000000]
+call_ln151               (call                ) [ 0000000000000000]
+call_ln154               (call                ) [ 0000000000000000]
+call_ln502               (call                ) [ 0000000000000000]
+call_ln157               (call                ) [ 0000000000000000]
+call_ln160               (call                ) [ 0000000000000000]
+call_ln163               (call                ) [ 0000000000000000]
+call_ln167               (call                ) [ 0000000000000000]
+call_ln168               (call                ) [ 0000000000000000]
+call_ln169               (call                ) [ 0000000000000000]
+call_ln171               (call                ) [ 0000000000000000]
+call_ln174               (call                ) [ 0000000000000000]
+specdataflowpipeline_ln0 (specdataflowpipeline) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty                    (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_66                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_67                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_68                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_69                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_70                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_71                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_72                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_73                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_74                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_75                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_76                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_77                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_78                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_79                 (specchannel         ) [ 0000000000000000]
+specinterface_ln148      (specinterface       ) [ 0000000000000000]
+empty_80                 (specchannel         ) [ 0000000000000000]
+specinterface_ln148      (specinterface       ) [ 0000000000000000]
+empty_81                 (specchannel         ) [ 0000000000000000]
+specinterface_ln502      (specinterface       ) [ 0000000000000000]
+empty_82                 (specchannel         ) [ 0000000000000000]
+specinterface_ln502      (specinterface       ) [ 0000000000000000]
+empty_83                 (specchannel         ) [ 0000000000000000]
+specinterface_ln502      (specinterface       ) [ 0000000000000000]
+empty_84                 (specchannel         ) [ 0000000000000000]
+specinterface_ln503      (specinterface       ) [ 0000000000000000]
+empty_85                 (specchannel         ) [ 0000000000000000]
+specinterface_ln503      (specinterface       ) [ 0000000000000000]
+empty_86                 (specchannel         ) [ 0000000000000000]
+specinterface_ln503      (specinterface       ) [ 0000000000000000]
+empty_87                 (specchannel         ) [ 0000000000000000]
+specinterface_ln174      (specinterface       ) [ 0000000000000000]
+empty_88                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_89                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_90                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_91                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_92                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_93                 (specchannel         ) [ 0000000000000000]
+specinterface_ln0        (specinterface       ) [ 0000000000000000]
+empty_94                 (specchannel         ) [ 0000000000000000]
+specinterface_ln502      (specinterface       ) [ 0000000000000000]
+empty_95                 (specchannel         ) [ 0000000000000000]
+specinterface_ln502      (specinterface       ) [ 0000000000000000]
+empty_96                 (specchannel         ) [ 0000000000000000]
+specinterface_ln503      (specinterface       ) [ 0000000000000000]
+empty_97                 (specchannel         ) [ 0000000000000000]
+specinterface_ln503      (specinterface       ) [ 0000000000000000]
+empty_98                 (specchannel         ) [ 0000000000000000]
+specinterface_ln502      (specinterface       ) [ 0000000000000000]
+empty_99                 (specchannel         ) [ 0000000000000000]
+specinterface_ln503      (specinterface       ) [ 0000000000000000]
+empty_100                (specchannel         ) [ 0000000000000000]
+specinterface_ln502      (specinterface       ) [ 0000000000000000]
+empty_101                (specchannel         ) [ 0000000000000000]
+specinterface_ln503      (specinterface       ) [ 0000000000000000]
+empty_102                (specchannel         ) [ 0000000000000000]
+specinterface_ln502      (specinterface       ) [ 0000000000000000]
+empty_103                (specchannel         ) [ 0000000000000000]
+specinterface_ln503      (specinterface       ) [ 0000000000000000]
+empty_104                (specchannel         ) [ 0000000000000000]
+specinterface_ln502      (specinterface       ) [ 0000000000000000]
+empty_105                (specchannel         ) [ 0000000000000000]
+specinterface_ln503      (specinterface       ) [ 0000000000000000]
+call_ln176               (call                ) [ 0000000000000000]
+ret_ln178                (ret                 ) [ 0000000000000000]
+</LifeTime>
+
+<model>
+
+<comp_list>
+<comp id="0" class="1000" name="in_harris_mat_419">
+<pin_list>
+<pin id="1" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="in_harris_mat_419"/></StgValue>
+</bind>
+</comp>
+
+<comp id="2" class="1000" name="out_harris_mat_420">
+<pin_list>
+<pin id="3" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="out_harris_mat_420"/></StgValue>
+</bind>
+</comp>
+
+<comp id="4" class="1000" name="p_read">
+<pin_list>
+<pin id="5" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_read"/></StgValue>
+</bind>
+</comp>
+
+<comp id="6" class="1000" name="p_read1">
+<pin_list>
+<pin id="7" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_read1"/></StgValue>
+</bind>
+</comp>
+
+<comp id="8" class="1000" name="img_height">
+<pin_list>
+<pin id="9" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height"/></StgValue>
+</bind>
+</comp>
+
+<comp id="10" class="1000" name="img_width">
+<pin_list>
+<pin id="11" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width"/></StgValue>
+</bind>
+</comp>
+
+<comp id="12" class="1000" name="p_threshold">
+<pin_list>
+<pin id="13" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_threshold"/></StgValue>
+</bind>
+</comp>
+
+<comp id="14" class="1001" name="const_14">
+<pin_list>
+<pin id="15" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Read.ap_auto.i16"/></StgValue>
+</bind>
+</comp>
+
+<comp id="16" class="1001" name="const_16">
+<pin_list>
+<pin id="17" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Read.ap_auto.i11"/></StgValue>
+</bind>
+</comp>
+
+<comp id="18" class="1001" name="const_18">
+<pin_list>
+<pin id="19" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="20" class="1001" name="const_20">
+<pin_list>
+<pin id="21" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false>.entry50"/></StgValue>
+</bind>
+</comp>
+
+<comp id="22" class="1001" name="const_22">
+<pin_list>
+<pin id="23" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="Sobel<0, 3, 0, 2, 1080, 1920, 1, false>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="24" class="1001" name="const_24">
+<pin_list>
+<pin id="25" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>24"/></StgValue>
+</bind>
+</comp>
+
+<comp id="26" class="1001" name="const_26">
+<pin_list>
+<pin id="27" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="28" class="1001" name="const_28">
+<pin_list>
+<pin id="29" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>25"/></StgValue>
+</bind>
+</comp>
+
+<comp id="30" class="1001" name="const_30">
+<pin_list>
+<pin id="31" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="32" class="1001" name="const_32">
+<pin_list>
+<pin id="33" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFMultiply<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="34" class="1001" name="const_34">
+<pin_list>
+<pin id="35" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false>_Block__ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii.exit1_proc"/></StgValue>
+</bind>
+</comp>
+
+<comp id="36" class="1001" name="const_36">
+<pin_list>
+<pin id="37" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="boxFilter<0, 3, 2, 1080, 1920, 1, false>26"/></StgValue>
+</bind>
+</comp>
+
+<comp id="38" class="1001" name="const_38">
+<pin_list>
+<pin id="39" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="boxFilter<0, 3, 2, 1080, 1920, 1, false>27"/></StgValue>
+</bind>
+</comp>
+
+<comp id="40" class="1001" name="const_40">
+<pin_list>
+<pin id="41" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="boxFilter<0, 3, 2, 1080, 1920, 1, false>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="42" class="1001" name="const_42">
+<pin_list>
+<pin id="43" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="44" class="1001" name="const_44">
+<pin_list>
+<pin id="45" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFThreshold<5, 1080, 1920, 5, 1, 12, 1920>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="46" class="1001" name="const_46">
+<pin_list>
+<pin id="47" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="xFMaxSuppression<5, 0, 1080, 1920, 5, 0, 1, 12, 1>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="48" class="1001" name="const_48">
+<pin_list>
+<pin id="49" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecDataflowPipeline"/></StgValue>
+</bind>
+</comp>
+
+<comp id="50" class="1001" name="const_50">
+<pin_list>
+<pin id="51" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="52" class="1001" name="const_52">
+<pin_list>
+<pin id="53" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="54" class="1001" name="const_54">
+<pin_list>
+<pin id="55" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="empty_18"/></StgValue>
+</bind>
+</comp>
+
+<comp id="56" class="1001" name="const_56">
+<pin_list>
+<pin id="57" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecInterface"/></StgValue>
+</bind>
+</comp>
+
+<comp id="58" class="1001" name="const_58">
+<pin_list>
+<pin id="59" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="empty_14"/></StgValue>
+</bind>
+</comp>
+
+<comp id="60" class="1001" name="const_60">
+<pin_list>
+<pin id="61" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecChannel"/></StgValue>
+</bind>
+</comp>
+
+<comp id="62" class="1001" name="const_62">
+<pin_list>
+<pin id="63" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradx_2_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="64" class="1001" name="const_64">
+<pin_list>
+<pin id="65" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="66" class="1001" name="const_66">
+<pin_list>
+<pin id="67" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="68" class="1001" name="const_68">
+<pin_list>
+<pin id="69" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="70" class="1001" name="const_70">
+<pin_list>
+<pin id="71" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="grady_2_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="72" class="1001" name="const_72">
+<pin_list>
+<pin id="73" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradxy_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="74" class="1001" name="const_74">
+<pin_list>
+<pin id="75" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradx2g_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="76" class="1001" name="const_76">
+<pin_list>
+<pin id="77" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="grady2g_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="78" class="1001" name="const_78">
+<pin_list>
+<pin id="79" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradxyg_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="80" class="1001" name="const_80">
+<pin_list>
+<pin id="81" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="score_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="82" class="1001" name="const_82">
+<pin_list>
+<pin id="83" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="thresh_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="84" class="1001" name="const_84">
+<pin_list>
+<pin id="85" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradx_mat_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="86" class="1001" name="const_86">
+<pin_list>
+<pin id="87" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="grady_mat_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="88" class="1001" name="const_88">
+<pin_list>
+<pin id="89" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradx1_mat_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="90" class="1001" name="const_90">
+<pin_list>
+<pin id="91" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="grady1_mat_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="92" class="1001" name="const_92">
+<pin_list>
+<pin id="93" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradx2_mat_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="94" class="1001" name="const_94">
+<pin_list>
+<pin id="95" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="grady2_mat_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="96" class="1001" name="const_96">
+<pin_list>
+<pin id="97" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_src_mat_OC_1_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="98" class="1001" name="const_98">
+<pin_list>
+<pin id="99" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="ap_fifo_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="100" class="1001" name="const_100">
+<pin_list>
+<pin id="101" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="102" class="1001" name="const_102">
+<pin_list>
+<pin id="103" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_src_mat_OC_2_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="104" class="1001" name="const_104">
+<pin_list>
+<pin id="105" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="106" class="1001" name="const_106">
+<pin_list>
+<pin id="107" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height_c27_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="108" class="1001" name="const_108">
+<pin_list>
+<pin id="109" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="110" class="1001" name="const_110">
+<pin_list>
+<pin id="111" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height_c28_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="112" class="1001" name="const_112">
+<pin_list>
+<pin id="113" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="114" class="1001" name="const_114">
+<pin_list>
+<pin id="115" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width_c29_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="116" class="1001" name="const_116">
+<pin_list>
+<pin id="117" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width_c30_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="118" class="1001" name="const_118">
+<pin_list>
+<pin id="119" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_threshold_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="120" class="1001" name="const_120">
+<pin_list>
+<pin id="121" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="122" class="1001" name="const_122">
+<pin_list>
+<pin id="123" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradx_2_OC_rows_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="124" class="1001" name="const_124">
+<pin_list>
+<pin id="125" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="126" class="1001" name="const_126">
+<pin_list>
+<pin id="127" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradx_2_OC_cols_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="128" class="1001" name="const_128">
+<pin_list>
+<pin id="129" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="grady_2_OC_rows_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="130" class="1001" name="const_130">
+<pin_list>
+<pin id="131" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="grady_2_OC_cols_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="132" class="1001" name="const_132">
+<pin_list>
+<pin id="133" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradxy_OC_rows_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="134" class="1001" name="const_134">
+<pin_list>
+<pin id="135" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gradxy_OC_cols_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="136" class="1001" name="const_136">
+<pin_list>
+<pin id="137" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height_c31_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="138" class="1001" name="const_138">
+<pin_list>
+<pin id="139" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height_c32_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="140" class="1001" name="const_140">
+<pin_list>
+<pin id="141" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width_c33_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="142" class="1001" name="const_142">
+<pin_list>
+<pin id="143" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width_c34_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="144" class="1001" name="const_144">
+<pin_list>
+<pin id="145" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height_c35_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="146" class="1001" name="const_146">
+<pin_list>
+<pin id="147" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width_c36_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="148" class="1001" name="const_148">
+<pin_list>
+<pin id="149" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height_c37_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="150" class="1001" name="const_150">
+<pin_list>
+<pin id="151" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width_c38_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="152" class="1001" name="const_152">
+<pin_list>
+<pin id="153" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height_c39_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="154" class="1001" name="const_154">
+<pin_list>
+<pin id="155" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width_c40_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="156" class="1001" name="const_156">
+<pin_list>
+<pin id="157" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_height_c41_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="158" class="1001" name="const_158">
+<pin_list>
+<pin id="159" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="img_width_c42_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="160" class="1004" name="img_width_c42_fu_160">
+<pin_list>
+<pin id="161" dir="0" index="0" bw="1" slack="0"/>
+<pin id="162" dir="1" index="1" bw="11" slack="11"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_width_c42/1 "/>
+</bind>
+</comp>
+
+<comp id="164" class="1004" name="img_height_c41_fu_164">
+<pin_list>
+<pin id="165" dir="0" index="0" bw="1" slack="0"/>
+<pin id="166" dir="1" index="1" bw="11" slack="11"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_height_c41/1 "/>
+</bind>
+</comp>
+
+<comp id="168" class="1004" name="img_width_c40_fu_168">
+<pin_list>
+<pin id="169" dir="0" index="0" bw="1" slack="0"/>
+<pin id="170" dir="1" index="1" bw="11" slack="9"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_width_c40/1 "/>
+</bind>
+</comp>
+
+<comp id="172" class="1004" name="img_height_c39_fu_172">
+<pin_list>
+<pin id="173" dir="0" index="0" bw="1" slack="0"/>
+<pin id="174" dir="1" index="1" bw="11" slack="9"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_height_c39/1 "/>
+</bind>
+</comp>
+
+<comp id="176" class="1004" name="img_width_c38_fu_176">
+<pin_list>
+<pin id="177" dir="0" index="0" bw="1" slack="0"/>
+<pin id="178" dir="1" index="1" bw="11" slack="5"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_width_c38/1 "/>
+</bind>
+</comp>
+
+<comp id="180" class="1004" name="img_height_c37_fu_180">
+<pin_list>
+<pin id="181" dir="0" index="0" bw="1" slack="0"/>
+<pin id="182" dir="1" index="1" bw="11" slack="5"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_height_c37/1 "/>
+</bind>
+</comp>
+
+<comp id="184" class="1004" name="img_width_c36_fu_184">
+<pin_list>
+<pin id="185" dir="0" index="0" bw="1" slack="0"/>
+<pin id="186" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_width_c36/1 "/>
+</bind>
+</comp>
+
+<comp id="188" class="1004" name="img_height_c35_fu_188">
+<pin_list>
+<pin id="189" dir="0" index="0" bw="1" slack="0"/>
+<pin id="190" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_height_c35/1 "/>
+</bind>
+</comp>
+
+<comp id="192" class="1004" name="img_width_c34_fu_192">
+<pin_list>
+<pin id="193" dir="0" index="0" bw="1" slack="0"/>
+<pin id="194" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_width_c34/1 "/>
+</bind>
+</comp>
+
+<comp id="196" class="1004" name="img_width_c33_fu_196">
+<pin_list>
+<pin id="197" dir="0" index="0" bw="1" slack="0"/>
+<pin id="198" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_width_c33/1 "/>
+</bind>
+</comp>
+
+<comp id="200" class="1004" name="img_height_c32_fu_200">
+<pin_list>
+<pin id="201" dir="0" index="0" bw="1" slack="0"/>
+<pin id="202" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_height_c32/1 "/>
+</bind>
+</comp>
+
+<comp id="204" class="1004" name="img_height_c31_fu_204">
+<pin_list>
+<pin id="205" dir="0" index="0" bw="1" slack="0"/>
+<pin id="206" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_height_c31/1 "/>
+</bind>
+</comp>
+
+<comp id="208" class="1004" name="gradxy_cols_c_fu_208">
+<pin_list>
+<pin id="209" dir="0" index="0" bw="1" slack="0"/>
+<pin id="210" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradxy_cols_c/1 "/>
+</bind>
+</comp>
+
+<comp id="212" class="1004" name="gradxy_rows_c_fu_212">
+<pin_list>
+<pin id="213" dir="0" index="0" bw="1" slack="0"/>
+<pin id="214" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradxy_rows_c/1 "/>
+</bind>
+</comp>
+
+<comp id="216" class="1004" name="grady_2_cols_c_fu_216">
+<pin_list>
+<pin id="217" dir="0" index="0" bw="1" slack="0"/>
+<pin id="218" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="grady_2_cols_c/1 "/>
+</bind>
+</comp>
+
+<comp id="220" class="1004" name="grady_2_rows_c_fu_220">
+<pin_list>
+<pin id="221" dir="0" index="0" bw="1" slack="0"/>
+<pin id="222" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="grady_2_rows_c/1 "/>
+</bind>
+</comp>
+
+<comp id="224" class="1004" name="gradx_2_cols_c_fu_224">
+<pin_list>
+<pin id="225" dir="0" index="0" bw="1" slack="0"/>
+<pin id="226" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradx_2_cols_c/1 "/>
+</bind>
+</comp>
+
+<comp id="228" class="1004" name="gradx_2_rows_c_fu_228">
+<pin_list>
+<pin id="229" dir="0" index="0" bw="1" slack="0"/>
+<pin id="230" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradx_2_rows_c/1 "/>
+</bind>
+</comp>
+
+<comp id="232" class="1004" name="p_threshold_c_fu_232">
+<pin_list>
+<pin id="233" dir="0" index="0" bw="1" slack="0"/>
+<pin id="234" dir="1" index="1" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="p_threshold_c/1 "/>
+</bind>
+</comp>
+
+<comp id="236" class="1004" name="img_width_c30_fu_236">
+<pin_list>
+<pin id="237" dir="0" index="0" bw="1" slack="0"/>
+<pin id="238" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_width_c30/1 "/>
+</bind>
+</comp>
+
+<comp id="240" class="1004" name="img_width_c29_fu_240">
+<pin_list>
+<pin id="241" dir="0" index="0" bw="1" slack="0"/>
+<pin id="242" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_width_c29/1 "/>
+</bind>
+</comp>
+
+<comp id="244" class="1004" name="img_width_c_fu_244">
+<pin_list>
+<pin id="245" dir="0" index="0" bw="1" slack="0"/>
+<pin id="246" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_width_c/1 "/>
+</bind>
+</comp>
+
+<comp id="248" class="1004" name="img_height_c28_fu_248">
+<pin_list>
+<pin id="249" dir="0" index="0" bw="1" slack="0"/>
+<pin id="250" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_height_c28/1 "/>
+</bind>
+</comp>
+
+<comp id="252" class="1004" name="img_height_c27_fu_252">
+<pin_list>
+<pin id="253" dir="0" index="0" bw="1" slack="0"/>
+<pin id="254" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_height_c27/1 "/>
+</bind>
+</comp>
+
+<comp id="256" class="1004" name="img_height_c_fu_256">
+<pin_list>
+<pin id="257" dir="0" index="0" bw="1" slack="0"/>
+<pin id="258" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="img_height_c/1 "/>
+</bind>
+</comp>
+
+<comp id="260" class="1004" name="p_src_mat_2_c_fu_260">
+<pin_list>
+<pin id="261" dir="0" index="0" bw="1" slack="0"/>
+<pin id="262" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="p_src_mat_2_c/1 "/>
+</bind>
+</comp>
+
+<comp id="264" class="1004" name="p_src_mat_1_c_fu_264">
+<pin_list>
+<pin id="265" dir="0" index="0" bw="1" slack="0"/>
+<pin id="266" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="p_src_mat_1_c/1 "/>
+</bind>
+</comp>
+
+<comp id="268" class="1004" name="gradx_2_data_fu_268">
+<pin_list>
+<pin id="269" dir="0" index="0" bw="1" slack="0"/>
+<pin id="270" dir="1" index="1" bw="16" slack="5"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradx_2_data/1 "/>
+</bind>
+</comp>
+
+<comp id="272" class="1004" name="grady_2_data_fu_272">
+<pin_list>
+<pin id="273" dir="0" index="0" bw="1" slack="0"/>
+<pin id="274" dir="1" index="1" bw="16" slack="5"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="grady_2_data/1 "/>
+</bind>
+</comp>
+
+<comp id="276" class="1004" name="gradxy_data_fu_276">
+<pin_list>
+<pin id="277" dir="0" index="0" bw="1" slack="0"/>
+<pin id="278" dir="1" index="1" bw="16" slack="5"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradxy_data/1 "/>
+</bind>
+</comp>
+
+<comp id="280" class="1004" name="gradx2g_data_fu_280">
+<pin_list>
+<pin id="281" dir="0" index="0" bw="1" slack="0"/>
+<pin id="282" dir="1" index="1" bw="16" slack="7"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradx2g_data/1 "/>
+</bind>
+</comp>
+
+<comp id="284" class="1004" name="grady2g_data_fu_284">
+<pin_list>
+<pin id="285" dir="0" index="0" bw="1" slack="0"/>
+<pin id="286" dir="1" index="1" bw="16" slack="7"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="grady2g_data/1 "/>
+</bind>
+</comp>
+
+<comp id="288" class="1004" name="gradxyg_data_fu_288">
+<pin_list>
+<pin id="289" dir="0" index="0" bw="1" slack="0"/>
+<pin id="290" dir="1" index="1" bw="16" slack="7"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradxyg_data/1 "/>
+</bind>
+</comp>
+
+<comp id="292" class="1004" name="score_data_fu_292">
+<pin_list>
+<pin id="293" dir="0" index="0" bw="1" slack="0"/>
+<pin id="294" dir="1" index="1" bw="32" slack="9"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="score_data/1 "/>
+</bind>
+</comp>
+
+<comp id="296" class="1004" name="thresh_data_fu_296">
+<pin_list>
+<pin id="297" dir="0" index="0" bw="1" slack="0"/>
+<pin id="298" dir="1" index="1" bw="32" slack="11"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="thresh_data/1 "/>
+</bind>
+</comp>
+
+<comp id="300" class="1004" name="gradx_mat_data_fu_300">
+<pin_list>
+<pin id="301" dir="0" index="0" bw="1" slack="0"/>
+<pin id="302" dir="1" index="1" bw="16" slack="1"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradx_mat_data/1 "/>
+</bind>
+</comp>
+
+<comp id="304" class="1004" name="grady_mat_data_fu_304">
+<pin_list>
+<pin id="305" dir="0" index="0" bw="1" slack="0"/>
+<pin id="306" dir="1" index="1" bw="16" slack="1"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="grady_mat_data/1 "/>
+</bind>
+</comp>
+
+<comp id="308" class="1004" name="gradx1_mat_data_fu_308">
+<pin_list>
+<pin id="309" dir="0" index="0" bw="1" slack="0"/>
+<pin id="310" dir="1" index="1" bw="16" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradx1_mat_data/1 "/>
+</bind>
+</comp>
+
+<comp id="312" class="1004" name="grady1_mat_data_fu_312">
+<pin_list>
+<pin id="313" dir="0" index="0" bw="1" slack="0"/>
+<pin id="314" dir="1" index="1" bw="16" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="grady1_mat_data/1 "/>
+</bind>
+</comp>
+
+<comp id="316" class="1004" name="gradx2_mat_data_fu_316">
+<pin_list>
+<pin id="317" dir="0" index="0" bw="1" slack="0"/>
+<pin id="318" dir="1" index="1" bw="16" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="gradx2_mat_data/1 "/>
+</bind>
+</comp>
+
+<comp id="320" class="1004" name="grady2_mat_data_fu_320">
+<pin_list>
+<pin id="321" dir="0" index="0" bw="1" slack="0"/>
+<pin id="322" dir="1" index="1" bw="16" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="grady2_mat_data/1 "/>
+</bind>
+</comp>
+
+<comp id="324" class="1004" name="p_threshold_read_read_fu_324">
+<pin_list>
+<pin id="325" dir="0" index="0" bw="16" slack="0"/>
+<pin id="326" dir="0" index="1" bw="16" slack="0"/>
+<pin id="327" dir="1" index="2" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="p_threshold_read/1 "/>
+</bind>
+</comp>
+
+<comp id="330" class="1004" name="img_width_read_read_fu_330">
+<pin_list>
+<pin id="331" dir="0" index="0" bw="11" slack="0"/>
+<pin id="332" dir="0" index="1" bw="11" slack="0"/>
+<pin id="333" dir="1" index="2" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="img_width_read/1 "/>
+</bind>
+</comp>
+
+<comp id="336" class="1004" name="img_height_read_read_fu_336">
+<pin_list>
+<pin id="337" dir="0" index="0" bw="11" slack="0"/>
+<pin id="338" dir="0" index="1" bw="11" slack="0"/>
+<pin id="339" dir="1" index="2" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="img_height_read/1 "/>
+</bind>
+</comp>
+
+<comp id="342" class="1004" name="p_read13_read_fu_342">
+<pin_list>
+<pin id="343" dir="0" index="0" bw="11" slack="0"/>
+<pin id="344" dir="0" index="1" bw="11" slack="0"/>
+<pin id="345" dir="1" index="2" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="p_read13/1 "/>
+</bind>
+</comp>
+
+<comp id="348" class="1004" name="p_read_7_read_fu_348">
+<pin_list>
+<pin id="349" dir="0" index="0" bw="11" slack="0"/>
+<pin id="350" dir="0" index="1" bw="11" slack="0"/>
+<pin id="351" dir="1" index="2" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="p_read_7/1 "/>
+</bind>
+</comp>
+
+<comp id="354" class="1004" name="grp_xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s_fu_354">
+<pin_list>
+<pin id="355" dir="0" index="0" bw="0" slack="0"/>
+<pin id="356" dir="0" index="1" bw="32" slack="13"/>
+<pin id="357" dir="0" index="2" bw="8" slack="0"/>
+<pin id="358" dir="0" index="3" bw="11" slack="13"/>
+<pin id="359" dir="0" index="4" bw="11" slack="13"/>
+<pin id="360" dir="1" index="5" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln176/14 "/>
+</bind>
+</comp>
+
+<comp id="363" class="1004" name="grp_Sobel_0_3_0_2_1080_1920_1_false_s_fu_363">
+<pin_list>
+<pin id="364" dir="0" index="0" bw="0" slack="0"/>
+<pin id="365" dir="0" index="1" bw="8" slack="0"/>
+<pin id="366" dir="0" index="2" bw="16" slack="1"/>
+<pin id="367" dir="0" index="3" bw="16" slack="1"/>
+<pin id="368" dir="0" index="4" bw="11" slack="1"/>
+<pin id="369" dir="0" index="5" bw="11" slack="1"/>
+<pin id="370" dir="1" index="6" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln148/2 "/>
+</bind>
+</comp>
+
+<comp id="373" class="1004" name="grp_boxFilter_0_3_2_1080_1920_1_false_26_fu_373">
+<pin_list>
+<pin id="374" dir="0" index="0" bw="0" slack="0"/>
+<pin id="375" dir="0" index="1" bw="16" slack="7"/>
+<pin id="376" dir="0" index="2" bw="16" slack="7"/>
+<pin id="377" dir="0" index="3" bw="11" slack="7"/>
+<pin id="378" dir="0" index="4" bw="11" slack="7"/>
+<pin id="379" dir="1" index="5" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln167/8 "/>
+</bind>
+</comp>
+
+<comp id="381" class="1004" name="grp_boxFilter_0_3_2_1080_1920_1_false_27_fu_381">
+<pin_list>
+<pin id="382" dir="0" index="0" bw="0" slack="0"/>
+<pin id="383" dir="0" index="1" bw="16" slack="7"/>
+<pin id="384" dir="0" index="2" bw="16" slack="7"/>
+<pin id="385" dir="0" index="3" bw="11" slack="7"/>
+<pin id="386" dir="0" index="4" bw="11" slack="7"/>
+<pin id="387" dir="1" index="5" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln168/8 "/>
+</bind>
+</comp>
+
+<comp id="389" class="1004" name="grp_boxFilter_0_3_2_1080_1920_1_false_s_fu_389">
+<pin_list>
+<pin id="390" dir="0" index="0" bw="0" slack="0"/>
+<pin id="391" dir="0" index="1" bw="16" slack="7"/>
+<pin id="392" dir="0" index="2" bw="16" slack="7"/>
+<pin id="393" dir="0" index="3" bw="11" slack="7"/>
+<pin id="394" dir="0" index="4" bw="11" slack="7"/>
+<pin id="395" dir="1" index="5" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln169/8 "/>
+</bind>
+</comp>
+
+<comp id="397" class="1004" name="grp_xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s_fu_397">
+<pin_list>
+<pin id="398" dir="0" index="0" bw="0" slack="0"/>
+<pin id="399" dir="0" index="1" bw="16" slack="9"/>
+<pin id="400" dir="0" index="2" bw="16" slack="9"/>
+<pin id="401" dir="0" index="3" bw="16" slack="9"/>
+<pin id="402" dir="0" index="4" bw="32" slack="9"/>
+<pin id="403" dir="0" index="5" bw="11" slack="9"/>
+<pin id="404" dir="0" index="6" bw="11" slack="9"/>
+<pin id="405" dir="0" index="7" bw="11" slack="9"/>
+<pin id="406" dir="0" index="8" bw="11" slack="9"/>
+<pin id="407" dir="1" index="9" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln171/10 "/>
+</bind>
+</comp>
+
+<comp id="409" class="1004" name="grp_xFThreshold_5_1080_1920_5_1_12_1920_s_fu_409">
+<pin_list>
+<pin id="410" dir="0" index="0" bw="0" slack="0"/>
+<pin id="411" dir="0" index="1" bw="32" slack="11"/>
+<pin id="412" dir="0" index="2" bw="32" slack="11"/>
+<pin id="413" dir="0" index="3" bw="16" slack="11"/>
+<pin id="414" dir="0" index="4" bw="11" slack="11"/>
+<pin id="415" dir="0" index="5" bw="11" slack="11"/>
+<pin id="416" dir="0" index="6" bw="11" slack="11"/>
+<pin id="417" dir="0" index="7" bw="11" slack="11"/>
+<pin id="418" dir="1" index="8" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln174/12 "/>
+</bind>
+</comp>
+
+<comp id="420" class="1004" name="grp_xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25_fu_420">
+<pin_list>
+<pin id="421" dir="0" index="0" bw="0" slack="0"/>
+<pin id="422" dir="0" index="1" bw="16" slack="5"/>
+<pin id="423" dir="0" index="2" bw="16" slack="5"/>
+<pin id="424" dir="0" index="3" bw="11" slack="5"/>
+<pin id="425" dir="0" index="4" bw="11" slack="5"/>
+<pin id="426" dir="0" index="5" bw="11" slack="5"/>
+<pin id="427" dir="0" index="6" bw="11" slack="5"/>
+<pin id="428" dir="1" index="7" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln157/6 "/>
+</bind>
+</comp>
+
+<comp id="430" class="1004" name="grp_xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s_fu_430">
+<pin_list>
+<pin id="431" dir="0" index="0" bw="0" slack="0"/>
+<pin id="432" dir="0" index="1" bw="16" slack="5"/>
+<pin id="433" dir="0" index="2" bw="16" slack="5"/>
+<pin id="434" dir="0" index="3" bw="11" slack="5"/>
+<pin id="435" dir="0" index="4" bw="11" slack="5"/>
+<pin id="436" dir="1" index="5" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln160/6 "/>
+</bind>
+</comp>
+
+<comp id="438" class="1004" name="grp_xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s_fu_438">
+<pin_list>
+<pin id="439" dir="0" index="0" bw="0" slack="0"/>
+<pin id="440" dir="0" index="1" bw="16" slack="5"/>
+<pin id="441" dir="0" index="2" bw="16" slack="5"/>
+<pin id="442" dir="0" index="3" bw="16" slack="5"/>
+<pin id="443" dir="0" index="4" bw="11" slack="5"/>
+<pin id="444" dir="0" index="5" bw="11" slack="5"/>
+<pin id="445" dir="1" index="6" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln163/6 "/>
+</bind>
+</comp>
+
+<comp id="447" class="1004" name="grp_xFDuplicate_2_1080_1920_3_1_5_1920_24_fu_447">
+<pin_list>
+<pin id="448" dir="0" index="0" bw="0" slack="0"/>
+<pin id="449" dir="0" index="1" bw="16" slack="3"/>
+<pin id="450" dir="0" index="2" bw="16" slack="3"/>
+<pin id="451" dir="0" index="3" bw="16" slack="3"/>
+<pin id="452" dir="0" index="4" bw="11" slack="3"/>
+<pin id="453" dir="0" index="5" bw="11" slack="3"/>
+<pin id="454" dir="0" index="6" bw="11" slack="3"/>
+<pin id="455" dir="0" index="7" bw="11" slack="3"/>
+<pin id="456" dir="0" index="8" bw="11" slack="3"/>
+<pin id="457" dir="0" index="9" bw="11" slack="3"/>
+<pin id="458" dir="1" index="10" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln151/4 "/>
+</bind>
+</comp>
+
+<comp id="460" class="1004" name="grp_xFDuplicate_2_1080_1920_3_1_5_1920_s_fu_460">
+<pin_list>
+<pin id="461" dir="0" index="0" bw="0" slack="0"/>
+<pin id="462" dir="0" index="1" bw="16" slack="3"/>
+<pin id="463" dir="0" index="2" bw="16" slack="3"/>
+<pin id="464" dir="0" index="3" bw="16" slack="3"/>
+<pin id="465" dir="0" index="4" bw="11" slack="3"/>
+<pin id="466" dir="0" index="5" bw="11" slack="3"/>
+<pin id="467" dir="0" index="6" bw="11" slack="3"/>
+<pin id="468" dir="0" index="7" bw="11" slack="3"/>
+<pin id="469" dir="1" index="8" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln154/4 "/>
+</bind>
+</comp>
+
+<comp id="471" class="1004" name="call_ln503_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_fu_471">
+<pin_list>
+<pin id="472" dir="0" index="0" bw="0" slack="0"/>
+<pin id="473" dir="0" index="1" bw="11" slack="0"/>
+<pin id="474" dir="0" index="2" bw="11" slack="0"/>
+<pin id="475" dir="0" index="3" bw="11" slack="0"/>
+<pin id="476" dir="0" index="4" bw="11" slack="0"/>
+<pin id="477" dir="0" index="5" bw="16" slack="0"/>
+<pin id="478" dir="0" index="6" bw="11" slack="0"/>
+<pin id="479" dir="0" index="7" bw="11" slack="0"/>
+<pin id="480" dir="0" index="8" bw="11" slack="0"/>
+<pin id="481" dir="0" index="9" bw="11" slack="0"/>
+<pin id="482" dir="0" index="10" bw="11" slack="0"/>
+<pin id="483" dir="0" index="11" bw="11" slack="0"/>
+<pin id="484" dir="0" index="12" bw="11" slack="0"/>
+<pin id="485" dir="0" index="13" bw="11" slack="0"/>
+<pin id="486" dir="0" index="14" bw="16" slack="0"/>
+<pin id="487" dir="1" index="15" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln503/1 "/>
+</bind>
+</comp>
+
+<comp id="494" class="1004" name="call_ln502_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc_fu_494">
+<pin_list>
+<pin id="495" dir="0" index="0" bw="0" slack="0"/>
+<pin id="496" dir="0" index="1" bw="11" slack="6"/>
+<pin id="497" dir="0" index="2" bw="11" slack="6"/>
+<pin id="498" dir="0" index="3" bw="11" slack="6"/>
+<pin id="499" dir="0" index="4" bw="11" slack="6"/>
+<pin id="500" dir="0" index="5" bw="11" slack="6"/>
+<pin id="501" dir="0" index="6" bw="11" slack="6"/>
+<pin id="502" dir="0" index="7" bw="11" slack="6"/>
+<pin id="503" dir="0" index="8" bw="11" slack="6"/>
+<pin id="504" dir="1" index="9" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln502/7 "/>
+</bind>
+</comp>
+
+<comp id="506" class="1005" name="img_width_c42_reg_506">
+<pin_list>
+<pin id="507" dir="0" index="0" bw="11" slack="11"/>
+<pin id="508" dir="1" index="1" bw="11" slack="11"/>
+</pin_list>
+<bind>
+<opset="img_width_c42 "/>
+</bind>
+</comp>
+
+<comp id="512" class="1005" name="img_height_c41_reg_512">
+<pin_list>
+<pin id="513" dir="0" index="0" bw="11" slack="11"/>
+<pin id="514" dir="1" index="1" bw="11" slack="11"/>
+</pin_list>
+<bind>
+<opset="img_height_c41 "/>
+</bind>
+</comp>
+
+<comp id="518" class="1005" name="img_width_c40_reg_518">
+<pin_list>
+<pin id="519" dir="0" index="0" bw="11" slack="9"/>
+<pin id="520" dir="1" index="1" bw="11" slack="9"/>
+</pin_list>
+<bind>
+<opset="img_width_c40 "/>
+</bind>
+</comp>
+
+<comp id="524" class="1005" name="img_height_c39_reg_524">
+<pin_list>
+<pin id="525" dir="0" index="0" bw="11" slack="9"/>
+<pin id="526" dir="1" index="1" bw="11" slack="9"/>
+</pin_list>
+<bind>
+<opset="img_height_c39 "/>
+</bind>
+</comp>
+
+<comp id="530" class="1005" name="img_width_c38_reg_530">
+<pin_list>
+<pin id="531" dir="0" index="0" bw="11" slack="5"/>
+<pin id="532" dir="1" index="1" bw="11" slack="5"/>
+</pin_list>
+<bind>
+<opset="img_width_c38 "/>
+</bind>
+</comp>
+
+<comp id="536" class="1005" name="img_height_c37_reg_536">
+<pin_list>
+<pin id="537" dir="0" index="0" bw="11" slack="5"/>
+<pin id="538" dir="1" index="1" bw="11" slack="5"/>
+</pin_list>
+<bind>
+<opset="img_height_c37 "/>
+</bind>
+</comp>
+
+<comp id="542" class="1005" name="img_width_c36_reg_542">
+<pin_list>
+<pin id="543" dir="0" index="0" bw="11" slack="3"/>
+<pin id="544" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opset="img_width_c36 "/>
+</bind>
+</comp>
+
+<comp id="548" class="1005" name="img_height_c35_reg_548">
+<pin_list>
+<pin id="549" dir="0" index="0" bw="11" slack="3"/>
+<pin id="550" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opset="img_height_c35 "/>
+</bind>
+</comp>
+
+<comp id="554" class="1005" name="img_width_c34_reg_554">
+<pin_list>
+<pin id="555" dir="0" index="0" bw="11" slack="3"/>
+<pin id="556" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opset="img_width_c34 "/>
+</bind>
+</comp>
+
+<comp id="560" class="1005" name="img_width_c33_reg_560">
+<pin_list>
+<pin id="561" dir="0" index="0" bw="11" slack="3"/>
+<pin id="562" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opset="img_width_c33 "/>
+</bind>
+</comp>
+
+<comp id="566" class="1005" name="img_height_c32_reg_566">
+<pin_list>
+<pin id="567" dir="0" index="0" bw="11" slack="3"/>
+<pin id="568" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opset="img_height_c32 "/>
+</bind>
+</comp>
+
+<comp id="572" class="1005" name="img_height_c31_reg_572">
+<pin_list>
+<pin id="573" dir="0" index="0" bw="11" slack="3"/>
+<pin id="574" dir="1" index="1" bw="11" slack="3"/>
+</pin_list>
+<bind>
+<opset="img_height_c31 "/>
+</bind>
+</comp>
+
+<comp id="578" class="1005" name="gradxy_cols_c_reg_578">
+<pin_list>
+<pin id="579" dir="0" index="0" bw="11" slack="6"/>
+<pin id="580" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opset="gradxy_cols_c "/>
+</bind>
+</comp>
+
+<comp id="584" class="1005" name="gradxy_rows_c_reg_584">
+<pin_list>
+<pin id="585" dir="0" index="0" bw="11" slack="6"/>
+<pin id="586" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opset="gradxy_rows_c "/>
+</bind>
+</comp>
+
+<comp id="590" class="1005" name="grady_2_cols_c_reg_590">
+<pin_list>
+<pin id="591" dir="0" index="0" bw="11" slack="6"/>
+<pin id="592" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opset="grady_2_cols_c "/>
+</bind>
+</comp>
+
+<comp id="596" class="1005" name="grady_2_rows_c_reg_596">
+<pin_list>
+<pin id="597" dir="0" index="0" bw="11" slack="6"/>
+<pin id="598" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opset="grady_2_rows_c "/>
+</bind>
+</comp>
+
+<comp id="602" class="1005" name="gradx_2_cols_c_reg_602">
+<pin_list>
+<pin id="603" dir="0" index="0" bw="11" slack="6"/>
+<pin id="604" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opset="gradx_2_cols_c "/>
+</bind>
+</comp>
+
+<comp id="608" class="1005" name="gradx_2_rows_c_reg_608">
+<pin_list>
+<pin id="609" dir="0" index="0" bw="11" slack="6"/>
+<pin id="610" dir="1" index="1" bw="11" slack="6"/>
+</pin_list>
+<bind>
+<opset="gradx_2_rows_c "/>
+</bind>
+</comp>
+
+<comp id="614" class="1005" name="p_threshold_c_reg_614">
+<pin_list>
+<pin id="615" dir="0" index="0" bw="16" slack="0"/>
+<pin id="616" dir="1" index="1" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opset="p_threshold_c "/>
+</bind>
+</comp>
+
+<comp id="620" class="1005" name="img_width_c30_reg_620">
+<pin_list>
+<pin id="621" dir="0" index="0" bw="11" slack="0"/>
+<pin id="622" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="img_width_c30 "/>
+</bind>
+</comp>
+
+<comp id="626" class="1005" name="img_width_c29_reg_626">
+<pin_list>
+<pin id="627" dir="0" index="0" bw="11" slack="0"/>
+<pin id="628" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="img_width_c29 "/>
+</bind>
+</comp>
+
+<comp id="632" class="1005" name="img_width_c_reg_632">
+<pin_list>
+<pin id="633" dir="0" index="0" bw="11" slack="0"/>
+<pin id="634" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="img_width_c "/>
+</bind>
+</comp>
+
+<comp id="638" class="1005" name="img_height_c28_reg_638">
+<pin_list>
+<pin id="639" dir="0" index="0" bw="11" slack="0"/>
+<pin id="640" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="img_height_c28 "/>
+</bind>
+</comp>
+
+<comp id="644" class="1005" name="img_height_c27_reg_644">
+<pin_list>
+<pin id="645" dir="0" index="0" bw="11" slack="0"/>
+<pin id="646" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="img_height_c27 "/>
+</bind>
+</comp>
+
+<comp id="650" class="1005" name="img_height_c_reg_650">
+<pin_list>
+<pin id="651" dir="0" index="0" bw="11" slack="0"/>
+<pin id="652" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="img_height_c "/>
+</bind>
+</comp>
+
+<comp id="656" class="1005" name="p_src_mat_2_c_reg_656">
+<pin_list>
+<pin id="657" dir="0" index="0" bw="11" slack="0"/>
+<pin id="658" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="p_src_mat_2_c "/>
+</bind>
+</comp>
+
+<comp id="662" class="1005" name="p_src_mat_1_c_reg_662">
+<pin_list>
+<pin id="663" dir="0" index="0" bw="11" slack="0"/>
+<pin id="664" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="p_src_mat_1_c "/>
+</bind>
+</comp>
+
+<comp id="668" class="1005" name="gradx_2_data_reg_668">
+<pin_list>
+<pin id="669" dir="0" index="0" bw="16" slack="5"/>
+<pin id="670" dir="1" index="1" bw="16" slack="5"/>
+</pin_list>
+<bind>
+<opset="gradx_2_data "/>
+</bind>
+</comp>
+
+<comp id="674" class="1005" name="grady_2_data_reg_674">
+<pin_list>
+<pin id="675" dir="0" index="0" bw="16" slack="5"/>
+<pin id="676" dir="1" index="1" bw="16" slack="5"/>
+</pin_list>
+<bind>
+<opset="grady_2_data "/>
+</bind>
+</comp>
+
+<comp id="680" class="1005" name="gradxy_data_reg_680">
+<pin_list>
+<pin id="681" dir="0" index="0" bw="16" slack="5"/>
+<pin id="682" dir="1" index="1" bw="16" slack="5"/>
+</pin_list>
+<bind>
+<opset="gradxy_data "/>
+</bind>
+</comp>
+
+<comp id="686" class="1005" name="gradx2g_data_reg_686">
+<pin_list>
+<pin id="687" dir="0" index="0" bw="16" slack="7"/>
+<pin id="688" dir="1" index="1" bw="16" slack="7"/>
+</pin_list>
+<bind>
+<opset="gradx2g_data "/>
+</bind>
+</comp>
+
+<comp id="692" class="1005" name="grady2g_data_reg_692">
+<pin_list>
+<pin id="693" dir="0" index="0" bw="16" slack="7"/>
+<pin id="694" dir="1" index="1" bw="16" slack="7"/>
+</pin_list>
+<bind>
+<opset="grady2g_data "/>
+</bind>
+</comp>
+
+<comp id="698" class="1005" name="gradxyg_data_reg_698">
+<pin_list>
+<pin id="699" dir="0" index="0" bw="16" slack="7"/>
+<pin id="700" dir="1" index="1" bw="16" slack="7"/>
+</pin_list>
+<bind>
+<opset="gradxyg_data "/>
+</bind>
+</comp>
+
+<comp id="704" class="1005" name="score_data_reg_704">
+<pin_list>
+<pin id="705" dir="0" index="0" bw="32" slack="9"/>
+<pin id="706" dir="1" index="1" bw="32" slack="9"/>
+</pin_list>
+<bind>
+<opset="score_data "/>
+</bind>
+</comp>
+
+<comp id="710" class="1005" name="thresh_data_reg_710">
+<pin_list>
+<pin id="711" dir="0" index="0" bw="32" slack="11"/>
+<pin id="712" dir="1" index="1" bw="32" slack="11"/>
+</pin_list>
+<bind>
+<opset="thresh_data "/>
+</bind>
+</comp>
+
+<comp id="716" class="1005" name="gradx_mat_data_reg_716">
+<pin_list>
+<pin id="717" dir="0" index="0" bw="16" slack="1"/>
+<pin id="718" dir="1" index="1" bw="16" slack="1"/>
+</pin_list>
+<bind>
+<opset="gradx_mat_data "/>
+</bind>
+</comp>
+
+<comp id="722" class="1005" name="grady_mat_data_reg_722">
+<pin_list>
+<pin id="723" dir="0" index="0" bw="16" slack="1"/>
+<pin id="724" dir="1" index="1" bw="16" slack="1"/>
+</pin_list>
+<bind>
+<opset="grady_mat_data "/>
+</bind>
+</comp>
+
+<comp id="728" class="1005" name="gradx1_mat_data_reg_728">
+<pin_list>
+<pin id="729" dir="0" index="0" bw="16" slack="3"/>
+<pin id="730" dir="1" index="1" bw="16" slack="3"/>
+</pin_list>
+<bind>
+<opset="gradx1_mat_data "/>
+</bind>
+</comp>
+
+<comp id="734" class="1005" name="grady1_mat_data_reg_734">
+<pin_list>
+<pin id="735" dir="0" index="0" bw="16" slack="3"/>
+<pin id="736" dir="1" index="1" bw="16" slack="3"/>
+</pin_list>
+<bind>
+<opset="grady1_mat_data "/>
+</bind>
+</comp>
+
+<comp id="740" class="1005" name="gradx2_mat_data_reg_740">
+<pin_list>
+<pin id="741" dir="0" index="0" bw="16" slack="3"/>
+<pin id="742" dir="1" index="1" bw="16" slack="3"/>
+</pin_list>
+<bind>
+<opset="gradx2_mat_data "/>
+</bind>
+</comp>
+
+<comp id="746" class="1005" name="grady2_mat_data_reg_746">
+<pin_list>
+<pin id="747" dir="0" index="0" bw="16" slack="3"/>
+<pin id="748" dir="1" index="1" bw="16" slack="3"/>
+</pin_list>
+<bind>
+<opset="grady2_mat_data "/>
+</bind>
+</comp>
+
+</comp_list>
+
+<net_list>
+<net id="163"><net_src comp="18" pin="0"/><net_sink comp="160" pin=0"/></net>
+
+<net id="167"><net_src comp="18" pin="0"/><net_sink comp="164" pin=0"/></net>
+
+<net id="171"><net_src comp="18" pin="0"/><net_sink comp="168" pin=0"/></net>
+
+<net id="175"><net_src comp="18" pin="0"/><net_sink comp="172" pin=0"/></net>
+
+<net id="179"><net_src comp="18" pin="0"/><net_sink comp="176" pin=0"/></net>
+
+<net id="183"><net_src comp="18" pin="0"/><net_sink comp="180" pin=0"/></net>
+
+<net id="187"><net_src comp="18" pin="0"/><net_sink comp="184" pin=0"/></net>
+
+<net id="191"><net_src comp="18" pin="0"/><net_sink comp="188" pin=0"/></net>
+
+<net id="195"><net_src comp="18" pin="0"/><net_sink comp="192" pin=0"/></net>
+
+<net id="199"><net_src comp="18" pin="0"/><net_sink comp="196" pin=0"/></net>
+
+<net id="203"><net_src comp="18" pin="0"/><net_sink comp="200" pin=0"/></net>
+
+<net id="207"><net_src comp="18" pin="0"/><net_sink comp="204" pin=0"/></net>
+
+<net id="211"><net_src comp="18" pin="0"/><net_sink comp="208" pin=0"/></net>
+
+<net id="215"><net_src comp="18" pin="0"/><net_sink comp="212" pin=0"/></net>
+
+<net id="219"><net_src comp="18" pin="0"/><net_sink comp="216" pin=0"/></net>
+
+<net id="223"><net_src comp="18" pin="0"/><net_sink comp="220" pin=0"/></net>
+
+<net id="227"><net_src comp="18" pin="0"/><net_sink comp="224" pin=0"/></net>
+
+<net id="231"><net_src comp="18" pin="0"/><net_sink comp="228" pin=0"/></net>
+
+<net id="235"><net_src comp="18" pin="0"/><net_sink comp="232" pin=0"/></net>
+
+<net id="239"><net_src comp="18" pin="0"/><net_sink comp="236" pin=0"/></net>
+
+<net id="243"><net_src comp="18" pin="0"/><net_sink comp="240" pin=0"/></net>
+
+<net id="247"><net_src comp="18" pin="0"/><net_sink comp="244" pin=0"/></net>
+
+<net id="251"><net_src comp="18" pin="0"/><net_sink comp="248" pin=0"/></net>
+
+<net id="255"><net_src comp="18" pin="0"/><net_sink comp="252" pin=0"/></net>
+
+<net id="259"><net_src comp="18" pin="0"/><net_sink comp="256" pin=0"/></net>
+
+<net id="263"><net_src comp="18" pin="0"/><net_sink comp="260" pin=0"/></net>
+
+<net id="267"><net_src comp="18" pin="0"/><net_sink comp="264" pin=0"/></net>
+
+<net id="271"><net_src comp="18" pin="0"/><net_sink comp="268" pin=0"/></net>
+
+<net id="275"><net_src comp="18" pin="0"/><net_sink comp="272" pin=0"/></net>
+
+<net id="279"><net_src comp="18" pin="0"/><net_sink comp="276" pin=0"/></net>
+
+<net id="283"><net_src comp="18" pin="0"/><net_sink comp="280" pin=0"/></net>
+
+<net id="287"><net_src comp="18" pin="0"/><net_sink comp="284" pin=0"/></net>
+
+<net id="291"><net_src comp="18" pin="0"/><net_sink comp="288" pin=0"/></net>
+
+<net id="295"><net_src comp="18" pin="0"/><net_sink comp="292" pin=0"/></net>
+
+<net id="299"><net_src comp="18" pin="0"/><net_sink comp="296" pin=0"/></net>
+
+<net id="303"><net_src comp="18" pin="0"/><net_sink comp="300" pin=0"/></net>
+
+<net id="307"><net_src comp="18" pin="0"/><net_sink comp="304" pin=0"/></net>
+
+<net id="311"><net_src comp="18" pin="0"/><net_sink comp="308" pin=0"/></net>
+
+<net id="315"><net_src comp="18" pin="0"/><net_sink comp="312" pin=0"/></net>
+
+<net id="319"><net_src comp="18" pin="0"/><net_sink comp="316" pin=0"/></net>
+
+<net id="323"><net_src comp="18" pin="0"/><net_sink comp="320" pin=0"/></net>
+
+<net id="328"><net_src comp="14" pin="0"/><net_sink comp="324" pin=0"/></net>
+
+<net id="329"><net_src comp="12" pin="0"/><net_sink comp="324" pin=1"/></net>
+
+<net id="334"><net_src comp="16" pin="0"/><net_sink comp="330" pin=0"/></net>
+
+<net id="335"><net_src comp="10" pin="0"/><net_sink comp="330" pin=1"/></net>
+
+<net id="340"><net_src comp="16" pin="0"/><net_sink comp="336" pin=0"/></net>
+
+<net id="341"><net_src comp="8" pin="0"/><net_sink comp="336" pin=1"/></net>
+
+<net id="346"><net_src comp="16" pin="0"/><net_sink comp="342" pin=0"/></net>
+
+<net id="347"><net_src comp="6" pin="0"/><net_sink comp="342" pin=1"/></net>
+
+<net id="352"><net_src comp="16" pin="0"/><net_sink comp="348" pin=0"/></net>
+
+<net id="353"><net_src comp="4" pin="0"/><net_sink comp="348" pin=1"/></net>
+
+<net id="361"><net_src comp="46" pin="0"/><net_sink comp="354" pin=0"/></net>
+
+<net id="362"><net_src comp="2" pin="0"/><net_sink comp="354" pin=2"/></net>
+
+<net id="371"><net_src comp="22" pin="0"/><net_sink comp="363" pin=0"/></net>
+
+<net id="372"><net_src comp="0" pin="0"/><net_sink comp="363" pin=1"/></net>
+
+<net id="380"><net_src comp="36" pin="0"/><net_sink comp="373" pin=0"/></net>
+
+<net id="388"><net_src comp="38" pin="0"/><net_sink comp="381" pin=0"/></net>
+
+<net id="396"><net_src comp="40" pin="0"/><net_sink comp="389" pin=0"/></net>
+
+<net id="408"><net_src comp="42" pin="0"/><net_sink comp="397" pin=0"/></net>
+
+<net id="419"><net_src comp="44" pin="0"/><net_sink comp="409" pin=0"/></net>
+
+<net id="429"><net_src comp="28" pin="0"/><net_sink comp="420" pin=0"/></net>
+
+<net id="437"><net_src comp="30" pin="0"/><net_sink comp="430" pin=0"/></net>
+
+<net id="446"><net_src comp="32" pin="0"/><net_sink comp="438" pin=0"/></net>
+
+<net id="459"><net_src comp="24" pin="0"/><net_sink comp="447" pin=0"/></net>
+
+<net id="470"><net_src comp="26" pin="0"/><net_sink comp="460" pin=0"/></net>
+
+<net id="488"><net_src comp="20" pin="0"/><net_sink comp="471" pin=0"/></net>
+
+<net id="489"><net_src comp="348" pin="2"/><net_sink comp="471" pin=1"/></net>
+
+<net id="490"><net_src comp="342" pin="2"/><net_sink comp="471" pin=2"/></net>
+
+<net id="491"><net_src comp="336" pin="2"/><net_sink comp="471" pin=3"/></net>
+
+<net id="492"><net_src comp="330" pin="2"/><net_sink comp="471" pin=4"/></net>
+
+<net id="493"><net_src comp="324" pin="2"/><net_sink comp="471" pin=5"/></net>
+
+<net id="505"><net_src comp="34" pin="0"/><net_sink comp="494" pin=0"/></net>
+
+<net id="509"><net_src comp="160" pin="1"/><net_sink comp="506" pin=0"/></net>
+
+<net id="510"><net_src comp="506" pin="1"/><net_sink comp="409" pin=7"/></net>
+
+<net id="511"><net_src comp="506" pin="1"/><net_sink comp="354" pin=4"/></net>
+
+<net id="515"><net_src comp="164" pin="1"/><net_sink comp="512" pin=0"/></net>
+
+<net id="516"><net_src comp="512" pin="1"/><net_sink comp="409" pin=6"/></net>
+
+<net id="517"><net_src comp="512" pin="1"/><net_sink comp="354" pin=3"/></net>
+
+<net id="521"><net_src comp="168" pin="1"/><net_sink comp="518" pin=0"/></net>
+
+<net id="522"><net_src comp="518" pin="1"/><net_sink comp="397" pin=8"/></net>
+
+<net id="523"><net_src comp="518" pin="1"/><net_sink comp="409" pin=5"/></net>
+
+<net id="527"><net_src comp="172" pin="1"/><net_sink comp="524" pin=0"/></net>
+
+<net id="528"><net_src comp="524" pin="1"/><net_sink comp="397" pin=7"/></net>
+
+<net id="529"><net_src comp="524" pin="1"/><net_sink comp="409" pin=4"/></net>
+
+<net id="533"><net_src comp="176" pin="1"/><net_sink comp="530" pin=0"/></net>
+
+<net id="534"><net_src comp="530" pin="1"/><net_sink comp="420" pin=6"/></net>
+
+<net id="535"><net_src comp="530" pin="1"/><net_sink comp="397" pin=6"/></net>
+
+<net id="539"><net_src comp="180" pin="1"/><net_sink comp="536" pin=0"/></net>
+
+<net id="540"><net_src comp="536" pin="1"/><net_sink comp="420" pin=5"/></net>
+
+<net id="541"><net_src comp="536" pin="1"/><net_sink comp="397" pin=5"/></net>
+
+<net id="545"><net_src comp="184" pin="1"/><net_sink comp="542" pin=0"/></net>
+
+<net id="546"><net_src comp="542" pin="1"/><net_sink comp="460" pin=7"/></net>
+
+<net id="547"><net_src comp="542" pin="1"/><net_sink comp="430" pin=4"/></net>
+
+<net id="551"><net_src comp="188" pin="1"/><net_sink comp="548" pin=0"/></net>
+
+<net id="552"><net_src comp="548" pin="1"/><net_sink comp="460" pin=6"/></net>
+
+<net id="553"><net_src comp="548" pin="1"/><net_sink comp="430" pin=3"/></net>
+
+<net id="557"><net_src comp="192" pin="1"/><net_sink comp="554" pin=0"/></net>
+
+<net id="558"><net_src comp="554" pin="1"/><net_sink comp="447" pin=9"/></net>
+
+<net id="559"><net_src comp="554" pin="1"/><net_sink comp="438" pin=5"/></net>
+
+<net id="563"><net_src comp="196" pin="1"/><net_sink comp="560" pin=0"/></net>
+
+<net id="564"><net_src comp="560" pin="1"/><net_sink comp="447" pin=8"/></net>
+
+<net id="565"><net_src comp="560" pin="1"/><net_sink comp="420" pin=4"/></net>
+
+<net id="569"><net_src comp="200" pin="1"/><net_sink comp="566" pin=0"/></net>
+
+<net id="570"><net_src comp="566" pin="1"/><net_sink comp="447" pin=7"/></net>
+
+<net id="571"><net_src comp="566" pin="1"/><net_sink comp="438" pin=4"/></net>
+
+<net id="575"><net_src comp="204" pin="1"/><net_sink comp="572" pin=0"/></net>
+
+<net id="576"><net_src comp="572" pin="1"/><net_sink comp="447" pin=6"/></net>
+
+<net id="577"><net_src comp="572" pin="1"/><net_sink comp="420" pin=3"/></net>
+
+<net id="581"><net_src comp="208" pin="1"/><net_sink comp="578" pin=0"/></net>
+
+<net id="582"><net_src comp="578" pin="1"/><net_sink comp="494" pin=8"/></net>
+
+<net id="583"><net_src comp="578" pin="1"/><net_sink comp="389" pin=4"/></net>
+
+<net id="587"><net_src comp="212" pin="1"/><net_sink comp="584" pin=0"/></net>
+
+<net id="588"><net_src comp="584" pin="1"/><net_sink comp="494" pin=7"/></net>
+
+<net id="589"><net_src comp="584" pin="1"/><net_sink comp="389" pin=3"/></net>
+
+<net id="593"><net_src comp="216" pin="1"/><net_sink comp="590" pin=0"/></net>
+
+<net id="594"><net_src comp="590" pin="1"/><net_sink comp="494" pin=6"/></net>
+
+<net id="595"><net_src comp="590" pin="1"/><net_sink comp="381" pin=4"/></net>
+
+<net id="599"><net_src comp="220" pin="1"/><net_sink comp="596" pin=0"/></net>
+
+<net id="600"><net_src comp="596" pin="1"/><net_sink comp="494" pin=5"/></net>
+
+<net id="601"><net_src comp="596" pin="1"/><net_sink comp="381" pin=3"/></net>
+
+<net id="605"><net_src comp="224" pin="1"/><net_sink comp="602" pin=0"/></net>
+
+<net id="606"><net_src comp="602" pin="1"/><net_sink comp="494" pin=4"/></net>
+
+<net id="607"><net_src comp="602" pin="1"/><net_sink comp="373" pin=4"/></net>
+
+<net id="611"><net_src comp="228" pin="1"/><net_sink comp="608" pin=0"/></net>
+
+<net id="612"><net_src comp="608" pin="1"/><net_sink comp="494" pin=3"/></net>
+
+<net id="613"><net_src comp="608" pin="1"/><net_sink comp="373" pin=3"/></net>
+
+<net id="617"><net_src comp="232" pin="1"/><net_sink comp="614" pin=0"/></net>
+
+<net id="618"><net_src comp="614" pin="1"/><net_sink comp="471" pin=14"/></net>
+
+<net id="619"><net_src comp="614" pin="1"/><net_sink comp="409" pin=3"/></net>
+
+<net id="623"><net_src comp="236" pin="1"/><net_sink comp="620" pin=0"/></net>
+
+<net id="624"><net_src comp="620" pin="1"/><net_sink comp="471" pin=13"/></net>
+
+<net id="625"><net_src comp="620" pin="1"/><net_sink comp="460" pin=5"/></net>
+
+<net id="629"><net_src comp="240" pin="1"/><net_sink comp="626" pin=0"/></net>
+
+<net id="630"><net_src comp="626" pin="1"/><net_sink comp="471" pin=12"/></net>
+
+<net id="631"><net_src comp="626" pin="1"/><net_sink comp="447" pin=5"/></net>
+
+<net id="635"><net_src comp="244" pin="1"/><net_sink comp="632" pin=0"/></net>
+
+<net id="636"><net_src comp="632" pin="1"/><net_sink comp="471" pin=11"/></net>
+
+<net id="637"><net_src comp="632" pin="1"/><net_sink comp="494" pin=2"/></net>
+
+<net id="641"><net_src comp="248" pin="1"/><net_sink comp="638" pin=0"/></net>
+
+<net id="642"><net_src comp="638" pin="1"/><net_sink comp="471" pin=10"/></net>
+
+<net id="643"><net_src comp="638" pin="1"/><net_sink comp="460" pin=4"/></net>
+
+<net id="647"><net_src comp="252" pin="1"/><net_sink comp="644" pin=0"/></net>
+
+<net id="648"><net_src comp="644" pin="1"/><net_sink comp="471" pin=9"/></net>
+
+<net id="649"><net_src comp="644" pin="1"/><net_sink comp="447" pin=4"/></net>
+
+<net id="653"><net_src comp="256" pin="1"/><net_sink comp="650" pin=0"/></net>
+
+<net id="654"><net_src comp="650" pin="1"/><net_sink comp="471" pin=8"/></net>
+
+<net id="655"><net_src comp="650" pin="1"/><net_sink comp="494" pin=1"/></net>
+
+<net id="659"><net_src comp="260" pin="1"/><net_sink comp="656" pin=0"/></net>
+
+<net id="660"><net_src comp="656" pin="1"/><net_sink comp="471" pin=7"/></net>
+
+<net id="661"><net_src comp="656" pin="1"/><net_sink comp="363" pin=5"/></net>
+
+<net id="665"><net_src comp="264" pin="1"/><net_sink comp="662" pin=0"/></net>
+
+<net id="666"><net_src comp="662" pin="1"/><net_sink comp="471" pin=6"/></net>
+
+<net id="667"><net_src comp="662" pin="1"/><net_sink comp="363" pin=4"/></net>
+
+<net id="671"><net_src comp="268" pin="1"/><net_sink comp="668" pin=0"/></net>
+
+<net id="672"><net_src comp="668" pin="1"/><net_sink comp="420" pin=2"/></net>
+
+<net id="673"><net_src comp="668" pin="1"/><net_sink comp="373" pin=1"/></net>
+
+<net id="677"><net_src comp="272" pin="1"/><net_sink comp="674" pin=0"/></net>
+
+<net id="678"><net_src comp="674" pin="1"/><net_sink comp="430" pin=2"/></net>
+
+<net id="679"><net_src comp="674" pin="1"/><net_sink comp="381" pin=1"/></net>
+
+<net id="683"><net_src comp="276" pin="1"/><net_sink comp="680" pin=0"/></net>
+
+<net id="684"><net_src comp="680" pin="1"/><net_sink comp="438" pin=3"/></net>
+
+<net id="685"><net_src comp="680" pin="1"/><net_sink comp="389" pin=1"/></net>
+
+<net id="689"><net_src comp="280" pin="1"/><net_sink comp="686" pin=0"/></net>
+
+<net id="690"><net_src comp="686" pin="1"/><net_sink comp="373" pin=2"/></net>
+
+<net id="691"><net_src comp="686" pin="1"/><net_sink comp="397" pin=1"/></net>
+
+<net id="695"><net_src comp="284" pin="1"/><net_sink comp="692" pin=0"/></net>
+
+<net id="696"><net_src comp="692" pin="1"/><net_sink comp="381" pin=2"/></net>
+
+<net id="697"><net_src comp="692" pin="1"/><net_sink comp="397" pin=2"/></net>
+
+<net id="701"><net_src comp="288" pin="1"/><net_sink comp="698" pin=0"/></net>
+
+<net id="702"><net_src comp="698" pin="1"/><net_sink comp="389" pin=2"/></net>
+
+<net id="703"><net_src comp="698" pin="1"/><net_sink comp="397" pin=3"/></net>
+
+<net id="707"><net_src comp="292" pin="1"/><net_sink comp="704" pin=0"/></net>
+
+<net id="708"><net_src comp="704" pin="1"/><net_sink comp="397" pin=4"/></net>
+
+<net id="709"><net_src comp="704" pin="1"/><net_sink comp="409" pin=1"/></net>
+
+<net id="713"><net_src comp="296" pin="1"/><net_sink comp="710" pin=0"/></net>
+
+<net id="714"><net_src comp="710" pin="1"/><net_sink comp="409" pin=2"/></net>
+
+<net id="715"><net_src comp="710" pin="1"/><net_sink comp="354" pin=1"/></net>
+
+<net id="719"><net_src comp="300" pin="1"/><net_sink comp="716" pin=0"/></net>
+
+<net id="720"><net_src comp="716" pin="1"/><net_sink comp="363" pin=2"/></net>
+
+<net id="721"><net_src comp="716" pin="1"/><net_sink comp="447" pin=1"/></net>
+
+<net id="725"><net_src comp="304" pin="1"/><net_sink comp="722" pin=0"/></net>
+
+<net id="726"><net_src comp="722" pin="1"/><net_sink comp="363" pin=3"/></net>
+
+<net id="727"><net_src comp="722" pin="1"/><net_sink comp="460" pin=1"/></net>
+
+<net id="731"><net_src comp="308" pin="1"/><net_sink comp="728" pin=0"/></net>
+
+<net id="732"><net_src comp="728" pin="1"/><net_sink comp="447" pin=2"/></net>
+
+<net id="733"><net_src comp="728" pin="1"/><net_sink comp="420" pin=1"/></net>
+
+<net id="737"><net_src comp="312" pin="1"/><net_sink comp="734" pin=0"/></net>
+
+<net id="738"><net_src comp="734" pin="1"/><net_sink comp="460" pin=2"/></net>
+
+<net id="739"><net_src comp="734" pin="1"/><net_sink comp="430" pin=1"/></net>
+
+<net id="743"><net_src comp="316" pin="1"/><net_sink comp="740" pin=0"/></net>
+
+<net id="744"><net_src comp="740" pin="1"/><net_sink comp="447" pin=3"/></net>
+
+<net id="745"><net_src comp="740" pin="1"/><net_sink comp="438" pin=1"/></net>
+
+<net id="749"><net_src comp="320" pin="1"/><net_sink comp="746" pin=0"/></net>
+
+<net id="750"><net_src comp="746" pin="1"/><net_sink comp="460" pin=3"/></net>
+
+<net id="751"><net_src comp="746" pin="1"/><net_sink comp="438" pin=2"/></net>
+
+</net_list>
+
+</model> 
+---------------- Datapath Model END ------------------
+
+* FSMD analyzer results:
+  - Output states:
+	Port: in_harris_mat_419 | {}
+	Port: out_harris_mat_420 | {14 15 }
+ - Input state : 
+	Port: xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> : in_harris_mat_419 | {2 3 }
+	Port: xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> : out_harris_mat_420 | {}
+	Port: xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> : p_read | {1 }
+	Port: xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> : p_read1 | {1 }
+	Port: xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> : img_height | {1 }
+	Port: xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> : img_width | {1 }
+	Port: xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false> : p_threshold | {1 }
+  - Chain level:
+	State 1
+		call_ln503 : 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+
+* Functional unit list:
+|----------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+| Operation|                                                                   Functional Unit                                                                  |   BRAM  |   DSP   |  Delay  |    FF   |   LUT   |
+|----------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+|          |                                               grp_xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s_fu_354                                               |    12   |    0    | 23.6722 |   1317  |   1234  |
+|          |                                                    grp_Sobel_0_3_0_2_1080_1920_1_false_s_fu_363                                                    |    3    |    0    |  11.808 |   378   |   756   |
+|          |                                                   grp_boxFilter_0_3_2_1080_1920_1_false_26_fu_373                                                  |    6    |    1    | 15.1255 |   451   |   626   |
+|          |                                                   grp_boxFilter_0_3_2_1080_1920_1_false_27_fu_381                                                  |    6    |    1    | 15.1255 |   451   |   626   |
+|          |                                                   grp_boxFilter_0_3_2_1080_1920_1_false_s_fu_389                                                   |    6    |    1    | 15.1255 |   451   |   626   |
+|          |                                              grp_xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s_fu_397                                             |    0    |    5    | 3.29875 |   294   |   191   |
+|   call   |                                                  grp_xFThreshold_5_1080_1920_5_1_12_1920_s_fu_409                                                  |    0    |    0    |    0    |   131   |   113   |
+|          |                                               grp_xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25_fu_420                                              |    0    |    1    |  1.312  |    91   |   132   |
+|          |                                               grp_xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s_fu_430                                               |    0    |    1    |  1.312  |    91   |   132   |
+|          |                                              grp_xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s_fu_438                                              |    0    |    1    |  1.312  |   113   |    93   |
+|          |                                                  grp_xFDuplicate_2_1080_1920_3_1_5_1920_24_fu_447                                                  |    0    |    0    |    0    |    68   |    62   |
+|          |                                                   grp_xFDuplicate_2_1080_1920_3_1_5_1920_s_fu_460                                                  |    0    |    0    |    0    |    68   |    62   |
+|          |                             call_ln503_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_fu_471                            |    0    |    0    |    0    |    0    |    0    |
+|          | call_ln502_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc_fu_494 |    0    |    0    |    0    |    0    |    0    |
+|----------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+|          |                                                            p_threshold_read_read_fu_324                                                            |    0    |    0    |    0    |    0    |    0    |
+|          |                                                             img_width_read_read_fu_330                                                             |    0    |    0    |    0    |    0    |    0    |
+|   read   |                                                             img_height_read_read_fu_336                                                            |    0    |    0    |    0    |    0    |    0    |
+|          |                                                                p_read13_read_fu_342                                                                |    0    |    0    |    0    |    0    |    0    |
+|          |                                                                p_read_7_read_fu_348                                                                |    0    |    0    |    0    |    0    |    0    |
+|----------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+|   Total  |                                                                                                                                                    |    33   |    11   | 88.0915 |   3904  |   4653  |
+|----------|----------------------------------------------------------------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+
+Memories:
+N/A
+
+* Register list:
++-----------------------+--------+
+|                       |   FF   |
++-----------------------+--------+
+|gradx1_mat_data_reg_728|   16   |
+|gradx2_mat_data_reg_740|   16   |
+|  gradx2g_data_reg_686 |   16   |
+| gradx_2_cols_c_reg_602|   11   |
+|  gradx_2_data_reg_668 |   16   |
+| gradx_2_rows_c_reg_608|   11   |
+| gradx_mat_data_reg_716|   16   |
+| gradxy_cols_c_reg_578 |   11   |
+|  gradxy_data_reg_680  |   16   |
+| gradxy_rows_c_reg_584 |   11   |
+|  gradxyg_data_reg_698 |   16   |
+|grady1_mat_data_reg_734|   16   |
+|grady2_mat_data_reg_746|   16   |
+|  grady2g_data_reg_692 |   16   |
+| grady_2_cols_c_reg_590|   11   |
+|  grady_2_data_reg_674 |   16   |
+| grady_2_rows_c_reg_596|   11   |
+| grady_mat_data_reg_722|   16   |
+| img_height_c27_reg_644|   11   |
+| img_height_c28_reg_638|   11   |
+| img_height_c31_reg_572|   11   |
+| img_height_c32_reg_566|   11   |
+| img_height_c35_reg_548|   11   |
+| img_height_c37_reg_536|   11   |
+| img_height_c39_reg_524|   11   |
+| img_height_c41_reg_512|   11   |
+|  img_height_c_reg_650 |   11   |
+| img_width_c29_reg_626 |   11   |
+| img_width_c30_reg_620 |   11   |
+| img_width_c33_reg_560 |   11   |
+| img_width_c34_reg_554 |   11   |
+| img_width_c36_reg_542 |   11   |
+| img_width_c38_reg_530 |   11   |
+| img_width_c40_reg_518 |   11   |
+| img_width_c42_reg_506 |   11   |
+|  img_width_c_reg_632  |   11   |
+| p_src_mat_1_c_reg_662 |   11   |
+| p_src_mat_2_c_reg_656 |   11   |
+| p_threshold_c_reg_614 |   16   |
+|   score_data_reg_704  |   32   |
+|  thresh_data_reg_710  |   32   |
++-----------------------+--------+
+|         Total         |   558  |
++-----------------------+--------+
+
+* Multiplexer (MUX) list: 
+|--------|------|------|------|--------|
+|  Comp  |  Pin | Size |  BW  | S x BW |
+|--------|------|------|------|--------|
+|  Total |      |      |      |    0   |
+|--------|------|------|------|--------|
+
+
+
+* Summary:
++-----------+--------+--------+--------+--------+--------+
+|           |  BRAM  |   DSP  |  Delay |   FF   |   LUT  |
++-----------+--------+--------+--------+--------+--------+
+|  Function |   33   |   11   |   88   |  3904  |  4653  |
+|   Memory  |    -   |    -   |    -   |    -   |    -   |
+|Multiplexer|    -   |    -   |    -   |    -   |    -   |
+|  Register |    -   |    -   |    -   |   558  |    -   |
++-----------+--------+--------+--------+--------+--------+
+|   Total   |   33   |   11   |   88   |  4462  |  4653  |
++-----------+--------+--------+--------+--------+--------+

@@ -1,0 +1,42 @@
+===============================================================================
+Version:    v++ v2020.1.1 (64-bit)
+Build:      SW Build 2960000 on Wed Aug  5 22:57:21 MDT 2020
+Copyright:  Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+Created:    Thu Mar 25 15:02:57 2021
+===============================================================================
+
+-------------------------------------------------------------------------------
+Design Name:             cornerupdate_accel
+Target Device:           xilinx:zcu104:zcu104_base:1.0
+Target Clock:            150.000000MHz
+Total number of kernels: 1
+-------------------------------------------------------------------------------
+
+Kernel Summary
+Kernel Name         Type  Target              OpenCL Library      Compute Units
+------------------  ----  ------------------  ------------------  -------------
+cornerupdate_accel  c     fpga0:OCL_REGION_0  cornerupdate_accel  1
+
+
+-------------------------------------------------------------------------------
+OpenCL Binary:     cornerupdate_accel
+Kernels mapped to: clc_region
+
+Timing Information (MHz)
+Compute Unit          Kernel Name         Module Name                              Target Frequency  Estimated Frequency
+--------------------  ------------------  ---------------------------------------  ----------------  -------------------
+cornerupdate_accel_1  cornerupdate_accel  cornerUpdate_10000u_3u_1080u_1920u_1u_s  149.925034        205.465378
+cornerupdate_accel_1  cornerupdate_accel  cornerupdate_accel                       149.925034        205.465378
+
+Latency Information
+Compute Unit          Kernel Name         Module Name                              Start Interval  Best (cycles)  Avg (cycles)  Worst (cycles)  Best (absolute)  Avg (absolute)  Worst (absolute)
+--------------------  ------------------  ---------------------------------------  --------------  -------------  ------------  --------------  ---------------  --------------  ----------------
+cornerupdate_accel_1  cornerupdate_accel  cornerUpdate_10000u_3u_1080u_1920u_1u_s  226 ~ 60220     226            30220         60220           1.507 us         0.201 ms        0.401 ms
+cornerupdate_accel_1  cornerupdate_accel  cornerupdate_accel                       228 ~ 60222     227            30221         60221           1.513 us         0.201 ms        0.401 ms
+
+Area Information
+Compute Unit          Kernel Name         Module Name                              FF    LUT   DSP  BRAM  URAM
+--------------------  ------------------  ---------------------------------------  ----  ----  ---  ----  ----
+cornerupdate_accel_1  cornerupdate_accel  cornerUpdate_10000u_3u_1080u_1920u_1u_s  2202  2075  0    0     0
+cornerupdate_accel_1  cornerupdate_accel  cornerupdate_accel                       4412  4815  0    8     0
+-------------------------------------------------------------------------------

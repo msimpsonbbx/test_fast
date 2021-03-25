@@ -1,0 +1,152 @@
+
+
+================================================================
+== Vitis HLS Report for 'cornerupdate_accel'
+================================================================
+* Date:           Thu Mar 25 15:02:41 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        cornerupdate_accel
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 4.867 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-------+---------+
+    |  Latency (cycles) |  Latency (absolute) |   Interval  | Pipeline|
+    |   min   |   max   |    min   |    max   | min |  max  |   Type  |
+    +---------+---------+----------+----------+-----+-------+---------+
+    |      227|    60221| 1.513 us | 0.401 ms |  228|  60222|   none  |
+    +---------+---------+----------+----------+-----+-------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 2
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 2.02>
+ST_1 : Operation 3 [1/1] (1.00ns)   --->   "%flow_cols_read = read i32 @_ssdm_op_Read.ap_none.i32, i32 %flow_cols"   --->   Operation 3 'read' 'flow_cols_read' <Predicate = true> <Delay = 1.00> <CoreInst = "s_axilite">   --->   Core 56 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 4 [1/1] (1.00ns)   --->   "%flow_rows_read = read i32 @_ssdm_op_Read.ap_none.i32, i32 %flow_rows"   --->   Operation 4 'read' 'flow_rows_read' <Predicate = true> <Delay = 1.00> <CoreInst = "s_axilite">   --->   Core 56 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 5 [1/1] (1.00ns)   --->   "%harris_flag_read = read i32 @_ssdm_op_Read.ap_none.i32, i32 %harris_flag"   --->   Operation 5 'read' 'harris_flag_read' <Predicate = true> <Delay = 1.00> <CoreInst = "s_axilite">   --->   Core 56 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 6 [1/1] (1.00ns)   --->   "%flow_vectors_read = read i64 @_ssdm_op_Read.s_axilite.i64, i64 %flow_vectors"   --->   Operation 6 'read' 'flow_vectors_read' <Predicate = true> <Delay = 1.00> <CoreInst = "s_axilite">   --->   Core 56 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 7 [1/1] (1.00ns)   --->   "%nCorners_read = read i32 @_ssdm_op_Read.ap_none.i32, i32 %nCorners"   --->   Operation 7 'read' 'nCorners_read' <Predicate = true> <Delay = 1.00> <CoreInst = "s_axilite">   --->   Core 56 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 8 [1/1] (1.00ns)   --->   "%list_read = read i64 @_ssdm_op_Read.s_axilite.i64, i64 %list"   --->   Operation 8 'read' 'list_read' <Predicate = true> <Delay = 1.00> <CoreInst = "s_axilite">   --->   Core 56 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 9 [1/1] (1.00ns)   --->   "%list_fix_read = read i64 @_ssdm_op_Read.s_axilite.i64, i64 %list_fix"   --->   Operation 9 'read' 'list_fix_read' <Predicate = true> <Delay = 1.00> <CoreInst = "s_axilite">   --->   Core 56 's_axilite' <Latency = 0> <II = 1> <Delay = 1.00> <Adapter> <Opcode : 'read' 'write'>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%empty = trunc i32 %flow_cols_read"   --->   Operation 10 'trunc' 'empty' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%empty_30 = trunc i32 %flow_rows_read"   --->   Operation 11 'trunc' 'empty_30' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%empty_31 = trunc i32 %harris_flag_read"   --->   Operation 12 'trunc' 'empty_31' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [2/2] (1.02ns)   --->   "%call_ln43 = call void @cornerUpdate<10000u, 3u, 1080u, 1920u, 1u>, i64 %gmem7, i32 %gmem8, i32 %gmem9, i64 %list_fix_read, i64 %list_read, i32 %nCorners_read, i11 %empty_30, i11 %empty, i64 %flow_vectors_read, i1 %empty_31" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/xf_cornerupdate_accel.cpp:43]   --->   Operation 13 'call' 'call_ln43' <Predicate = true> <Delay = 1.02> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 14 [1/1] (0.00ns)   --->   "%spectopmodule_ln0 = spectopmodule void @_ssdm_op_SpecTopModule, void @empty_8"   --->   Operation 14 'spectopmodule' 'spectopmodule_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 15 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32, void @empty_10, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 15 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 16 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i64 %gmem7, void @empty_12, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 16 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i64 %gmem7"   --->   Operation 17 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 18 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem8, void @empty_12, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 18 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i32 %gmem8"   --->   Operation 19 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem9, void @empty_12, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 20 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i32 %gmem9"   --->   Operation 21 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i64 %list_fix, void @empty_2, i32, i32, void @empty_15, i32, i32, void @empty_14, void @empty_3, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_13"   --->   Operation 22 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 23 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i64 %list_fix, void @empty_9, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_13"   --->   Operation 23 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 24 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i64 %list, void @empty_2, i32, i32, void @empty_15, i32, i32, void @empty_14, void @empty_5, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_13"   --->   Operation 24 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 25 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i64 %list, void @empty_9, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_13"   --->   Operation 25 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 26 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i32 %nCorners"   --->   Operation 26 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 27 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %nCorners, void @empty_2, i32, i32, void @empty_15, i32, i32, void @empty_14, void @empty, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 27 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 28 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %nCorners, void @empty_11, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 28 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 29 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i64 %flow_vectors, void @empty_2, i32, i32, void @empty_15, i32, i32, void @empty_14, void @empty_6, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_13"   --->   Operation 29 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 30 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i64 %flow_vectors, void @empty_9, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_13"   --->   Operation 30 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 31 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i32 %harris_flag"   --->   Operation 31 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 32 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %harris_flag, void @empty_2, i32, i32, void @empty_15, i32, i32, void @empty_14, void @empty_0, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 32 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 33 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %harris_flag, void @empty_11, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 33 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 34 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i32 %flow_rows"   --->   Operation 34 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 35 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %flow_rows, void @empty_2, i32, i32, void @empty_15, i32, i32, void @empty_14, void @empty_1, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 35 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 36 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %flow_rows, void @empty_11, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 36 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 37 [1/1] (0.00ns)   --->   "%specbitsmap_ln0 = specbitsmap void @_ssdm_op_SpecBitsMap, i32 %flow_cols"   --->   Operation 37 'specbitsmap' 'specbitsmap_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 38 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %flow_cols, void @empty_2, i32, i32, void @empty_15, i32, i32, void @empty_14, void @empty_7, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 38 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 39 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %flow_cols, void @empty_11, i32, i32, void @empty_15, i32, i32, void @empty_15, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 39 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 40 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32, void @empty_2, i32, i32, void @empty_15, i32, i32, void @empty_14, void @empty_15, void @empty_15, i32, i32, i32, i32, void @empty_15, void @empty_15"   --->   Operation 40 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 41 [1/2] (0.00ns)   --->   "%call_ln43 = call void @cornerUpdate<10000u, 3u, 1080u, 1920u, 1u>, i64 %gmem7, i32 %gmem8, i32 %gmem9, i64 %list_fix_read, i64 %list_read, i32 %nCorners_read, i11 %empty_30, i11 %empty, i64 %flow_vectors_read, i1 %empty_31" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/xf_cornerupdate_accel.cpp:43]   --->   Operation 41 'call' 'call_ln43' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_2 : Operation 42 [1/1] (0.00ns)   --->   "%ret_ln45 = ret" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/xf_cornerupdate_accel.cpp:45]   --->   Operation 42 'ret' 'ret_ln45' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 6.67ns, clock uncertainty: 1.8ns.
+
+ <State 1>: 2.02ns
+The critical path consists of the following:
+	wire read on port 'flow_cols' [11]  (1 ns)
+	'call' operation ('call_ln43', /tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/xf_cornerupdate_accel.cpp:43) to 'cornerUpdate<10000u, 3u, 1080u, 1920u, 1u>' [48]  (1.02 ns)
+
+ <State 2>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

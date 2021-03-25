@@ -1,0 +1,159 @@
+===============================================================================
+Version:    v++ v2020.1.1 (64-bit)
+Build:      SW Build 2960000 on Wed Aug  5 22:57:21 MDT 2020
+Copyright:  Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+Created:    Thu Mar 25 14:57:48 2021
+===============================================================================
+
+-------------------------------------------------------------------------------
+Design Name:             cornerTracker
+Target Device:           xilinx:zcu104:zcu104_base:1.0
+Target Clock:            150.000000MHz
+Total number of kernels: 1
+-------------------------------------------------------------------------------
+
+Kernel Summary
+Kernel Name    Type  Target              OpenCL Library  Compute Units
+-------------  ----  ------------------  --------------  -------------
+cornerTracker  c     fpga0:OCL_REGION_0  cornerTracker   1
+
+
+-------------------------------------------------------------------------------
+OpenCL Binary:     cornerTracker
+Kernels mapped to: clc_region
+
+Timing Information (MHz)
+Compute Unit     Kernel Name    Module Name                                                                                                                       Target Frequency  Estimated Frequency
+---------------  -------------  --------------------------------------------------------------------------------------------------------------------------------  ----------------  -------------------
+cornerTracker_1  cornerTracker  HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65                                                        149.925034        544.069641
+cornerTracker_1  cornerTracker  Axi2Mat_entry3                                                                                                                    149.925034        544.069641
+cornerTracker_1  cornerTracker  Axi2Mat_entry44                                                                                                                   149.925034        272.034821
+cornerTracker_1  cornerTracker  last_blk_pxl_width                                                                                                                149.925034        544.069641
+cornerTracker_1  cornerTracker  addrbound                                                                                                                         149.925034        272.034821
+cornerTracker_1  cornerTracker  Axi2Mat_Block_split15_proc                                                                                                        149.925034        inf
+cornerTracker_1  cornerTracker  Axi2AxiStream                                                                                                                     149.925034        205.465378
+cornerTracker_1  cornerTracker  AxiStream2MatStream                                                                                                               149.925034        195.579895
+cornerTracker_1  cornerTracker  Axi2Mat                                                                                                                           149.925034        195.579895
+cornerTracker_1  cornerTracker  Array2xfMat_32_0_1080_1920_1_s                                                                                                    149.925034        195.579895
+cornerTracker_1  cornerTracker  xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50                                                         149.925034        524.109009
+cornerTracker_1  cornerTracker  xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc  149.925034        272.034821
+cornerTracker_1  cornerTracker  xFGradientX3x3_0_3_s                                                                                                              149.925034        591.366089
+cornerTracker_1  cornerTracker  xFGradientY3x3_0_3_s                                                                                                              149.925034        591.366089
+cornerTracker_1  cornerTracker  xFSobel3x3_1_1_0_3_s                                                                                                              149.925034        591.366089
+cornerTracker_1  cornerTracker  xFSobelFilter3x3_0_2_1080_1920_1_0_3_1_1_5_1920_false_s                                                                           149.925034        283.366394
+cornerTracker_1  cornerTracker  Sobel_0_3_0_2_1080_1920_1_false_s                                                                                                 149.925034        283.366394
+cornerTracker_1  cornerTracker  xFDuplicate_2_1080_1920_3_1_5_1920_24                                                                                             149.925034        272.034821
+cornerTracker_1  cornerTracker  xFDuplicate_2_1080_1920_3_1_5_1920_s                                                                                              149.925034        272.034821
+cornerTracker_1  cornerTracker  xfExtractPixels_1_5_3_s                                                                                                           149.925034        inf
+cornerTracker_1  cornerTracker  xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25                                                                                      149.925034        272.034821
+cornerTracker_1  cornerTracker  xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                       149.925034        279.095734
+cornerTracker_1  cornerTracker  xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                     149.925034        359.453613
+cornerTracker_1  cornerTracker  xFApplyMask3x3_3_s                                                                                                                149.925034        294.81131
+cornerTracker_1  cornerTracker  xFBoxFilter3x3_2_1080_1920_3_1_5_5_1920_false_s                                                                                   149.925034        247.035583
+cornerTracker_1  cornerTracker  boxFilter_0_3_2_1080_1920_1_false_26                                                                                              149.925034        247.035583
+cornerTracker_1  cornerTracker  boxFilter_0_3_2_1080_1920_1_false_27                                                                                              149.925034        247.035583
+cornerTracker_1  cornerTracker  boxFilter_0_3_2_1080_1920_1_false_s                                                                                               149.925034        247.035583
+cornerTracker_1  cornerTracker  xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s                                                                                    149.925034        272.034821
+cornerTracker_1  cornerTracker  xFThreshold_5_1080_1920_5_1_12_1920_s                                                                                             149.925034        272.034821
+cornerTracker_1  cornerTracker  xfExtractPixels_1_12_5_s                                                                                                          149.925034        inf
+cornerTracker_1  cornerTracker  xFFindMaxRad1_ap_int_32_s                                                                                                         149.925034        782.472595
+cornerTracker_1  cornerTracker  xFSuppressionRad1_1_5_ap_uint_8_s                                                                                                 149.925034        782.472595
+cornerTracker_1  cornerTracker  ProcessMax1_5_0_1080_1920_5_0_1_12_1_1920_s                                                                                       149.925034        241.955002
+cornerTracker_1  cornerTracker  xFMaxSuppressionRad1_5_0_1080_1920_5_0_1_12_1_1920_s                                                                              149.925034        241.955002
+cornerTracker_1  cornerTracker  xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s                                                                                       149.925034        241.955002
+cornerTracker_1  cornerTracker  xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_s                                                               149.925034        241.955002
+cornerTracker_1  cornerTracker  cornerHarris_3_3_1_0_1080_1920_1_false_s                                                                                          149.925034        241.955002
+cornerTracker_1  cornerTracker  cornersImgToList_10000u_0u_1080u_1920u_1u_s                                                                                       149.925034        205.465378
+cornerTracker_1  cornerTracker  HarrisImg                                                                                                                         149.925034        195.579895
+cornerTracker_1  cornerTracker  cornerTracker                                                                                                                     149.925034        195.579895
+
+Latency Information
+Compute Unit     Kernel Name    Module Name                                                                                                                       Start Interval  Best (cycles)  Avg (cycles)  Worst (cycles)  Best (absolute)  Avg (absolute)  Worst (absolute)
+---------------  -------------  --------------------------------------------------------------------------------------------------------------------------------  --------------  -------------  ------------  --------------  ---------------  --------------  ----------------
+cornerTracker_1  cornerTracker  HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65                                                        0               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  Axi2Mat_entry3                                                                                                                    0               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  Axi2Mat_entry44                                                                                                                   0               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  last_blk_pxl_width                                                                                                                0               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  addrbound                                                                                                                         3               3              3             3               20.001 ns        20.001 ns       20.001 ns
+cornerTracker_1  cornerTracker  Axi2Mat_Block_split15_proc                                                                                                        0               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  Axi2AxiStream                                                                                                                     1 ~ 518473      1              129637        518473          6.667 ns         0.864 ms        3.457 ms
+cornerTracker_1  cornerTracker  AxiStream2MatStream                                                                                                               7 ~ 2073606     7              1036806       2073606         46.669 ns        6.912 ms        13.825 ms
+cornerTracker_1  cornerTracker  Axi2Mat                                                                                                                           8 ~ 2073607     78             1036877       2073677         0.520 us         6.913 ms        13.825 ms
+cornerTracker_1  cornerTracker  Array2xfMat_32_0_1080_1920_1_s                                                                                                    79 ~ 2073678    79             1036878       2073678         0.527 us         6.913 ms        13.825 ms
+cornerTracker_1  cornerTracker  xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50                                                         0               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc  0               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  xFGradientX3x3_0_3_s                                                                                                              1               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  xFGradientY3x3_0_3_s                                                                                                              1               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  xFSobel3x3_1_1_0_3_s                                                                                                              1               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  xFSobelFilter3x3_0_2_1080_1920_1_0_3_1_1_5_1920_false_s                                                                           2082003         2082003        2082003       2082003         13.881 ms        13.881 ms       13.881 ms
+cornerTracker_1  cornerTracker  Sobel_0_3_0_2_1080_1920_1_false_s                                                                                                 2082004         2082004        2082004       2082004         13.881 ms        13.881 ms       13.881 ms
+cornerTracker_1  cornerTracker  xFDuplicate_2_1080_1920_3_1_5_1920_24                                                                                             2076841         2076841        2076841       2076841         13.846 ms        13.846 ms       13.846 ms
+cornerTracker_1  cornerTracker  xFDuplicate_2_1080_1920_3_1_5_1920_s                                                                                              2076841         2076841        2076841       2076841         13.846 ms        13.846 ms       13.846 ms
+cornerTracker_1  cornerTracker  xfExtractPixels_1_5_3_s                                                                                                           1               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25                                                                                      2161 ~ 2080081  2161           1041121       2080081         14.407 us        6.941 ms        13.868 ms
+cornerTracker_1  cornerTracker  xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                       2161 ~ 2080081  2161           1041121       2080081         14.407 us        6.941 ms        13.868 ms
+cornerTracker_1  cornerTracker  xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                     2161 ~ 2080081  2161           1041121       2080081         14.407 us        6.941 ms        13.868 ms
+cornerTracker_1  cornerTracker  xFApplyMask3x3_3_s                                                                                                                1               4              4             4               26.668 ns        26.668 ns       26.668 ns
+cornerTracker_1  cornerTracker  xFBoxFilter3x3_2_1080_1920_3_1_5_5_1920_false_s                                                                                   2092803         2092803        2092803       2092803         13.953 ms        13.953 ms       13.953 ms
+cornerTracker_1  cornerTracker  boxFilter_0_3_2_1080_1920_1_false_26                                                                                              2092804         2092804        2092804       2092804         13.953 ms        13.953 ms       13.953 ms
+cornerTracker_1  cornerTracker  boxFilter_0_3_2_1080_1920_1_false_27                                                                                              2092804         2092804        2092804       2092804         13.953 ms        13.953 ms       13.953 ms
+cornerTracker_1  cornerTracker  boxFilter_0_3_2_1080_1920_1_false_s                                                                                               2092804         2092804        2092804       2092804         13.953 ms        13.953 ms       13.953 ms
+cornerTracker_1  cornerTracker  xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s                                                                                    2083321         2083321        2083321       2083321         13.890 ms        13.890 ms       13.890 ms
+cornerTracker_1  cornerTracker  xFThreshold_5_1080_1920_5_1_12_1920_s                                                                                             2077921         2077921        2077921       2077921         13.853 ms        13.853 ms       13.853 ms
+cornerTracker_1  cornerTracker  xfExtractPixels_1_12_5_s                                                                                                          1               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  xFFindMaxRad1_ap_int_32_s                                                                                                         1               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  xFSuppressionRad1_1_5_ap_uint_8_s                                                                                                 1               0              0             0               0 ns             0 ns            0 ns
+cornerTracker_1  cornerTracker  ProcessMax1_5_0_1080_1920_5_0_1_12_1_1920_s                                                                                       1925            1925           1925          1925            12.834 us        12.834 us       12.834 us
+cornerTracker_1  cornerTracker  xFMaxSuppressionRad1_5_0_1080_1920_5_0_1_12_1_1920_s                                                                              2089092         2089092        2089092       2089092         13.928 ms        13.928 ms       13.928 ms
+cornerTracker_1  cornerTracker  xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s                                                                                       2089093         2089093        2089093       2089093         13.928 ms        13.928 ms       13.928 ms
+cornerTracker_1  cornerTracker  xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_s                                                               2092805         2092817        2092817       2092817         13.953 ms        13.953 ms       13.953 ms
+cornerTracker_1  cornerTracker  cornerHarris_3_3_1_0_1080_1920_1_false_s                                                                                          2092818         2092818        2092818       2092818         13.953 ms        13.953 ms       13.953 ms
+cornerTracker_1  cornerTracker  cornersImgToList_10000u_0u_1080u_1920u_1u_s                                                                                       undef           undef          undef         undef           undef            undef           undef
+cornerTracker_1  cornerTracker  HarrisImg                                                                                                                         undef           undef          undef         undef           undef            undef           undef
+cornerTracker_1  cornerTracker  cornerTracker                                                                                                                     undef           undef          undef         undef           undef            undef           undef
+
+Area Information
+Compute Unit     Kernel Name    Module Name                                                                                                                       FF     LUT    DSP  BRAM  URAM
+---------------  -------------  --------------------------------------------------------------------------------------------------------------------------------  -----  -----  ---  ----  ----
+cornerTracker_1  cornerTracker  HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65                                                        3      83     0    0     0
+cornerTracker_1  cornerTracker  Axi2Mat_entry3                                                                                                                    3      47     0    0     0
+cornerTracker_1  cornerTracker  Axi2Mat_entry44                                                                                                                   3      74     0    0     0
+cornerTracker_1  cornerTracker  last_blk_pxl_width                                                                                                                3      29     0    0     0
+cornerTracker_1  cornerTracker  addrbound                                                                                                                         25     115    0    0     0
+cornerTracker_1  cornerTracker  Axi2Mat_Block_split15_proc                                                                                                        22     20     0    0     0
+cornerTracker_1  cornerTracker  Axi2AxiStream                                                                                                                     195    480    0    0     0
+cornerTracker_1  cornerTracker  AxiStream2MatStream                                                                                                               352    1652   0    0     0
+cornerTracker_1  cornerTracker  Axi2Mat                                                                                                                           1800   3319   0    0     0
+cornerTracker_1  cornerTracker  Array2xfMat_32_0_1080_1920_1_s                                                                                                    1892   3421   0    0     0
+cornerTracker_1  cornerTracker  xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50                                                         3      101    0    0     0
+cornerTracker_1  cornerTracker  xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc  3      92     0    0     0
+cornerTracker_1  cornerTracker  xFGradientX3x3_0_3_s                                                                                                              0      91     0    0     0
+cornerTracker_1  cornerTracker  xFGradientY3x3_0_3_s                                                                                                              0      91     0    0     0
+cornerTracker_1  cornerTracker  xFSobel3x3_1_1_0_3_s                                                                                                              0      182    0    0     0
+cornerTracker_1  cornerTracker  xFSobelFilter3x3_0_2_1080_1920_1_0_3_1_1_5_1920_false_s                                                                           384    1096   0    3     0
+cornerTracker_1  cornerTracker  Sobel_0_3_0_2_1080_1920_1_false_s                                                                                                 410    1167   0    3     0
+cornerTracker_1  cornerTracker  xFDuplicate_2_1080_1920_3_1_5_1920_24                                                                                             64     231    0    0     0
+cornerTracker_1  cornerTracker  xFDuplicate_2_1080_1920_3_1_5_1920_s                                                                                              64     213    0    0     0
+cornerTracker_1  cornerTracker  xfExtractPixels_1_5_3_s                                                                                                           0      0      0    0     0
+cornerTracker_1  cornerTracker  xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25                                                                                      132    293    0    0     0
+cornerTracker_1  cornerTracker  xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                       131    266    0    0     0
+cornerTracker_1  cornerTracker  xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s                                                                                     131    236    0    0     0
+cornerTracker_1  cornerTracker  xFApplyMask3x3_3_s                                                                                                                196    181    0    0     0
+cornerTracker_1  cornerTracker  xFBoxFilter3x3_2_1080_1920_3_1_5_5_1920_false_s                                                                                   823    1076   0    6     0
+cornerTracker_1  cornerTracker  boxFilter_0_3_2_1080_1920_1_false_26                                                                                              849    1138   0    6     0
+cornerTracker_1  cornerTracker  boxFilter_0_3_2_1080_1920_1_false_27                                                                                              849    1138   0    6     0
+cornerTracker_1  cornerTracker  boxFilter_0_3_2_1080_1920_1_false_s                                                                                               849    1138   0    6     0
+cornerTracker_1  cornerTracker  xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s                                                                                    218    329    0    0     0
+cornerTracker_1  cornerTracker  xFThreshold_5_1080_1920_5_1_12_1920_s                                                                                             113    269    0    0     0
+cornerTracker_1  cornerTracker  xfExtractPixels_1_12_5_s                                                                                                          0      0      0    0     0
+cornerTracker_1  cornerTracker  xFFindMaxRad1_ap_int_32_s                                                                                                         0      86     0    0     0
+cornerTracker_1  cornerTracker  xFSuppressionRad1_1_5_ap_uint_8_s                                                                                                 0      86     0    0     0
+cornerTracker_1  cornerTracker  ProcessMax1_5_0_1080_1920_5_0_1_12_1_1920_s                                                                                       540    647    0    0     0
+cornerTracker_1  cornerTracker  xFMaxSuppressionRad1_5_0_1080_1920_5_0_1_12_1_1920_s                                                                              1083   1765   0    12    0
+cornerTracker_1  cornerTracker  xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s                                                                                       1109   1827   0    12    0
+cornerTracker_1  cornerTracker  xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_s                                                               8990   11257  0    33    0
+cornerTracker_1  cornerTracker  cornerHarris_3_3_1_0_1080_1920_1_false_s                                                                                          9034   11332  0    33    0
+cornerTracker_1  cornerTracker  cornersImgToList_10000u_0u_1080u_1920u_1u_s                                                                                       779    1191   0    0     0
+cornerTracker_1  cornerTracker  HarrisImg                                                                                                                         12803  16832  0    33    0
+cornerTracker_1  cornerTracker  cornerTracker                                                                                                                     15331  20138  0    45    0
+-------------------------------------------------------------------------------

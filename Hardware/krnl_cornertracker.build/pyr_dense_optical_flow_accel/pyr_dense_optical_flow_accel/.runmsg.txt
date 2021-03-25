@@ -1,0 +1,2 @@
+performing high-level synthesis for kernel: pyr_dense_optical_flow_accel
+Log file: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/pyr_dense_optical_flow_accel/pyr_dense_optical_flow_accel/vitis_hls.log

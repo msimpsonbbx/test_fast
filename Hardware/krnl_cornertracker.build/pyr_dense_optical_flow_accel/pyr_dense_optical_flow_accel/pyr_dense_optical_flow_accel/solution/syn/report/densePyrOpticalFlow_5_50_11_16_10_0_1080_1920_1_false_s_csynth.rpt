@@ -1,0 +1,198 @@
+
+
+================================================================
+== Vitis HLS Report for 'densePyrOpticalFlow_5_50_11_16_10_0_1080_1920_1_false_s'
+================================================================
+* Date:           Thu Mar 25 15:00:02 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        pyr_dense_optical_flow_accel
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 5.522 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+---------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |    Interval    | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |   max   |   Type  |
+    +---------+---------+-----------+-----------+------+---------+---------+
+    |     2063|  2165430| 13.754 us | 14.437 ms |  2063|  2165430|   none  |
+    +---------+---------+-----------+-----------+------+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------+---------+-----------+-----------+------+---------+----------+
+        |                                                                                                    |                                                                                          |  Latency (cycles) |   Latency (absolute)  |    Interval    | Pipeline |
+        |                                              Instance                                              |                                          Module                                          |   min   |   max   |    min    |    max    |  min |   max   |   Type   |
+        +----------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------+---------+-----------+-----------+------+---------+----------+
+        |grp_xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s_fu_98  |xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s  |     2062|  2165429| 13.747 us | 14.437 ms |  1954|  2165402| dataflow |
+        +----------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------+---------+-----------+-----------+------+---------+----------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      17|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |      213|    79|   24743|   48472|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|     132|    -|
+|Register         |        -|     -|     200|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |      213|    79|   24943|   48621|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |       34|     4|       5|      21|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------+----+-------+-------+-----+
+    |                                              Instance                                              |                                          Module                                          | BRAM_18K| DSP|   FF  |  LUT  | URAM|
+    +----------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------+----+-------+-------+-----+
+    |grp_xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s_fu_98  |xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s  |      213|  79|  24743|  48472|    0|
+    +----------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------+----+-------+-------+-----+
+    |Total                                                                                               |                                                                                          |      213|  79|  24743|  48472|    0|
+    +----------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------+----+-------+-------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |                                                    Variable Name                                                    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |icmp_ln51_fu_133_p2                                                                                                  |   icmp   |   0|  0|  11|           8|           1|
+    |ap_block_state1                                                                                                      |    or    |   0|  0|   2|           1|           1|
+    |ap_sync_grp_xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s_fu_98_ap_done   |    or    |   0|  0|   2|           1|           1|
+    |ap_sync_grp_xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s_fu_98_ap_ready  |    or    |   0|  0|   2|           1|           1|
+    +---------------------------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                                                                                                |          |   0|  0|  17|          11|           4|
+    +---------------------------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------------------------+----+-----------+-----+-----------+
+    |             Name             | LUT| Input Size| Bits| Total Bits|
+    +------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                     |  15|          3|    1|          3|
+    |ap_done                       |   9|          2|    1|          2|
+    |current_img_mat_cols_blk_n    |   9|          2|    1|          2|
+    |current_img_mat_data_read     |   9|          2|    1|          2|
+    |current_img_mat_rows_blk_n    |   9|          2|    1|          2|
+    |init_flag_blk_n               |   9|          2|    1|          2|
+    |level_blk_n                   |   9|          2|    1|          2|
+    |next_img_mat_data_read        |   9|          2|    1|          2|
+    |scale_in_blk_n                |   9|          2|    1|          2|
+    |scale_up_flag_blk_n           |   9|          2|    1|          2|
+    |streamFlowin_mat_cols_blk_n   |   9|          2|    1|          2|
+    |streamFlowin_mat_data_read    |   9|          2|    1|          2|
+    |streamFlowin_mat_rows_blk_n   |   9|          2|    1|          2|
+    |streamFlowout_mat_data_write  |   9|          2|    1|          2|
+    +------------------------------+----+-----------+-----+-----------+
+    |Total                         | 132|         29|   14|         29|
+    +------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------------------------------------------------------------------------------------------------+----+----+-----+-----------+
+    |                                                           Name                                                          | FF | LUT| Bits| Const Bits|
+    +-------------------------------------------------------------------------------------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                                                                                                |   2|   0|    2|          0|
+    |ap_done_reg                                                                                                              |   1|   0|    1|          0|
+    |ap_sync_reg_grp_xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s_fu_98_ap_done   |   1|   0|    1|          0|
+    |ap_sync_reg_grp_xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s_fu_98_ap_ready  |   1|   0|    1|          0|
+    |current_img_mat_cols_read_reg_160                                                                                        |  32|   0|   32|          0|
+    |current_img_mat_rows_read_reg_155                                                                                        |  32|   0|   32|          0|
+    |grp_xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s_fu_98_ap_start_reg          |   1|   0|    1|          0|
+    |icmp_ln51_reg_175                                                                                                        |   1|   0|    1|          0|
+    |level_read_reg_140                                                                                                       |  32|   0|   32|          0|
+    |scale_in_read_reg_145                                                                                                    |  32|   0|   32|          0|
+    |streamFlowin_mat_cols_read_reg_170                                                                                       |  32|   0|   32|          0|
+    |streamFlowin_mat_rows_read_reg_165                                                                                       |  32|   0|   32|          0|
+    |trunc_ln304_reg_150                                                                                                      |   1|   0|    1|          0|
+    +-------------------------------------------------------------------------------------------------------------------------+----+----+-----+-----------+
+    |Total                                                                                                                    | 200|   0|  200|          0|
+    +-------------------------------------------------------------------------------------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------------+-----+-----+------------+-----------------------------------------------------------------+--------------+
+|           RTL Ports           | Dir | Bits|  Protocol  |                          Source Object                          |    C Type    |
++-------------------------------+-----+-----+------------+-----------------------------------------------------------------+--------------+
+|ap_clk                         |  in |    1| ap_ctrl_hs | densePyrOpticalFlow<5, 50, 11, 16, 10, 0, 1080, 1920, 1, false> | return value |
+|ap_rst                         |  in |    1| ap_ctrl_hs | densePyrOpticalFlow<5, 50, 11, 16, 10, 0, 1080, 1920, 1, false> | return value |
+|ap_start                       |  in |    1| ap_ctrl_hs | densePyrOpticalFlow<5, 50, 11, 16, 10, 0, 1080, 1920, 1, false> | return value |
+|ap_done                        | out |    1| ap_ctrl_hs | densePyrOpticalFlow<5, 50, 11, 16, 10, 0, 1080, 1920, 1, false> | return value |
+|ap_continue                    |  in |    1| ap_ctrl_hs | densePyrOpticalFlow<5, 50, 11, 16, 10, 0, 1080, 1920, 1, false> | return value |
+|ap_idle                        | out |    1| ap_ctrl_hs | densePyrOpticalFlow<5, 50, 11, 16, 10, 0, 1080, 1920, 1, false> | return value |
+|ap_ready                       | out |    1| ap_ctrl_hs | densePyrOpticalFlow<5, 50, 11, 16, 10, 0, 1080, 1920, 1, false> | return value |
+|current_img_mat_data_dout      |  in |    8|   ap_fifo  |                       current_img_mat_data                      |    pointer   |
+|current_img_mat_data_empty_n   |  in |    1|   ap_fifo  |                       current_img_mat_data                      |    pointer   |
+|current_img_mat_data_read      | out |    1|   ap_fifo  |                       current_img_mat_data                      |    pointer   |
+|next_img_mat_data_dout         |  in |    8|   ap_fifo  |                        next_img_mat_data                        |    pointer   |
+|next_img_mat_data_empty_n      |  in |    1|   ap_fifo  |                        next_img_mat_data                        |    pointer   |
+|next_img_mat_data_read         | out |    1|   ap_fifo  |                        next_img_mat_data                        |    pointer   |
+|streamFlowin_mat_data_dout     |  in |   32|   ap_fifo  |                      streamFlowin_mat_data                      |    pointer   |
+|streamFlowin_mat_data_empty_n  |  in |    1|   ap_fifo  |                      streamFlowin_mat_data                      |    pointer   |
+|streamFlowin_mat_data_read     | out |    1|   ap_fifo  |                      streamFlowin_mat_data                      |    pointer   |
+|streamFlowout_mat_data_din     | out |   32|   ap_fifo  |                      streamFlowout_mat_data                     |    pointer   |
+|streamFlowout_mat_data_full_n  |  in |    1|   ap_fifo  |                      streamFlowout_mat_data                     |    pointer   |
+|streamFlowout_mat_data_write   | out |    1|   ap_fifo  |                      streamFlowout_mat_data                     |    pointer   |
+|current_img_mat_rows_dout      |  in |   32|   ap_fifo  |                       current_img_mat_rows                      |    pointer   |
+|current_img_mat_rows_empty_n   |  in |    1|   ap_fifo  |                       current_img_mat_rows                      |    pointer   |
+|current_img_mat_rows_read      | out |    1|   ap_fifo  |                       current_img_mat_rows                      |    pointer   |
+|current_img_mat_cols_dout      |  in |   32|   ap_fifo  |                       current_img_mat_cols                      |    pointer   |
+|current_img_mat_cols_empty_n   |  in |    1|   ap_fifo  |                       current_img_mat_cols                      |    pointer   |
+|current_img_mat_cols_read      | out |    1|   ap_fifo  |                       current_img_mat_cols                      |    pointer   |
+|streamFlowin_mat_rows_dout     |  in |   32|   ap_fifo  |                      streamFlowin_mat_rows                      |    pointer   |
+|streamFlowin_mat_rows_empty_n  |  in |    1|   ap_fifo  |                      streamFlowin_mat_rows                      |    pointer   |
+|streamFlowin_mat_rows_read     | out |    1|   ap_fifo  |                      streamFlowin_mat_rows                      |    pointer   |
+|streamFlowin_mat_cols_dout     |  in |   32|   ap_fifo  |                      streamFlowin_mat_cols                      |    pointer   |
+|streamFlowin_mat_cols_empty_n  |  in |    1|   ap_fifo  |                      streamFlowin_mat_cols                      |    pointer   |
+|streamFlowin_mat_cols_read     | out |    1|   ap_fifo  |                      streamFlowin_mat_cols                      |    pointer   |
+|level_dout                     |  in |   32|   ap_fifo  |                              level                              |    pointer   |
+|level_empty_n                  |  in |    1|   ap_fifo  |                              level                              |    pointer   |
+|level_read                     | out |    1|   ap_fifo  |                              level                              |    pointer   |
+|scale_up_flag_dout             |  in |   32|   ap_fifo  |                          scale_up_flag                          |    pointer   |
+|scale_up_flag_empty_n          |  in |    1|   ap_fifo  |                          scale_up_flag                          |    pointer   |
+|scale_up_flag_read             | out |    1|   ap_fifo  |                          scale_up_flag                          |    pointer   |
+|scale_in_dout                  |  in |   32|   ap_fifo  |                             scale_in                            |    pointer   |
+|scale_in_empty_n               |  in |    1|   ap_fifo  |                             scale_in                            |    pointer   |
+|scale_in_read                  | out |    1|   ap_fifo  |                             scale_in                            |    pointer   |
+|init_flag_dout                 |  in |   32|   ap_fifo  |                            init_flag                            |    pointer   |
+|init_flag_empty_n              |  in |    1|   ap_fifo  |                            init_flag                            |    pointer   |
+|init_flag_read                 | out |    1|   ap_fifo  |                            init_flag                            |    pointer   |
++-------------------------------+-----+-----+------------+-----------------------------------------------------------------+--------------+
+

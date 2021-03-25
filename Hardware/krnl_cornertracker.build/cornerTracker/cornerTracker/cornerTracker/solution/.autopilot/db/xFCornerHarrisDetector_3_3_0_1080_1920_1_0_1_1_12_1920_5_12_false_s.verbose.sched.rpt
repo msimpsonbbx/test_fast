@@ -1,0 +1,362 @@
+
+
+================================================================
+== Vitis HLS Report for 'xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_s'
+================================================================
+* Date:           Thu Mar 25 14:57:17 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        cornerTracker
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 4.133 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+---------+---------+----------+
+    |  Latency (cycles) |   Latency (absolute)  |      Interval     | Pipeline |
+    |   min   |   max   |    min    |    max    |   min   |   max   |   Type   |
+    +---------+---------+-----------+-----------+---------+---------+----------+
+    |  2092817|  2092817| 13.953 ms | 13.953 ms |  2092805|  2092805| dataflow |
+    +---------+---------+-----------+-----------+---------+---------+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 15
+* Pipeline : 0
+* Dataflow Pipeline: 1
+  DF-Pipeline-0: Size = 15, States = { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 }
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 15 
+15 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.90>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%p_threshold_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %p_threshold" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 16 'read' 'p_threshold_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%img_width_read = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %img_width" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 17 'read' 'img_width_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%img_height_read = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %img_height" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 18 'read' 'img_height_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%p_read13 = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %p_read1" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 19 'read' 'p_read13' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%p_read_7 = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %p_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 20 'read' 'p_read_7' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%img_width_c42 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 21 'alloca' 'img_width_c42' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%img_height_c41 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 22 'alloca' 'img_height_c41' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%img_width_c40 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 23 'alloca' 'img_width_c40' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%img_height_c39 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 24 'alloca' 'img_height_c39' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 25 [1/1] (0.00ns)   --->   "%img_width_c38 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 25 'alloca' 'img_width_c38' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%img_height_c37 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 26 'alloca' 'img_height_c37' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 27 [1/1] (0.00ns)   --->   "%img_width_c36 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 27 'alloca' 'img_width_c36' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%img_height_c35 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 28 'alloca' 'img_height_c35' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 29 [1/1] (0.00ns)   --->   "%img_width_c34 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 29 'alloca' 'img_width_c34' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%img_width_c33 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 30 'alloca' 'img_width_c33' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 31 [1/1] (0.00ns)   --->   "%img_height_c32 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 31 'alloca' 'img_height_c32' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%img_height_c31 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 32 'alloca' 'img_height_c31' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 33 [1/1] (0.00ns)   --->   "%gradxy_cols_c = alloca i64"   --->   Operation 33 'alloca' 'gradxy_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%gradxy_rows_c = alloca i64"   --->   Operation 34 'alloca' 'gradxy_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 35 [1/1] (0.00ns)   --->   "%grady_2_cols_c = alloca i64"   --->   Operation 35 'alloca' 'grady_2_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%grady_2_rows_c = alloca i64"   --->   Operation 36 'alloca' 'grady_2_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%gradx_2_cols_c = alloca i64"   --->   Operation 37 'alloca' 'gradx_2_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%gradx_2_rows_c = alloca i64"   --->   Operation 38 'alloca' 'gradx_2_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%p_threshold_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 39 'alloca' 'p_threshold_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.90> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 7> <FIFO>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%img_width_c30 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 40 'alloca' 'img_width_c30' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 41 [1/1] (0.00ns)   --->   "%img_width_c29 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 41 'alloca' 'img_width_c29' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 42 [1/1] (0.00ns)   --->   "%img_width_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 42 'alloca' 'img_width_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 43 [1/1] (0.00ns)   --->   "%img_height_c28 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 43 'alloca' 'img_height_c28' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 44 [1/1] (0.00ns)   --->   "%img_height_c27 = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 44 'alloca' 'img_height_c27' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 3> <FIFO>
+ST_1 : Operation 45 [1/1] (0.00ns)   --->   "%img_height_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 45 'alloca' 'img_height_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 46 [1/1] (0.00ns)   --->   "%p_src_mat_2_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 46 'alloca' 'p_src_mat_2_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 47 [1/1] (0.00ns)   --->   "%p_src_mat_1_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 47 'alloca' 'p_src_mat_1_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 48 [1/1] (0.00ns)   --->   "%gradx_2_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:73]   --->   Operation 48 'alloca' 'gradx_2_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 49 [1/1] (0.00ns)   --->   "%grady_2_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:74]   --->   Operation 49 'alloca' 'grady_2_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%gradxy_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:75]   --->   Operation 50 'alloca' 'gradxy_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 51 [1/1] (0.00ns)   --->   "%gradx2g_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:76]   --->   Operation 51 'alloca' 'gradx2g_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%grady2g_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:77]   --->   Operation 52 'alloca' 'grady2g_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 53 [1/1] (0.00ns)   --->   "%gradxyg_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:78]   --->   Operation 53 'alloca' 'gradxyg_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 54 [1/1] (0.00ns)   --->   "%score_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:79]   --->   Operation 54 'alloca' 'score_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 55 [1/1] (0.00ns)   --->   "%thresh_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:80]   --->   Operation 55 'alloca' 'thresh_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 56 [1/1] (0.00ns)   --->   "%gradx_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:132]   --->   Operation 56 'alloca' 'gradx_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 57 [1/1] (0.00ns)   --->   "%grady_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:133]   --->   Operation 57 'alloca' 'grady_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 58 [1/1] (0.00ns)   --->   "%gradx1_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:134]   --->   Operation 58 'alloca' 'gradx1_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 59 [1/1] (0.00ns)   --->   "%grady1_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:135]   --->   Operation 59 'alloca' 'grady1_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 60 [1/1] (0.00ns)   --->   "%gradx2_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:136]   --->   Operation 60 'alloca' 'gradx2_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 61 [1/1] (0.00ns)   --->   "%grady2_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:137]   --->   Operation 61 'alloca' 'grady2_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 62 [1/1] (1.90ns)   --->   "%call_ln503 = call void @xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false>.entry50, i11 %p_read_7, i11 %p_read13, i11 %img_height_read, i11 %img_width_read, i16 %p_threshold_read, i11 %p_src_mat_1_c, i11 %p_src_mat_2_c, i11 %img_height_c, i11 %img_height_c27, i11 %img_height_c28, i11 %img_width_c, i11 %img_width_c29, i11 %img_width_c30, i16 %p_threshold_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 62 'call' 'call_ln503' <Predicate = true> <Delay = 1.90> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 63 [2/2] (0.00ns)   --->   "%call_ln148 = call void @Sobel<0, 3, 0, 2, 1080, 1920, 1, false>, i8 %in_harris_mat_419, i16 %gradx_mat_data, i16 %grady_mat_data, i11 %p_src_mat_1_c, i11 %p_src_mat_2_c, void %call_ln503" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 63 'call' 'call_ln148' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 0.00>
+ST_3 : Operation 64 [1/2] (0.00ns)   --->   "%call_ln148 = call void @Sobel<0, 3, 0, 2, 1080, 1920, 1, false>, i8 %in_harris_mat_419, i16 %gradx_mat_data, i16 %grady_mat_data, i11 %p_src_mat_1_c, i11 %p_src_mat_2_c, void %call_ln503" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 64 'call' 'call_ln148' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 65 [2/2] (0.00ns)   --->   "%call_ln151 = call void @xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>24, i16 %gradx_mat_data, i16 %gradx1_mat_data, i16 %gradx2_mat_data, i11 %img_height_c27, i11 %img_width_c29, i11 %img_height_c31, i11 %img_height_c32, i11 %img_width_c33, i11 %img_width_c34, void %call_ln148" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:151]   --->   Operation 65 'call' 'call_ln151' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_4 : Operation 66 [2/2] (0.00ns)   --->   "%call_ln154 = call void @xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>, i16 %grady_mat_data, i16 %grady1_mat_data, i16 %grady2_mat_data, i11 %img_height_c28, i11 %img_width_c30, i11 %img_height_c35, i11 %img_width_c36, void %call_ln148" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:154]   --->   Operation 66 'call' 'call_ln154' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 0.00>
+ST_5 : Operation 67 [1/2] (0.00ns)   --->   "%call_ln151 = call void @xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>24, i16 %gradx_mat_data, i16 %gradx1_mat_data, i16 %gradx2_mat_data, i11 %img_height_c27, i11 %img_width_c29, i11 %img_height_c31, i11 %img_height_c32, i11 %img_width_c33, i11 %img_width_c34, void %call_ln148" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:151]   --->   Operation 67 'call' 'call_ln151' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_5 : Operation 68 [1/2] (0.00ns)   --->   "%call_ln154 = call void @xFDuplicate<2, 1080, 1920, 3, 1, 5, 1920>, i16 %grady_mat_data, i16 %grady1_mat_data, i16 %grady2_mat_data, i11 %img_height_c28, i11 %img_width_c30, i11 %img_height_c35, i11 %img_width_c36, void %call_ln148" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:154]   --->   Operation 68 'call' 'call_ln154' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 6 <SV = 5> <Delay = 0.00>
+ST_6 : Operation 69 [2/2] (0.00ns)   --->   "%call_ln157 = call void @xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>25, i16 %gradx1_mat_data, i16 %gradx_2_data, i11 %img_height_c31, i11 %img_width_c33, i11 %img_height_c37, i11 %img_width_c38, void %call_ln151" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:157]   --->   Operation 69 'call' 'call_ln157' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_6 : Operation 70 [2/2] (0.00ns)   --->   "%call_ln160 = call void @xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>, i16 %grady1_mat_data, i16 %grady_2_data, i11 %img_height_c35, i11 %img_width_c36, void %call_ln154" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:160]   --->   Operation 70 'call' 'call_ln160' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_6 : Operation 71 [2/2] (0.00ns)   --->   "%call_ln163 = call void @xFMultiply<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>, i16 %gradx2_mat_data, i16 %grady2_mat_data, i16 %gradxy_data, i11 %img_height_c32, i11 %img_width_c34, void %call_ln154, void %call_ln151" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:163]   --->   Operation 71 'call' 'call_ln163' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 7 <SV = 6> <Delay = 0.00>
+ST_7 : Operation 72 [1/1] (0.00ns)   --->   "%call_ln502 = call void @xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false>_Block__ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii.exit1_proc, i11 %img_height_c, i11 %img_width_c, i11 %gradx_2_rows_c, i11 %gradx_2_cols_c, i11 %grady_2_rows_c, i11 %grady_2_cols_c, i11 %gradxy_rows_c, i11 %gradxy_cols_c, void %call_ln503, void %call_ln503" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 72 'call' 'call_ln502' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_7 : Operation 73 [1/2] (0.00ns)   --->   "%call_ln157 = call void @xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>25, i16 %gradx1_mat_data, i16 %gradx_2_data, i11 %img_height_c31, i11 %img_width_c33, i11 %img_height_c37, i11 %img_width_c38, void %call_ln151" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:157]   --->   Operation 73 'call' 'call_ln157' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_7 : Operation 74 [1/2] (0.00ns)   --->   "%call_ln160 = call void @xFSquare<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>, i16 %grady1_mat_data, i16 %grady_2_data, i11 %img_height_c35, i11 %img_width_c36, void %call_ln154" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:160]   --->   Operation 74 'call' 'call_ln160' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_7 : Operation 75 [1/2] (0.00ns)   --->   "%call_ln163 = call void @xFMultiply<2, 2, 1080, 1920, 3, 3, 1, 5, 5, 1920, int>, i16 %gradx2_mat_data, i16 %grady2_mat_data, i16 %gradxy_data, i11 %img_height_c32, i11 %img_width_c34, void %call_ln154, void %call_ln151" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:163]   --->   Operation 75 'call' 'call_ln163' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 8 <SV = 7> <Delay = 0.00>
+ST_8 : Operation 76 [2/2] (0.00ns)   --->   "%call_ln167 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>26, i16 %gradx_2_data, i16 %gradx2g_data, i11 %gradx_2_rows_c, i11 %gradx_2_cols_c, void %call_ln157, void %call_ln502, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:167]   --->   Operation 76 'call' 'call_ln167' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_8 : Operation 77 [2/2] (0.00ns)   --->   "%call_ln168 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>27, i16 %grady_2_data, i16 %grady2g_data, i11 %grady_2_rows_c, i11 %grady_2_cols_c, void %call_ln160, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:168]   --->   Operation 77 'call' 'call_ln168' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_8 : Operation 78 [2/2] (0.00ns)   --->   "%call_ln169 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>, i16 %gradxy_data, i16 %gradxyg_data, i11 %gradxy_rows_c, i11 %gradxy_cols_c, void %call_ln163, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:169]   --->   Operation 78 'call' 'call_ln169' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 9 <SV = 8> <Delay = 0.00>
+ST_9 : Operation 79 [1/2] (0.00ns)   --->   "%call_ln167 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>26, i16 %gradx_2_data, i16 %gradx2g_data, i11 %gradx_2_rows_c, i11 %gradx_2_cols_c, void %call_ln157, void %call_ln502, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:167]   --->   Operation 79 'call' 'call_ln167' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_9 : Operation 80 [1/2] (0.00ns)   --->   "%call_ln168 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>27, i16 %grady_2_data, i16 %grady2g_data, i11 %grady_2_rows_c, i11 %grady_2_cols_c, void %call_ln160, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:168]   --->   Operation 80 'call' 'call_ln168' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_9 : Operation 81 [1/2] (0.00ns)   --->   "%call_ln169 = call void @boxFilter<0, 3, 2, 1080, 1920, 1, false>, i16 %gradxy_data, i16 %gradxyg_data, i11 %gradxy_rows_c, i11 %gradxy_cols_c, void %call_ln163, void %call_ln502" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:169]   --->   Operation 81 'call' 'call_ln169' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 10 <SV = 9> <Delay = 0.00>
+ST_10 : Operation 82 [2/2] (0.00ns)   --->   "%call_ln171 = call void @xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920>, i16 %gradx2g_data, i16 %grady2g_data, i16 %gradxyg_data, i32 %score_data, i11 %img_height_c37, i11 %img_width_c38, i11 %img_height_c39, i11 %img_width_c40, void %call_ln169, void %call_ln168, void %call_ln167, void %call_ln167" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:171]   --->   Operation 82 'call' 'call_ln171' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 11 <SV = 10> <Delay = 0.00>
+ST_11 : Operation 83 [1/2] (0.00ns)   --->   "%call_ln171 = call void @xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920>, i16 %gradx2g_data, i16 %grady2g_data, i16 %gradxyg_data, i32 %score_data, i11 %img_height_c37, i11 %img_width_c38, i11 %img_height_c39, i11 %img_width_c40, void %call_ln169, void %call_ln168, void %call_ln167, void %call_ln167" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:171]   --->   Operation 83 'call' 'call_ln171' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 12 <SV = 11> <Delay = 0.00>
+ST_12 : Operation 84 [2/2] (0.00ns)   --->   "%call_ln174 = call void @xFThreshold<5, 1080, 1920, 5, 1, 12, 1920>, i32 %score_data, i32 %thresh_data, i16 %p_threshold_c, i11 %img_height_c39, i11 %img_width_c40, i11 %img_height_c41, i11 %img_width_c42, void %call_ln171, void %call_ln171" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 84 'call' 'call_ln174' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 13 <SV = 12> <Delay = 0.00>
+ST_13 : Operation 85 [1/2] (0.00ns)   --->   "%call_ln174 = call void @xFThreshold<5, 1080, 1920, 5, 1, 12, 1920>, i32 %score_data, i32 %thresh_data, i16 %p_threshold_c, i11 %img_height_c39, i11 %img_width_c40, i11 %img_height_c41, i11 %img_width_c42, void %call_ln171, void %call_ln171" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 85 'call' 'call_ln174' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 14 <SV = 13> <Delay = 0.00>
+ST_14 : Operation 86 [2/2] (0.00ns)   --->   "%call_ln176 = call void @xFMaxSuppression<5, 0, 1080, 1920, 5, 0, 1, 12, 1>, i32 %thresh_data, i8 %out_harris_mat_420, i11 %img_height_c41, i11 %img_width_c42, void %call_ln174, void %call_ln174" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:176]   --->   Operation 86 'call' 'call_ln176' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 15 <SV = 14> <Delay = 0.00>
+ST_15 : Operation 87 [1/1] (0.00ns)   --->   "%specdataflowpipeline_ln0 = specdataflowpipeline void @_ssdm_op_SpecDataflowPipeline, i32, i32, void @empty_18"   --->   Operation 87 'specdataflowpipeline' 'specdataflowpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 88 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %in_harris_mat_419, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 88 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 89 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %out_harris_mat_420, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 89 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 90 [1/1] (0.00ns)   --->   "%empty = specchannel i32 @_ssdm_op_SpecChannel, void @gradx_2_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx_2_data, i16 %gradx_2_data"   --->   Operation 90 'specchannel' 'empty' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 91 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx_2_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 91 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 92 [1/1] (0.00ns)   --->   "%empty_66 = specchannel i32 @_ssdm_op_SpecChannel, void @grady_2_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady_2_data, i16 %grady_2_data"   --->   Operation 92 'specchannel' 'empty_66' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 93 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady_2_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 93 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 94 [1/1] (0.00ns)   --->   "%empty_67 = specchannel i32 @_ssdm_op_SpecChannel, void @gradxy_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradxy_data, i16 %gradxy_data"   --->   Operation 94 'specchannel' 'empty_67' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 95 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradxy_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 95 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 96 [1/1] (0.00ns)   --->   "%empty_68 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx2g_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx2g_data, i16 %gradx2g_data"   --->   Operation 96 'specchannel' 'empty_68' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 97 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx2g_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 97 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 98 [1/1] (0.00ns)   --->   "%empty_69 = specchannel i32 @_ssdm_op_SpecChannel, void @grady2g_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady2g_data, i16 %grady2g_data"   --->   Operation 98 'specchannel' 'empty_69' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 99 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady2g_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 99 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 100 [1/1] (0.00ns)   --->   "%empty_70 = specchannel i32 @_ssdm_op_SpecChannel, void @gradxyg_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradxyg_data, i16 %gradxyg_data"   --->   Operation 100 'specchannel' 'empty_70' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 101 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradxyg_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 101 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 102 [1/1] (0.00ns)   --->   "%empty_71 = specchannel i32 @_ssdm_op_SpecChannel, void @score_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i32 %score_data, i32 %score_data"   --->   Operation 102 'specchannel' 'empty_71' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 103 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %score_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 103 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 104 [1/1] (0.00ns)   --->   "%empty_72 = specchannel i32 @_ssdm_op_SpecChannel, void @thresh_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i32 %thresh_data, i32 %thresh_data"   --->   Operation 104 'specchannel' 'empty_72' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 105 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %thresh_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 105 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 106 [1/1] (0.00ns)   --->   "%empty_73 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx_mat_data, i16 %gradx_mat_data"   --->   Operation 106 'specchannel' 'empty_73' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 107 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 107 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 108 [1/1] (0.00ns)   --->   "%empty_74 = specchannel i32 @_ssdm_op_SpecChannel, void @grady_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady_mat_data, i16 %grady_mat_data"   --->   Operation 108 'specchannel' 'empty_74' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 109 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 109 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 110 [1/1] (0.00ns)   --->   "%empty_75 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx1_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx1_mat_data, i16 %gradx1_mat_data"   --->   Operation 110 'specchannel' 'empty_75' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 111 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx1_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 111 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 112 [1/1] (0.00ns)   --->   "%empty_76 = specchannel i32 @_ssdm_op_SpecChannel, void @grady1_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady1_mat_data, i16 %grady1_mat_data"   --->   Operation 112 'specchannel' 'empty_76' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 113 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady1_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 113 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 114 [1/1] (0.00ns)   --->   "%empty_77 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx2_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %gradx2_mat_data, i16 %gradx2_mat_data"   --->   Operation 114 'specchannel' 'empty_77' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 115 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %gradx2_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 115 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 116 [1/1] (0.00ns)   --->   "%empty_78 = specchannel i32 @_ssdm_op_SpecChannel, void @grady2_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i16 %grady2_mat_data, i16 %grady2_mat_data"   --->   Operation 116 'specchannel' 'empty_78' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 117 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %grady2_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 117 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 118 [1/1] (0.00ns)   --->   "%empty_79 = specchannel i32 @_ssdm_op_SpecChannel, void @p_src_mat_OC_1_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %p_src_mat_1_c, i11 %p_src_mat_1_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 118 'specchannel' 'empty_79' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 119 [1/1] (0.00ns)   --->   "%specinterface_ln148 = specinterface void @_ssdm_op_SpecInterface, i11 %p_src_mat_1_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 119 'specinterface' 'specinterface_ln148' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 120 [1/1] (0.00ns)   --->   "%empty_80 = specchannel i32 @_ssdm_op_SpecChannel, void @p_src_mat_OC_2_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %p_src_mat_2_c, i11 %p_src_mat_2_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 120 'specchannel' 'empty_80' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 121 [1/1] (0.00ns)   --->   "%specinterface_ln148 = specinterface void @_ssdm_op_SpecInterface, i11 %p_src_mat_2_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:148]   --->   Operation 121 'specinterface' 'specinterface_ln148' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 122 [1/1] (0.00ns)   --->   "%empty_81 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c, i11 %img_height_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 122 'specchannel' 'empty_81' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 123 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 123 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 124 [1/1] (0.00ns)   --->   "%empty_82 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c27_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c27, i11 %img_height_c27" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 124 'specchannel' 'empty_82' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 125 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c27, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 125 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 126 [1/1] (0.00ns)   --->   "%empty_83 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c28_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c28, i11 %img_height_c28" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 126 'specchannel' 'empty_83' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 127 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c28, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 127 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 128 [1/1] (0.00ns)   --->   "%empty_84 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c, i11 %img_width_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 128 'specchannel' 'empty_84' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 129 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 129 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 130 [1/1] (0.00ns)   --->   "%empty_85 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c29_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c29, i11 %img_width_c29" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 130 'specchannel' 'empty_85' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 131 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c29, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 131 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 132 [1/1] (0.00ns)   --->   "%empty_86 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c30_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c30, i11 %img_width_c30" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 132 'specchannel' 'empty_86' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 133 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c30, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 133 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 134 [1/1] (0.00ns)   --->   "%empty_87 = specchannel i32 @_ssdm_op_SpecChannel, void @p_threshold_c_str, i32, void @p_str, void @p_str, i32, i32, i16 %p_threshold_c, i16 %p_threshold_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 134 'specchannel' 'empty_87' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 135 [1/1] (0.00ns)   --->   "%specinterface_ln174 = specinterface void @_ssdm_op_SpecInterface, i16 %p_threshold_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:174]   --->   Operation 135 'specinterface' 'specinterface_ln174' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 136 [1/1] (0.00ns)   --->   "%empty_88 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx_2_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %gradx_2_rows_c, i11 %gradx_2_rows_c"   --->   Operation 136 'specchannel' 'empty_88' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 137 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %gradx_2_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 137 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 138 [1/1] (0.00ns)   --->   "%empty_89 = specchannel i32 @_ssdm_op_SpecChannel, void @gradx_2_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %gradx_2_cols_c, i11 %gradx_2_cols_c"   --->   Operation 138 'specchannel' 'empty_89' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 139 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %gradx_2_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 139 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 140 [1/1] (0.00ns)   --->   "%empty_90 = specchannel i32 @_ssdm_op_SpecChannel, void @grady_2_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %grady_2_rows_c, i11 %grady_2_rows_c"   --->   Operation 140 'specchannel' 'empty_90' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 141 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %grady_2_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 141 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 142 [1/1] (0.00ns)   --->   "%empty_91 = specchannel i32 @_ssdm_op_SpecChannel, void @grady_2_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %grady_2_cols_c, i11 %grady_2_cols_c"   --->   Operation 142 'specchannel' 'empty_91' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 143 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %grady_2_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 143 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 144 [1/1] (0.00ns)   --->   "%empty_92 = specchannel i32 @_ssdm_op_SpecChannel, void @gradxy_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %gradxy_rows_c, i11 %gradxy_rows_c"   --->   Operation 144 'specchannel' 'empty_92' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 145 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %gradxy_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 145 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 146 [1/1] (0.00ns)   --->   "%empty_93 = specchannel i32 @_ssdm_op_SpecChannel, void @gradxy_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %gradxy_cols_c, i11 %gradxy_cols_c"   --->   Operation 146 'specchannel' 'empty_93' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 147 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %gradxy_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 147 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 148 [1/1] (0.00ns)   --->   "%empty_94 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c31_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c31, i11 %img_height_c31" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 148 'specchannel' 'empty_94' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 149 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c31, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 149 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 150 [1/1] (0.00ns)   --->   "%empty_95 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c32_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c32, i11 %img_height_c32" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 150 'specchannel' 'empty_95' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 151 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c32, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 151 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 152 [1/1] (0.00ns)   --->   "%empty_96 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c33_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c33, i11 %img_width_c33" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 152 'specchannel' 'empty_96' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 153 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c33, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 153 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 154 [1/1] (0.00ns)   --->   "%empty_97 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c34_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c34, i11 %img_width_c34" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 154 'specchannel' 'empty_97' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 155 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c34, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 155 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 156 [1/1] (0.00ns)   --->   "%empty_98 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c35_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c35, i11 %img_height_c35" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 156 'specchannel' 'empty_98' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 157 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c35, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 157 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 158 [1/1] (0.00ns)   --->   "%empty_99 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c36_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c36, i11 %img_width_c36" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 158 'specchannel' 'empty_99' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 159 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c36, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 159 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 160 [1/1] (0.00ns)   --->   "%empty_100 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c37_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c37, i11 %img_height_c37" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 160 'specchannel' 'empty_100' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 161 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c37, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 161 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 162 [1/1] (0.00ns)   --->   "%empty_101 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c38_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c38, i11 %img_width_c38" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 162 'specchannel' 'empty_101' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 163 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c38, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 163 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 164 [1/1] (0.00ns)   --->   "%empty_102 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c39_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c39, i11 %img_height_c39" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 164 'specchannel' 'empty_102' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 165 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c39, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 165 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 166 [1/1] (0.00ns)   --->   "%empty_103 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c40_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c40, i11 %img_width_c40" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 166 'specchannel' 'empty_103' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 167 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c40, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 167 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 168 [1/1] (0.00ns)   --->   "%empty_104 = specchannel i32 @_ssdm_op_SpecChannel, void @img_height_c41_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_height_c41, i11 %img_height_c41" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 168 'specchannel' 'empty_104' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 169 [1/1] (0.00ns)   --->   "%specinterface_ln502 = specinterface void @_ssdm_op_SpecInterface, i11 %img_height_c41, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:502]   --->   Operation 169 'specinterface' 'specinterface_ln502' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 170 [1/1] (0.00ns)   --->   "%empty_105 = specchannel i32 @_ssdm_op_SpecChannel, void @img_width_c42_str, i32, void @p_str, void @p_str, i32, i32, i11 %img_width_c42, i11 %img_width_c42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 170 'specchannel' 'empty_105' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 171 [1/1] (0.00ns)   --->   "%specinterface_ln503 = specinterface void @_ssdm_op_SpecInterface, i11 %img_width_c42, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503]   --->   Operation 171 'specinterface' 'specinterface_ln503' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 172 [1/2] (0.00ns)   --->   "%call_ln176 = call void @xFMaxSuppression<5, 0, 1080, 1920, 5, 0, 1, 12, 1>, i32 %thresh_data, i8 %out_harris_mat_420, i11 %img_height_c41, i11 %img_width_c42, void %call_ln174, void %call_ln174" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:176]   --->   Operation 172 'call' 'call_ln176' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_15 : Operation 173 [1/1] (0.00ns)   --->   "%ret_ln178 = ret" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_harris.hpp:178]   --->   Operation 173 'ret' 'ret_ln178' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 6.67ns, clock uncertainty: 1.8ns.
+
+ <State 1>: 1.91ns
+The critical path consists of the following:
+	wire read on port 'p_threshold' (/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503) [8]  (0 ns)
+	'call' operation ('call_ln503', /tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:503) to 'xFCornerHarrisDetector<3, 3, 0, 1080, 1920, 1, 0, 1, 1, 12, 1920, 5, 12, false>.entry50' [103]  (1.91 ns)
+
+ <State 2>: 0ns
+The critical path consists of the following:
+
+ <State 3>: 0ns
+The critical path consists of the following:
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+ <State 5>: 0ns
+The critical path consists of the following:
+
+ <State 6>: 0ns
+The critical path consists of the following:
+
+ <State 7>: 0ns
+The critical path consists of the following:
+
+ <State 8>: 0ns
+The critical path consists of the following:
+
+ <State 9>: 0ns
+The critical path consists of the following:
+
+ <State 10>: 0ns
+The critical path consists of the following:
+
+ <State 11>: 0ns
+The critical path consists of the following:
+
+ <State 12>: 0ns
+The critical path consists of the following:
+
+ <State 13>: 0ns
+The critical path consists of the following:
+
+ <State 14>: 0ns
+The critical path consists of the following:
+
+ <State 15>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

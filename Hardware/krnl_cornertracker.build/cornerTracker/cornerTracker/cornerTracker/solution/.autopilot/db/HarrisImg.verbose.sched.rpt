@@ -1,0 +1,198 @@
+
+
+================================================================
+== Vitis HLS Report for 'HarrisImg'
+================================================================
+* Date:           Thu Mar 25 14:57:19 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        cornerTracker
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 5.113 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        ?|        ?|         ?|         ?|    ?|    ?| dataflow |
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 7
+* Pipeline : 0
+* Dataflow Pipeline: 1
+  DF-Pipeline-0: Size = 7, States = { 1 2 3 4 5 6 7 }
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.83>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%Thresh_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %Thresh"   --->   Operation 8 'read' 'Thresh_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%harris_cols_read = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %harris_cols"   --->   Operation 9 'read' 'harris_cols_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%harris_rows_read = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %harris_rows"   --->   Operation 10 'read' 'harris_rows_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%list_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %list"   --->   Operation 11 'read' 'list_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%inHarris_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %inHarris"   --->   Operation 12 'read' 'inHarris_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%in_harris_mat_cols_c10 = alloca i64"   --->   Operation 13 'alloca' 'in_harris_mat_cols_c10' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%in_harris_mat_rows_c9 = alloca i64"   --->   Operation 14 'alloca' 'in_harris_mat_rows_c9' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%Thresh_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 15 'alloca' 'Thresh_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 3> <FIFO>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%list_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 16 'alloca' 'list_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 64> <Depth = 4> <FIFO>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%inHarris_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 17 'alloca' 'inHarris_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 64> <Depth = 2> <FIFO>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%out_harris_mat_cols_c = alloca i64"   --->   Operation 18 'alloca' 'out_harris_mat_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%out_harris_mat_rows_c = alloca i64"   --->   Operation 19 'alloca' 'out_harris_mat_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%in_harris_mat_cols_c = alloca i64"   --->   Operation 20 'alloca' 'in_harris_mat_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%in_harris_mat_rows_c = alloca i64"   --->   Operation 21 'alloca' 'in_harris_mat_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%in_harris_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:29]   --->   Operation 22 'alloca' 'in_harris_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%out_harris_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:33]   --->   Operation 23 'alloca' 'out_harris_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+ST_1 : Operation 24 [1/1] (1.83ns)   --->   "%call_ln42 = call void @HarrisImg_Block__ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii.exit1_proc65, i11 %harris_rows_read, i11 %harris_cols_read, i64 %inHarris_read, i64 %list_read, i16 %Thresh_read, i11 %in_harris_mat_rows_c, i11 %in_harris_mat_cols_c, i11 %out_harris_mat_rows_c, i11 %out_harris_mat_cols_c, i64 %inHarris_c, i64 %list_c, i16 %Thresh_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 24 'call' 'call_ln42' <Predicate = true> <Delay = 1.83> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 25 [2/2] (0.00ns)   --->   "%call_ln42 = call void @Array2xfMat<32, 0, 1080, 1920, 1>, i32 %gmem1, i8 %in_harris_mat_data, i64 %inHarris_c, i11 %in_harris_mat_rows_c, i11 %in_harris_mat_cols_c, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_cols_c10, void %call_ln42, void %call_ln42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 25 'call' 'call_ln42' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 0.00>
+ST_3 : Operation 26 [1/2] (0.00ns)   --->   "%call_ln42 = call void @Array2xfMat<32, 0, 1080, 1920, 1>, i32 %gmem1, i8 %in_harris_mat_data, i64 %inHarris_c, i11 %in_harris_mat_rows_c, i11 %in_harris_mat_cols_c, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_cols_c10, void %call_ln42, void %call_ln42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 26 'call' 'call_ln42' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 27 [2/2] (0.00ns)   --->   "%call_ln43 = call void @cornerHarris<3, 3, 1, 0, 1080, 1920, 1, false>, i8 %in_harris_mat_data, i8 %out_harris_mat_data, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_cols_c10, i16 %Thresh_c, void %call_ln42, void %call_ln42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 27 'call' 'call_ln43' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 0.00>
+ST_5 : Operation 28 [1/2] (0.00ns)   --->   "%call_ln43 = call void @cornerHarris<3, 3, 1, 0, 1080, 1920, 1, false>, i8 %in_harris_mat_data, i8 %out_harris_mat_data, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_cols_c10, i16 %Thresh_c, void %call_ln42, void %call_ln42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 28 'call' 'call_ln43' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 6 <SV = 5> <Delay = 0.00>
+ST_6 : Operation 29 [2/2] (0.00ns)   --->   "%call_ln46 = call void @cornersImgToList<10000u, 0u, 1080u, 1920u, 1u>, i8 %out_harris_mat_data, i32 %gmem2, i11 %out_harris_mat_rows_c, i11 %out_harris_mat_cols_c, i64 %list_c, i32 %nCorners, void %call_ln43, void %call_ln43" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 29 'call' 'call_ln46' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 7 <SV = 6> <Delay = 2.78>
+ST_7 : Operation 30 [1/1] (0.00ns)   --->   "%specdataflowpipeline_ln0 = specdataflowpipeline void @_ssdm_op_SpecDataflowPipeline, i32, i32, void @empty_18"   --->   Operation 30 'specdataflowpipeline' 'specdataflowpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 31 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem2, void @empty_15, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 31 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 32 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem1, void @empty_15, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 32 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 33 [1/1] (0.00ns)   --->   "%empty = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i8 %in_harris_mat_data, i8 %in_harris_mat_data"   --->   Operation 33 'specchannel' 'empty' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 34 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %in_harris_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 34 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 35 [1/1] (0.00ns)   --->   "%empty_148 = specchannel i32 @_ssdm_op_SpecChannel, void @out_harris_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i8 %out_harris_mat_data, i8 %out_harris_mat_data"   --->   Operation 35 'specchannel' 'empty_148' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 36 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %out_harris_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 36 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 37 [1/1] (0.00ns)   --->   "%empty_149 = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %in_harris_mat_rows_c, i11 %in_harris_mat_rows_c"   --->   Operation 37 'specchannel' 'empty_149' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 38 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %in_harris_mat_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 38 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 39 [1/1] (0.00ns)   --->   "%empty_150 = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %in_harris_mat_cols_c, i11 %in_harris_mat_cols_c"   --->   Operation 39 'specchannel' 'empty_150' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 40 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %in_harris_mat_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 40 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 41 [1/1] (0.00ns)   --->   "%empty_151 = specchannel i32 @_ssdm_op_SpecChannel, void @out_harris_mat_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %out_harris_mat_rows_c, i11 %out_harris_mat_rows_c"   --->   Operation 41 'specchannel' 'empty_151' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 42 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %out_harris_mat_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 42 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 43 [1/1] (0.00ns)   --->   "%empty_152 = specchannel i32 @_ssdm_op_SpecChannel, void @out_harris_mat_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %out_harris_mat_cols_c, i11 %out_harris_mat_cols_c"   --->   Operation 43 'specchannel' 'empty_152' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 44 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %out_harris_mat_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 44 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 45 [1/1] (0.00ns)   --->   "%empty_153 = specchannel i32 @_ssdm_op_SpecChannel, void @inHarris_c_str, i32, void @p_str, void @p_str, i32, i32, i64 %inHarris_c, i64 %inHarris_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 45 'specchannel' 'empty_153' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 46 [1/1] (0.00ns)   --->   "%specinterface_ln42 = specinterface void @_ssdm_op_SpecInterface, i64 %inHarris_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 46 'specinterface' 'specinterface_ln42' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 47 [1/1] (0.00ns)   --->   "%empty_154 = specchannel i32 @_ssdm_op_SpecChannel, void @list_c_str, i32, void @p_str, void @p_str, i32, i32, i64 %list_c, i64 %list_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 47 'specchannel' 'empty_154' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 48 [1/1] (0.00ns)   --->   "%specinterface_ln46 = specinterface void @_ssdm_op_SpecInterface, i64 %list_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 48 'specinterface' 'specinterface_ln46' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 49 [1/1] (0.00ns)   --->   "%empty_155 = specchannel i32 @_ssdm_op_SpecChannel, void @Thresh_c_str, i32, void @p_str, void @p_str, i32, i32, i16 %Thresh_c, i16 %Thresh_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 49 'specchannel' 'empty_155' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 50 [1/1] (0.00ns)   --->   "%specinterface_ln43 = specinterface void @_ssdm_op_SpecInterface, i16 %Thresh_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 50 'specinterface' 'specinterface_ln43' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 51 [1/1] (0.00ns)   --->   "%empty_156 = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_rows_c9_str, i32, void @p_str, void @p_str, i32, i32, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_rows_c9"   --->   Operation 51 'specchannel' 'empty_156' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 52 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %in_harris_mat_rows_c9, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 52 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 53 [1/1] (0.00ns)   --->   "%empty_157 = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_cols_c10_str, i32, void @p_str, void @p_str, i32, i32, i11 %in_harris_mat_cols_c10, i11 %in_harris_mat_cols_c10"   --->   Operation 53 'specchannel' 'empty_157' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 54 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %in_harris_mat_cols_c10, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 54 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 55 [1/2] (2.78ns)   --->   "%call_ln46 = call void @cornersImgToList<10000u, 0u, 1080u, 1920u, 1u>, i8 %out_harris_mat_data, i32 %gmem2, i11 %out_harris_mat_rows_c, i11 %out_harris_mat_cols_c, i64 %list_c, i32 %nCorners, void %call_ln43, void %call_ln43" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 55 'call' 'call_ln46' <Predicate = true> <Delay = 2.78> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_7 : Operation 56 [1/1] (0.00ns)   --->   "%ret_ln47 = ret" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:47]   --->   Operation 56 'ret' 'ret_ln47' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 6.67ns, clock uncertainty: 1.8ns.
+
+ <State 1>: 1.84ns
+The critical path consists of the following:
+	wire read on port 'Thresh' [9]  (0 ns)
+	'call' operation ('call_ln42', /tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42) to 'HarrisImg_Block__ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii.exit1_proc65' [46]  (1.84 ns)
+
+ <State 2>: 0ns
+The critical path consists of the following:
+
+ <State 3>: 0ns
+The critical path consists of the following:
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+ <State 5>: 0ns
+The critical path consists of the following:
+
+ <State 6>: 0ns
+The critical path consists of the following:
+
+ <State 7>: 2.78ns
+The critical path consists of the following:
+	'call' operation ('call_ln46', /tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46) to 'cornersImgToList<10000u, 0u, 1080u, 1920u, 1u>' [53]  (2.78 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

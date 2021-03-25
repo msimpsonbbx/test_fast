@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="pyr_dense_optical_flow_accel" xd:componentRef="pyr_dense_optical_flow_accel" xd:initiationInterval="2165439" xd:clockPeriod="6.667" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="s_axi_control" xd:busTypeRef="axilite" xd:type="generic_axi_lite" xd:offset="0x0"/>
+  <xd:arg xd:name="*(_current_img)" xd:originalName="_current_img" xd:direction="inout" xd:interfaceRef="m_axi_gmem1" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(_next_image)" xd:originalName="_next_image" xd:direction="inout" xd:interfaceRef="m_axi_gmem2" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(_streamFlowin)" xd:originalName="_streamFlowin" xd:direction="inout" xd:interfaceRef="m_axi_gmem3" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(_streamFlowout)" xd:originalName="_streamFlowout" xd:direction="inout" xd:interfaceRef="m_axi_gmem4" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="out"/>
+  <xd:latencyEstimates xd:best-case="2071" xd:worst-case="2165438" xd:average-case="1036879"/>
+  <xd:resourceEstimates xd:LUT="67593" xd:FF="38300" xd:BRAM="231" xd:DSP="100"/>
+</xd:acceleratorMap>

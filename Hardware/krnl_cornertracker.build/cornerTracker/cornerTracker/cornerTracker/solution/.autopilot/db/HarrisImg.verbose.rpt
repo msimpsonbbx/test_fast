@@ -1,0 +1,1434 @@
+
+
+================================================================
+== Vitis HLS Report for 'HarrisImg'
+================================================================
+* Date:           Thu Mar 25 14:57:26 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        cornerTracker
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 5.113 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        ?|        ?|         ?|         ?|    ?|    ?| dataflow |
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+---------+---------+-----------+-----------+---------+---------+---------+
+        |                                                                               |                                                                            |  Latency (cycles) |   Latency (absolute)  |      Interval     | Pipeline|
+        |                                    Instance                                   |                                   Module                                   |   min   |   max   |    min    |    max    |   min   |   max   |   Type  |
+        +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+---------+---------+-----------+-----------+---------+---------+---------+
+        |cornerHarris_3_3_1_0_1080_1920_1_false_U0                                      |cornerHarris_3_3_1_0_1080_1920_1_false_s                                    |  2092818|  2092818| 13.953 ms | 13.953 ms |  2092818|  2092818|   none  |
+        |Array2xfMat_32_0_1080_1920_1_U0                                                |Array2xfMat_32_0_1080_1920_1_s                                              |       79|  2073678|  0.527 us | 13.825 ms |       79|  2073678|   none  |
+        |cornersImgToList_10000u_0u_1080u_1920u_1u_U0                                   |cornersImgToList_10000u_0u_1080u_1920u_1u_s                                 |        ?|        ?|          ?|          ?|        ?|        ?|   none  |
+        |HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0  |HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65  |        0|        0|    0 ns   |    0 ns   |        0|        0|   none  |
+        +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+---------+---------+-----------+-----------+---------+---------+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|      32|    -|
+|FIFO             |        -|     -|    1089|     737|    -|
+|Instance         |       33|    14|   11708|   16027|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|      36|    -|
+|Register         |        -|     -|       6|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |       33|    14|   12803|   16832|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        5|  ~0  |       2|       7|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+---------+----+------+-------+-----+
+    |                                    Instance                                   |                                   Module                                   | BRAM_18K| DSP|  FF  |  LUT  | URAM|
+    +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+---------+----+------+-------+-----+
+    |Array2xfMat_32_0_1080_1920_1_U0                                                |Array2xfMat_32_0_1080_1920_1_s                                              |        0|   2|  1892|   3421|    0|
+    |HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0  |HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65  |        0|   0|     3|     83|    0|
+    |cornerHarris_3_3_1_0_1080_1920_1_false_U0                                      |cornerHarris_3_3_1_0_1080_1920_1_false_s                                    |       33|  11|  9034|  11332|    0|
+    |cornersImgToList_10000u_0u_1080u_1920u_1u_U0                                   |cornersImgToList_10000u_0u_1080u_1920u_1u_s                                 |        0|   1|   779|   1191|    0|
+    +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+---------+----+------+-------+-----+
+    |Total                                                                          |                                                                            |       33|  14| 11708|  16027|    0|
+    +-------------------------------------------------------------------------------+----------------------------------------------------------------------------+---------+----+------+-------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +--------------------------+---------+----+----+-----+------+-----+---------+
+    |           Name           | BRAM_18K| FF | LUT| URAM| Depth| Bits| Size:D*B|
+    +--------------------------+---------+----+----+-----+------+-----+---------+
+    |Thresh_c_U                |        0|  99|   0|    -|     3|   16|       48|
+    |inHarris_c_U              |        0|  99|   0|    -|     2|   64|      128|
+    |in_harris_mat_cols_c10_U  |        0|  99|   0|    -|     2|   11|       22|
+    |in_harris_mat_cols_c_U    |        0|  99|   0|    -|     2|   11|       22|
+    |in_harris_mat_data_U      |        0|  99|   0|    -|     2|    8|       16|
+    |in_harris_mat_rows_c9_U   |        0|  99|   0|    -|     2|   11|       22|
+    |in_harris_mat_rows_c_U    |        0|  99|   0|    -|     2|   11|       22|
+    |list_c_U                  |        0|  99|   0|    -|     4|   64|      256|
+    |out_harris_mat_cols_c_U   |        0|  99|   0|    -|     4|   11|       44|
+    |out_harris_mat_data_U     |        0|  99|   0|    -|     2|    8|       16|
+    |out_harris_mat_rows_c_U   |        0|  99|   0|    -|     4|   11|       44|
+    +--------------------------+---------+----+----+-----+------+-----+---------+
+    |Total                     |        0|1089|   0|    0|    29|  226|      640|
+    +--------------------------+---------+----+----+-----+------+-----+---------+
+
+    * Expression: 
+    +------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |                                          Variable Name                                         | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |Array2xfMat_32_0_1080_1920_1_U0_ap_ready_count                                                  |     +    |   0|  0|   9|           2|           1|
+    |HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0_ap_ready_count    |     +    |   0|  0|   9|           2|           1|
+    |Array2xfMat_32_0_1080_1920_1_U0_ap_start                                                        |    and   |   0|  0|   2|           1|           1|
+    |HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0_ap_start          |    and   |   0|  0|   2|           1|           1|
+    |HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0_start_full_n      |    and   |   0|  0|   2|           1|           1|
+    |ap_idle                                                                                         |    and   |   0|  0|   2|           1|           1|
+    |ap_sync_ready                                                                                   |    and   |   0|  0|   2|           1|           1|
+    |ap_sync_Array2xfMat_32_0_1080_1920_1_U0_ap_ready                                                |    or    |   0|  0|   2|           1|           1|
+    |ap_sync_HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0_ap_ready  |    or    |   0|  0|   2|           1|           1|
+    +------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+    |Total                                                                                           |          |   0|  0|  32|          11|           9|
+    +------------------------------------------------------------------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------------------------------------------------------------------------------+----+-----------+-----+-----------+
+    |                                                Name                                                | LUT| Input Size| Bits| Total Bits|
+    +----------------------------------------------------------------------------------------------------+----+-----------+-----+-----------+
+    |Array2xfMat_32_0_1080_1920_1_U0_ap_ready_count                                                      |   9|          2|    2|          4|
+    |HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0_ap_ready_count        |   9|          2|    2|          4|
+    |ap_sync_reg_Array2xfMat_32_0_1080_1920_1_U0_ap_ready                                                |   9|          2|    1|          2|
+    |ap_sync_reg_HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0_ap_ready  |   9|          2|    1|          2|
+    +----------------------------------------------------------------------------------------------------+----+-----------+-----+-----------+
+    |Total                                                                                               |  36|          8|    6|         12|
+    +----------------------------------------------------------------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------------------------------------------------------------------------+---+----+-----+-----------+
+    |                                                Name                                                | FF| LUT| Bits| Const Bits|
+    +----------------------------------------------------------------------------------------------------+---+----+-----+-----------+
+    |Array2xfMat_32_0_1080_1920_1_U0_ap_ready_count                                                      |  2|   0|    2|          0|
+    |HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0_ap_ready_count        |  2|   0|    2|          0|
+    |ap_sync_reg_Array2xfMat_32_0_1080_1920_1_U0_ap_ready                                                |  1|   0|    1|          0|
+    |ap_sync_reg_HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0_ap_ready  |  1|   0|    1|          0|
+    +----------------------------------------------------------------------------------------------------+---+----+-----+-----------+
+    |Total                                                                                               |  6|   0|    6|          0|
+    +----------------------------------------------------------------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------+-----+-----+------------+--------------+--------------+
+|       RTL Ports      | Dir | Bits|  Protocol  | Source Object|    C Type    |
++----------------------+-----+-----+------------+--------------+--------------+
+|m_axi_gmem1_AWVALID   | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWREADY   |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWADDR    | out |   64|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWID      | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWLEN     | out |   32|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWSIZE    | out |    3|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWBURST   | out |    2|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWLOCK    | out |    2|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWCACHE   | out |    4|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWPROT    | out |    3|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWQOS     | out |    4|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWREGION  | out |    4|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_AWUSER    | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_WVALID    | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_WREADY    |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_WDATA     | out |   32|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_WSTRB     | out |    4|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_WLAST     | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_WID       | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_WUSER     | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARVALID   | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARREADY   |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARADDR    | out |   64|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARID      | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARLEN     | out |   32|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARSIZE    | out |    3|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARBURST   | out |    2|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARLOCK    | out |    2|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARCACHE   | out |    4|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARPROT    | out |    3|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARQOS     | out |    4|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARREGION  | out |    4|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_ARUSER    | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_RVALID    |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_RREADY    | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_RDATA     |  in |   32|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_RLAST     |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_RID       |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_RUSER     |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_RRESP     |  in |    2|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_BVALID    |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_BREADY    | out |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_BRESP     |  in |    2|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_BID       |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem1_BUSER     |  in |    1|    m_axi   |     gmem1    |    pointer   |
+|m_axi_gmem2_AWVALID   | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWREADY   |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWADDR    | out |   64|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWID      | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWLEN     | out |   32|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWSIZE    | out |    3|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWBURST   | out |    2|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWLOCK    | out |    2|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWCACHE   | out |    4|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWPROT    | out |    3|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWQOS     | out |    4|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWREGION  | out |    4|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_AWUSER    | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_WVALID    | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_WREADY    |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_WDATA     | out |   32|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_WSTRB     | out |    4|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_WLAST     | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_WID       | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_WUSER     | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARVALID   | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARREADY   |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARADDR    | out |   64|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARID      | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARLEN     | out |   32|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARSIZE    | out |    3|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARBURST   | out |    2|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARLOCK    | out |    2|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARCACHE   | out |    4|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARPROT    | out |    3|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARQOS     | out |    4|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARREGION  | out |    4|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_ARUSER    | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_RVALID    |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_RREADY    | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_RDATA     |  in |   32|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_RLAST     |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_RID       |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_RUSER     |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_RRESP     |  in |    2|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_BVALID    |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_BREADY    | out |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_BRESP     |  in |    2|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_BID       |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|m_axi_gmem2_BUSER     |  in |    1|    m_axi   |     gmem2    |    pointer   |
+|inHarris              |  in |   64|   ap_none  |   inHarris   |    scalar    |
+|inHarris_ap_vld       |  in |    1|   ap_none  |   inHarris   |    scalar    |
+|list                  |  in |   64|   ap_none  |     list     |    scalar    |
+|list_ap_vld           |  in |    1|   ap_none  |     list     |    scalar    |
+|harris_rows           |  in |   11|   ap_none  |  harris_rows |    scalar    |
+|harris_rows_ap_vld    |  in |    1|   ap_none  |  harris_rows |    scalar    |
+|harris_cols           |  in |   11|   ap_none  |  harris_cols |    scalar    |
+|harris_cols_ap_vld    |  in |    1|   ap_none  |  harris_cols |    scalar    |
+|Thresh                |  in |   16|   ap_none  |    Thresh    |    scalar    |
+|Thresh_ap_vld         |  in |    1|   ap_none  |    Thresh    |    scalar    |
+|nCorners              | out |   32|   ap_vld   |   nCorners   |    pointer   |
+|nCorners_ap_vld       | out |    1|   ap_vld   |   nCorners   |    pointer   |
+|ap_clk                |  in |    1| ap_ctrl_hs |   HarrisImg  | return value |
+|ap_rst                |  in |    1| ap_ctrl_hs |   HarrisImg  | return value |
+|ap_start              |  in |    1| ap_ctrl_hs |   HarrisImg  | return value |
+|ap_done               | out |    1| ap_ctrl_hs |   HarrisImg  | return value |
+|ap_ready              | out |    1| ap_ctrl_hs |   HarrisImg  | return value |
+|ap_idle               | out |    1| ap_ctrl_hs |   HarrisImg  | return value |
+|ap_continue           |  in |    1| ap_ctrl_hs |   HarrisImg  | return value |
++----------------------+-----+-----+------------+--------------+--------------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 2
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 7
+* Pipeline : 0
+* Dataflow Pipeline: 1
+  DF-Pipeline-0: Size = 7, States = { 1 2 3 4 5 6 7 }
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.83>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%Thresh_read = read i16 @_ssdm_op_Read.ap_auto.i16, i16 %Thresh"   --->   Operation 8 'read' 'Thresh_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%harris_cols_read = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %harris_cols"   --->   Operation 9 'read' 'harris_cols_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%harris_rows_read = read i11 @_ssdm_op_Read.ap_auto.i11, i11 %harris_rows"   --->   Operation 10 'read' 'harris_rows_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%list_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %list"   --->   Operation 11 'read' 'list_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%inHarris_read = read i64 @_ssdm_op_Read.ap_auto.i64, i64 %inHarris"   --->   Operation 12 'read' 'inHarris_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%in_harris_mat_cols_c10 = alloca i64"   --->   Operation 13 'alloca' 'in_harris_mat_cols_c10' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%in_harris_mat_rows_c9 = alloca i64"   --->   Operation 14 'alloca' 'in_harris_mat_rows_c9' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%Thresh_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 15 'alloca' 'Thresh_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 3> <FIFO>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%list_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 16 'alloca' 'list_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 64> <Depth = 4> <FIFO>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%inHarris_c = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 17 'alloca' 'inHarris_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 64> <Depth = 2> <FIFO>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%out_harris_mat_cols_c = alloca i64"   --->   Operation 18 'alloca' 'out_harris_mat_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%out_harris_mat_rows_c = alloca i64"   --->   Operation 19 'alloca' 'out_harris_mat_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 4> <FIFO>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%in_harris_mat_cols_c = alloca i64"   --->   Operation 20 'alloca' 'in_harris_mat_cols_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%in_harris_mat_rows_c = alloca i64"   --->   Operation 21 'alloca' 'in_harris_mat_rows_c' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 11> <Depth = 2> <FIFO>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%in_harris_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:29]   --->   Operation 22 'alloca' 'in_harris_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%out_harris_mat_data = alloca i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:33]   --->   Operation 23 'alloca' 'out_harris_mat_data' <Predicate = true> <Delay = 0.00> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 8> <Depth = 2> <FIFO>
+ST_1 : Operation 24 [1/1] (1.83ns)   --->   "%call_ln42 = call void @HarrisImg_Block__ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii.exit1_proc65, i11 %harris_rows_read, i11 %harris_cols_read, i64 %inHarris_read, i64 %list_read, i16 %Thresh_read, i11 %in_harris_mat_rows_c, i11 %in_harris_mat_cols_c, i11 %out_harris_mat_rows_c, i11 %out_harris_mat_cols_c, i64 %inHarris_c, i64 %list_c, i16 %Thresh_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 24 'call' 'call_ln42' <Predicate = true> <Delay = 1.83> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 2 <SV = 1> <Delay = 0.00>
+ST_2 : Operation 25 [2/2] (0.00ns)   --->   "%call_ln42 = call void @Array2xfMat<32, 0, 1080, 1920, 1>, i32 %gmem1, i8 %in_harris_mat_data, i64 %inHarris_c, i11 %in_harris_mat_rows_c, i11 %in_harris_mat_cols_c, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_cols_c10, void %call_ln42, void %call_ln42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 25 'call' 'call_ln42' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 0.00>
+ST_3 : Operation 26 [1/2] (0.00ns)   --->   "%call_ln42 = call void @Array2xfMat<32, 0, 1080, 1920, 1>, i32 %gmem1, i8 %in_harris_mat_data, i64 %inHarris_c, i11 %in_harris_mat_rows_c, i11 %in_harris_mat_cols_c, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_cols_c10, void %call_ln42, void %call_ln42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 26 'call' 'call_ln42' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 4 <SV = 3> <Delay = 0.00>
+ST_4 : Operation 27 [2/2] (0.00ns)   --->   "%call_ln43 = call void @cornerHarris<3, 3, 1, 0, 1080, 1920, 1, false>, i8 %in_harris_mat_data, i8 %out_harris_mat_data, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_cols_c10, i16 %Thresh_c, void %call_ln42, void %call_ln42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 27 'call' 'call_ln43' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 5 <SV = 4> <Delay = 0.00>
+ST_5 : Operation 28 [1/2] (0.00ns)   --->   "%call_ln43 = call void @cornerHarris<3, 3, 1, 0, 1080, 1920, 1, false>, i8 %in_harris_mat_data, i8 %out_harris_mat_data, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_cols_c10, i16 %Thresh_c, void %call_ln42, void %call_ln42" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 28 'call' 'call_ln43' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 6 <SV = 5> <Delay = 0.00>
+ST_6 : Operation 29 [2/2] (0.00ns)   --->   "%call_ln46 = call void @cornersImgToList<10000u, 0u, 1080u, 1920u, 1u>, i8 %out_harris_mat_data, i32 %gmem2, i11 %out_harris_mat_rows_c, i11 %out_harris_mat_cols_c, i64 %list_c, i32 %nCorners, void %call_ln43, void %call_ln43" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 29 'call' 'call_ln46' <Predicate = true> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 7 <SV = 6> <Delay = 2.78>
+ST_7 : Operation 30 [1/1] (0.00ns)   --->   "%specdataflowpipeline_ln0 = specdataflowpipeline void @_ssdm_op_SpecDataflowPipeline, i32, i32, void @empty_18"   --->   Operation 30 'specdataflowpipeline' 'specdataflowpipeline_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 31 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem2, void @empty_15, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 31 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 32 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %gmem1, void @empty_15, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 32 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 33 [1/1] (0.00ns)   --->   "%empty = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i8 %in_harris_mat_data, i8 %in_harris_mat_data"   --->   Operation 33 'specchannel' 'empty' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 34 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %in_harris_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 34 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 35 [1/1] (0.00ns)   --->   "%empty_148 = specchannel i32 @_ssdm_op_SpecChannel, void @out_harris_mat_OC_data_str, i32, void @p_str, void @p_str, i32, i32, i8 %out_harris_mat_data, i8 %out_harris_mat_data"   --->   Operation 35 'specchannel' 'empty_148' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 36 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %out_harris_mat_data, void @empty_14, i32, i32, void @empty_18, i32, i32, void @empty_18, void @empty_18, void @empty_18, i32, i32, i32, i32, void @empty_18, void @empty_18"   --->   Operation 36 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 37 [1/1] (0.00ns)   --->   "%empty_149 = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %in_harris_mat_rows_c, i11 %in_harris_mat_rows_c"   --->   Operation 37 'specchannel' 'empty_149' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 38 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %in_harris_mat_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 38 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 39 [1/1] (0.00ns)   --->   "%empty_150 = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %in_harris_mat_cols_c, i11 %in_harris_mat_cols_c"   --->   Operation 39 'specchannel' 'empty_150' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 40 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %in_harris_mat_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 40 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 41 [1/1] (0.00ns)   --->   "%empty_151 = specchannel i32 @_ssdm_op_SpecChannel, void @out_harris_mat_OC_rows_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %out_harris_mat_rows_c, i11 %out_harris_mat_rows_c"   --->   Operation 41 'specchannel' 'empty_151' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 42 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %out_harris_mat_rows_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 42 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 43 [1/1] (0.00ns)   --->   "%empty_152 = specchannel i32 @_ssdm_op_SpecChannel, void @out_harris_mat_OC_cols_c_str, i32, void @p_str, void @p_str, i32, i32, i11 %out_harris_mat_cols_c, i11 %out_harris_mat_cols_c"   --->   Operation 43 'specchannel' 'empty_152' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 44 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %out_harris_mat_cols_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 44 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 45 [1/1] (0.00ns)   --->   "%empty_153 = specchannel i32 @_ssdm_op_SpecChannel, void @inHarris_c_str, i32, void @p_str, void @p_str, i32, i32, i64 %inHarris_c, i64 %inHarris_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 45 'specchannel' 'empty_153' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 46 [1/1] (0.00ns)   --->   "%specinterface_ln42 = specinterface void @_ssdm_op_SpecInterface, i64 %inHarris_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:42]   --->   Operation 46 'specinterface' 'specinterface_ln42' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 47 [1/1] (0.00ns)   --->   "%empty_154 = specchannel i32 @_ssdm_op_SpecChannel, void @list_c_str, i32, void @p_str, void @p_str, i32, i32, i64 %list_c, i64 %list_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 47 'specchannel' 'empty_154' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 48 [1/1] (0.00ns)   --->   "%specinterface_ln46 = specinterface void @_ssdm_op_SpecInterface, i64 %list_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 48 'specinterface' 'specinterface_ln46' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 49 [1/1] (0.00ns)   --->   "%empty_155 = specchannel i32 @_ssdm_op_SpecChannel, void @Thresh_c_str, i32, void @p_str, void @p_str, i32, i32, i16 %Thresh_c, i16 %Thresh_c" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 49 'specchannel' 'empty_155' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 50 [1/1] (0.00ns)   --->   "%specinterface_ln43 = specinterface void @_ssdm_op_SpecInterface, i16 %Thresh_c, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:43]   --->   Operation 50 'specinterface' 'specinterface_ln43' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 51 [1/1] (0.00ns)   --->   "%empty_156 = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_rows_c9_str, i32, void @p_str, void @p_str, i32, i32, i11 %in_harris_mat_rows_c9, i11 %in_harris_mat_rows_c9"   --->   Operation 51 'specchannel' 'empty_156' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 52 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %in_harris_mat_rows_c9, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 52 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 53 [1/1] (0.00ns)   --->   "%empty_157 = specchannel i32 @_ssdm_op_SpecChannel, void @in_harris_mat_OC_cols_c10_str, i32, void @p_str, void @p_str, i32, i32, i11 %in_harris_mat_cols_c10, i11 %in_harris_mat_cols_c10"   --->   Operation 53 'specchannel' 'empty_157' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 54 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i11 %in_harris_mat_cols_c10, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @p_str"   --->   Operation 54 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 55 [1/2] (2.78ns)   --->   "%call_ln46 = call void @cornersImgToList<10000u, 0u, 1080u, 1920u, 1u>, i8 %out_harris_mat_data, i32 %gmem2, i11 %out_harris_mat_rows_c, i11 %out_harris_mat_cols_c, i64 %list_c, i32 %nCorners, void %call_ln43, void %call_ln43" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:46]   --->   Operation 55 'call' 'call_ln46' <Predicate = true> <Delay = 2.78> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_7 : Operation 56 [1/1] (0.00ns)   --->   "%ret_ln47 = ret" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/HarrisImg.hpp:47]   --->   Operation 56 'ret' 'ret_ln47' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+STG Binding: 
+---------------- STG Properties BEGIN ----------------
+- Is combinational: 0
+- Is one-state seq: 0
+- Is datapath-only: 0
+- Is pipelined: 0
+- Is top level: 0
+Port [ Return ] is wired: 1; IO mode=ap_ctrl_hs:ce=0
+Port [ gmem1]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=4; pingpong=0; private_global=0; IO mode=m_axi:ce=0
+Port [ gmem2]:  wired=1; compound=1; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=4; pingpong=0; private_global=0; IO mode=m_axi:ce=0
+Port [ inHarris]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ list]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ harris_rows]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ harris_cols]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ Thresh]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ nCorners]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=0; pingpong=0; private_global=0; IO mode=ap_vld:ce=0
+---------------- STG Properties END ------------------
+
+---------------- Datapath Model BEGIN ----------------
+
+<LifeTime>
+<method=bitvector/>
+Thresh_read              (read                ) [ 00000000]
+harris_cols_read         (read                ) [ 00000000]
+harris_rows_read         (read                ) [ 00000000]
+list_read                (read                ) [ 00000000]
+inHarris_read            (read                ) [ 00000000]
+in_harris_mat_cols_c10   (alloca              ) [ 00111111]
+in_harris_mat_rows_c9    (alloca              ) [ 00111111]
+Thresh_c                 (alloca              ) [ 01111111]
+list_c                   (alloca              ) [ 01111111]
+inHarris_c               (alloca              ) [ 01111111]
+out_harris_mat_cols_c    (alloca              ) [ 01111111]
+out_harris_mat_rows_c    (alloca              ) [ 01111111]
+in_harris_mat_cols_c     (alloca              ) [ 01111111]
+in_harris_mat_rows_c     (alloca              ) [ 01111111]
+in_harris_mat_data       (alloca              ) [ 00111111]
+out_harris_mat_data      (alloca              ) [ 00111111]
+call_ln42                (call                ) [ 00000000]
+call_ln42                (call                ) [ 00000000]
+call_ln43                (call                ) [ 00000000]
+specdataflowpipeline_ln0 (specdataflowpipeline) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+empty                    (specchannel         ) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+empty_148                (specchannel         ) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+empty_149                (specchannel         ) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+empty_150                (specchannel         ) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+empty_151                (specchannel         ) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+empty_152                (specchannel         ) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+empty_153                (specchannel         ) [ 00000000]
+specinterface_ln42       (specinterface       ) [ 00000000]
+empty_154                (specchannel         ) [ 00000000]
+specinterface_ln46       (specinterface       ) [ 00000000]
+empty_155                (specchannel         ) [ 00000000]
+specinterface_ln43       (specinterface       ) [ 00000000]
+empty_156                (specchannel         ) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+empty_157                (specchannel         ) [ 00000000]
+specinterface_ln0        (specinterface       ) [ 00000000]
+call_ln46                (call                ) [ 00000000]
+ret_ln47                 (ret                 ) [ 00000000]
+</LifeTime>
+
+<model>
+
+<comp_list>
+<comp id="0" class="1000" name="gmem1">
+<pin_list>
+<pin id="1" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gmem1"/></StgValue>
+</bind>
+</comp>
+
+<comp id="2" class="1000" name="gmem2">
+<pin_list>
+<pin id="3" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="gmem2"/></StgValue>
+</bind>
+</comp>
+
+<comp id="4" class="1000" name="inHarris">
+<pin_list>
+<pin id="5" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="inHarris"/></StgValue>
+</bind>
+</comp>
+
+<comp id="6" class="1000" name="list">
+<pin_list>
+<pin id="7" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="list"/></StgValue>
+</bind>
+</comp>
+
+<comp id="8" class="1000" name="harris_rows">
+<pin_list>
+<pin id="9" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="harris_rows"/></StgValue>
+</bind>
+</comp>
+
+<comp id="10" class="1000" name="harris_cols">
+<pin_list>
+<pin id="11" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="harris_cols"/></StgValue>
+</bind>
+</comp>
+
+<comp id="12" class="1000" name="Thresh">
+<pin_list>
+<pin id="13" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="Thresh"/></StgValue>
+</bind>
+</comp>
+
+<comp id="14" class="1000" name="nCorners">
+<pin_list>
+<pin id="15" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="nCorners"/></StgValue>
+</bind>
+</comp>
+
+<comp id="16" class="1001" name="const_16">
+<pin_list>
+<pin id="17" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Read.ap_auto.i16"/></StgValue>
+</bind>
+</comp>
+
+<comp id="18" class="1001" name="const_18">
+<pin_list>
+<pin id="19" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Read.ap_auto.i11"/></StgValue>
+</bind>
+</comp>
+
+<comp id="20" class="1001" name="const_20">
+<pin_list>
+<pin id="21" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Read.ap_auto.i64"/></StgValue>
+</bind>
+</comp>
+
+<comp id="22" class="1001" name="const_22">
+<pin_list>
+<pin id="23" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="24" class="1001" name="const_24">
+<pin_list>
+<pin id="25" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="HarrisImg_Block__ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii.exit1_proc65"/></StgValue>
+</bind>
+</comp>
+
+<comp id="26" class="1001" name="const_26">
+<pin_list>
+<pin id="27" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="Array2xfMat<32, 0, 1080, 1920, 1>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="28" class="1001" name="const_28">
+<pin_list>
+<pin id="29" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="cornerHarris<3, 3, 1, 0, 1080, 1920, 1, false>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="30" class="1001" name="const_30">
+<pin_list>
+<pin id="31" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="cornersImgToList<10000u, 0u, 1080u, 1920u, 1u>"/></StgValue>
+</bind>
+</comp>
+
+<comp id="32" class="1001" name="const_32">
+<pin_list>
+<pin id="33" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecDataflowPipeline"/></StgValue>
+</bind>
+</comp>
+
+<comp id="34" class="1001" name="const_34">
+<pin_list>
+<pin id="35" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="36" class="1001" name="const_36">
+<pin_list>
+<pin id="37" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="38" class="1001" name="const_38">
+<pin_list>
+<pin id="39" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="empty_18"/></StgValue>
+</bind>
+</comp>
+
+<comp id="40" class="1001" name="const_40">
+<pin_list>
+<pin id="41" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecInterface"/></StgValue>
+</bind>
+</comp>
+
+<comp id="42" class="1001" name="const_42">
+<pin_list>
+<pin id="43" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="empty_15"/></StgValue>
+</bind>
+</comp>
+
+<comp id="44" class="1001" name="const_44">
+<pin_list>
+<pin id="45" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="46" class="1001" name="const_46">
+<pin_list>
+<pin id="47" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="48" class="1001" name="const_48">
+<pin_list>
+<pin id="49" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecChannel"/></StgValue>
+</bind>
+</comp>
+
+<comp id="50" class="1001" name="const_50">
+<pin_list>
+<pin id="51" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="in_harris_mat_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="52" class="1001" name="const_52">
+<pin_list>
+<pin id="53" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="54" class="1001" name="const_54">
+<pin_list>
+<pin id="55" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="p_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="56" class="1001" name="const_56">
+<pin_list>
+<pin id="57" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="58" class="1001" name="const_58">
+<pin_list>
+<pin id="59" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="empty_14"/></StgValue>
+</bind>
+</comp>
+
+<comp id="60" class="1001" name="const_60">
+<pin_list>
+<pin id="61" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="out_harris_mat_OC_data_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="62" class="1001" name="const_62">
+<pin_list>
+<pin id="63" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="in_harris_mat_OC_rows_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="64" class="1001" name="const_64">
+<pin_list>
+<pin id="65" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="ap_fifo_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="66" class="1001" name="const_66">
+<pin_list>
+<pin id="67" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="in_harris_mat_OC_cols_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="68" class="1001" name="const_68">
+<pin_list>
+<pin id="69" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="out_harris_mat_OC_rows_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="70" class="1001" name="const_70">
+<pin_list>
+<pin id="71" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="72" class="1001" name="const_72">
+<pin_list>
+<pin id="73" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="out_harris_mat_OC_cols_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="74" class="1001" name="const_74">
+<pin_list>
+<pin id="75" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="inHarris_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="76" class="1001" name="const_76">
+<pin_list>
+<pin id="77" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="list_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="78" class="1001" name="const_78">
+<pin_list>
+<pin id="79" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="Thresh_c_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="80" class="1001" name="const_80">
+<pin_list>
+<pin id="81" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="82" class="1001" name="const_82">
+<pin_list>
+<pin id="83" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="in_harris_mat_OC_rows_c9_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="84" class="1001" name="const_84">
+<pin_list>
+<pin id="85" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="in_harris_mat_OC_cols_c10_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="86" class="1004" name="in_harris_mat_cols_c10_fu_86">
+<pin_list>
+<pin id="87" dir="0" index="0" bw="1" slack="0"/>
+<pin id="88" dir="1" index="1" bw="11" slack="1"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="in_harris_mat_cols_c10/1 "/>
+</bind>
+</comp>
+
+<comp id="90" class="1004" name="in_harris_mat_rows_c9_fu_90">
+<pin_list>
+<pin id="91" dir="0" index="0" bw="1" slack="0"/>
+<pin id="92" dir="1" index="1" bw="11" slack="1"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="in_harris_mat_rows_c9/1 "/>
+</bind>
+</comp>
+
+<comp id="94" class="1004" name="Thresh_c_fu_94">
+<pin_list>
+<pin id="95" dir="0" index="0" bw="1" slack="0"/>
+<pin id="96" dir="1" index="1" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="Thresh_c/1 "/>
+</bind>
+</comp>
+
+<comp id="98" class="1004" name="list_c_fu_98">
+<pin_list>
+<pin id="99" dir="0" index="0" bw="1" slack="0"/>
+<pin id="100" dir="1" index="1" bw="64" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="list_c/1 "/>
+</bind>
+</comp>
+
+<comp id="102" class="1004" name="inHarris_c_fu_102">
+<pin_list>
+<pin id="103" dir="0" index="0" bw="1" slack="0"/>
+<pin id="104" dir="1" index="1" bw="64" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="inHarris_c/1 "/>
+</bind>
+</comp>
+
+<comp id="106" class="1004" name="out_harris_mat_cols_c_fu_106">
+<pin_list>
+<pin id="107" dir="0" index="0" bw="1" slack="0"/>
+<pin id="108" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="out_harris_mat_cols_c/1 "/>
+</bind>
+</comp>
+
+<comp id="110" class="1004" name="out_harris_mat_rows_c_fu_110">
+<pin_list>
+<pin id="111" dir="0" index="0" bw="1" slack="0"/>
+<pin id="112" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="out_harris_mat_rows_c/1 "/>
+</bind>
+</comp>
+
+<comp id="114" class="1004" name="in_harris_mat_cols_c_fu_114">
+<pin_list>
+<pin id="115" dir="0" index="0" bw="1" slack="0"/>
+<pin id="116" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="in_harris_mat_cols_c/1 "/>
+</bind>
+</comp>
+
+<comp id="118" class="1004" name="in_harris_mat_rows_c_fu_118">
+<pin_list>
+<pin id="119" dir="0" index="0" bw="1" slack="0"/>
+<pin id="120" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="in_harris_mat_rows_c/1 "/>
+</bind>
+</comp>
+
+<comp id="122" class="1004" name="in_harris_mat_data_fu_122">
+<pin_list>
+<pin id="123" dir="0" index="0" bw="1" slack="0"/>
+<pin id="124" dir="1" index="1" bw="8" slack="1"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="in_harris_mat_data/1 "/>
+</bind>
+</comp>
+
+<comp id="126" class="1004" name="out_harris_mat_data_fu_126">
+<pin_list>
+<pin id="127" dir="0" index="0" bw="1" slack="0"/>
+<pin id="128" dir="1" index="1" bw="8" slack="3"/>
+</pin_list>
+<bind>
+<opcode="alloca(26) " fcode="alloca"/>
+<opset="out_harris_mat_data/1 "/>
+</bind>
+</comp>
+
+<comp id="130" class="1004" name="Thresh_read_read_fu_130">
+<pin_list>
+<pin id="131" dir="0" index="0" bw="16" slack="0"/>
+<pin id="132" dir="0" index="1" bw="16" slack="0"/>
+<pin id="133" dir="1" index="2" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="Thresh_read/1 "/>
+</bind>
+</comp>
+
+<comp id="136" class="1004" name="harris_cols_read_read_fu_136">
+<pin_list>
+<pin id="137" dir="0" index="0" bw="11" slack="0"/>
+<pin id="138" dir="0" index="1" bw="11" slack="0"/>
+<pin id="139" dir="1" index="2" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="harris_cols_read/1 "/>
+</bind>
+</comp>
+
+<comp id="142" class="1004" name="harris_rows_read_read_fu_142">
+<pin_list>
+<pin id="143" dir="0" index="0" bw="11" slack="0"/>
+<pin id="144" dir="0" index="1" bw="11" slack="0"/>
+<pin id="145" dir="1" index="2" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="harris_rows_read/1 "/>
+</bind>
+</comp>
+
+<comp id="148" class="1004" name="list_read_read_fu_148">
+<pin_list>
+<pin id="149" dir="0" index="0" bw="64" slack="0"/>
+<pin id="150" dir="0" index="1" bw="64" slack="0"/>
+<pin id="151" dir="1" index="2" bw="64" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="list_read/1 "/>
+</bind>
+</comp>
+
+<comp id="154" class="1004" name="inHarris_read_read_fu_154">
+<pin_list>
+<pin id="155" dir="0" index="0" bw="64" slack="0"/>
+<pin id="156" dir="0" index="1" bw="64" slack="0"/>
+<pin id="157" dir="1" index="2" bw="64" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="inHarris_read/1 "/>
+</bind>
+</comp>
+
+<comp id="160" class="1004" name="grp_cornerHarris_3_3_1_0_1080_1920_1_false_s_fu_160">
+<pin_list>
+<pin id="161" dir="0" index="0" bw="0" slack="0"/>
+<pin id="162" dir="0" index="1" bw="8" slack="3"/>
+<pin id="163" dir="0" index="2" bw="8" slack="3"/>
+<pin id="164" dir="0" index="3" bw="11" slack="3"/>
+<pin id="165" dir="0" index="4" bw="11" slack="3"/>
+<pin id="166" dir="0" index="5" bw="16" slack="3"/>
+<pin id="167" dir="1" index="6" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln43/4 "/>
+</bind>
+</comp>
+
+<comp id="169" class="1004" name="grp_Array2xfMat_32_0_1080_1920_1_s_fu_169">
+<pin_list>
+<pin id="170" dir="0" index="0" bw="0" slack="0"/>
+<pin id="171" dir="0" index="1" bw="32" slack="0"/>
+<pin id="172" dir="0" index="2" bw="8" slack="1"/>
+<pin id="173" dir="0" index="3" bw="64" slack="1"/>
+<pin id="174" dir="0" index="4" bw="11" slack="1"/>
+<pin id="175" dir="0" index="5" bw="11" slack="1"/>
+<pin id="176" dir="0" index="6" bw="11" slack="1"/>
+<pin id="177" dir="0" index="7" bw="11" slack="1"/>
+<pin id="178" dir="1" index="8" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln42/2 "/>
+</bind>
+</comp>
+
+<comp id="181" class="1004" name="grp_cornersImgToList_10000u_0u_1080u_1920u_1u_s_fu_181">
+<pin_list>
+<pin id="182" dir="0" index="0" bw="0" slack="0"/>
+<pin id="183" dir="0" index="1" bw="8" slack="5"/>
+<pin id="184" dir="0" index="2" bw="32" slack="0"/>
+<pin id="185" dir="0" index="3" bw="11" slack="5"/>
+<pin id="186" dir="0" index="4" bw="11" slack="5"/>
+<pin id="187" dir="0" index="5" bw="64" slack="5"/>
+<pin id="188" dir="0" index="6" bw="32" slack="0"/>
+<pin id="189" dir="1" index="7" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln46/6 "/>
+</bind>
+</comp>
+
+<comp id="193" class="1004" name="call_ln42_HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_fu_193">
+<pin_list>
+<pin id="194" dir="0" index="0" bw="0" slack="0"/>
+<pin id="195" dir="0" index="1" bw="11" slack="0"/>
+<pin id="196" dir="0" index="2" bw="11" slack="0"/>
+<pin id="197" dir="0" index="3" bw="64" slack="0"/>
+<pin id="198" dir="0" index="4" bw="64" slack="0"/>
+<pin id="199" dir="0" index="5" bw="16" slack="0"/>
+<pin id="200" dir="0" index="6" bw="11" slack="0"/>
+<pin id="201" dir="0" index="7" bw="11" slack="0"/>
+<pin id="202" dir="0" index="8" bw="11" slack="0"/>
+<pin id="203" dir="0" index="9" bw="11" slack="0"/>
+<pin id="204" dir="0" index="10" bw="64" slack="0"/>
+<pin id="205" dir="0" index="11" bw="64" slack="0"/>
+<pin id="206" dir="0" index="12" bw="16" slack="0"/>
+<pin id="207" dir="1" index="13" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="call(48) " fcode="call"/>
+<opset="call_ln42/1 "/>
+</bind>
+</comp>
+
+<comp id="214" class="1005" name="in_harris_mat_cols_c10_reg_214">
+<pin_list>
+<pin id="215" dir="0" index="0" bw="11" slack="1"/>
+<pin id="216" dir="1" index="1" bw="11" slack="1"/>
+</pin_list>
+<bind>
+<opset="in_harris_mat_cols_c10 "/>
+</bind>
+</comp>
+
+<comp id="220" class="1005" name="in_harris_mat_rows_c9_reg_220">
+<pin_list>
+<pin id="221" dir="0" index="0" bw="11" slack="1"/>
+<pin id="222" dir="1" index="1" bw="11" slack="1"/>
+</pin_list>
+<bind>
+<opset="in_harris_mat_rows_c9 "/>
+</bind>
+</comp>
+
+<comp id="226" class="1005" name="Thresh_c_reg_226">
+<pin_list>
+<pin id="227" dir="0" index="0" bw="16" slack="0"/>
+<pin id="228" dir="1" index="1" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opset="Thresh_c "/>
+</bind>
+</comp>
+
+<comp id="232" class="1005" name="list_c_reg_232">
+<pin_list>
+<pin id="233" dir="0" index="0" bw="64" slack="0"/>
+<pin id="234" dir="1" index="1" bw="64" slack="0"/>
+</pin_list>
+<bind>
+<opset="list_c "/>
+</bind>
+</comp>
+
+<comp id="238" class="1005" name="inHarris_c_reg_238">
+<pin_list>
+<pin id="239" dir="0" index="0" bw="64" slack="0"/>
+<pin id="240" dir="1" index="1" bw="64" slack="0"/>
+</pin_list>
+<bind>
+<opset="inHarris_c "/>
+</bind>
+</comp>
+
+<comp id="244" class="1005" name="out_harris_mat_cols_c_reg_244">
+<pin_list>
+<pin id="245" dir="0" index="0" bw="11" slack="0"/>
+<pin id="246" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="out_harris_mat_cols_c "/>
+</bind>
+</comp>
+
+<comp id="250" class="1005" name="out_harris_mat_rows_c_reg_250">
+<pin_list>
+<pin id="251" dir="0" index="0" bw="11" slack="0"/>
+<pin id="252" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="out_harris_mat_rows_c "/>
+</bind>
+</comp>
+
+<comp id="256" class="1005" name="in_harris_mat_cols_c_reg_256">
+<pin_list>
+<pin id="257" dir="0" index="0" bw="11" slack="0"/>
+<pin id="258" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="in_harris_mat_cols_c "/>
+</bind>
+</comp>
+
+<comp id="262" class="1005" name="in_harris_mat_rows_c_reg_262">
+<pin_list>
+<pin id="263" dir="0" index="0" bw="11" slack="0"/>
+<pin id="264" dir="1" index="1" bw="11" slack="0"/>
+</pin_list>
+<bind>
+<opset="in_harris_mat_rows_c "/>
+</bind>
+</comp>
+
+<comp id="268" class="1005" name="in_harris_mat_data_reg_268">
+<pin_list>
+<pin id="269" dir="0" index="0" bw="8" slack="1"/>
+<pin id="270" dir="1" index="1" bw="8" slack="1"/>
+</pin_list>
+<bind>
+<opset="in_harris_mat_data "/>
+</bind>
+</comp>
+
+<comp id="274" class="1005" name="out_harris_mat_data_reg_274">
+<pin_list>
+<pin id="275" dir="0" index="0" bw="8" slack="3"/>
+<pin id="276" dir="1" index="1" bw="8" slack="3"/>
+</pin_list>
+<bind>
+<opset="out_harris_mat_data "/>
+</bind>
+</comp>
+
+</comp_list>
+
+<net_list>
+<net id="89"><net_src comp="22" pin="0"/><net_sink comp="86" pin=0"/></net>
+
+<net id="93"><net_src comp="22" pin="0"/><net_sink comp="90" pin=0"/></net>
+
+<net id="97"><net_src comp="22" pin="0"/><net_sink comp="94" pin=0"/></net>
+
+<net id="101"><net_src comp="22" pin="0"/><net_sink comp="98" pin=0"/></net>
+
+<net id="105"><net_src comp="22" pin="0"/><net_sink comp="102" pin=0"/></net>
+
+<net id="109"><net_src comp="22" pin="0"/><net_sink comp="106" pin=0"/></net>
+
+<net id="113"><net_src comp="22" pin="0"/><net_sink comp="110" pin=0"/></net>
+
+<net id="117"><net_src comp="22" pin="0"/><net_sink comp="114" pin=0"/></net>
+
+<net id="121"><net_src comp="22" pin="0"/><net_sink comp="118" pin=0"/></net>
+
+<net id="125"><net_src comp="22" pin="0"/><net_sink comp="122" pin=0"/></net>
+
+<net id="129"><net_src comp="22" pin="0"/><net_sink comp="126" pin=0"/></net>
+
+<net id="134"><net_src comp="16" pin="0"/><net_sink comp="130" pin=0"/></net>
+
+<net id="135"><net_src comp="12" pin="0"/><net_sink comp="130" pin=1"/></net>
+
+<net id="140"><net_src comp="18" pin="0"/><net_sink comp="136" pin=0"/></net>
+
+<net id="141"><net_src comp="10" pin="0"/><net_sink comp="136" pin=1"/></net>
+
+<net id="146"><net_src comp="18" pin="0"/><net_sink comp="142" pin=0"/></net>
+
+<net id="147"><net_src comp="8" pin="0"/><net_sink comp="142" pin=1"/></net>
+
+<net id="152"><net_src comp="20" pin="0"/><net_sink comp="148" pin=0"/></net>
+
+<net id="153"><net_src comp="6" pin="0"/><net_sink comp="148" pin=1"/></net>
+
+<net id="158"><net_src comp="20" pin="0"/><net_sink comp="154" pin=0"/></net>
+
+<net id="159"><net_src comp="4" pin="0"/><net_sink comp="154" pin=1"/></net>
+
+<net id="168"><net_src comp="28" pin="0"/><net_sink comp="160" pin=0"/></net>
+
+<net id="179"><net_src comp="26" pin="0"/><net_sink comp="169" pin=0"/></net>
+
+<net id="180"><net_src comp="0" pin="0"/><net_sink comp="169" pin=1"/></net>
+
+<net id="190"><net_src comp="30" pin="0"/><net_sink comp="181" pin=0"/></net>
+
+<net id="191"><net_src comp="2" pin="0"/><net_sink comp="181" pin=2"/></net>
+
+<net id="192"><net_src comp="14" pin="0"/><net_sink comp="181" pin=6"/></net>
+
+<net id="208"><net_src comp="24" pin="0"/><net_sink comp="193" pin=0"/></net>
+
+<net id="209"><net_src comp="142" pin="2"/><net_sink comp="193" pin=1"/></net>
+
+<net id="210"><net_src comp="136" pin="2"/><net_sink comp="193" pin=2"/></net>
+
+<net id="211"><net_src comp="154" pin="2"/><net_sink comp="193" pin=3"/></net>
+
+<net id="212"><net_src comp="148" pin="2"/><net_sink comp="193" pin=4"/></net>
+
+<net id="213"><net_src comp="130" pin="2"/><net_sink comp="193" pin=5"/></net>
+
+<net id="217"><net_src comp="86" pin="1"/><net_sink comp="214" pin=0"/></net>
+
+<net id="218"><net_src comp="214" pin="1"/><net_sink comp="169" pin=7"/></net>
+
+<net id="219"><net_src comp="214" pin="1"/><net_sink comp="160" pin=4"/></net>
+
+<net id="223"><net_src comp="90" pin="1"/><net_sink comp="220" pin=0"/></net>
+
+<net id="224"><net_src comp="220" pin="1"/><net_sink comp="169" pin=6"/></net>
+
+<net id="225"><net_src comp="220" pin="1"/><net_sink comp="160" pin=3"/></net>
+
+<net id="229"><net_src comp="94" pin="1"/><net_sink comp="226" pin=0"/></net>
+
+<net id="230"><net_src comp="226" pin="1"/><net_sink comp="193" pin=12"/></net>
+
+<net id="231"><net_src comp="226" pin="1"/><net_sink comp="160" pin=5"/></net>
+
+<net id="235"><net_src comp="98" pin="1"/><net_sink comp="232" pin=0"/></net>
+
+<net id="236"><net_src comp="232" pin="1"/><net_sink comp="193" pin=11"/></net>
+
+<net id="237"><net_src comp="232" pin="1"/><net_sink comp="181" pin=5"/></net>
+
+<net id="241"><net_src comp="102" pin="1"/><net_sink comp="238" pin=0"/></net>
+
+<net id="242"><net_src comp="238" pin="1"/><net_sink comp="193" pin=10"/></net>
+
+<net id="243"><net_src comp="238" pin="1"/><net_sink comp="169" pin=3"/></net>
+
+<net id="247"><net_src comp="106" pin="1"/><net_sink comp="244" pin=0"/></net>
+
+<net id="248"><net_src comp="244" pin="1"/><net_sink comp="193" pin=9"/></net>
+
+<net id="249"><net_src comp="244" pin="1"/><net_sink comp="181" pin=4"/></net>
+
+<net id="253"><net_src comp="110" pin="1"/><net_sink comp="250" pin=0"/></net>
+
+<net id="254"><net_src comp="250" pin="1"/><net_sink comp="193" pin=8"/></net>
+
+<net id="255"><net_src comp="250" pin="1"/><net_sink comp="181" pin=3"/></net>
+
+<net id="259"><net_src comp="114" pin="1"/><net_sink comp="256" pin=0"/></net>
+
+<net id="260"><net_src comp="256" pin="1"/><net_sink comp="193" pin=7"/></net>
+
+<net id="261"><net_src comp="256" pin="1"/><net_sink comp="169" pin=5"/></net>
+
+<net id="265"><net_src comp="118" pin="1"/><net_sink comp="262" pin=0"/></net>
+
+<net id="266"><net_src comp="262" pin="1"/><net_sink comp="193" pin=6"/></net>
+
+<net id="267"><net_src comp="262" pin="1"/><net_sink comp="169" pin=4"/></net>
+
+<net id="271"><net_src comp="122" pin="1"/><net_sink comp="268" pin=0"/></net>
+
+<net id="272"><net_src comp="268" pin="1"/><net_sink comp="169" pin=2"/></net>
+
+<net id="273"><net_src comp="268" pin="1"/><net_sink comp="160" pin=1"/></net>
+
+<net id="277"><net_src comp="126" pin="1"/><net_sink comp="274" pin=0"/></net>
+
+<net id="278"><net_src comp="274" pin="1"/><net_sink comp="160" pin=2"/></net>
+
+<net id="279"><net_src comp="274" pin="1"/><net_sink comp="181" pin=1"/></net>
+
+</net_list>
+
+</model> 
+---------------- Datapath Model END ------------------
+
+* FSMD analyzer results:
+  - Output states:
+	Port: gmem1 | {}
+	Port: gmem2 | {6 7 }
+	Port: nCorners | {6 7 }
+ - Input state : 
+	Port: HarrisImg : gmem1 | {2 3 }
+	Port: HarrisImg : gmem2 | {}
+	Port: HarrisImg : inHarris | {1 }
+	Port: HarrisImg : list | {1 }
+	Port: HarrisImg : harris_rows | {1 }
+	Port: HarrisImg : harris_cols | {1 }
+	Port: HarrisImg : Thresh | {1 }
+  - Chain level:
+	State 1
+		call_ln42 : 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+
+* Functional unit list:
+|----------|---------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+| Operation|                                       Functional Unit                                       |   BRAM  |   DSP   |  Delay  |    FF   |   LUT   |
+|----------|---------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+|          |                     grp_cornerHarris_3_3_1_0_1080_1920_1_false_s_fu_160                     |    33   |    11   | 91.3715 |   4500  |   4698  |
+|   call   |                          grp_Array2xfMat_32_0_1080_1920_1_s_fu_169                          |    0    |    2    |  5.904  |   1004  |   1370  |
+|          |                    grp_cornersImgToList_10000u_0u_1080u_1920u_1u_s_fu_181                   |    0    |    1    |  5.248  |   534   |   551   |
+|          | call_ln42_HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_fu_193 |    0    |    0    |    0    |    0    |    0    |
+|----------|---------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+|          |                                   Thresh_read_read_fu_130                                   |    0    |    0    |    0    |    0    |    0    |
+|          |                                 harris_cols_read_read_fu_136                                |    0    |    0    |    0    |    0    |    0    |
+|   read   |                                 harris_rows_read_read_fu_142                                |    0    |    0    |    0    |    0    |    0    |
+|          |                                    list_read_read_fu_148                                    |    0    |    0    |    0    |    0    |    0    |
+|          |                                  inHarris_read_read_fu_154                                  |    0    |    0    |    0    |    0    |    0    |
+|----------|---------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+|   Total  |                                                                                             |    33   |    14   | 102.524 |   6038  |   6619  |
+|----------|---------------------------------------------------------------------------------------------|---------|---------|---------|---------|---------|
+
+Memories:
+N/A
+
+* Register list:
++------------------------------+--------+
+|                              |   FF   |
++------------------------------+--------+
+|       Thresh_c_reg_226       |   16   |
+|      inHarris_c_reg_238      |   64   |
+|in_harris_mat_cols_c10_reg_214|   11   |
+| in_harris_mat_cols_c_reg_256 |   11   |
+|  in_harris_mat_data_reg_268  |    8   |
+| in_harris_mat_rows_c9_reg_220|   11   |
+| in_harris_mat_rows_c_reg_262 |   11   |
+|        list_c_reg_232        |   64   |
+| out_harris_mat_cols_c_reg_244|   11   |
+|  out_harris_mat_data_reg_274 |    8   |
+| out_harris_mat_rows_c_reg_250|   11   |
++------------------------------+--------+
+|             Total            |   226  |
++------------------------------+--------+
+
+* Multiplexer (MUX) list: 
+|--------|------|------|------|--------|
+|  Comp  |  Pin | Size |  BW  | S x BW |
+|--------|------|------|------|--------|
+|  Total |      |      |      |    0   |
+|--------|------|------|------|--------|
+
+
+
+* Summary:
++-----------+--------+--------+--------+--------+--------+
+|           |  BRAM  |   DSP  |  Delay |   FF   |   LUT  |
++-----------+--------+--------+--------+--------+--------+
+|  Function |   33   |   14   |   102  |  6038  |  6619  |
+|   Memory  |    -   |    -   |    -   |    -   |    -   |
+|Multiplexer|    -   |    -   |    -   |    -   |    -   |
+|  Register |    -   |    -   |    -   |   226  |    -   |
++-----------+--------+--------+--------+--------+--------+
+|   Total   |   33   |   14   |   102  |  6264  |  6619  |
++-----------+--------+--------+--------+--------+--------+

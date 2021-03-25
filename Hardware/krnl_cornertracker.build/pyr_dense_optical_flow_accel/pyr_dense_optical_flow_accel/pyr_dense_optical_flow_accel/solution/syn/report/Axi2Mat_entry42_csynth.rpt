@@ -1,0 +1,153 @@
+
+
+================================================================
+== Vitis HLS Report for 'Axi2Mat_entry42'
+================================================================
+* Date:           Thu Mar 25 14:59:48 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        pyr_dense_optical_flow_accel
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 3.676 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+---------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+    |   min   |   max   |    min   |    max   | min | max |   Type  |
+    +---------+---------+----------+----------+-----+-----+---------+
+    |        0|        0|   0 ns   |   0 ns   |    0|    0|   none  |
+    +---------+---------+----------+----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|       2|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       -|       -|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|      72|    -|
+|Register         |        -|     -|       3|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     0|       3|      74|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|     0|   ~0   |   ~0   |    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------+----------+----+---+----+------------+------------+
+    |  Variable Name  | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |ap_block_state1  |    or    |   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+    |Total            |          |   0|  0|   2|           1|           1|
+    +-----------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------+----+-----------+-----+-----------+
+    |      Name      | LUT| Input Size| Bits| Total Bits|
+    +----------------+----+-----------+-----+-----------+
+    |ap_done         |   9|          2|    1|          2|
+    |cols_blk_n      |   9|          2|    1|          2|
+    |cols_out_blk_n  |   9|          2|    1|          2|
+    |din_blk_n       |   9|          2|    1|          2|
+    |din_out_blk_n   |   9|          2|    1|          2|
+    |real_start      |   9|          2|    1|          2|
+    |rows_blk_n      |   9|          2|    1|          2|
+    |rows_out_blk_n  |   9|          2|    1|          2|
+    +----------------+----+-----------+-----+-----------+
+    |Total           |  72|         16|    8|         16|
+    +----------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------+---+----+-----+-----------+
+    |      Name      | FF| LUT| Bits| Const Bits|
+    +----------------+---+----+-----+-----------+
+    |ap_CS_fsm       |  1|   0|    1|          0|
+    |ap_done_reg     |  1|   0|    1|          0|
+    |start_once_reg  |  1|   0|    1|          0|
+    +----------------+---+----+-----+-----------+
+    |Total           |  3|   0|    3|          0|
+    +----------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------+-----+-----+------------+-----------------+--------------+
+|    RTL Ports    | Dir | Bits|  Protocol  |  Source Object  |    C Type    |
++-----------------+-----+-----+------------+-----------------+--------------+
+|ap_clk           |  in |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|ap_rst           |  in |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|ap_start         |  in |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|start_full_n     |  in |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|ap_done          | out |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|ap_continue      |  in |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|ap_idle          | out |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|ap_ready         | out |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|start_out        | out |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|start_write      | out |    1| ap_ctrl_hs | Axi2Mat.entry42 | return value |
+|din_dout         |  in |   64|   ap_fifo  |       din       |    pointer   |
+|din_empty_n      |  in |    1|   ap_fifo  |       din       |    pointer   |
+|din_read         | out |    1|   ap_fifo  |       din       |    pointer   |
+|rows_dout        |  in |   32|   ap_fifo  |       rows      |    pointer   |
+|rows_empty_n     |  in |    1|   ap_fifo  |       rows      |    pointer   |
+|rows_read        | out |    1|   ap_fifo  |       rows      |    pointer   |
+|cols_dout        |  in |   32|   ap_fifo  |       cols      |    pointer   |
+|cols_empty_n     |  in |    1|   ap_fifo  |       cols      |    pointer   |
+|cols_read        | out |    1|   ap_fifo  |       cols      |    pointer   |
+|din_out_din      | out |   64|   ap_fifo  |     din_out     |    pointer   |
+|din_out_full_n   |  in |    1|   ap_fifo  |     din_out     |    pointer   |
+|din_out_write    | out |    1|   ap_fifo  |     din_out     |    pointer   |
+|rows_out_din     | out |   32|   ap_fifo  |     rows_out    |    pointer   |
+|rows_out_full_n  |  in |    1|   ap_fifo  |     rows_out    |    pointer   |
+|rows_out_write   | out |    1|   ap_fifo  |     rows_out    |    pointer   |
+|cols_out_din     | out |   32|   ap_fifo  |     cols_out    |    pointer   |
+|cols_out_full_n  |  in |    1|   ap_fifo  |     cols_out    |    pointer   |
+|cols_out_write   | out |    1|   ap_fifo  |     cols_out    |    pointer   |
++-----------------+-----+-----+------------+-----------------+--------------+
+

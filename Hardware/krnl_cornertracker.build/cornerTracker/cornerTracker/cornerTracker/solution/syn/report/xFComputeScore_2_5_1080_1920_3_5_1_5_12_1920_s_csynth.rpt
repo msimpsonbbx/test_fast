@@ -1,0 +1,209 @@
+
+
+================================================================
+== Vitis HLS Report for 'xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s'
+================================================================
+* Date:           Thu Mar 25 14:57:23 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        cornerTracker
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 3.676 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+---------+---------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |      Interval     | Pipeline|
+    |   min   |   max   |    min    |    max    |   min   |   max   |   Type  |
+    +---------+---------+-----------+-----------+---------+---------+---------+
+    |  2083321|  2083321| 13.890 ms | 13.890 ms |  2083321|  2083321|   none  |
+    +---------+---------+-----------+-----------+---------+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+        |             |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- Row_Loop   |  2083320|  2083320|      1929|          -|          -|  1080|    no    |
+        | + Col_Loop  |     1926|     1926|         8|          1|          1|  1920|    yes   |
+        +-------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     3|       -|       -|    -|
+|Expression       |        -|     -|       0|     110|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     2|       0|      43|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|     144|    -|
+|Register         |        -|     -|     218|      32|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     5|     218|     329|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|  ~0  |   ~0   |   ~0   |    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +--------------------------+---------------------+---------+----+---+----+-----+
+    |         Instance         |        Module       | BRAM_18K| DSP| FF| LUT| URAM|
+    +--------------------------+---------------------+---------+----+---+----+-----+
+    |mul_30s_13ns_43_3_1_U196  |mul_30s_13ns_43_3_1  |        0|   2|  0|  43|    0|
+    +--------------------------+---------------------+---------+----+---+----+-----+
+    |Total                     |                     |        0|   2|  0|  43|    0|
+    +--------------------------+---------------------+---------+----+---+----+-----+
+
+    * DSP: 
+    +------------------------------------+-------------------------------+-----------------------+
+    |              Instance              |             Module            |       Expression      |
+    +------------------------------------+-------------------------------+-----------------------+
+    |am_addmul_14s_14s_30_3_1_U198       |am_addmul_14s_14s_30_3_1       | (i0 + i1) * (i0 + i1) |
+    |mac_mulsub_14s_14s_28s_28_4_1_U199  |mac_mulsub_14s_14s_28s_28_4_1  |      i0 - i1 * i1     |
+    |mul_mul_14s_14s_28_4_1_U197         |mul_mul_14s_14s_28_4_1         |        i0 * i1        |
+    +------------------------------------+-------------------------------+-----------------------+
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------------------+----------+----+---+----+------------+------------+
+    |           Variable Name           | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------------------+----------+----+---+----+------------+------------+
+    |add_ln695_10_fu_181_p2             |     +    |   0|  0|  18|          11|           1|
+    |add_ln695_fu_170_p2                |     +    |   0|  0|  18|          11|           1|
+    |sub_ln69_1_fu_258_p2               |     -    |   0|  0|  36|          29|          29|
+    |ap_block_state10_pp0_stage0_iter7  |    and   |   0|  0|   2|           1|           1|
+    |icmp_ln338_fu_165_p2               |   icmp   |   0|  0|  13|          11|          11|
+    |icmp_ln344_fu_176_p2               |   icmp   |   0|  0|  13|          11|          11|
+    |ap_block_pp0_stage0_01001          |    or    |   0|  0|   2|           1|           1|
+    |ap_block_state1                    |    or    |   0|  0|   2|           1|           1|
+    |ap_block_state4_pp0_stage0_iter1   |    or    |   0|  0|   2|           1|           1|
+    |ap_enable_pp0                      |    xor   |   0|  0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1            |    xor   |   0|  0|   2|           2|           1|
+    +-----------------------------------+----------+----+---+----+------------+------------+
+    |Total                              |          |   0|  0| 110|          80|          60|
+    +-----------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                |  27|          5|    1|          5|
+    |ap_done                  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter7  |   9|          2|    1|          2|
+    |empty_106_reg_154        |   9|          2|   11|         22|
+    |empty_reg_143            |   9|          2|   11|         22|
+    |gradx2g_44_blk_n         |   9|          2|    1|          2|
+    |gradxyg_46_blk_n         |   9|          2|    1|          2|
+    |grady2g_45_blk_n         |   9|          2|    1|          2|
+    |img_height_blk_n         |   9|          2|    1|          2|
+    |img_height_out_blk_n     |   9|          2|    1|          2|
+    |img_width_blk_n          |   9|          2|    1|          2|
+    |img_width_out_blk_n      |   9|          2|    1|          2|
+    |score_47_blk_n           |   9|          2|    1|          2|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    | 144|         31|   34|         71|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------------+----+----+-----+-----------+
+    |                 Name                 | FF | LUT| Bits| Const Bits|
+    +--------------------------------------+----+----+-----+-----------+
+    |add_ln695_reg_304                     |  11|   0|   11|          0|
+    |ap_CS_fsm                             |   4|   0|    4|          0|
+    |ap_done_reg                           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0               |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1               |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2               |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3               |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter4               |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter5               |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter6               |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter7               |   1|   0|    1|          0|
+    |empty_106_reg_154                     |  11|   0|   11|          0|
+    |empty_reg_143                         |  11|   0|   11|          0|
+    |icmp_ln344_reg_309                    |   1|   0|    1|          0|
+    |img_height_read_reg_290               |  11|   0|   11|          0|
+    |img_width_read_reg_295                |  11|   0|   11|          0|
+    |sub_ln69_1_reg_361                    |  29|   0|   29|          0|
+    |trunc_ln1501_1_reg_324                |  14|   0|   14|          0|
+    |trunc_ln1501_2_reg_330                |  14|   0|   14|          0|
+    |trunc_ln1501_2_reg_330_pp0_iter2_reg  |  14|   0|   14|          0|
+    |trunc_ln_reg_318                      |  14|   0|   14|          0|
+    |icmp_ln344_reg_309                    |  64|  32|    1|          0|
+    +--------------------------------------+----+----+-----+-----------+
+    |Total                                 | 218|  32|  155|          0|
+    +--------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------+-----+-----+------------+--------------------------------------------------------+--------------+
+|       RTL Ports       | Dir | Bits|  Protocol  |                      Source Object                     |    C Type    |
++-----------------------+-----+-----+------------+--------------------------------------------------------+--------------+
+|ap_clk                 |  in |    1| ap_ctrl_hs | xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920> | return value |
+|ap_rst                 |  in |    1| ap_ctrl_hs | xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920> | return value |
+|ap_start               |  in |    1| ap_ctrl_hs | xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920> | return value |
+|ap_done                | out |    1| ap_ctrl_hs | xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920> | return value |
+|ap_continue            |  in |    1| ap_ctrl_hs | xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920> | return value |
+|ap_idle                | out |    1| ap_ctrl_hs | xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920> | return value |
+|ap_ready               | out |    1| ap_ctrl_hs | xFComputeScore<2, 5, 1080, 1920, 3, 5, 1, 5, 12, 1920> | return value |
+|gradx2g_44_dout        |  in |   16|   ap_fifo  |                       gradx2g_44                       |    pointer   |
+|gradx2g_44_empty_n     |  in |    1|   ap_fifo  |                       gradx2g_44                       |    pointer   |
+|gradx2g_44_read        | out |    1|   ap_fifo  |                       gradx2g_44                       |    pointer   |
+|grady2g_45_dout        |  in |   16|   ap_fifo  |                       grady2g_45                       |    pointer   |
+|grady2g_45_empty_n     |  in |    1|   ap_fifo  |                       grady2g_45                       |    pointer   |
+|grady2g_45_read        | out |    1|   ap_fifo  |                       grady2g_45                       |    pointer   |
+|gradxyg_46_dout        |  in |   16|   ap_fifo  |                       gradxyg_46                       |    pointer   |
+|gradxyg_46_empty_n     |  in |    1|   ap_fifo  |                       gradxyg_46                       |    pointer   |
+|gradxyg_46_read        | out |    1|   ap_fifo  |                       gradxyg_46                       |    pointer   |
+|score_47_din           | out |   32|   ap_fifo  |                        score_47                        |    pointer   |
+|score_47_full_n        |  in |    1|   ap_fifo  |                        score_47                        |    pointer   |
+|score_47_write         | out |    1|   ap_fifo  |                        score_47                        |    pointer   |
+|img_height_dout        |  in |   11|   ap_fifo  |                       img_height                       |    pointer   |
+|img_height_empty_n     |  in |    1|   ap_fifo  |                       img_height                       |    pointer   |
+|img_height_read        | out |    1|   ap_fifo  |                       img_height                       |    pointer   |
+|img_width_dout         |  in |   11|   ap_fifo  |                        img_width                       |    pointer   |
+|img_width_empty_n      |  in |    1|   ap_fifo  |                        img_width                       |    pointer   |
+|img_width_read         | out |    1|   ap_fifo  |                        img_width                       |    pointer   |
+|img_height_out_din     | out |   11|   ap_fifo  |                     img_height_out                     |    pointer   |
+|img_height_out_full_n  |  in |    1|   ap_fifo  |                     img_height_out                     |    pointer   |
+|img_height_out_write   | out |    1|   ap_fifo  |                     img_height_out                     |    pointer   |
+|img_width_out_din      | out |   11|   ap_fifo  |                      img_width_out                     |    pointer   |
+|img_width_out_full_n   |  in |    1|   ap_fifo  |                      img_width_out                     |    pointer   |
+|img_width_out_write    | out |    1|   ap_fifo  |                      img_width_out                     |    pointer   |
++-----------------------+-----+-----+------------+--------------------------------------------------------+--------------+
+

@@ -1,0 +1,2 @@
+Compiling (bitstream) accelerator binary: krnl_cornertracker
+Log file: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/runme.log

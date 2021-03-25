@@ -1,0 +1,227 @@
+
+
+================================================================
+== Vitis HLS Report for 'split_stream_int_fixed_unsigned_short_1080_unsigned_short_1920_16_10_48'
+================================================================
+* Date:           Thu Mar 25 14:59:27 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        pyr_dense_optical_flow_accel
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 3.588 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+---------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |    Interval   | Pipeline|
+    |   min   |   max   |    min    |    max    | min |   max   |   Type  |
+    +---------+---------+-----------+-----------+-----+---------+---------+
+    |        5|  2076841| 33.335 ns | 13.846 ms |    5|  2076841|   none  |
+    +---------+---------+-----------+-----------+-----+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------------+---------+---------+----------+-----------+-----------+----------+----------+
+        |                     |  Latency (cycles) | Iteration|  Initiation Interval  |   Trip   |          |
+        |      Loop Name      |   min   |   max   |  Latency |  achieved |   target  |   Count  | Pipelined|
+        +---------------------+---------+---------+----------+-----------+-----------+----------+----------+
+        |- VITIS_LOOP_103_1   |        4|  2076840| 4 ~ 1923 |          -|          -| 1 ~ 1080 |    no    |
+        | + VITIS_LOOP_107_2  |        1|     1920|         2|          1|          1| 1 ~ 1920 |    yes   |
+        +---------------------+---------+---------+----------+-----------+-----------+----------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 2
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 5
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 2, States = { 3 4 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 5 4 
+4 --> 3 
+5 --> 2 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.86>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%init_flag_read = read i1 @_ssdm_op_Read.ap_auto.i1, i1 %init_flag" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 6 'read' 'init_flag_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%scale_in_read = read i32 @_ssdm_op_Read.ap_auto.float, i32 %scale_in" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 7 'read' 'scale_in_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%scale_up_flag_read = read i1 @_ssdm_op_Read.ap_auto.i1, i1 %scale_up_flag" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 8 'read' 'scale_up_flag_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%level_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %level" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 9 'read' 'level_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%cols2_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %cols2" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 10 'read' 'cols2_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%rows1_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %rows1" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 11 'read' 'rows1_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (0.00ns)   --->   "%cols_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %cols" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 12 'read' 'cols_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%rows_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %rows" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 13 'read' 'rows_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%trunc_ln91 = trunc i32 %cols2_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 14 'trunc' 'trunc_ln91' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%trunc_ln91_1 = trunc i32 %rows1_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 15 'trunc' 'trunc_ln91_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%trunc_ln91_2 = trunc i32 %cols_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 16 'trunc' 'trunc_ln91_2' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 17 [1/1] (0.00ns)   --->   "%trunc_ln91_3 = trunc i32 %rows_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 17 'trunc' 'trunc_ln91_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 18 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %streamFlowin_mat_436, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 18 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 19 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %streamFlowin_mat_436, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 19 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 20 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %strmFlowU_split15, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 20 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 21 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %strmFlowU_split15, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 21 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 22 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %strmFlowV_split16, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 22 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 23 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %strmFlowV_split16, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 23 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 24 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %rows_out, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 24 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 25 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i16P, i16 %rows_out, i16 %trunc_ln91_3" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 25 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 26 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %rows_out1, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 26 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 27 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i16P, i16 %rows_out1, i16 %trunc_ln91_3" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 27 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 28 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %cols_out, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 28 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 29 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i16P, i16 %cols_out, i16 %trunc_ln91_2" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 29 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 30 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %cols_out2, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 30 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 31 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i16P, i16 %cols_out2, i16 %trunc_ln91_2" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 31 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 32 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %rows1_out, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 32 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 33 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i32P, i32 %rows1_out, i32 %rows1_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 33 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 34 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %rows1_out3, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 34 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 35 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i16P, i16 %rows1_out3, i16 %trunc_ln91_1" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 35 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %cols2_out, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 36 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 37 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i32P, i32 %cols2_out, i32 %cols2_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 37 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 38 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %cols2_out4, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 38 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 39 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i16P, i16 %cols2_out4, i16 %trunc_ln91" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 39 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_1 : Operation 40 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %level_out, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 40 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 41 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i32P, i32 %level_out, i32 %level_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 41 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 3> <FIFO>
+ST_1 : Operation 42 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i1 %scale_up_flag_out, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 42 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 43 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i1P, i1 %scale_up_flag_out, i1 %scale_up_flag_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 43 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 1> <Depth = 2> <FIFO>
+ST_1 : Operation 44 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i1 %scale_up_flag_out5, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 44 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 45 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i1P, i1 %scale_up_flag_out5, i1 %scale_up_flag_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 45 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 1> <Depth = 2> <FIFO>
+ST_1 : Operation 46 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %scale_in_out, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 46 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 47 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.floatP, i32 %scale_in_out, i32 %scale_in_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 47 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 48 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %scale_in_out6, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 48 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 49 [1/1] (1.83ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.floatP, i32 %scale_in_out6, i32 %scale_in_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 49 'write' 'write_ln91' <Predicate = true> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 2> <FIFO>
+ST_1 : Operation 50 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i1 %init_flag_out, void @ap_fifo_str, i32, i32, void @p_str, i32, i32, void @p_str, void @p_str, void @p_str, i32, i32, i32, i32, void @p_str, void @ScalarProp_str"   --->   Operation 50 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 51 [1/1] (1.86ns)   --->   "%write_ln91 = write void @_ssdm_op_Write.ap_fifo.i1P, i1 %init_flag_out, i1 %init_flag_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91]   --->   Operation 51 'write' 'write_ln91' <Predicate = true> <Delay = 1.86> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 1> <Depth = 5> <FIFO>
+ST_1 : Operation 52 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %streamFlowin_mat_436, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 52 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 53 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %strmFlowU_split15, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 53 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 54 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %strmFlowV_split16, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 54 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 55 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %strmFlowV_split16, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 55 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 56 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i16 %strmFlowU_split15, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 56 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 57 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i32 %streamFlowin_mat_436, void @empty_35, i32, i32, void @empty_25, i32, i32, void @empty_25, void @empty_25, void @empty_25, i32, i32, i32, i32, void @empty_25, void @empty_25"   --->   Operation 57 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 58 [1/1] (0.65ns)   --->   "%br_ln103 = br void" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:103]   --->   Operation 58 'br' 'br_ln103' <Predicate = true> <Delay = 0.65>
+
+State 2 <SV = 1> <Delay = 1.34>
+ST_2 : Operation 59 [1/1] (0.00ns)   --->   "%empty = phi i16, void %entry, i16 %add_ln695_2, void %._crit_edge.loopexit.i.i"   --->   Operation 59 'phi' 'empty' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 60 [1/1] (0.00ns)   --->   "%zext_ln882 = zext i16 %empty"   --->   Operation 60 'zext' 'zext_ln882' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 61 [1/1] (0.99ns)   --->   "%icmp_ln882 = icmp_ult  i32 %zext_ln882, i32 %rows_read"   --->   Operation 61 'icmp' 'icmp_ln882' <Predicate = true> <Delay = 0.99> <CoreInst = "Cmp">   --->   Core 10 'Cmp' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 62 [1/1] (0.85ns)   --->   "%add_ln695_2 = add i16 %empty, i16"   --->   Operation 62 'add' 'add_ln695_2' <Predicate = true> <Delay = 0.85> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 63 [1/1] (0.00ns)   --->   "%br_ln103 = br i1 %icmp_ln882, void %.exit, void %.split3.i.i" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:103]   --->   Operation 63 'br' 'br_ln103' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 64 [1/1] (0.00ns)   --->   "%speclooptripcount_ln0 = speclooptripcount void @_ssdm_op_SpecLoopTripCount, i64, i64, i64"   --->   Operation 64 'speclooptripcount' 'speclooptripcount_ln0' <Predicate = (icmp_ln882)> <Delay = 0.00>
+ST_2 : Operation 65 [1/1] (0.00ns)   --->   "%specloopname_ln0 = specloopname void @_ssdm_op_SpecLoopName, void @empty_16"   --->   Operation 65 'specloopname' 'specloopname_ln0' <Predicate = (icmp_ln882)> <Delay = 0.00>
+ST_2 : Operation 66 [1/1] (0.65ns)   --->   "%br_ln107 = br void" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:107]   --->   Operation 66 'br' 'br_ln107' <Predicate = (icmp_ln882)> <Delay = 0.65>
+ST_2 : Operation 67 [1/1] (0.00ns)   --->   "%ret_ln0 = ret"   --->   Operation 67 'ret' 'ret_ln0' <Predicate = (!icmp_ln882)> <Delay = 0.00>
+
+State 3 <SV = 2> <Delay = 0.99>
+ST_3 : Operation 68 [1/1] (0.00ns)   --->   "%empty_154 = phi i16, void %.split3.i.i, i16 %add_ln695, void %.split.i.i"   --->   Operation 68 'phi' 'empty_154' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 69 [1/1] (0.00ns)   --->   "%zext_ln882_2 = zext i16 %empty_154"   --->   Operation 69 'zext' 'zext_ln882_2' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 70 [1/1] (0.99ns)   --->   "%icmp_ln882_2 = icmp_ult  i32 %zext_ln882_2, i32 %cols_read"   --->   Operation 70 'icmp' 'icmp_ln882_2' <Predicate = true> <Delay = 0.99> <CoreInst = "Cmp">   --->   Core 10 'Cmp' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 71 [1/1] (0.85ns)   --->   "%add_ln695 = add i16 %empty_154, i16"   --->   Operation 71 'add' 'add_ln695' <Predicate = true> <Delay = 0.85> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 0> <II = 1> <Delay = 0.85> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 72 [1/1] (0.00ns)   --->   "%br_ln107 = br i1 %icmp_ln882_2, void %._crit_edge.loopexit.i.i, void %.split.i.i" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:107]   --->   Operation 72 'br' 'br_ln107' <Predicate = true> <Delay = 0.00>
+
+State 4 <SV = 3> <Delay = 3.58>
+ST_4 : Operation 73 [1/1] (0.00ns)   --->   "%specpipeline_ln453 = specpipeline void @_ssdm_op_SpecPipeline, i32, i32, i32, i32, void @empty_25" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:453]   --->   Operation 73 'specpipeline' 'specpipeline_ln453' <Predicate = (icmp_ln882_2)> <Delay = 0.00>
+ST_4 : Operation 74 [1/1] (0.00ns)   --->   "%speclooptripcount_ln453 = speclooptripcount void @_ssdm_op_SpecLoopTripCount, i64, i64, i64" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:453]   --->   Operation 74 'speclooptripcount' 'speclooptripcount_ln453' <Predicate = (icmp_ln882_2)> <Delay = 0.00>
+ST_4 : Operation 75 [1/1] (0.00ns)   --->   "%specloopname_ln453 = specloopname void @_ssdm_op_SpecLoopName, void @empty_46" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/common/xf_structs.hpp:453]   --->   Operation 75 'specloopname' 'specloopname_ln453' <Predicate = (icmp_ln882_2)> <Delay = 0.00>
+ST_4 : Operation 76 [1/1] (1.75ns)   --->   "%tmp_V = read i32 @_ssdm_op_Read.ap_fifo.volatile.i32P, i32 %streamFlowin_mat_436" [/tools/Xilinx/Vitis/2020.1/common/technology/autopilot/hls_stream_39.h:145]   --->   Operation 76 'read' 'tmp_V' <Predicate = (icmp_ln882_2)> <Delay = 1.75> <CoreInst = "FIFO">   --->   Core 18 'FIFO' <Latency = 0> <II = 1> <Delay = 1.75> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 32> <Depth = 1920> <FIFO>
+ST_4 : Operation 77 [1/1] (0.00ns)   --->   "%splittemp1 = partselect i16 @_ssdm_op_PartSelect.i16.i32.i32.i32, i32 %tmp_V, i32, i32" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:116]   --->   Operation 77 'partselect' 'splittemp1' <Predicate = (icmp_ln882_2)> <Delay = 0.00>
+ST_4 : Operation 78 [1/1] (0.00ns)   --->   "%splittemp2 = trunc i32 %tmp_V" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:117]   --->   Operation 78 'trunc' 'splittemp2' <Predicate = (icmp_ln882_2)> <Delay = 0.00>
+ST_4 : Operation 79 [1/1] (1.83ns)   --->   "%write_ln167 = write void @_ssdm_op_Write.ap_fifo.volatile.i16P, i16 %strmFlowU_split15, i16 %splittemp1" [/tools/Xilinx/Vitis/2020.1/common/technology/autopilot/hls_stream_39.h:167]   --->   Operation 79 'write' 'write_ln167' <Predicate = (icmp_ln882_2)> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_4 : Operation 80 [1/1] (1.83ns)   --->   "%write_ln167 = write void @_ssdm_op_Write.ap_fifo.volatile.i16P, i16 %strmFlowV_split16, i16 %splittemp2" [/tools/Xilinx/Vitis/2020.1/common/technology/autopilot/hls_stream_39.h:167]   --->   Operation 80 'write' 'write_ln167' <Predicate = (icmp_ln882_2)> <Delay = 1.83> <CoreInst = "FIFO_SRL">   --->   Core 21 'FIFO_SRL' <Latency = 0> <II = 1> <Delay = 1.83> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 2> <FIFO>
+ST_4 : Operation 81 [1/1] (0.00ns)   --->   "%br_ln0 = br void"   --->   Operation 81 'br' 'br_ln0' <Predicate = (icmp_ln882_2)> <Delay = 0.00>
+
+State 5 <SV = 3> <Delay = 0.00>
+ST_5 : Operation 82 [1/1] (0.00ns)   --->   "%br_ln0 = br void"   --->   Operation 82 'br' 'br_ln0' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 6.67ns, clock uncertainty: 1.8ns.
+
+ <State 1>: 1.86ns
+The critical path consists of the following:
+	wire read on port 'init_flag' (/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91) [26]  (0 ns)
+	fifo write on port 'init_flag_out' (/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/video/xf_pyr_dense_optical_flow.hpp:91) [71]  (1.86 ns)
+
+ <State 2>: 1.34ns
+The critical path consists of the following:
+	'phi' operation ('empty') with incoming values : ('add_ln695_2') [80]  (0 ns)
+	'icmp' operation ('icmp_ln882') [82]  (0.991 ns)
+	blocking operation 0.351 ns on control path)
+
+ <State 3>: 0.991ns
+The critical path consists of the following:
+	'phi' operation ('empty_154') with incoming values : ('add_ln695') [90]  (0 ns)
+	'icmp' operation ('icmp_ln882_2') [92]  (0.991 ns)
+
+ <State 4>: 3.59ns
+The critical path consists of the following:
+	fifo read on port 'streamFlowin_mat_436' (/tools/Xilinx/Vitis/2020.1/common/technology/autopilot/hls_stream_39.h:145) [99]  (1.75 ns)
+	fifo write on port 'strmFlowU_split15' (/tools/Xilinx/Vitis/2020.1/common/technology/autopilot/hls_stream_39.h:167) [102]  (1.84 ns)
+
+ <State 5>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

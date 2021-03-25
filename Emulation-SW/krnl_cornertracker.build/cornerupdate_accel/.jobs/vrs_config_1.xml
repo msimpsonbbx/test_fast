@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="cornerupdate_accel" LaunchDir="/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/krnl_cornertracker.build/cornerupdate_accel/cornerupdate_accel" FlowId="Build_IP" FromStepId="vitis_hls" ToStepId="vitis_hls"/>
+</Runs>
+

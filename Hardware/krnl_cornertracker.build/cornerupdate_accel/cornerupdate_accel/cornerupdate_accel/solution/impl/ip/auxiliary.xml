@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="cornerupdate_accel" xd:componentRef="cornerupdate_accel" xd:initiationInterval="60222" xd:clockPeriod="6.667" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="s_axi_control" xd:busTypeRef="axilite" xd:type="generic_axi_lite" xd:offset="0x0"/>
+  <xd:arg xd:name="*(list_fix)" xd:originalName="list_fix" xd:direction="inout" xd:interfaceRef="m_axi_gmem7" xd:busTypeRef="aximm" xd:dataWidth="64" xd:bufferDirection="inout"/>
+  <xd:arg xd:name="*(list)" xd:originalName="list" xd:direction="inout" xd:interfaceRef="m_axi_gmem8" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="inout"/>
+  <xd:arg xd:name="*(flow_vectors)" xd:originalName="flow_vectors" xd:direction="inout" xd:interfaceRef="m_axi_gmem9" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="in"/>
+  <xd:latencyEstimates xd:best-case="227" xd:worst-case="60221" xd:average-case="30221"/>
+  <xd:resourceEstimates xd:LUT="4815" xd:FF="4412" xd:BRAM="8" xd:DSP="20"/>
+</xd:acceleratorMap>

@@ -1,0 +1,54 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s'" level="0">
+<item name = "Date">Thu Mar 25 14:59:38 2021
+</item>
+<item name = "Version">2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)</item>
+<item name = "Project">pyr_dense_optical_flow_accel</item>
+<item name = "Solution">solution (Vitis Kernel Flow Target)</item>
+<item name = "Product family">zynquplus</item>
+<item name = "Target device">xczu7ev-ffvc1156-2-e</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">6.67 ns, 5.522 ns, 1.80 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">2062, 2165429, 13.747 us, 14.437 ms, 1954, 2165402, dataflow</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_24_fu_408">auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_24, 1953, 2101359, 13.021 us, 14.010 ms, 1953, 2101359, none</column>
+<column name="grp_auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_s_fu_419">auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_s, 1953, 2101359, 13.021 us, 14.010 ms, 1953, 2101359, none</column>
+<column name="grp_findGradients_unsigned_short_1080_unsigned_short_1920_5_50_11_17_9_32_22_16_10_48_16_false_s_fu_428">findGradients_unsigned_short_1080_unsigned_short_1920_5_50_11_17_9_32_22_16_10_48_16_false_s, 11, 2082242, 73.337 ns, 13.882 ms, 11, 2082242, none</column>
+<column name="grp_find_G_and_b_matrix_unsigned_short_1080_unsigned_short_1920_11_17_9_27_25_34_26_false_s_fu_448">find_G_and_b_matrix_unsigned_short_1080_unsigned_short_1920_11_17_9_27_25_34_26_false_s, 55, 2103395, 0.367 us, 14.023 ms, 55, 2103395, none</column>
+<column name="grp_find_flow_unsigned_short_1080_unsigned_short_1920_27_25_34_26_16_10_55_51_40_2_102_54_11_s_fu_464">find_flow_unsigned_short_1080_unsigned_short_1920_27_25_34_26_16_10_55_51_40_2_102_54_11_s, 87, 2165401, 0.580 us, 14.437 ms, 87, 2165401, none</column>
+<column name="grp_scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_23_fu_486">scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_23, 3, 2092583, 20.001 ns, 13.951 ms, 3, 2092583, none</column>
+<column name="grp_scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_s_fu_500">scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_s, 3, 2092583, 20.001 ns, 13.951 ms, 3, 2092583, none</column>
+<column name="grp_split_stream_int_fixed_unsigned_short_1080_unsigned_short_1920_16_10_48_fu_512">split_stream_int_fixed_unsigned_short_1080_unsigned_short_1920_16_10_48, 5, 2076841, 33.335 ns, 13.846 ms, 5, 2076841, none</column>
+<column name="grp_stitch_stream_fixed_int_unsigned_short_1080_unsigned_short_1920_16_10_s_fu_550">stitch_stream_fixed_int_unsigned_short_1080_unsigned_short_1920_16_10_s, 5, 2076841, 33.335 ns, 13.846 ms, 5, 2076841, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Project Version="1" Minor="7" DIGEST="">
+	<TOOL_VERSION Version="2020.1"/>
+	<MODE Name="Post-Synthesis"/>
+	<SYSTEMINFO BOARD="xilinx.com:zcu104:1.1" PART="xczu7ev-ffvc1156-2-e" ARCH="zynquplus" PACKAGE="ffvc1156" DEVICE="xczu7ev" SPEED="-2"/>
+	<HIERARCHY Name="zcu104_base_wrapper"/>
+	<File Type="HW_HANDOFF" Name="zcu104_base.hwh" src_db="zcu104_base.hwdef" DESIGN_HIERARCHY="zcu104_base_i" BD_TYPE="DEFAULT_BD">
+	</File>
+	<File Type="PS_FSBL_INIT" Name="psu_init.c" src_db="zcu104_base_ps_e_0.hwdef">
+	</File>
+	<File Type="PS_FSBL_INIT" Name="psu_init.h" src_db="zcu104_base_ps_e_0.hwdef">
+	</File>
+	<File Type="PS_FSBL_INIT_GPL" Name="psu_init_gpl.c" src_db="zcu104_base_ps_e_0.hwdef">
+	</File>
+	<File Type="PS_FSBL_INIT_GPL" Name="psu_init_gpl.h" src_db="zcu104_base_ps_e_0.hwdef">
+	</File>
+	<File Type="PS_INIT_HELP" Name="psu_init.html" src_db="zcu104_base_ps_e_0.hwdef">
+	</File>
+	<File Type="PS_XMD_INIT" Name="psu_init.tcl" src_db="zcu104_base_ps_e_0.hwdef">
+	</File>
+	<File Type="BIT" Name="xilinx_zcu104_base_202010_1.bit" src_db="temp.hdf">
+	</File>
+	<BOARD Type="NotIntegrated">
+		<BASEBOARD Name="xilinx.com:zcu104:1.1">
+		</BASEBOARD>
+	</BOARD>
+	<USEDRESOURCES/>
+</Project>
+

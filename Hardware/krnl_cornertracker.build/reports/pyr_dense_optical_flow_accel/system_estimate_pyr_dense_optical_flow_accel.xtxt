@@ -1,0 +1,174 @@
+===============================================================================
+Version:    v++ v2020.1.1 (64-bit)
+Build:      SW Build 2960000 on Wed Aug  5 22:57:21 MDT 2020
+Copyright:  Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+Created:    Thu Mar 25 15:00:44 2021
+===============================================================================
+
+-------------------------------------------------------------------------------
+Design Name:             pyr_dense_optical_flow_accel
+Target Device:           xilinx:zcu104:zcu104_base:1.0
+Target Clock:            150.000000MHz
+Total number of kernels: 1
+-------------------------------------------------------------------------------
+
+Kernel Summary
+Kernel Name                   Type  Target              OpenCL Library                Compute Units
+----------------------------  ----  ------------------  ----------------------------  -------------
+pyr_dense_optical_flow_accel  c     fpga0:OCL_REGION_0  pyr_dense_optical_flow_accel  1
+
+
+-------------------------------------------------------------------------------
+OpenCL Binary:     pyr_dense_optical_flow_accel
+Kernels mapped to: clc_region
+
+Timing Information (MHz)
+Compute Unit                    Kernel Name                   Module Name                                                                                   Target Frequency  Estimated Frequency
+------------------------------  ----------------------------  --------------------------------------------------------------------------------------------  ----------------  -------------------
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Block_split2_proc66                                                                           149.925034        544.069641
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_1_entry3                                                                              149.925034        544.069641
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_entry36                                                                               149.925034        272.034821
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  last_blk_pxl_width                                                                            149.925034        544.069641
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  addrbound_1                                                                                   149.925034        220.361389
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_Block_split37_proc                                                                    149.925034        inf
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2AxiStream_1                                                                               149.925034        205.465378
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  AxiStream2MatStream_1                                                                         149.925034        198.255341
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_1                                                                                     149.925034        198.255341
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Array2xfMat_32_0_1080_1920_1_25                                                               149.925034        198.255341
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Array2xfMat_32_0_1080_1920_1_s                                                                149.925034        198.255341
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_entry6                                                                                149.925034        544.069641
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_entry42                                                                               149.925034        272.034821
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  last_blk_pxl_width21                                                                          149.925034        544.069641
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  addrbound22                                                                                   149.925034        220.361389
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_Block_split15_proc                                                                    149.925034        inf
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2AxiStream                                                                                 149.925034        205.465378
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  AxiStream2MatStream                                                                           149.925034        196.65683
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat                                                                                       149.925034        196.65683
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Array2xfMat_32_3_1080_1920_1_s                                                                149.925034        196.65683
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  split_stream_int_fixed_unsigned_short_1080_unsigned_short_1920_16_10_48                       149.925034        278.706787
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  load_data_1920_16_10_45_22_17_1_s                                                             149.925034        325.203247
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  compute_result_16_10_45_22_48_16_s                                                            149.925034        224.265518
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  process_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_s                      149.925034        195.579895
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_23              149.925034        181.093811
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_s               149.925034        181.093811
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  findIntensity_unsigned_short_1080_unsigned_short_1920_50_17_9_32_22_16_10_48_16_s             149.925034        216.26297
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  findGradients_unsigned_short_1080_unsigned_short_1920_5_50_11_17_9_32_22_16_10_48_16_false_s  149.925034        216.26297
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  find_G_and_b_matrix_unsigned_short_1080_unsigned_short_1920_11_17_9_27_25_34_26_false_s       149.925034        206.782471
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  find_flow_unsigned_short_1080_unsigned_short_1920_27_25_34_26_16_10_55_51_40_2_102_54_11_s    149.925034        205.54985
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  auMedian3x3_1080_1920_0_0_0_1922_5_25_16_10_false_s                                           149.925034        210.260727
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_24                                            149.925034        210.260727
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_s                                             149.925034        210.260727
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  stitch_stream_fixed_int_unsigned_short_1080_unsigned_short_1920_16_10_s                       149.925034        278.706787
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s      149.925034        181.093811
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  densePyrOpticalFlow_5_50_11_16_10_0_1080_1920_1_false_s                                       149.925034        181.093811
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2Axi_entry61                                                                               149.925034        544.069641
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  addrbound                                                                                     149.925034        220.361389
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2Axi_Block_split13_proc                                                                    149.925034        inf
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  last_blk_pxl_width58                                                                          149.925034        272.034821
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  MatStream2AxiStream                                                                           149.925034        200.601807
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2AxiStream                                                                                 149.925034        200.601807
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  AxiStream2Axi                                                                                 149.925034        205.465378
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2Axi                                                                                       149.925034        200.601807
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  xfMat2Array_32_3_1080_1920_1_s                                                                149.925034        200.601807
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  pyr_dense_optical_flow_accel                                                                  149.925034        181.093811
+
+Latency Information
+Compute Unit                    Kernel Name                   Module Name                                                                                   Start Interval  Best (cycles)  Avg (cycles)  Worst (cycles)  Best (absolute)  Avg (absolute)  Worst (absolute)
+------------------------------  ----------------------------  --------------------------------------------------------------------------------------------  --------------  -------------  ------------  --------------  ---------------  --------------  ----------------
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Block_split2_proc66                                                                           0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_1_entry3                                                                              0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_entry36                                                                               0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  last_blk_pxl_width                                                                            0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  addrbound_1                                                                                   1               1              1             1               6.667 ns         6.667 ns        6.667 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_Block_split37_proc                                                                    0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2AxiStream_1                                                                               1 ~ 518473      1              129637        518473          6.667 ns         0.864 ms        3.457 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  AxiStream2MatStream_1                                                                         5 ~ 2073604     5              1036804       2073604         33.335 ns        6.912 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_1                                                                                     6 ~ 2073605     78             1036877       2073677         0.520 us         6.913 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Array2xfMat_32_0_1080_1920_1_25                                                               79 ~ 2073678    79             1036878       2073678         0.527 us         6.913 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Array2xfMat_32_0_1080_1920_1_s                                                                79 ~ 2073678    79             1036878       2073678         0.527 us         6.913 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_entry6                                                                                0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_entry42                                                                               0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  last_blk_pxl_width21                                                                          0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  addrbound22                                                                                   0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_Block_split15_proc                                                                    0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2AxiStream                                                                                 1 ~ 2073673     1              518437        2073673         6.667 ns         3.456 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  AxiStream2MatStream                                                                           5 ~ 2073604     5              1036804       2073604         33.335 ns        6.912 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat                                                                                       6 ~ 2073674     78             1036877       2073677         0.520 us         6.913 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Array2xfMat_32_3_1080_1920_1_s                                                                79 ~ 2073678    79             1036878       2073678         0.527 us         6.913 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  split_stream_int_fixed_unsigned_short_1080_unsigned_short_1920_16_10_48                       5 ~ 2076841     5              520021        2076841         33.335 ns        3.467 ms        13.846 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  load_data_1920_16_10_45_22_17_1_s                                                             4 ~ 1925        4              485           1925            26.668 ns        3.233 us        12.834 us
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  compute_result_16_10_45_22_48_16_s                                                            1               5              5             5               33.335 ns        33.335 ns       33.335 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  process_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_s                      13 ~ 1932       13             972           1932            86.671 ns        6.480 us        12.881 us
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_23              3 ~ 2092583     3              327973        2092583         20.001 ns        2.187 ms        13.951 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_s               3 ~ 2092583     3              327973        2092583         20.001 ns        2.187 ms        13.951 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  findIntensity_unsigned_short_1080_unsigned_short_1920_50_17_9_32_22_16_10_48_16_s             1               4              4             4               26.668 ns        26.668 ns       26.668 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  findGradients_unsigned_short_1080_unsigned_short_1920_5_50_11_17_9_32_22_16_10_48_16_false_s  11 ~ 2082242    11             522722        2082242         73.337 ns        3.485 ms        13.882 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  find_G_and_b_matrix_unsigned_short_1080_unsigned_short_1920_11_17_9_27_25_34_26_false_s       55 ~ 2103395    55             533315        2103395         0.367 us         3.556 ms        14.023 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  find_flow_unsigned_short_1080_unsigned_short_1920_27_25_34_26_16_10_55_51_40_2_102_54_11_s    87 ~ 2165401    87             564301        2165401         0.580 us         3.762 ms        14.437 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  auMedian3x3_1080_1920_0_0_0_1922_5_25_16_10_false_s                                           1952 ~ 2101358  1952           532707        2101358         13.014 us        3.552 ms        14.010 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_24                                            1953 ~ 2101359  1953           532708        2101359         13.021 us        3.552 ms        14.010 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_s                                             1953 ~ 2101359  1953           532708        2101359         13.021 us        3.552 ms        14.010 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  stitch_stream_fixed_int_unsigned_short_1080_unsigned_short_1920_16_10_s                       5 ~ 2076841     5              520021        2076841         33.335 ns        3.467 ms        13.846 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s      1954 ~ 2165402  2062           564329        2165429         13.747 us        3.762 ms        14.437 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  densePyrOpticalFlow_5_50_11_16_10_0_1080_1920_1_false_s                                       2063 ~ 2165430  2063           564330        2165430         13.754 us        3.762 ms        14.437 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2Axi_entry61                                                                               0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  addrbound                                                                                     0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2Axi_Block_split13_proc                                                                    0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  last_blk_pxl_width58                                                                          0               0              0             0               0 ns             0 ns            0 ns
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  MatStream2AxiStream                                                                           5 ~ 2073604     5              518404        2073604         33.335 ns        3.456 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2AxiStream                                                                                 6 ~ 2073605     6              518405        2073605         40.002 ns        3.456 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  AxiStream2Axi                                                                                 1 ~ 2073671     1              518436        2073671         6.667 ns         3.456 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2Axi                                                                                       6 ~ 2073672     7              518440        2073675         46.669 ns        3.456 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  xfMat2Array_32_3_1080_1920_1_s                                                                8 ~ 2073676     8              518441        2073676         53.336 ns        3.456 ms        13.825 ms
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  pyr_dense_optical_flow_accel                                                                  2064 ~ 2165431  2071           1036879       2165438         13.807 us        6.913 ms        14.437 ms
+
+Area Information
+Compute Unit                    Kernel Name                   Module Name                                                                                   FF     LUT    DSP  BRAM  URAM
+------------------------------  ----------------------------  --------------------------------------------------------------------------------------------  -----  -----  ---  ----  ----
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Block_split2_proc66                                                                           67     182    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_1_entry3                                                                              3      47     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_entry36                                                                               3      74     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  last_blk_pxl_width                                                                            3      29     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  addrbound_1                                                                                   25     116    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_Block_split37_proc                                                                    22     20     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2AxiStream_1                                                                               195    480    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  AxiStream2MatStream_1                                                                         422    1690   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_1                                                                                     1870   3358   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Array2xfMat_32_0_1080_1920_1_25                                                               2004   3460   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Array2xfMat_32_0_1080_1920_1_s                                                                1940   3424   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_entry6                                                                                3      47     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_entry42                                                                               3      74     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  last_blk_pxl_width21                                                                          3      29     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  addrbound22                                                                                   24     78     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat_Block_split15_proc                                                                    24     20     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2AxiStream                                                                                 197    482    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  AxiStream2MatStream                                                                           460    2222   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Axi2Mat                                                                                       1911   3854   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Array2xfMat_32_3_1080_1920_1_s                                                                2045   3938   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  split_stream_int_fixed_unsigned_short_1080_unsigned_short_1920_16_10_48                       57     327    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  load_data_1920_16_10_45_22_17_1_s                                                             127    266    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  compute_result_16_10_45_22_48_16_s                                                            332    211    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  process_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_s                      886    1045   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_23              1427   2599   0    8     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_s               1427   2581   0    8     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  findIntensity_unsigned_short_1080_unsigned_short_1920_50_17_9_32_22_16_10_48_16_s             536    3271   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  findGradients_unsigned_short_1080_unsigned_short_1920_5_50_11_17_9_32_22_16_10_48_16_false_s  1249   7128   0    53    0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  find_G_and_b_matrix_unsigned_short_1080_unsigned_short_1920_11_17_9_27_25_34_26_false_s       3321   3363   0    61    0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  find_flow_unsigned_short_1080_unsigned_short_1920_27_25_34_26_16_10_55_51_40_2_102_54_11_s    5439   4729   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  auMedian3x3_1080_1920_0_0_0_1922_5_25_16_10_false_s                                           3379   12074  0    10    0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_24                                            3416   12172  0    10    0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_s                                             3415   12145  0    10    0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  stitch_stream_fixed_int_unsigned_short_1080_unsigned_short_1920_16_10_s                       120    210    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s      24743  48472  0    213   0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  densePyrOpticalFlow_5_50_11_16_10_0_1080_1920_1_false_s                                       24943  48621  0    213   0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2Axi_entry61                                                                               3      65     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  addrbound                                                                                     24     60     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2Axi_Block_split13_proc                                                                    24     20     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  last_blk_pxl_width58                                                                          2      47     0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  MatStream2AxiStream                                                                           348    941    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2AxiStream                                                                                 653    1255   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  AxiStream2Axi                                                                                 196    487    0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  Mat2Axi                                                                                       1698   2489   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  xfMat2Array_32_3_1080_1920_1_s                                                                1832   2582   0    0     0
+pyr_dense_optical_flow_accel_1  pyr_dense_optical_flow_accel  pyr_dense_optical_flow_accel                                                                  38300  67593  0    231   0
+-------------------------------------------------------------------------------

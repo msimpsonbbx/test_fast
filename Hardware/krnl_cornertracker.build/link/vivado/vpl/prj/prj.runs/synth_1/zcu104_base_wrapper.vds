@@ -1,0 +1,861 @@
+#-----------------------------------------------------------
+# Vivado v2020.1.1 (64-bit)
+# SW Build 2960000 on Wed Aug  5 22:57:21 MDT 2020
+# IP Build 2956692 on Thu Aug  6 01:41:30 MDT 2020
+# Start of session at: Thu Mar 25 15:15:46 2021
+# Process ID: 30927
+# Current directory: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1
+# Command line: vivado -log zcu104_base_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source zcu104_base_wrapper.tcl
+# Log file: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.vds
+# Journal file: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source zcu104_base_wrapper.tcl -notrace
+INFO: Dispatch client connection id - 41279
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/int/xo/ip_repo/xilinx_com_hls_cornerupdate_accel_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/int/xo/ip_repo/xilinx_com_hls_pyr_down_accel_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/int/xo/ip_repo/xilinx_com_hls_pyr_dense_optical_flow_accel_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/int/xo/ip_repo/xilinx_com_hls_cornerTracker_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/data/cache/xilinx'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/.local/hw_platform/ipcache'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/data/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.1/data/ip'.
+Command: synth_design -top zcu104_base_wrapper -part xczu7ev-ffvc1156-2-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: [Device 21-403] Loading part xczu7ev-ffvc1156-2-e
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 1 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 30946
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2839.840 ; gain = 11.902 ; free physical = 12007 ; free virtual = 22527
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_wrapper' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/imports/hdl/zcu104_base_wrapper.v:12]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:9533]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_axi_ic_ps_e_S_AXI_HP0_FPD_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:12372]
+INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_1WWORKE' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:12]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_m00_data_fifo_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m00_data_fifo_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_m00_data_fifo_0' (1#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m00_data_fifo_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_m00_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m00_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_m00_regslice_0' (2#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m00_regslice_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_m00_regslice_0' is unconnected for instance 'm00_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:455]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_m00_regslice_0' is unconnected for instance 'm00_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:455]
+WARNING: [Synth 8-7023] instance 'm00_regslice' of module 'zcu104_base_m00_regslice_0' has 80 connections declared, but only 78 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:455]
+INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_1WWORKE' (3#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:12]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_5N8R6M' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2638]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_0' (4#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_0' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2964]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_0' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2964]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_0' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2964]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s00_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s00_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s00_regslice_0' (5#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s00_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_5N8R6M' (6#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2638]
+INFO: [Synth 8-6157] synthesizing module 's01_couplers_imp_12PIPZ4' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:3396]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_1' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_1' (7#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_1_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_1' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:3722]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_1' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:3722]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_1' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:3722]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s01_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s01_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s01_regslice_0' (8#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s01_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's01_couplers_imp_12PIPZ4' (9#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:3396]
+INFO: [Synth 8-6157] synthesizing module 's02_couplers_imp_1UREY8Z' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:3868]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s02_data_fifo_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s02_data_fifo_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s02_data_fifo_0' (10#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s02_data_fifo_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_s02_data_fifo_0' is unconnected for instance 's02_data_fifo' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4194]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_s02_data_fifo_0' is unconnected for instance 's02_data_fifo' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4194]
+WARNING: [Synth 8-7023] instance 's02_data_fifo' of module 'zcu104_base_s02_data_fifo_0' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4194]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s02_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s02_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s02_regslice_0' (11#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s02_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's02_couplers_imp_1UREY8Z' (12#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:3868]
+INFO: [Synth 8-6157] synthesizing module 's03_couplers_imp_UVHT31' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4340]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_2' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_2' (13#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_2_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_2' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4666]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_2' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4666]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_2' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4666]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s03_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s03_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s03_regslice_0' (14#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s03_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's03_couplers_imp_UVHT31' (15#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4340]
+INFO: [Synth 8-6157] synthesizing module 's04_couplers_imp_1U8YED' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4812]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_3' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_3_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_3' (16#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_3_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_3' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5138]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_3' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5138]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_3' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5138]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s04_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s04_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s04_regslice_0' (17#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s04_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's04_couplers_imp_1U8YED' (18#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:4812]
+INFO: [Synth 8-6157] synthesizing module 's05_couplers_imp_16L36PN' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5284]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_4' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_4_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_4' (19#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_4_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_4' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5610]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_4' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5610]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_4' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5610]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s05_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s05_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s05_regslice_0' (20#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s05_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's05_couplers_imp_16L36PN' (21#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5284]
+INFO: [Synth 8-6157] synthesizing module 's06_couplers_imp_1QTFCRC' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5756]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_5' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_5_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_5' (22#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_5_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_5' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6082]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_5' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6082]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_5' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6082]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s06_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s06_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s06_regslice_0' (23#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s06_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's06_couplers_imp_1QTFCRC' (24#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:5756]
+INFO: [Synth 8-6157] synthesizing module 's07_couplers_imp_YW22FA' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6228]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_6' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_6_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_6' (25#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_6_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_6' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6554]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_6' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6554]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_6' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6554]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s07_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s07_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s07_regslice_0' (26#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s07_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's07_couplers_imp_YW22FA' (27#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6228]
+INFO: [Synth 8-6157] synthesizing module 's08_couplers_imp_DS47OO' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6700]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_7' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_7_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_7' (28#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_7_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_7' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7026]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_7' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7026]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_7' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7026]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s08_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s08_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s08_regslice_0' (29#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s08_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's08_couplers_imp_DS47OO' (30#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:6700]
+INFO: [Synth 8-6157] synthesizing module 's09_couplers_imp_1CEF9ME' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7172]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_8' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_8_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_8' (31#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_8_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_8' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7498]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_8' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7498]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_8' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7498]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s09_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s09_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s09_regslice_0' (32#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s09_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's09_couplers_imp_1CEF9ME' (33#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7172]
+INFO: [Synth 8-6157] synthesizing module 's10_couplers_imp_YCTI6' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7644]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_9' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_9_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_9' (34#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_9_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_9' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7970]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_9' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7970]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_9' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7970]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s10_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s10_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s10_regslice_0' (35#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s10_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's10_couplers_imp_YCTI6' (36#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:7644]
+INFO: [Synth 8-6157] synthesizing module 's11_couplers_imp_17GVGLC' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8116]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_10' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_10_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_10' (37#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_10_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_10' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8442]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_10' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8442]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_10' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8442]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s11_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s11_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s11_regslice_0' (38#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s11_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's11_couplers_imp_17GVGLC' (39#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8116]
+INFO: [Synth 8-6157] synthesizing module 's12_couplers_imp_1SAFRJ7' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8588]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_11' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_11_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_11' (40#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_11_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_11' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8914]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_11' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8914]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_11' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8914]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s12_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s12_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s12_regslice_0' (41#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s12_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's12_couplers_imp_1SAFRJ7' (42#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:8588]
+INFO: [Synth 8-6157] synthesizing module 's13_couplers_imp_XEXSJH' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:9060]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_df_12' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_12_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_df_12' (43#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_df_12_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_df_12' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:9386]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_df_12' is unconnected for instance 'auto_us_df' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:9386]
+WARNING: [Synth 8-7023] instance 'auto_us_df' of module 'zcu104_base_auto_us_df_12' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:9386]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_s13_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s13_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_s13_regslice_0' (44#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_s13_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's13_couplers_imp_XEXSJH' (45#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:9060]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_xbar_1' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_xbar_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_xbar_1' (46#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_xbar_1_stub.v:6]
+WARNING: [Synth 8-7071] port 's_axi_bid' of module 'zcu104_base_xbar_1' is unconnected for instance 'xbar' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:16155]
+WARNING: [Synth 8-7071] port 's_axi_rid' of module 'zcu104_base_xbar_1' is unconnected for instance 'xbar' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:16155]
+WARNING: [Synth 8-7023] instance 'xbar' of module 'zcu104_base_xbar_1' has 78 connections declared, but only 76 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:16155]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_axi_ic_ps_e_S_AXI_HP0_FPD_0' (47#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:12372]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_axi_intc_0_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_axi_intc_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_axi_intc_0_0' (48#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_axi_intc_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_axi_intc_0_intr_1_interrupt_concat_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_intc_0_intr_1_interrupt_concat_0/synth/zcu104_base_axi_intc_0_intr_1_interrupt_concat_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_3_xlconcat' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v:14]
+	Parameter IN0_WIDTH bound to: 1 - type: integer 
+	Parameter IN1_WIDTH bound to: 1 - type: integer 
+	Parameter IN2_WIDTH bound to: 1 - type: integer 
+	Parameter IN3_WIDTH bound to: 1 - type: integer 
+	Parameter IN4_WIDTH bound to: 1 - type: integer 
+	Parameter IN5_WIDTH bound to: 1 - type: integer 
+	Parameter IN6_WIDTH bound to: 1 - type: integer 
+	Parameter IN7_WIDTH bound to: 1 - type: integer 
+	Parameter IN8_WIDTH bound to: 1 - type: integer 
+	Parameter IN9_WIDTH bound to: 1 - type: integer 
+	Parameter IN10_WIDTH bound to: 1 - type: integer 
+	Parameter IN11_WIDTH bound to: 1 - type: integer 
+	Parameter IN12_WIDTH bound to: 1 - type: integer 
+	Parameter IN13_WIDTH bound to: 1 - type: integer 
+	Parameter IN14_WIDTH bound to: 1 - type: integer 
+	Parameter IN15_WIDTH bound to: 1 - type: integer 
+	Parameter IN16_WIDTH bound to: 1 - type: integer 
+	Parameter IN17_WIDTH bound to: 1 - type: integer 
+	Parameter IN18_WIDTH bound to: 1 - type: integer 
+	Parameter IN19_WIDTH bound to: 1 - type: integer 
+	Parameter IN20_WIDTH bound to: 1 - type: integer 
+	Parameter IN21_WIDTH bound to: 1 - type: integer 
+	Parameter IN22_WIDTH bound to: 1 - type: integer 
+	Parameter IN23_WIDTH bound to: 1 - type: integer 
+	Parameter IN24_WIDTH bound to: 1 - type: integer 
+	Parameter IN25_WIDTH bound to: 1 - type: integer 
+	Parameter IN26_WIDTH bound to: 1 - type: integer 
+	Parameter IN27_WIDTH bound to: 1 - type: integer 
+	Parameter IN28_WIDTH bound to: 1 - type: integer 
+	Parameter IN29_WIDTH bound to: 1 - type: integer 
+	Parameter IN30_WIDTH bound to: 1 - type: integer 
+	Parameter IN31_WIDTH bound to: 1 - type: integer 
+	Parameter dout_width bound to: 32 - type: integer 
+	Parameter NUM_PORTS bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_3_xlconcat' (49#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ipshared/442e/hdl/xlconcat_v2_1_vl_rfs.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_axi_intc_0_intr_1_interrupt_concat_0' (50#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_intc_0_intr_1_interrupt_concat_0/synth/zcu104_base_axi_intc_0_intr_1_interrupt_concat_0.v:58]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_axi_interconnect_hpc0_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:16234]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_1VUTEPG' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2034]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_1VUTEPG' (51#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2034]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_axi_interconnect_hpc0_0' (52#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:16234]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_axi_register_slice_0_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_axi_register_slice_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_axi_register_slice_0_0' (53#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_axi_register_slice_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awid' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awaddr' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awlen' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awsize' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awburst' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awlock' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awcache' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awqos' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awuser' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_awvalid' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_wdata' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_wstrb' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_wlast' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_wvalid' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_bready' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arid' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_araddr' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arlen' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arsize' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arburst' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arlock' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arcache' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arqos' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_aruser' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_arvalid' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7071] port 'm_axi_rready' of module 'zcu104_base_axi_register_slice_0_0' is unconnected for instance 'axi_register_slice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+WARNING: [Synth 8-7023] instance 'axi_register_slice_0' of module 'zcu104_base_axi_register_slice_0_0' has 84 connections declared, but only 54 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11109]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_axi_vip_0_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_axi_vip_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_axi_vip_0_0' (54#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_axi_vip_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_axi_vip_1_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_axi_vip_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_axi_vip_1_0' (55#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_axi_vip_1_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_axi_vip_1_0' is unconnected for instance 'axi_vip_1' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11202]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_axi_vip_1_0' is unconnected for instance 'axi_vip_1' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11202]
+WARNING: [Synth 8-7023] instance 'axi_vip_1' of module 'zcu104_base_axi_vip_1_0' has 37 connections declared, but only 35 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11202]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_clk_wiz_0_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_clk_wiz_0_0' (56#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_cornerTracker_1_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_cornerTracker_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_cornerTracker_1_0' (57#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_cornerTracker_1_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_cornerupdate_accel_1_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_cornerupdate_accel_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_cornerupdate_accel_1_0' (58#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_cornerupdate_accel_1_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_interconnect_axifull_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:16594]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_2Y4CTK' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2278]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_us_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_us_0' (59#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_us_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awregion' of module 'zcu104_base_auto_us_0' is unconnected for instance 'auto_us' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2565]
+WARNING: [Synth 8-7071] port 'm_axi_arregion' of module 'zcu104_base_auto_us_0' is unconnected for instance 'auto_us' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2565]
+WARNING: [Synth 8-7023] instance 'auto_us' of module 'zcu104_base_auto_us_0' has 72 connections declared, but only 70 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2565]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_2Y4CTK' (60#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:2278]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_interconnect_axifull_0' (61#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:16594]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_interconnect_axihpm0fpd_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:16964]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_S0LIR' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:3110]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_S0LIR' (62#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:3110]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_interconnect_axihpm0fpd_0' (63#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:16964]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_interconnect_axilite_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:17384]
+INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_RHQQJ1' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:536]
+INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_RHQQJ1' (64#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:536]
+INFO: [Synth 8-6157] synthesizing module 'm01_couplers_imp_1Y54YTV' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:668]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_cc_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_cc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_cc_0' (65#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_cc_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_m01_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m01_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_m01_regslice_0' (66#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m01_regslice_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'zcu104_base_m01_regslice_0' is unconnected for instance 'm01_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:893]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'zcu104_base_m01_regslice_0' is unconnected for instance 'm01_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:893]
+WARNING: [Synth 8-7023] instance 'm01_regslice' of module 'zcu104_base_m01_regslice_0' has 40 connections declared, but only 38 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:893]
+INFO: [Synth 8-6155] done synthesizing module 'm01_couplers_imp_1Y54YTV' (67#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:668]
+INFO: [Synth 8-6157] synthesizing module 'm02_couplers_imp_11OO6UO' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:934]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_cc_1' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_cc_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_cc_1' (68#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_cc_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_m02_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m02_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_m02_regslice_0' (69#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m02_regslice_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'zcu104_base_m02_regslice_0' is unconnected for instance 'm02_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1159]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'zcu104_base_m02_regslice_0' is unconnected for instance 'm02_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1159]
+WARNING: [Synth 8-7023] instance 'm02_regslice' of module 'zcu104_base_m02_regslice_0' has 40 connections declared, but only 38 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1159]
+INFO: [Synth 8-6155] done synthesizing module 'm02_couplers_imp_11OO6UO' (70#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:934]
+INFO: [Synth 8-6157] synthesizing module 'm03_couplers_imp_6O28FI' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1200]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_cc_2' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_cc_2_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_cc_2' (71#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_cc_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_m03_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m03_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_m03_regslice_0' (72#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m03_regslice_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'zcu104_base_m03_regslice_0' is unconnected for instance 'm03_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1425]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'zcu104_base_m03_regslice_0' is unconnected for instance 'm03_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1425]
+WARNING: [Synth 8-7023] instance 'm03_regslice' of module 'zcu104_base_m03_regslice_0' has 40 connections declared, but only 38 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1425]
+INFO: [Synth 8-6155] done synthesizing module 'm03_couplers_imp_6O28FI' (73#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1200]
+INFO: [Synth 8-6157] synthesizing module 'm04_couplers_imp_VM1U9I' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1466]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_cc_3' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_cc_3_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_cc_3' (74#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_cc_3_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_m04_regslice_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m04_regslice_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_m04_regslice_0' (75#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_m04_regslice_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'm_axi_awprot' of module 'zcu104_base_m04_regslice_0' is unconnected for instance 'm04_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1691]
+WARNING: [Synth 8-7071] port 'm_axi_arprot' of module 'zcu104_base_m04_regslice_0' is unconnected for instance 'm04_regslice' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1691]
+WARNING: [Synth 8-7023] instance 'm04_regslice' of module 'zcu104_base_m04_regslice_0' has 40 connections declared, but only 38 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1691]
+INFO: [Synth 8-6155] done synthesizing module 'm04_couplers_imp_VM1U9I' (76#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1466]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_13PB84D' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1732]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_auto_pc_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_auto_pc_0' (77#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_auto_pc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_13PB84D' (78#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:1732]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_xbar_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_xbar_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_xbar_0' (79#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_xbar_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_interconnect_axilite_0' (80#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:17384]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_irq_const_tieoff_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_irq_const_tieoff_0/synth/zcu104_base_irq_const_tieoff_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'xlconstant_v1_1_7_xlconstant' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+	Parameter CONST_VAL bound to: 0 - type: integer 
+	Parameter CONST_WIDTH bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xlconstant_v1_1_7_xlconstant' (81#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ipshared/fcfc/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_irq_const_tieoff_0' (82#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_irq_const_tieoff_0/synth/zcu104_base_irq_const_tieoff_0.v:57]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_proc_sys_reset_0_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_proc_sys_reset_0_0' (83#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_0_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'zcu104_base_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11803]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'zcu104_base_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11803]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'zcu104_base_proc_sys_reset_0_0' is unconnected for instance 'proc_sys_reset_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11803]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_0' of module 'zcu104_base_proc_sys_reset_0_0' has 10 connections declared, but only 7 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11803]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_proc_sys_reset_1_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_proc_sys_reset_1_0' (84#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_1_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'zcu104_base_proc_sys_reset_1_0' is unconnected for instance 'proc_sys_reset_1' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11811]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'zcu104_base_proc_sys_reset_1_0' is unconnected for instance 'proc_sys_reset_1' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11811]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'zcu104_base_proc_sys_reset_1_0' is unconnected for instance 'proc_sys_reset_1' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11811]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_1' of module 'zcu104_base_proc_sys_reset_1_0' has 10 connections declared, but only 7 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11811]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_proc_sys_reset_2_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_2_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_proc_sys_reset_2_0' (85#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_2_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'zcu104_base_proc_sys_reset_2_0' is unconnected for instance 'proc_sys_reset_2' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11819]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'zcu104_base_proc_sys_reset_2_0' is unconnected for instance 'proc_sys_reset_2' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11819]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'zcu104_base_proc_sys_reset_2_0' is unconnected for instance 'proc_sys_reset_2' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11819]
+WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'zcu104_base_proc_sys_reset_2_0' is unconnected for instance 'proc_sys_reset_2' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11819]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_2' of module 'zcu104_base_proc_sys_reset_2_0' has 10 connections declared, but only 6 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11819]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11826]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_proc_sys_reset_3_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_3_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_proc_sys_reset_3_0' (86#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_3_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'zcu104_base_proc_sys_reset_3_0' is unconnected for instance 'proc_sys_reset_3' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11826]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'zcu104_base_proc_sys_reset_3_0' is unconnected for instance 'proc_sys_reset_3' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11826]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'zcu104_base_proc_sys_reset_3_0' is unconnected for instance 'proc_sys_reset_3' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11826]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'zcu104_base_proc_sys_reset_3_0' is unconnected for instance 'proc_sys_reset_3' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11826]
+WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'zcu104_base_proc_sys_reset_3_0' is unconnected for instance 'proc_sys_reset_3' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11826]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_3' of module 'zcu104_base_proc_sys_reset_3_0' has 10 connections declared, but only 5 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11826]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11832]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_proc_sys_reset_4_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_4_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_proc_sys_reset_4_0' (87#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_4_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'zcu104_base_proc_sys_reset_4_0' is unconnected for instance 'proc_sys_reset_4' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11832]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'zcu104_base_proc_sys_reset_4_0' is unconnected for instance 'proc_sys_reset_4' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11832]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'zcu104_base_proc_sys_reset_4_0' is unconnected for instance 'proc_sys_reset_4' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11832]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'zcu104_base_proc_sys_reset_4_0' is unconnected for instance 'proc_sys_reset_4' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11832]
+WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'zcu104_base_proc_sys_reset_4_0' is unconnected for instance 'proc_sys_reset_4' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11832]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_4' of module 'zcu104_base_proc_sys_reset_4_0' has 10 connections declared, but only 5 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11832]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11838]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_proc_sys_reset_5_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_5_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_proc_sys_reset_5_0' (88#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_5_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'zcu104_base_proc_sys_reset_5_0' is unconnected for instance 'proc_sys_reset_5' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11838]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'zcu104_base_proc_sys_reset_5_0' is unconnected for instance 'proc_sys_reset_5' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11838]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'zcu104_base_proc_sys_reset_5_0' is unconnected for instance 'proc_sys_reset_5' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11838]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'zcu104_base_proc_sys_reset_5_0' is unconnected for instance 'proc_sys_reset_5' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11838]
+WARNING: [Synth 8-7071] port 'peripheral_aresetn' of module 'zcu104_base_proc_sys_reset_5_0' is unconnected for instance 'proc_sys_reset_5' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11838]
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_5' of module 'zcu104_base_proc_sys_reset_5_0' has 10 connections declared, but only 5 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11838]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11844]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_proc_sys_reset_6_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_6_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_proc_sys_reset_6_0' (89#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_proc_sys_reset_6_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'zcu104_base_proc_sys_reset_6_0' is unconnected for instance 'proc_sys_reset_6' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11844]
+INFO: [Common 17-14] Message 'Synth 8-7071' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-7023] instance 'proc_sys_reset_6' of module 'zcu104_base_proc_sys_reset_6_0' has 10 connections declared, but only 5 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11844]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_ps_e_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_ps_e_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_ps_e_0' (90#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_ps_e_0_stub.v:6]
+WARNING: [Synth 8-7023] instance 'ps_e' of module 'zcu104_base_ps_e_0' has 203 connections declared, but only 197 given [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:11850]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_pyr_dense_optical_flow_accel_1_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_pyr_dense_optical_flow_accel_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_pyr_dense_optical_flow_accel_1_0' (91#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_pyr_dense_optical_flow_accel_1_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'zcu104_base_pyr_down_accel_1_0' [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_pyr_down_accel_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_pyr_down_accel_1_0' (92#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/.Xil/Vivado-30927-work2-System-Product-Name/realtime/zcu104_base_pyr_down_accel_1_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base' (93#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/synth/zcu104_base.v:9533]
+INFO: [Synth 8-6155] done synthesizing module 'zcu104_base_wrapper' (94#1) [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/imports/hdl/zcu104_base_wrapper.v:12]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2916.715 ; gain = 88.777 ; free physical = 12070 ; free virtual = 22594
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2937.527 ; gain = 109.590 ; free physical = 12076 ; free virtual = 22599
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2937.527 ; gain = 109.590 ; free physical = 12076 ; free virtual = 22599
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 2937.527 ; gain = 0.000 ; free physical = 12060 ; free virtual = 22583
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_intc_0_0/zcu104_base_axi_intc_0_0/zcu104_base_axi_intc_0_0_in_context.xdc] for cell 'zcu104_base_i/axi_intc_0'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_intc_0_0/zcu104_base_axi_intc_0_0/zcu104_base_axi_intc_0_0_in_context.xdc] for cell 'zcu104_base_i/axi_intc_0'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_register_slice_0_0/zcu104_base_axi_register_slice_0_0/zcu104_base_axi_register_slice_0_0_in_context.xdc] for cell 'zcu104_base_i/axi_register_slice_0'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_register_slice_0_0/zcu104_base_axi_register_slice_0_0/zcu104_base_axi_register_slice_0_0_in_context.xdc] for cell 'zcu104_base_i/axi_register_slice_0'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_vip_0_0/zcu104_base_axi_vip_0_0/zcu104_base_axi_vip_1_0_in_context.xdc] for cell 'zcu104_base_i/axi_vip_0'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_vip_0_0/zcu104_base_axi_vip_0_0/zcu104_base_axi_vip_1_0_in_context.xdc] for cell 'zcu104_base_i/axi_vip_0'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_vip_1_0/zcu104_base_axi_vip_1_0/zcu104_base_axi_vip_1_0_in_context.xdc] for cell 'zcu104_base_i/axi_vip_1'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_axi_vip_1_0/zcu104_base_axi_vip_1_0/zcu104_base_axi_vip_1_0_in_context.xdc] for cell 'zcu104_base_i/axi_vip_1'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc] for cell 'zcu104_base_i/clk_wiz_0'
+WARNING: [Vivado 12-584] No ports matched ''. [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc:1]
+WARNING: [Vivado 12-584] No ports matched ''. [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc:4]
+WARNING: [Vivado 12-584] No ports matched ''. [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc:6]
+WARNING: [Vivado 12-584] No ports matched ''. [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc:8]
+WARNING: [Vivado 12-584] No ports matched ''. [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc:10]
+WARNING: [Vivado 12-584] No ports matched ''. [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc:12]
+WARNING: [Vivado 12-584] No ports matched ''. [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc:14]
+WARNING: [Vivado 12-584] No ports matched ''. [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc:16]
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0/zcu104_base_clk_wiz_0_0_in_context.xdc] for cell 'zcu104_base_i/clk_wiz_0'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_0_0/zcu104_base_proc_sys_reset_0_0/zcu104_base_proc_sys_reset_0_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_0'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_0_0/zcu104_base_proc_sys_reset_0_0/zcu104_base_proc_sys_reset_0_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_0'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_1_0/zcu104_base_proc_sys_reset_1_0/zcu104_base_proc_sys_reset_1_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_1'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_1_0/zcu104_base_proc_sys_reset_1_0/zcu104_base_proc_sys_reset_1_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_1'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_2_0/zcu104_base_proc_sys_reset_2_0/zcu104_base_proc_sys_reset_2_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_2'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_2_0/zcu104_base_proc_sys_reset_2_0/zcu104_base_proc_sys_reset_2_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_2'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_3_0/zcu104_base_proc_sys_reset_3_0/zcu104_base_proc_sys_reset_3_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_3'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_3_0/zcu104_base_proc_sys_reset_3_0/zcu104_base_proc_sys_reset_3_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_3'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_4_0/zcu104_base_proc_sys_reset_4_0/zcu104_base_proc_sys_reset_4_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_4'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_4_0/zcu104_base_proc_sys_reset_4_0/zcu104_base_proc_sys_reset_4_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_4'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_5_0/zcu104_base_proc_sys_reset_5_0/zcu104_base_proc_sys_reset_5_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_5'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_5_0/zcu104_base_proc_sys_reset_5_0/zcu104_base_proc_sys_reset_5_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_5'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_6_0/zcu104_base_proc_sys_reset_6_0/zcu104_base_proc_sys_reset_6_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_6'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_proc_sys_reset_6_0/zcu104_base_proc_sys_reset_6_0/zcu104_base_proc_sys_reset_6_0_in_context.xdc] for cell 'zcu104_base_i/proc_sys_reset_6'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_ps_e_0/zcu104_base_ps_e_0/zcu104_base_ps_e_0_in_context.xdc] for cell 'zcu104_base_i/ps_e'
+WARNING: [Vivado 12-584] No ports matched ''. [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_ps_e_0/zcu104_base_ps_e_0/zcu104_base_ps_e_0_in_context.xdc:2]
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_ps_e_0/zcu104_base_ps_e_0/zcu104_base_ps_e_0_in_context.xdc] for cell 'zcu104_base_i/ps_e'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_xbar_0/zcu104_base_xbar_0/zcu104_base_xbar_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/xbar'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_xbar_0/zcu104_base_xbar_0/zcu104_base_xbar_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/xbar'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_cornerTracker_1_0/zcu104_base_cornerTracker_1_0/zcu104_base_cornerTracker_1_0_in_context.xdc] for cell 'zcu104_base_i/cornerTracker_1'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_cornerTracker_1_0/zcu104_base_cornerTracker_1_0/zcu104_base_cornerTracker_1_0_in_context.xdc] for cell 'zcu104_base_i/cornerTracker_1'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_pyr_dense_optical_flow_accel_1_0/zcu104_base_pyr_dense_optical_flow_accel_1_0/zcu104_base_pyr_dense_optical_flow_accel_1_0_in_context.xdc] for cell 'zcu104_base_i/pyr_dense_optical_flow_accel_1'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_pyr_dense_optical_flow_accel_1_0/zcu104_base_pyr_dense_optical_flow_accel_1_0/zcu104_base_pyr_dense_optical_flow_accel_1_0_in_context.xdc] for cell 'zcu104_base_i/pyr_dense_optical_flow_accel_1'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_pyr_down_accel_1_0/zcu104_base_pyr_down_accel_1_0/zcu104_base_pyr_down_accel_1_0_in_context.xdc] for cell 'zcu104_base_i/pyr_down_accel_1'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_pyr_down_accel_1_0/zcu104_base_pyr_down_accel_1_0/zcu104_base_pyr_down_accel_1_0_in_context.xdc] for cell 'zcu104_base_i/pyr_down_accel_1'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_cornerupdate_accel_1_0/zcu104_base_cornerupdate_accel_1_0/zcu104_base_cornerupdate_accel_1_0_in_context.xdc] for cell 'zcu104_base_i/cornerupdate_accel_1'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_cornerupdate_accel_1_0/zcu104_base_cornerupdate_accel_1_0/zcu104_base_cornerupdate_accel_1_0_in_context.xdc] for cell 'zcu104_base_i/cornerupdate_accel_1'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_xbar_1/zcu104_base_xbar_1/zcu104_base_xbar_1_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/xbar'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_xbar_1/zcu104_base_xbar_1/zcu104_base_xbar_1_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/xbar'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_0/zcu104_base_auto_us_0/zcu104_base_auto_us_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axifull/s00_couplers/auto_us'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_0/zcu104_base_auto_us_0/zcu104_base_auto_us_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axifull/s00_couplers/auto_us'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_pc_0/zcu104_base_auto_pc_0/zcu104_base_auto_pc_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/s00_couplers/auto_pc'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_pc_0/zcu104_base_auto_pc_0/zcu104_base_auto_pc_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/s00_couplers/auto_pc'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m01_regslice_0/zcu104_base_m01_regslice_0/zcu104_base_m01_regslice_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m01_couplers/m01_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m01_regslice_0/zcu104_base_m01_regslice_0/zcu104_base_m01_regslice_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m01_couplers/m01_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_cc_0/zcu104_base_auto_cc_0/zcu104_base_auto_cc_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m01_couplers/auto_cc'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_cc_0/zcu104_base_auto_cc_0/zcu104_base_auto_cc_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m01_couplers/auto_cc'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m02_regslice_0/zcu104_base_m02_regslice_0/zcu104_base_m02_regslice_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m02_couplers/m02_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m02_regslice_0/zcu104_base_m02_regslice_0/zcu104_base_m02_regslice_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m02_couplers/m02_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_cc_1/zcu104_base_auto_cc_1/zcu104_base_auto_cc_1_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m02_couplers/auto_cc'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_cc_1/zcu104_base_auto_cc_1/zcu104_base_auto_cc_1_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m02_couplers/auto_cc'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m03_regslice_0/zcu104_base_m03_regslice_0/zcu104_base_m01_regslice_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m03_couplers/m03_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m03_regslice_0/zcu104_base_m03_regslice_0/zcu104_base_m01_regslice_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m03_couplers/m03_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_cc_2/zcu104_base_auto_cc_2/zcu104_base_auto_cc_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m03_couplers/auto_cc'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_cc_2/zcu104_base_auto_cc_2/zcu104_base_auto_cc_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m03_couplers/auto_cc'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m04_regslice_0/zcu104_base_m04_regslice_0/zcu104_base_m01_regslice_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m04_couplers/m04_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m04_regslice_0/zcu104_base_m04_regslice_0/zcu104_base_m01_regslice_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m04_couplers/m04_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_cc_3/zcu104_base_auto_cc_3/zcu104_base_auto_cc_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m04_couplers/auto_cc'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_cc_3/zcu104_base_auto_cc_3/zcu104_base_auto_cc_0_in_context.xdc] for cell 'zcu104_base_i/interconnect_axilite/m04_couplers/auto_cc'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s00_regslice_0/zcu104_base_s00_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s00_couplers/s00_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s00_regslice_0/zcu104_base_s00_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s00_couplers/s00_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_0/zcu104_base_auto_us_df_0/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s00_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_0/zcu104_base_auto_us_df_0/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s00_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s01_regslice_0/zcu104_base_s01_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s01_couplers/s01_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s01_regslice_0/zcu104_base_s01_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s01_couplers/s01_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_1/zcu104_base_auto_us_df_1/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s01_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_1/zcu104_base_auto_us_df_1/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s01_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s02_regslice_0/zcu104_base_s02_regslice_0/zcu104_base_s02_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s02_couplers/s02_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s02_regslice_0/zcu104_base_s02_regslice_0/zcu104_base_s02_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s02_couplers/s02_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s02_data_fifo_0/zcu104_base_s02_data_fifo_0/zcu104_base_s02_data_fifo_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s02_couplers/s02_data_fifo'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s02_data_fifo_0/zcu104_base_s02_data_fifo_0/zcu104_base_s02_data_fifo_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s02_couplers/s02_data_fifo'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s03_regslice_0/zcu104_base_s03_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s03_couplers/s03_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s03_regslice_0/zcu104_base_s03_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s03_couplers/s03_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_2/zcu104_base_auto_us_df_2/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s03_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_2/zcu104_base_auto_us_df_2/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s03_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s04_regslice_0/zcu104_base_s04_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s04_couplers/s04_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s04_regslice_0/zcu104_base_s04_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s04_couplers/s04_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_3/zcu104_base_auto_us_df_3/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s04_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_3/zcu104_base_auto_us_df_3/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s04_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s05_regslice_0/zcu104_base_s05_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s05_couplers/s05_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s05_regslice_0/zcu104_base_s05_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s05_couplers/s05_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_4/zcu104_base_auto_us_df_4/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s05_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_4/zcu104_base_auto_us_df_4/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s05_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s06_regslice_0/zcu104_base_s06_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s06_couplers/s06_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s06_regslice_0/zcu104_base_s06_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s06_couplers/s06_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_5/zcu104_base_auto_us_df_5/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s06_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_5/zcu104_base_auto_us_df_5/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s06_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s07_regslice_0/zcu104_base_s07_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s07_couplers/s07_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s07_regslice_0/zcu104_base_s07_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s07_couplers/s07_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_6/zcu104_base_auto_us_df_6/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s07_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_6/zcu104_base_auto_us_df_6/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s07_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s08_regslice_0/zcu104_base_s08_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s08_couplers/s08_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s08_regslice_0/zcu104_base_s08_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s08_couplers/s08_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_7/zcu104_base_auto_us_df_7/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s08_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_7/zcu104_base_auto_us_df_7/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s08_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s09_regslice_0/zcu104_base_s09_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s09_couplers/s09_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s09_regslice_0/zcu104_base_s09_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s09_couplers/s09_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_8/zcu104_base_auto_us_df_8/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s09_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_8/zcu104_base_auto_us_df_8/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s09_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s10_regslice_0/zcu104_base_s10_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s10_couplers/s10_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s10_regslice_0/zcu104_base_s10_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s10_couplers/s10_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_9/zcu104_base_auto_us_df_9/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s10_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_9/zcu104_base_auto_us_df_9/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s10_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s11_regslice_0/zcu104_base_s11_regslice_0/zcu104_base_s11_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s11_couplers/s11_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s11_regslice_0/zcu104_base_s11_regslice_0/zcu104_base_s11_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s11_couplers/s11_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_10/zcu104_base_auto_us_df_10/zcu104_base_auto_us_df_10_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s11_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_10/zcu104_base_auto_us_df_10/zcu104_base_auto_us_df_10_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s11_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s12_regslice_0/zcu104_base_s12_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s12_couplers/s12_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s12_regslice_0/zcu104_base_s12_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s12_couplers/s12_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_11/zcu104_base_auto_us_df_11/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s12_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_11/zcu104_base_auto_us_df_11/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s12_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s13_regslice_0/zcu104_base_s13_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s13_couplers/s13_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_s13_regslice_0/zcu104_base_s13_regslice_0/zcu104_base_s07_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s13_couplers/s13_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_12/zcu104_base_auto_us_df_12/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s13_couplers/auto_us_df'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_auto_us_df_12/zcu104_base_auto_us_df_12/zcu104_base_auto_us_df_3_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s13_couplers/auto_us_df'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m00_data_fifo_0/zcu104_base_m00_data_fifo_0/zcu104_base_m00_data_fifo_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/m00_couplers/m00_data_fifo'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m00_data_fifo_0/zcu104_base_m00_data_fifo_0/zcu104_base_m00_data_fifo_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/m00_couplers/m00_data_fifo'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m00_regslice_0/zcu104_base_m00_regslice_0/zcu104_base_m00_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/m00_couplers/m00_regslice'
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.srcs/sources_1/bd/zcu104_base/ip/zcu104_base_m00_regslice_0/zcu104_base_m00_regslice_0/zcu104_base_m00_regslice_0_in_context.xdc] for cell 'zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/m00_couplers/m00_regslice'
+Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3066.000 ; gain = 0.000 ; free physical = 11917 ; free virtual = 22441
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+write_xdc: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 3094.000 ; gain = 28.000 ; free physical = 11877 ; free virtual = 22401
+Constraint Validation Runtime : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 3094.000 ; gain = 28.000 ; free physical = 11877 ; free virtual = 22401
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 3094.000 ; gain = 266.062 ; free physical = 12051 ; free virtual = 22576
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu7ev-ffvc1156-2-e
+INFO: [Synth 8-6742] Reading net delay rules and data
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:22 . Memory (MB): peak = 3094.000 ; gain = 266.062 ; free physical = 12051 ; free virtual = 22576
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for zcu104_base_i. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_intc_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_interconnect_hpc0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_register_slice_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_vip_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_vip_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/clk_wiz_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axifull. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axihpm0fpd. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/proc_sys_reset_0. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/proc_sys_reset_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/proc_sys_reset_2. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/proc_sys_reset_3. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/proc_sys_reset_4. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/proc_sys_reset_5. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/proc_sys_reset_6. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/ps_e. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/xbar. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/cornerTracker_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/pyr_dense_optical_flow_accel_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/pyr_down_accel_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/cornerupdate_accel_1. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/xbar. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_intc_0_intr_1_interrupt_concat. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/irq_const_tieoff. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axifull/s00_couplers/auto_us. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/s00_couplers/auto_pc. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/m01_couplers/m01_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/m01_couplers/auto_cc. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/m02_couplers/m02_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/m02_couplers/auto_cc. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/m03_couplers/m03_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/m03_couplers/auto_cc. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/m04_couplers/m04_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/interconnect_axilite/m04_couplers/auto_cc. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s00_couplers/s00_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s00_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s01_couplers/s01_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s01_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s02_couplers/s02_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s02_couplers/s02_data_fifo. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s03_couplers/s03_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s03_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s04_couplers/s04_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s04_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s05_couplers/s05_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s05_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s06_couplers/s06_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s06_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s07_couplers/s07_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s07_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s08_couplers/s08_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s08_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s09_couplers/s09_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s09_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s10_couplers/s10_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s10_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s11_couplers/s11_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s11_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s12_couplers/s12_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s12_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s13_couplers/s13_regslice. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/s13_couplers/auto_us_df. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/m00_couplers/m00_data_fifo. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for zcu104_base_i/axi_ic_ps_e_S_AXI_HP0_FPD/m00_couplers/m00_regslice. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 3094.000 ; gain = 266.062 ; free physical = 12051 ; free virtual = 22576
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 3094.000 ; gain = 266.062 ; free physical = 12049 ; free virtual = 22576
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1728 (col length:144)
+BRAMs: 624 (col length: RAMB18 144 RAMB36 72)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 3094.000 ; gain = 266.062 ; free physical = 12045 ; free virtual = 22579
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:42 ; elapsed = 00:01:02 . Memory (MB): peak = 3467.516 ; gain = 639.578 ; free physical = 11431 ; free virtual = 21967
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:42 ; elapsed = 00:01:02 . Memory (MB): peak = 3468.516 ; gain = 640.578 ; free physical = 11430 ; free virtual = 21966
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:43 ; elapsed = 00:01:02 . Memory (MB): peak = 3495.555 ; gain = 667.617 ; free physical = 11426 ; free virtual = 21962
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 3498.523 ; gain = 670.586 ; free physical = 11424 ; free virtual = 21961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 3498.523 ; gain = 670.586 ; free physical = 11424 ; free virtual = 21961
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 3498.523 ; gain = 670.586 ; free physical = 11422 ; free virtual = 21958
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 3498.523 ; gain = 670.586 ; free physical = 11422 ; free virtual = 21958
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 3498.523 ; gain = 670.586 ; free physical = 11422 ; free virtual = 21958
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 3498.523 ; gain = 670.586 ; free physical = 11422 ; free virtual = 21958
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+---------------------------------------------+----------+
+|      |BlackBox name                                |Instances |
++------+---------------------------------------------+----------+
+|1     |zcu104_base_xbar_1                           |         1|
+|2     |zcu104_base_m00_data_fifo_0                  |         1|
+|3     |zcu104_base_m00_regslice_0                   |         1|
+|4     |zcu104_base_auto_us_df_0                     |         1|
+|5     |zcu104_base_s00_regslice_0                   |         1|
+|6     |zcu104_base_auto_us_df_1                     |         1|
+|7     |zcu104_base_s01_regslice_0                   |         1|
+|8     |zcu104_base_s02_data_fifo_0                  |         1|
+|9     |zcu104_base_s02_regslice_0                   |         1|
+|10    |zcu104_base_auto_us_df_2                     |         1|
+|11    |zcu104_base_s03_regslice_0                   |         1|
+|12    |zcu104_base_auto_us_df_3                     |         1|
+|13    |zcu104_base_s04_regslice_0                   |         1|
+|14    |zcu104_base_auto_us_df_4                     |         1|
+|15    |zcu104_base_s05_regslice_0                   |         1|
+|16    |zcu104_base_auto_us_df_5                     |         1|
+|17    |zcu104_base_s06_regslice_0                   |         1|
+|18    |zcu104_base_auto_us_df_6                     |         1|
+|19    |zcu104_base_s07_regslice_0                   |         1|
+|20    |zcu104_base_auto_us_df_7                     |         1|
+|21    |zcu104_base_s08_regslice_0                   |         1|
+|22    |zcu104_base_auto_us_df_8                     |         1|
+|23    |zcu104_base_s09_regslice_0                   |         1|
+|24    |zcu104_base_auto_us_df_9                     |         1|
+|25    |zcu104_base_s10_regslice_0                   |         1|
+|26    |zcu104_base_auto_us_df_10                    |         1|
+|27    |zcu104_base_s11_regslice_0                   |         1|
+|28    |zcu104_base_auto_us_df_11                    |         1|
+|29    |zcu104_base_s12_regslice_0                   |         1|
+|30    |zcu104_base_auto_us_df_12                    |         1|
+|31    |zcu104_base_s13_regslice_0                   |         1|
+|32    |zcu104_base_auto_us_0                        |         1|
+|33    |zcu104_base_xbar_0                           |         1|
+|34    |zcu104_base_auto_cc_0                        |         1|
+|35    |zcu104_base_m01_regslice_0                   |         1|
+|36    |zcu104_base_auto_cc_1                        |         1|
+|37    |zcu104_base_m02_regslice_0                   |         1|
+|38    |zcu104_base_auto_cc_2                        |         1|
+|39    |zcu104_base_m03_regslice_0                   |         1|
+|40    |zcu104_base_auto_cc_3                        |         1|
+|41    |zcu104_base_m04_regslice_0                   |         1|
+|42    |zcu104_base_auto_pc_0                        |         1|
+|43    |zcu104_base_axi_intc_0_0                     |         1|
+|44    |zcu104_base_axi_register_slice_0_0           |         1|
+|45    |zcu104_base_axi_vip_0_0                      |         1|
+|46    |zcu104_base_axi_vip_1_0                      |         1|
+|47    |zcu104_base_clk_wiz_0_0                      |         1|
+|48    |zcu104_base_cornerTracker_1_0                |         1|
+|49    |zcu104_base_cornerupdate_accel_1_0           |         1|
+|50    |zcu104_base_proc_sys_reset_0_0               |         1|
+|51    |zcu104_base_proc_sys_reset_1_0               |         1|
+|52    |zcu104_base_proc_sys_reset_2_0               |         1|
+|53    |zcu104_base_proc_sys_reset_3_0               |         1|
+|54    |zcu104_base_proc_sys_reset_4_0               |         1|
+|55    |zcu104_base_proc_sys_reset_5_0               |         1|
+|56    |zcu104_base_proc_sys_reset_6_0               |         1|
+|57    |zcu104_base_ps_e_0                           |         1|
+|58    |zcu104_base_pyr_dense_optical_flow_accel_1_0 |         1|
+|59    |zcu104_base_pyr_down_accel_1_0               |         1|
++------+---------------------------------------------+----------+
+
+Report Cell Usage: 
++------+-------------------------------------------+------+
+|      |Cell                                       |Count |
++------+-------------------------------------------+------+
+|1     |zcu104_base_auto_cc                        |     4|
+|5     |zcu104_base_auto_pc                        |     1|
+|6     |zcu104_base_auto_us                        |     1|
+|7     |zcu104_base_auto_us_df                     |    13|
+|20    |zcu104_base_axi_intc_0                     |     1|
+|21    |zcu104_base_axi_register_slice_0           |     1|
+|22    |zcu104_base_axi_vip_0                      |     1|
+|23    |zcu104_base_axi_vip_1                      |     1|
+|24    |zcu104_base_clk_wiz_0                      |     1|
+|25    |zcu104_base_cornerTracker_1                |     1|
+|26    |zcu104_base_cornerupdate_accel_1           |     1|
+|27    |zcu104_base_m00_data_fifo                  |     1|
+|28    |zcu104_base_m00_regslice                   |     1|
+|29    |zcu104_base_m01_regslice                   |     1|
+|30    |zcu104_base_m02_regslice                   |     1|
+|31    |zcu104_base_m03_regslice                   |     1|
+|32    |zcu104_base_m04_regslice                   |     1|
+|33    |zcu104_base_proc_sys_reset_0               |     1|
+|34    |zcu104_base_proc_sys_reset_1               |     1|
+|35    |zcu104_base_proc_sys_reset_2               |     1|
+|36    |zcu104_base_proc_sys_reset_3               |     1|
+|37    |zcu104_base_proc_sys_reset_4               |     1|
+|38    |zcu104_base_proc_sys_reset_5               |     1|
+|39    |zcu104_base_proc_sys_reset_6               |     1|
+|40    |zcu104_base_ps_e                           |     1|
+|41    |zcu104_base_pyr_dense_optical_flow_accel_1 |     1|
+|42    |zcu104_base_pyr_down_accel_1               |     1|
+|43    |zcu104_base_s00_regslice                   |     1|
+|44    |zcu104_base_s01_regslice                   |     1|
+|45    |zcu104_base_s02_data_fifo                  |     1|
+|46    |zcu104_base_s02_regslice                   |     1|
+|47    |zcu104_base_s03_regslice                   |     1|
+|48    |zcu104_base_s04_regslice                   |     1|
+|49    |zcu104_base_s05_regslice                   |     1|
+|50    |zcu104_base_s06_regslice                   |     1|
+|51    |zcu104_base_s07_regslice                   |     1|
+|52    |zcu104_base_s08_regslice                   |     1|
+|53    |zcu104_base_s09_regslice                   |     1|
+|54    |zcu104_base_s10_regslice                   |     1|
+|55    |zcu104_base_s11_regslice                   |     1|
+|56    |zcu104_base_s12_regslice                   |     1|
+|57    |zcu104_base_s13_regslice                   |     1|
+|58    |zcu104_base_xbar                           |     2|
++------+-------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 3498.523 ; gain = 670.586 ; free physical = 11422 ; free virtual = 21958
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:52 . Memory (MB): peak = 3498.523 ; gain = 514.113 ; free physical = 11463 ; free virtual = 22000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:01:05 . Memory (MB): peak = 3498.531 ; gain = 670.586 ; free physical = 11463 ; free virtual = 22000
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 3498.531 ; gain = 0.000 ; free physical = 11529 ; free virtual = 22065
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3552.211 ; gain = 0.000 ; free physical = 11448 ; free virtual = 21985
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+211 Infos, 144 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:59 ; elapsed = 00:01:21 . Memory (MB): peak = 3564.180 ; gain = 1404.668 ; free physical = 11586 ; free virtual = 22123
+INFO: [Common 17-600] The following parameters have non-default value.
+general.maxThreads
+INFO: [Common 17-1381] The checkpoint '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.dcp' has been generated.
+INFO: [Common 17-206] Exiting Vivado at Thu Mar 25 15:17:23 2021...

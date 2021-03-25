@@ -1,0 +1,124 @@
+
+
+================================================================
+== Vitis HLS Report for 'xFFindMaxRad1_ap_int_32_s'
+================================================================
+* Date:           Thu Mar 25 14:57:16 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        cornerTracker
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 1.278 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        0|        0|   0 ns   |   0 ns   |    1|    1| function |
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 1
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 1
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 1, States = { 1 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.27>
+ST_1 : Operation 2 [1/1] (0.00ns)   --->   "%b1_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %b1"   --->   Operation 2 'read' 'b1_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 3 [1/1] (0.00ns)   --->   "%m2_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %m2"   --->   Operation 3 'read' 'm2_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "%m1_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %m1"   --->   Operation 4 'read' 'm1_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%m0_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %m0"   --->   Operation 5 'read' 'm0_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%t1_read = read i32 @_ssdm_op_Read.ap_auto.i32, i32 %t1"   --->   Operation 6 'read' 't1_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.99ns)   --->   "%icmp_ln890 = icmp_sgt  i32 %m1_read, i32 %t1_read"   --->   Operation 7 'icmp' 'icmp_ln890' <Predicate = true> <Delay = 0.99> <CoreInst = "Cmp">   --->   Core 10 'Cmp' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 8 [1/1] (0.99ns)   --->   "%icmp_ln890_1 = icmp_sgt  i32 %m1_read, i32 %m0_read"   --->   Operation 8 'icmp' 'icmp_ln890_1' <Predicate = true> <Delay = 0.99> <CoreInst = "Cmp">   --->   Core 10 'Cmp' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 9 [1/1] (0.99ns)   --->   "%icmp_ln890_2 = icmp_sgt  i32 %m1_read, i32 %m2_read"   --->   Operation 9 'icmp' 'icmp_ln890_2' <Predicate = true> <Delay = 0.99> <CoreInst = "Cmp">   --->   Core 10 'Cmp' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 10 [1/1] (0.99ns)   --->   "%icmp_ln890_3 = icmp_sgt  i32 %m1_read, i32 %b1_read"   --->   Operation 10 'icmp' 'icmp_ln890_3' <Predicate = true> <Delay = 0.99> <CoreInst = "Cmp">   --->   Core 10 'Cmp' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 11 [1/1] (0.00ns) (grouped into LUT with out node and_ln34_2)   --->   "%and_ln34 = and i1 %icmp_ln890, i1 %icmp_ln890_1" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_max_suppression.hpp:34]   --->   Operation 11 'and' 'and_ln34' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 12 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.28> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 12 [1/1] (0.00ns) (grouped into LUT with out node and_ln34_2)   --->   "%and_ln34_1 = and i1 %icmp_ln890_2, i1 %icmp_ln890_3" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_max_suppression.hpp:34]   --->   Operation 12 'and' 'and_ln34_1' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 12 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.28> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 13 [1/1] (0.28ns) (out node of the LUT)   --->   "%and_ln34_2 = and i1 %and_ln34_1, i1 %and_ln34" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_max_suppression.hpp:34]   --->   Operation 13 'and' 'and_ln34_2' <Predicate = true> <Delay = 0.28> <CoreInst = "LogicGate">   --->   Core 12 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.28> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%ret_ln36 = ret i1 %and_ln34_2" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_max_suppression.hpp:36]   --->   Operation 14 'ret' 'ret_ln36' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 6.67ns, clock uncertainty: 1.8ns.
+
+ <State 1>: 1.28ns
+The critical path consists of the following:
+	wire read on port 'b1' [6]  (0 ns)
+	'icmp' operation ('icmp_ln890_3') [14]  (0.991 ns)
+	'and' operation ('and_ln34_1', /tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_max_suppression.hpp:34) [16]  (0 ns)
+	'and' operation ('and_ln34_2', /tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/features/xf_max_suppression.hpp:34) [17]  (0.287 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

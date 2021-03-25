@@ -1,0 +1,208 @@
+
+
+================================================================
+== Vitis HLS Report for 'xfMat2Array_32_3_1080_1920_1_s'
+================================================================
+* Date:           Thu Mar 25 15:00:08 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        pyr_dense_optical_flow_accel
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 4.985 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+---------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |    Interval   | Pipeline|
+    |   min   |   max   |    min    |    max    | min |   max   |   Type  |
+    +---------+---------+-----------+-----------+-----+---------+---------+
+    |        8|  2073676| 53.336 ns | 13.825 ms |    8|  2073676|   none  |
+    +---------+---------+-----------+-----------+-----+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------+---------+---------+---------+-----------+-----------+-----+---------+----------+
+        |                   |         |  Latency (cycles) |   Latency (absolute)  |    Interval   | Pipeline |
+        |      Instance     |  Module |   min   |   max   |    min    |    max    | min |   max   |   Type   |
+        +-------------------+---------+---------+---------+-----------+-----------+-----+---------+----------+
+        |grp_Mat2Axi_fu_56  |Mat2Axi  |        7|  2073675| 46.669 ns | 13.825 ms |    6|  2073672| dataflow |
+        +-------------------+---------+---------+---------+-----------+-----------+-----+---------+----------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     -|       -|       -|    -|
+|Expression       |        -|     -|       0|       6|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     6|    1698|    2489|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|      87|    -|
+|Register         |        -|     -|     134|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     6|    1832|    2582|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|  ~0  |   ~0   |       1|    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    +-------------------+---------+---------+----+------+------+-----+
+    |      Instance     |  Module | BRAM_18K| DSP|  FF  |  LUT | URAM|
+    +-------------------+---------+---------+----+------+------+-----+
+    |grp_Mat2Axi_fu_56  |Mat2Axi  |        0|   6|  1698|  2489|    0|
+    +-------------------+---------+---------+----+------+------+-----+
+    |Total              |         |        0|   6|  1698|  2489|    0|
+    +-------------------+---------+---------+----+------+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +------------------------------------+----------+----+---+----+------------+------------+
+    |            Variable Name           | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +------------------------------------+----------+----+---+----+------------+------------+
+    |ap_block_state1                     |    or    |   0|  0|   2|           1|           1|
+    |ap_sync_grp_Mat2Axi_fu_56_ap_done   |    or    |   0|  0|   2|           1|           1|
+    |ap_sync_grp_Mat2Axi_fu_56_ap_ready  |    or    |   0|  0|   2|           1|           1|
+    +------------------------------------+----------+----+---+----+------------+------------+
+    |Total                               |          |   0|  0|   6|           3|           3|
+    +------------------------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------+----+-----------+-----+-----------+
+    |            Name            | LUT| Input Size| Bits| Total Bits|
+    +----------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                   |  15|          3|    1|          3|
+    |ap_done                     |   9|          2|    1|          2|
+    |dstPtr_blk_n                |   9|          2|    1|          2|
+    |m_axi_gmem4_AWVALID         |   9|          2|    1|          2|
+    |m_axi_gmem4_BREADY          |   9|          2|    1|          2|
+    |m_axi_gmem4_WVALID          |   9|          2|    1|          2|
+    |srcMat_1_blk_n              |   9|          2|    1|          2|
+    |srcMat_2_blk_n              |   9|          2|    1|          2|
+    |streamFlowout_mat_437_read  |   9|          2|    1|          2|
+    +----------------------------+----+-----------+-----+-----------+
+    |Total                       |  87|         19|    9|         19|
+    +----------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------------+----+----+-----+-----------+
+    |                  Name                  | FF | LUT| Bits| Const Bits|
+    +----------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                               |   2|   0|    2|          0|
+    |ap_done_reg                             |   1|   0|    1|          0|
+    |ap_sync_reg_grp_Mat2Axi_fu_56_ap_done   |   1|   0|    1|          0|
+    |ap_sync_reg_grp_Mat2Axi_fu_56_ap_ready  |   1|   0|    1|          0|
+    |dstPtr_read_reg_70                      |  64|   0|   64|          0|
+    |grp_Mat2Axi_fu_56_ap_start_reg          |   1|   0|    1|          0|
+    |srcMat_1_read_reg_75                    |  32|   0|   32|          0|
+    |srcMat_2_read_reg_80                    |  32|   0|   32|          0|
+    +----------------------------------------+----+----+-----+-----------+
+    |Total                                   | 134|   0|  134|          0|
+    +----------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------------------+-----+-----+------------+-----------------------------------+--------------+
+|           RTL Ports           | Dir | Bits|  Protocol  |           Source Object           |    C Type    |
++-------------------------------+-----+-----+------------+-----------------------------------+--------------+
+|ap_clk                         |  in |    1| ap_ctrl_hs | xfMat2Array<32, 3, 1080, 1920, 1> | return value |
+|ap_rst                         |  in |    1| ap_ctrl_hs | xfMat2Array<32, 3, 1080, 1920, 1> | return value |
+|ap_start                       |  in |    1| ap_ctrl_hs | xfMat2Array<32, 3, 1080, 1920, 1> | return value |
+|ap_done                        | out |    1| ap_ctrl_hs | xfMat2Array<32, 3, 1080, 1920, 1> | return value |
+|ap_continue                    |  in |    1| ap_ctrl_hs | xfMat2Array<32, 3, 1080, 1920, 1> | return value |
+|ap_idle                        | out |    1| ap_ctrl_hs | xfMat2Array<32, 3, 1080, 1920, 1> | return value |
+|ap_ready                       | out |    1| ap_ctrl_hs | xfMat2Array<32, 3, 1080, 1920, 1> | return value |
+|streamFlowout_mat_437_dout     |  in |   32|   ap_fifo  |       streamFlowout_mat_437       |    pointer   |
+|streamFlowout_mat_437_empty_n  |  in |    1|   ap_fifo  |       streamFlowout_mat_437       |    pointer   |
+|streamFlowout_mat_437_read     | out |    1|   ap_fifo  |       streamFlowout_mat_437       |    pointer   |
+|m_axi_gmem4_AWVALID            | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWREADY            |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWADDR             | out |   64|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWID               | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWLEN              | out |   32|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWSIZE             | out |    3|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWBURST            | out |    2|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWLOCK             | out |    2|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWCACHE            | out |    4|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWPROT             | out |    3|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWQOS              | out |    4|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWREGION           | out |    4|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_AWUSER             | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_WVALID             | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_WREADY             |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_WDATA              | out |   32|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_WSTRB              | out |    4|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_WLAST              | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_WID                | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_WUSER              | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARVALID            | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARREADY            |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARADDR             | out |   64|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARID               | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARLEN              | out |   32|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARSIZE             | out |    3|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARBURST            | out |    2|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARLOCK             | out |    2|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARCACHE            | out |    4|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARPROT             | out |    3|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARQOS              | out |    4|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARREGION           | out |    4|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_ARUSER             | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_RVALID             |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_RREADY             | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_RDATA              |  in |   32|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_RLAST              |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_RID                |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_RUSER              |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_RRESP              |  in |    2|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_BVALID             |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_BREADY             | out |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_BRESP              |  in |    2|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_BID                |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|m_axi_gmem4_BUSER              |  in |    1|    m_axi   |               gmem4               |    pointer   |
+|srcMat_1_dout                  |  in |   32|   ap_fifo  |              srcMat_1             |    pointer   |
+|srcMat_1_empty_n               |  in |    1|   ap_fifo  |              srcMat_1             |    pointer   |
+|srcMat_1_read                  | out |    1|   ap_fifo  |              srcMat_1             |    pointer   |
+|srcMat_2_dout                  |  in |   32|   ap_fifo  |              srcMat_2             |    pointer   |
+|srcMat_2_empty_n               |  in |    1|   ap_fifo  |              srcMat_2             |    pointer   |
+|srcMat_2_read                  | out |    1|   ap_fifo  |              srcMat_2             |    pointer   |
+|dstPtr_dout                    |  in |   64|   ap_fifo  |               dstPtr              |    pointer   |
+|dstPtr_empty_n                 |  in |    1|   ap_fifo  |               dstPtr              |    pointer   |
+|dstPtr_read                    | out |    1|   ap_fifo  |               dstPtr              |    pointer   |
++-------------------------------+-----+-----+------------+-----------------------------------+--------------+
+

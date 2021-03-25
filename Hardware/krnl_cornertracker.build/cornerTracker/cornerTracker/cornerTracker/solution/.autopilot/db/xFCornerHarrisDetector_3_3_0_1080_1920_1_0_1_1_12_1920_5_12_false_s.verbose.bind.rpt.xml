@@ -1,0 +1,59 @@
+<profile>
+
+<section name = "Vitis HLS Report for 'xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_s'" level="0">
+<item name = "Date">Thu Mar 25 14:57:17 2021
+</item>
+<item name = "Version">2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)</item>
+<item name = "Project">cornerTracker</item>
+<item name = "Solution">solution (Vitis Kernel Flow Target)</item>
+<item name = "Product family">zynquplus</item>
+<item name = "Target device">xczu7ev-ffvc1156-2-e</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">6.67 ns, 4.133 ns, 1.80 ns</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="8">, min, max, min, max, min, max, Type</keys>
+<column name="">2092817, 2092817, 13.953 ms, 13.953 ms, 2092805, 2092805, dataflow</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="9">Instance, Module, min, max, min, max, min, max, Type</keys>
+<column name="grp_xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s_fu_354">xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s, 2089093, 2089093, 13.928 ms, 13.928 ms, 2089093, 2089093, none</column>
+<column name="grp_Sobel_0_3_0_2_1080_1920_1_false_s_fu_363">Sobel_0_3_0_2_1080_1920_1_false_s, 2082004, 2082004, 13.881 ms, 13.881 ms, 2082004, 2082004, none</column>
+<column name="grp_boxFilter_0_3_2_1080_1920_1_false_26_fu_373">boxFilter_0_3_2_1080_1920_1_false_26, 2092804, 2092804, 13.953 ms, 13.953 ms, 2092804, 2092804, none</column>
+<column name="grp_boxFilter_0_3_2_1080_1920_1_false_27_fu_381">boxFilter_0_3_2_1080_1920_1_false_27, 2092804, 2092804, 13.953 ms, 13.953 ms, 2092804, 2092804, none</column>
+<column name="grp_boxFilter_0_3_2_1080_1920_1_false_s_fu_389">boxFilter_0_3_2_1080_1920_1_false_s, 2092804, 2092804, 13.953 ms, 13.953 ms, 2092804, 2092804, none</column>
+<column name="grp_xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s_fu_397">xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s, 2083321, 2083321, 13.890 ms, 13.890 ms, 2083321, 2083321, none</column>
+<column name="grp_xFThreshold_5_1080_1920_5_1_12_1920_s_fu_409">xFThreshold_5_1080_1920_5_1_12_1920_s, 2077921, 2077921, 13.853 ms, 13.853 ms, 2077921, 2077921, none</column>
+<column name="grp_xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25_fu_420">xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25, 2161, 2080081, 14.407 us, 13.868 ms, 2161, 2080081, none</column>
+<column name="grp_xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s_fu_430">xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s, 2161, 2080081, 14.407 us, 13.868 ms, 2161, 2080081, none</column>
+<column name="grp_xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s_fu_438">xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s, 2161, 2080081, 14.407 us, 13.868 ms, 2161, 2080081, none</column>
+<column name="grp_xFDuplicate_2_1080_1920_3_1_5_1920_24_fu_447">xFDuplicate_2_1080_1920_3_1_5_1920_24, 2076841, 2076841, 13.846 ms, 13.846 ms, 2076841, 2076841, none</column>
+<column name="grp_xFDuplicate_2_1080_1920_3_1_5_1920_s_fu_460">xFDuplicate_2_1080_1920_3_1_5_1920_s, 2076841, 2076841, 13.846 ms, 13.846 ms, 2076841, 2076841, none</column>
+<column name="call_ln503_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_fu_471">xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50, 0, 0, 0 ns, 0 ns, 0, 0, none</column>
+<column name="call_ln502_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc_fu_494">xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc, 0, 0, 0 ns, 0 ns, 0, 0, none</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="pyr_down_accel" xd:componentRef="pyr_down_accel" xd:initiationInterval="2093809" xd:clockPeriod="6.667" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:controlReg xd:name="control" xd:interfaceRef="s_axi_control" xd:busTypeRef="axilite" xd:type="generic_axi_lite" xd:offset="0x0"/>
+  <xd:arg xd:name="*(inImgPyr1)" xd:originalName="inImgPyr1" xd:direction="inout" xd:interfaceRef="m_axi_gmem1" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(outImgPyr1)" xd:originalName="outImgPyr1" xd:direction="inout" xd:interfaceRef="m_axi_gmem2" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="out"/>
+  <xd:arg xd:name="*(inImgPyr2)" xd:originalName="inImgPyr2" xd:direction="inout" xd:interfaceRef="m_axi_gmem3" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(outImgPyr2)" xd:originalName="outImgPyr2" xd:direction="inout" xd:interfaceRef="m_axi_gmem4" xd:busTypeRef="aximm" xd:dataWidth="32" xd:bufferDirection="out"/>
+  <xd:latencyEstimates xd:best-case="80" xd:worst-case="2093808" xd:average-case="1036879"/>
+  <xd:resourceEstimates xd:LUT="23317" xd:FF="15885" xd:BRAM="22" xd:DSP="26"/>
+</xd:acceleratorMap>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="cornerupdate_accel" dir="">
+  <FileSets>
+    <FileSet Name="kernel_cornerupdate_accel" Type="DesignSrcs">
+      <File Path="/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/xf_cornerupdate_accel.cpp"/>
+      <Config/>
+    </FileSet>
+  </FileSets>
+  <Runs/>
+</project>

@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2020.1.1 (64-bit)
+# SW Build 2960000 on Wed Aug  5 22:57:21 MDT 2020
+# IP Build 2956692 on Thu Aug  6 01:41:30 MDT 2020
+# Start of session at: Thu Mar 25 15:14:17 2021
+# Process ID: 30515
+# Current directory: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1
+# Command line: vivado -log zcu104_base_m03_regslice_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source zcu104_base_m03_regslice_0.tcl
+# Log file: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/zcu104_base_m03_regslice_0.vds
+# Journal file: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source zcu104_base_m03_regslice_0.tcl -notrace
+INFO: Dispatch client connection id - 41279
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/int/xo/ip_repo/xilinx_com_hls_cornerupdate_accel_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/int/xo/ip_repo/xilinx_com_hls_pyr_down_accel_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/int/xo/ip_repo/xilinx_com_hls_pyr_dense_optical_flow_accel_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/int/xo/ip_repo/xilinx_com_hls_cornerTracker_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/data/cache/xilinx'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/.local/hw_platform/ipcache'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/tools/Xilinx/Vitis/2020.1/data/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2020.1/data/ip'.
+update_ip_catalog: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 2170.418 ; gain = 0.000 ; free physical = 5250 ; free virtual = 15707
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP zcu104_base_m03_regslice_0, cache-ID = 817d515847346a24.
+INFO: [Common 17-206] Exiting Vivado at Thu Mar 25 15:14:31 2021...

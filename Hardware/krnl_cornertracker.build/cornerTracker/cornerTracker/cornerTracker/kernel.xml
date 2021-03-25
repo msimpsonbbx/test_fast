@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root versionMajor="1" versionMinor="5">
+  <kernel name="cornerTracker" language="c" vlnv="xilinx.com:hls:cornerTracker:1.0" attributes="" hash="" preferredWorkGroupSizeMultiple="0" workGroupSize="1" debug="false" compileOptions=" -I /tools/Xilinx/Vitis/2020.1/workspace/test_fast/src -I /tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include -I /tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/build" profileType="" interrupt="true" hwControlProtocol="ap_ctrl_chain">
+    <ports>
+      <port name="M_AXI_GMEM1" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+      <port name="M_AXI_GMEM2" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+      <port name="M_AXI_GMEM3" mode="master" range="0xFFFFFFFF" dataWidth="128" portType="addressable" base="0x0"/>
+      <port name="S_AXI_CONTROL" mode="slave" range="0x1000" dataWidth="32" portType="addressable" base="0x0"/>
+    </ports>
+    <args>
+      <arg name="inHarris" addressQualifier="1" id="0" port="M_AXI_GMEM1" size="0x8" offset="0x10" hostOffset="0x0" hostSize="0x8" type="void*"/>
+      <arg name="list" addressQualifier="1" id="1" port="M_AXI_GMEM2" size="0x8" offset="0x1C" hostOffset="0x0" hostSize="0x8" type="void*"/>
+      <arg name="params" addressQualifier="1" id="2" port="M_AXI_GMEM3" size="0x8" offset="0x28" hostOffset="0x0" hostSize="0x8" type="void*"/>
+      <arg name="harris_rows" addressQualifier="0" id="3" port="S_AXI_CONTROL" size="0x4" offset="0x34" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+      <arg name="harris_cols" addressQualifier="0" id="4" port="S_AXI_CONTROL" size="0x4" offset="0x3C" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+    </args>
+    <compileWorkGroupSize x="1" y="1" z="1"/>
+    <maxWorkGroupSize x="1" y="1" z="1"/>
+  </kernel>
+</root>

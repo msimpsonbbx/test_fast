@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xczu7ev-ffvc1156-2-e" LaunchTime="1616685449">
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="RDI-RDI" Name="zcu104_base_wrapper.vdi"/>
+  <File Type="BG-DRC" Name="zcu104_base_wrapper.drc"/>
+  <File Type="BG-BGN" Name="zcu104_base_wrapper.bgn"/>
+  <File Type="BITSTR-SYSDEF" Name="zcu104_base_wrapper.sysdef"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="zcu104_base_wrapper.ltx"/>
+  <File Type="RBD_FILE" Name="zcu104_base_wrapper.rbd"/>
+  <File Type="NPI_FILE" Name="zcu104_base_wrapper.npi"/>
+  <File Type="RNPI_FILE" Name="zcu104_base_wrapper.rnpi"/>
+  <File Type="CFI_FILE" Name="zcu104_base_wrapper.cfi"/>
+  <File Type="RCFI_FILE" Name="zcu104_base_wrapper.rcfi"/>
+  <File Type="PDI-FILE" Name="zcu104_base_wrapper.pdi"/>
+  <File Type="BITSTR-MMI" Name="zcu104_base_wrapper.mmi"/>
+  <File Type="BITSTR-BMM" Name="zcu104_base_wrapper_bd.bmm"/>
+  <File Type="BITSTR-NKY" Name="zcu104_base_wrapper.nky"/>
+  <File Type="BITSTR-RBT" Name="zcu104_base_wrapper.rbt"/>
+  <File Type="BITSTR-MSK" Name="zcu104_base_wrapper.msk"/>
+  <File Type="BG-BIN" Name="zcu104_base_wrapper.bin"/>
+  <File Type="BG-BIT" Name="zcu104_base_wrapper.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="zcu104_base_wrapper_bus_skew_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="zcu104_base_wrapper_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="zcu104_base_wrapper_bus_skew_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="zcu104_base_wrapper_timing_summary_postroute_physopted.rpx"/>
+  <File Type="INIT-TIMING" Name="zcu104_base_wrapper_timing_summary_init.rpt"/>
+  <File Type="OPT-DRC" Name="zcu104_base_wrapper_drc_opted.rpt"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="zcu104_base_wrapper_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="zcu104_base_wrapper_methodology_drc_opted.rpt"/>
+  <File Type="PLACE-UTIL" Name="zcu104_base_wrapper_utilization_placed.rpt"/>
+  <File Type="OPT-HWDEF" Name="zcu104_base_wrapper.hwdef"/>
+  <File Type="PHYSOPT-TIMING" Name="zcu104_base_wrapper_timing_summary_physopted.rpt"/>
+  <File Type="PA-TCL" Name="zcu104_base_wrapper.tcl"/>
+  <File Type="OPT-TIMING" Name="zcu104_base_wrapper_timing_summary_opted.rpt"/>
+  <File Type="PWROPT-DRC" Name="zcu104_base_wrapper_drc_pwropted.rpt"/>
+  <File Type="REPORTS-TCL" Name="zcu104_base_wrapper_reports.tcl"/>
+  <File Type="PWROPT-TIMING" Name="zcu104_base_wrapper_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-IO" Name="zcu104_base_wrapper_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="zcu104_base_wrapper_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="zcu104_base_wrapper_utilization_placed.pb"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="zcu104_base_wrapper_methodology_drc_routed.rpt"/>
+  <File Type="PLACE-CTRL" Name="zcu104_base_wrapper_control_sets_placed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="zcu104_base_wrapper_methodology_drc_routed.pb"/>
+  <File Type="PLACE-SIMILARITY" Name="zcu104_base_wrapper_incremental_reuse_placed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="zcu104_base_wrapper_drc_routed.rpx"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="zcu104_base_wrapper_incremental_reuse_pre_placed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="zcu104_base_wrapper_methodology_drc_routed.rpx"/>
+  <File Type="PLACE-TIMING" Name="zcu104_base_wrapper_timing_summary_placed.rpt"/>
+  <File Type="PHYSOPT-DRC" Name="zcu104_base_wrapper_drc_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="zcu104_base_wrapper_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="zcu104_base_wrapper_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="zcu104_base_wrapper_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="zcu104_base_wrapper_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="zcu104_base_wrapper_drc_routed.pb"/>
+  <File Type="ROUTE-PWR" Name="zcu104_base_wrapper_power_routed.rpt"/>
+  <File Type="ROUTE-PWR-SUM" Name="zcu104_base_wrapper_power_summary_routed.pb"/>
+  <File Type="ROUTE-PWR-RPX" Name="zcu104_base_wrapper_power_routed.rpx"/>
+  <File Type="ROUTE-STATUS" Name="zcu104_base_wrapper_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="zcu104_base_wrapper_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="zcu104_base_wrapper_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="zcu104_base_wrapper_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="zcu104_base_wrapper_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="zcu104_base_wrapper_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="zcu104_base_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="zcu104_base_wrapper_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="zcu104_base_wrapper_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="zcu104_base_wrapper_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="zcu104_base_wrapper_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="zcu104_base_wrapper_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="zcu104_base_wrapper_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="zcu104_base_wrapper_timing_summary_postroute_physopted.pb"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/bd/zcu104_base/zcu104_base.bd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../.local/hw_platform/prj/sources_1/bd/zcu104_base/zcu104_base.bd"/>
+        <Attr Name="ImportTime" Val="1591753300"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/hdl/zcu104_base_wrapper.v">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../.local/hw_platform/prj/sources_1/bd/zcu104_base/hdl/zcu104_base_wrapper.v"/>
+        <Attr Name="ImportTime" Val="1591753304"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="zcu104_base_wrapper"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PPRDIR/../output/zcu104_base_ooc_copy.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="out_of_context"/>
+        <Attr Name="ProcessingOrder" Val="EARLY"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <File Path="$PPRDIR/../scripts/_full_init_post.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;INIT_DESIGN;TCL.POST"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../scripts/_full_init_pre.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;INIT_DESIGN;TCL.PRE"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../scripts/_full_opt_post.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;OPT_DESIGN;TCL.POST"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../scripts/_full_opt_pre.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;OPT_DESIGN;TCL.PRE"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../scripts/_full_place_post.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;PLACE_DESIGN;TCL.POST"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../scripts/_full_place_pre.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;PLACE_DESIGN;TCL.PRE"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../scripts/_full_post_route_phys_opt_post.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;POST_ROUTE_PHYS_OPT_DESIGN;TCL.POST"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../scripts/_full_route_post.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;ROUTE_DESIGN;TCL.POST"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../scripts/_full_write_bitstream_post.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;WRITE_BITSTREAM;TCL.POST"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../scripts/_full_write_bitstream_pre.tcl">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="UsedInSteps" Val="impl_1;WRITE_BITSTREAM;TCL.PRE"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
+    <Step Id="init_design" PostStepTclHook="$PPRDIR/../scripts/_full_init_post.tcl" PreStepTclHook="$PPRDIR/../scripts/_full_init_pre.tcl"/>
+    <Step Id="opt_design" PostStepTclHook="$PPRDIR/../scripts/_full_opt_post.tcl" PreStepTclHook="$PPRDIR/../scripts/_full_opt_pre.tcl"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design" PostStepTclHook="$PPRDIR/../scripts/_full_place_post.tcl" PreStepTclHook="$PPRDIR/../scripts/_full_place_pre.tcl"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design" PostStepTclHook="$PPRDIR/../scripts/_full_route_post.tcl"/>
+    <Step Id="post_route_phys_opt_design" PostStepTclHook="$PPRDIR/../scripts/_full_post_route_phys_opt_post.tcl"/>
+    <Step Id="write_bitstream" PostStepTclHook="$PPRDIR/../scripts/_full_write_bitstream_post.tcl" PreStepTclHook="$PPRDIR/../scripts/_full_write_bitstream_pre.tcl"/>
+  </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_cc_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_cc_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_cc_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s09_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_m00_data_fifo_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s10_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_cc_3"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s12_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_8"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_11"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_9"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_12"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_axi_intc_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_cornerupdate_accel_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s11_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s02_data_fifo_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_pyr_down_accel_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_m00_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s03_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_5"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_m01_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s04_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_xbar_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s02_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_6"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_pyr_dense_optical_flow_accel_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s08_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_cornerTracker_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_xbar_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s13_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_3"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_10"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_7"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s00_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_m03_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s06_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_m04_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s07_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_4"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_m02_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s05_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_2"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_s01_regslice_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="zcu104_base_auto_us_df_1"/>
+</GenRun>

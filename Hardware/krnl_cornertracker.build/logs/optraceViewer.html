@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+
+<html>
+<!-- Styles -->
+<style>
+    #chartdiv {
+      width: 100%;
+      height: 1000px;
+    }
+</style>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>OPTraceViewer</title>
+  <script src="https://www.amcharts.com/lib/3/amcharts.js">
+  </script>
+  <script src="https://www.amcharts.com/lib/3/serial.js">
+  </script>
+  <script src="https://www.amcharts.com/lib/3/gantt.js">
+  </script>
+  <script src="https://www.amcharts.com/lib/3/themes/light.js">
+  </script>
+  <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js">
+  </script>
+  <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all"/>
+
+  <form name="userInputForm" action="javascript:userInputFormCallback()">
+    <fieldset>
+    <legend>Graph Filters:</legend>
+    <table style="width:100%">
+      <col width="50"></col>
+      <col width="20"></col>
+      <col width="60"></col>
+      <tr>
+        <td style="text-align: center"; colspan="3"><input type="number" name="userDurationFilterSecInput" id="userDurationFilterSecInput" value="2" min="0" max="6000" step="1"> sec</td>
+        <td>Filter out run durations lower than this value</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td style="text-align: center"><input type="checkbox" name="userGroupPidSortSelected" id="userGroupPidSortSelected"></td>
+        <td>Group sort by process ID</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td bgcolor="#0099ff"></td>
+        <td style="text-align: center"><input type="checkbox" name="userRollupSelected" id="userRollupSelected"></td>
+        <td>Show rollup entries</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td bgcolor="#8dc49f"></td>
+        <td style="text-align: center"><input type="checkbox" name="userIndividualEntrySelected" id="userIndividualEntrySelected"></td>
+        <td>Show individual entries</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td bgcolor="#cd82ad"></td>
+        <td style="text-align: center"><input type="checkbox" name="userCheckpointEntrySelected" id="userCheckpointEntrySelected"></td>
+        <td>Show checkpoints entry</td>
+      </tr>
+       <tr>
+        <td></td>
+        <td bgcolor="#b9783f"></td>
+        <td style="text-align: center"><input type="checkbox" name="userReportEntrySelected" id="userReportEntrySelected"></td>
+        <td>Show report entry</td>
+      </tr>
+
+    </table>
+    <br>
+    <input name="Submit" type="submit" value="Update Graph">
+    </fieldset>
+  </form> 
+
+  <div id="chartdiv">
+  </div>
+
+  <script>
+  </script>
+
+</head>
+
+
+<body>
+<table id="myDynamicTable" cellpadding="2" cellspacing="2" border="1" onclick="tester()">
+  <tr>
+  <td>Task</td>
+  <td>Start</td>
+  <td>Duration</td>
+  </tr>
+</table>
+<script>
+  // Default User Selected variables
+  var m_secondFilter = 1;
+  var m_groupPidSort = true;
+  var m_showRollup = true;
+  var m_showIndividualEntry = false;
+  var m_showCheckpointEntry = false;
+  var m_showReportEntry = false;
+
+  function SetDefaultUserValues()
+  {
+    document.getElementById("userDurationFilterSecInput").value = m_secondFilter;
+    document.getElementById("userGroupPidSortSelected").checked = m_groupPidSort;
+    document.getElementById("userRollupSelected").checked = m_showRollup;
+    document.getElementById("userIndividualEntrySelected").checked = m_showIndividualEntry;
+    document.getElementById("userCheckpointEntrySelected").checked = m_showCheckpointEntry;
+    document.getElementById("userReportEntrySelected").checked = m_showReportEntry;
+  }
+
+  window.onload = function(){
+    SetDefaultUserValues();
+  }
+
+
+
+
+  // Header
+  var header = "Keyword|pid|Entry|SrcFile|Catagory|TimeStampMSec|Action|Task|Tags|Misc";
+                         
+  // Insert Raw Data Here
+  // Note: Do not change the following signature. 
+  var csvData =    [
+      "[OPTRACE]|25112|10|run|cpp|1616684589617|START|OCL_LINK|",
+      "[OPTRACE]|25112|11|setupBinaryForLink|cpp|1616684589617|START|Create Binary|",
+      "[OPTRACE]|25112|12||cpp|1616684589618|END|Create Binary|",
+      "[OPTRACE]|25112|13|setupBinaryForLink|cpp|1616684589618|START|Extract Kernels|",
+      "[OPTRACE]|25112|14||cpp|1616684590539|END|Extract Kernels|",
+      "[OPTRACE]|25112|15|launchStep_|cpp|1616684590717|START|Launch Step: system_link|",
+      "[OPTRACE]|25112|16||cpp|1616684601400|END|Launch Step: system_link|",
+      "[OPTRACE]|25112|17|launchStep_|cpp|1616684601400|START|Launch Step: cf2sw|",
+      "[OPTRACE]|25112|18||cpp|1616684604647|END|Launch Step: cf2sw|",
+      "[OPTRACE]|25112|19|launchStep_|cpp|1616684604648|START|Launch Step: rtd2_system_diagram|",
+      "[OPTRACE]|25112|1|main|cpp|1616684579196|START|v++|ROLLUP_0",
+      "[OPTRACE]|25112|20||cpp|1616684605488|END|Launch Step: rtd2_system_diagram|",
+      "[OPTRACE]|25112|21|launchStep_|cpp|1616684605488|START|Launch Step: vpl|",
+      "[OPTRACE]|25112|2|run|cpp|1616684579196|START|Validate Kernels|",
+      "[OPTRACE]|25112|3||cpp|1616684579258|END|Validate Kernels|",
+      "[OPTRACE]|25112|4|prepareProject|cpp|1616684579297|START|Create Solution|",
+      "[OPTRACE]|25112|5||cpp|1616684589318|END|Create Solution|",
+      "[OPTRACE]|25112|690||cpp|1616686353860|END|Launch Step: vpl|",
+      "[OPTRACE]|25112|691|launchStep_|cpp|1616686353860|START|Launch Step: rtdgen|",
+      "[OPTRACE]|25112|692|launchCf2sw_|cpp|1616686353866|START|Launch cf2sw|",
+      "[OPTRACE]|25112|693||cpp|1616686357206|END|Launch cf2sw|",
+      "[OPTRACE]|25112|694|writeSystemDiagram|cpp|1616686357206|START|writeSystemDiagram|",
+      "[OPTRACE]|25112|695||cpp|1616686357209|END|writeSystemDiagram|",
+      "[OPTRACE]|25112|696||cpp|1616686357209|END|Launch Step: rtdgen|",
+      "[OPTRACE]|25112|697|launchStep_|cpp|1616686357210|START|Launch Step: xclbinutil|",
+      "[OPTRACE]|25112|698||cpp|1616686357317|END|Launch Step: xclbinutil|",
+      "[OPTRACE]|25112|699|launchStep_|cpp|1616686357317|START|Launch Step: xclbinutilinfo|",
+      "[OPTRACE]|25112|6|prepareProject|cpp|1616684589318|START|Add Device|",
+      "[OPTRACE]|25112|700||cpp|1616686357527|END|Launch Step: xclbinutilinfo|",
+      "[OPTRACE]|25112|701|launchStep_|cpp|1616686357527|START|Launch Step: generate_sc_driver|",
+      "[OPTRACE]|25112|702||cpp|1616686357529|END|Launch Step: generate_sc_driver|",
+      "[OPTRACE]|25112|703||cpp|1616686357529|END|OCL_LINK|",
+      "[OPTRACE]|25112|704||cpp|1616686357579|END|v++|",
+      "[OPTRACE]|25112|7|addDevice|cpp|1616684589318|START|Find & Load Device|",
+      "[OPTRACE]|25112|8||cpp|1616684589336|END|Find & Load Device|",
+      "[OPTRACE]|25112|9||cpp|1616684589609|END|Add Device|",
+      "[OPTRACE]|25670|22|main|cpp|1616684606841|START|vpl|",
+      "[OPTRACE]|25670|23|runPlatformLinker|cpp|1616684606881|START|runPlatformLinker|",
+      "[OPTRACE]|25670|24|setupBinaryForLink|cpp|1616684606881|START|Create Solution|",
+      "[OPTRACE]|25670|25||cpp|1616684606885|END|Create Solution|",
+      "[OPTRACE]|25670|26|setupBinaryForLink|cpp|1616684606885|START|Add platform|",
+      "[OPTRACE]|25670|27||cpp|1616684607178|END|Add platform|",
+      "[OPTRACE]|25670|28|setupBinaryForLink|cpp|1616684607178|START|Create Binary|",
+      "[OPTRACE]|25670|29||cpp|1616684607178|END|Create Binary|",
+      "[OPTRACE]|25670|30|setupBinaryForLink|cpp|1616684607178|START|Create Kernels|",
+      "[OPTRACE]|25670|31||cpp|1616684607215|END|Create Kernels|",
+      "[OPTRACE]|25670|32|runPlatformLinker|cpp|1616684607220|START|Process Kernels|",
+      "[OPTRACE]|25670|33||cpp|1616684607220|END|Process Kernels|",
+      "[OPTRACE]|25670|34|runPlatformLinker|cpp|1616684607220|START|Process Kernel Debug|",
+      "[OPTRACE]|25670|35||cpp|1616684607220|END|Process Kernel Debug|",
+      "[OPTRACE]|25670|36|runPlatformLinker|cpp|1616684607220|START|Set Kernel Debug|",
+      "[OPTRACE]|25670|37||cpp|1616684607220|END|Set Kernel Debug|",
+      "[OPTRACE]|25670|38|runPlatformLinker|cpp|1616684607221|START|Set Miscellaneous|",
+      "[OPTRACE]|25670|39||cpp|1616684607221|END|Set Miscellaneous|",
+      "[OPTRACE]|25670|40|run|cpp|1616684607221|START|Extract Platform|",
+      "[OPTRACE]|25670|41||cpp|1616684607492|END|Extract Platform|",
+      "[OPTRACE]|25670|686|runPlatformLinker|cpp|1616686353832|START|Generate Resource Availability Report|",
+      "[OPTRACE]|25670|687||cpp|1616686353832|END|Generate Resource Availability Report|",
+      "[OPTRACE]|25670|688||cpp|1616686353832|END|runPlatformLinker|",
+      "[OPTRACE]|25670|689||cpp|1616686353840|END|vpl|",
+      "[OPTRACE]|25777|42|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/vpl.tcl|vivado_impl|1616684614533|START|Implementation|ROLLUP_1",
+      "[OPTRACE]|25777|43|ipirun.tcl|vpl|1616684614550|START|ipirun|ROLLUP_0",
+      "[OPTRACE]|25777|44|ipirun.tcl|vpl|1616684614551|END|ipirun|",
+      "[OPTRACE]|25777|45|ipirun.tcl|vpl|1616684614564|START|Create project|",
+      "[OPTRACE]|25777|46|ipirun.tcl|vpl|1616684621068|END|Create project|",
+      "[OPTRACE]|25777|47|ipirun.tcl|vpl|1616684621069|START|Create IP caching environment|",
+      "[OPTRACE]|25777|48|ipirun.tcl|vpl|1616684622583|END|Create IP caching environment|",
+      "[OPTRACE]|25777|49|ipirun.tcl|vpl|1616684622583|START|Import/add dynamic BD|",
+      "[OPTRACE]|25777|50|ipirun.tcl|vpl|1616684622584|END|Import/add dynamic BD|",
+      "[OPTRACE]|25777|51|ipirun.tcl|vpl|1616684622584|START|Open BD and insert kernels|",
+      "[OPTRACE]|25777|52|ipirun.tcl|vpl|1616684629617|END|Open BD and insert kernels|",
+      "[OPTRACE]|25777|53|ipirun.tcl|vpl|1616684629618|START|Add debug/profiling support|",
+      "[OPTRACE]|25777|54|ipirun.tcl|vpl|1616684629673|END|Add debug/profiling support|",
+      "[OPTRACE]|25777|55|ipirun.tcl|vpl|1616684629673|START|IPI address assignments|",
+      "[OPTRACE]|25777|56|ipirun.tcl|vpl|1616684629675|END|IPI address assignments|",
+      "[OPTRACE]|25777|57|ipirun.tcl|vpl|1616684629678|START|Save BD|",
+      "[OPTRACE]|25777|58|ipirun.tcl|vpl|1616684629785|END|Save BD|",
+      "[OPTRACE]|25777|59|ipirun.tcl|vpl|1616684629785|START|Create address map and debug IP profile files|",
+      "[OPTRACE]|25777|60|ipirun.tcl|vpl|1616684629794|END|Create address map and debug IP profile files|",
+      "[OPTRACE]|25777|61|ipirun.tcl|vpl|1616684629795|START|Generate output products|",
+      "[OPTRACE]|25777|62|ipirun.tcl|vpl|1616684673956|END|Generate output products|",
+      "[OPTRACE]|25777|63|ipirun.tcl|vpl|1616684673958|START|Source report_commands_tcl|",
+      "[OPTRACE]|25777|64|ipirun.tcl|vpl|1616684674043|END|Source report_commands_tcl|",
+      "[OPTRACE]|25777|65|ipirun.tcl|vpl|1616684674043|START|Source synth_props_tcl|",
+      "[OPTRACE]|26542|100|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684695009|END|Adding files|",
+      "[OPTRACE]|26542|101|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684695010|START|Configure IP Cache|",
+      "[OPTRACE]|26542|102|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684695012|END|Configure IP Cache|",
+      "[OPTRACE]|26542|103|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684695012|START|synth_design|",
+      "[OPTRACE]|26542|202|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684926087|END|synth_design|",
+      "[OPTRACE]|26542|203|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684926087|START|Write IP Cache|",
+      "[OPTRACE]|26542|206|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684932294|END|Write IP Cache|",
+      "[OPTRACE]|26542|207|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684932304|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|26542|210|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684936620|END|write_checkpoint|",
+      "[OPTRACE]|26542|211|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684936620|START|synth reports|REPORT",
+      "[OPTRACE]|26542|212|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684936914|END|synth reports|",
+      "[OPTRACE]|26542|213|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684939630|END|zcu104_base_cornerTracker_1_0_synth_1|",
+      "[OPTRACE]|26542|66|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684686934|START|zcu104_base_cornerTracker_1_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|26542|67|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684686935|START|Creating in-memory project|",
+      "[OPTRACE]|26542|84|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684694651|END|Creating in-memory project|",
+      "[OPTRACE]|26542|85|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerTracker_1_0_synth_1/zcu104_base_cornerTracker_1_0.tcl|vivado_synth|1616684694651|START|Adding files|",
+      "[OPTRACE]|26545|114|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684783589|END|synth_design|",
+      "[OPTRACE]|26545|115|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684783589|START|Write IP Cache|",
+      "[OPTRACE]|26545|116|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684784180|END|Write IP Cache|",
+      "[OPTRACE]|26545|117|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684784180|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|26545|118|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684784274|END|write_checkpoint|",
+      "[OPTRACE]|26545|119|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684784274|START|synth reports|REPORT",
+      "[OPTRACE]|26545|120|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684784399|END|synth reports|",
+      "[OPTRACE]|26545|121|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684784914|END|zcu104_base_s07_regslice_0_synth_1|",
+      "[OPTRACE]|26545|70|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684687197|START|zcu104_base_s07_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|26545|71|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684687198|START|Creating in-memory project|",
+      "[OPTRACE]|26545|78|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684694474|END|Creating in-memory project|",
+      "[OPTRACE]|26545|79|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684694474|START|Adding files|",
+      "[OPTRACE]|26545|86|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684694722|END|Adding files|",
+      "[OPTRACE]|26545|87|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684694723|START|Configure IP Cache|",
+      "[OPTRACE]|26545|88|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684694725|END|Configure IP Cache|",
+      "[OPTRACE]|26545|89|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s07_regslice_0_synth_1/zcu104_base_s07_regslice_0.tcl|vivado_synth|1616684694725|START|synth_design|",
+      "[OPTRACE]|26546|138|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684831248|END|synth_design|",
+      "[OPTRACE]|26546|139|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684831248|START|Write IP Cache|",
+      "[OPTRACE]|26546|140|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684832752|END|Write IP Cache|",
+      "[OPTRACE]|26546|141|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684832754|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|26546|142|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684833358|END|write_checkpoint|",
+      "[OPTRACE]|26546|143|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684833359|START|synth reports|REPORT",
+      "[OPTRACE]|26546|144|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684833512|END|synth reports|",
+      "[OPTRACE]|26546|145|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684834447|END|zcu104_base_auto_us_df_3_synth_1|",
+      "[OPTRACE]|26546|72|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684687233|START|zcu104_base_auto_us_df_3_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|26546|73|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684687234|START|Creating in-memory project|",
+      "[OPTRACE]|26546|80|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684694621|END|Creating in-memory project|",
+      "[OPTRACE]|26546|81|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684694621|START|Adding files|",
+      "[OPTRACE]|26546|92|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684694870|END|Adding files|",
+      "[OPTRACE]|26546|93|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684694871|START|Configure IP Cache|",
+      "[OPTRACE]|26546|98|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684694940|END|Configure IP Cache|",
+      "[OPTRACE]|26546|99|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_3_synth_1/zcu104_base_auto_us_df_3.tcl|vivado_synth|1616684694940|START|synth_design|",
+      "[OPTRACE]|26547|208|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684933437|END|synth_design|",
+      "[OPTRACE]|26547|209|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684933437|START|Write IP Cache|",
+      "[OPTRACE]|26547|220|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684940736|END|Write IP Cache|",
+      "[OPTRACE]|26547|221|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684940741|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|26547|222|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684944916|END|write_checkpoint|",
+      "[OPTRACE]|26547|223|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684944916|START|synth reports|REPORT",
+      "[OPTRACE]|26547|224|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684945197|END|synth reports|",
+      "[OPTRACE]|26547|225|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684947412|END|zcu104_base_pyr_down_accel_1_0_synth_1|",
+      "[OPTRACE]|26547|74|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684687281|START|zcu104_base_pyr_down_accel_1_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|26547|75|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684687282|START|Creating in-memory project|",
+      "[OPTRACE]|26547|82|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684694632|END|Creating in-memory project|",
+      "[OPTRACE]|26547|83|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684694632|START|Adding files|",
+      "[OPTRACE]|26547|94|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684694911|END|Adding files|",
+      "[OPTRACE]|26547|95|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684694912|START|Configure IP Cache|",
+      "[OPTRACE]|26547|96|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684694913|END|Configure IP Cache|",
+      "[OPTRACE]|26547|97|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_down_accel_1_0_synth_1/zcu104_base_pyr_down_accel_1_0.tcl|vivado_synth|1616684694913|START|synth_design|",
+      "[OPTRACE]|26548|104|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616684695167|END|Adding files|",
+      "[OPTRACE]|26548|105|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616684695168|START|Configure IP Cache|",
+      "[OPTRACE]|26548|106|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616684695170|END|Configure IP Cache|",
+      "[OPTRACE]|26548|107|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616684695170|START|synth_design|",
+      "[OPTRACE]|26548|522|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616685275487|END|synth_design|",
+      "[OPTRACE]|26548|523|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616685275487|START|Write IP Cache|",
+      "[OPTRACE]|26548|544|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616685295569|END|Write IP Cache|",
+      "[OPTRACE]|26548|545|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616685295585|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|26548|566|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616685309071|END|write_checkpoint|",
+      "[OPTRACE]|26548|567|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616685309071|START|synth reports|REPORT",
+      "[OPTRACE]|26548|568|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616685309412|END|synth reports|",
+      "[OPTRACE]|26548|569|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616685314694|END|zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1|",
+      "[OPTRACE]|26548|76|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616684687360|START|zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|26548|77|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616684687361|START|Creating in-memory project|",
+      "[OPTRACE]|26548|90|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616684694807|END|Creating in-memory project|",
+      "[OPTRACE]|26548|91|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_pyr_dense_optical_flow_accel_1_0_synth_1/zcu104_base_pyr_dense_optical_flow_accel_1_0.tcl|vivado_synth|1616684694807|START|Adding files|",
+      "[OPTRACE]|26549|108|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684696199|END|Creating in-memory project|",
+      "[OPTRACE]|26549|109|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684696199|START|Adding files|",
+      "[OPTRACE]|26549|110|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684696821|END|Adding files|",
+      "[OPTRACE]|26549|111|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684696822|START|Configure IP Cache|",
+      "[OPTRACE]|26549|112|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684696886|END|Configure IP Cache|",
+      "[OPTRACE]|26549|113|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684696886|START|synth_design|",
+      "[OPTRACE]|26549|146|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684842984|END|synth_design|",
+      "[OPTRACE]|26549|147|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684842984|START|Write IP Cache|",
+      "[OPTRACE]|26549|148|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684846835|END|Write IP Cache|",
+      "[OPTRACE]|26549|149|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684846839|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|26549|152|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684849067|END|write_checkpoint|",
+      "[OPTRACE]|26549|153|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684849067|START|synth reports|REPORT",
+      "[OPTRACE]|26549|154|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684849303|END|synth reports|",
+      "[OPTRACE]|26549|155|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684851357|END|zcu104_base_xbar_1_synth_1|",
+      "[OPTRACE]|26549|68|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684687082|START|zcu104_base_xbar_1_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|26549|69|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_1_synth_1/zcu104_base_xbar_1.tcl|vivado_synth|1616684687083|START|Creating in-memory project|",
+      "[OPTRACE]|27069|122|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s04_regslice_0_synth_1/zcu104_base_s04_regslice_0.tcl|vivado_synth|1616684799973|START|zcu104_base_s04_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|27069|123|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s04_regslice_0_synth_1/zcu104_base_s04_regslice_0.tcl|vivado_synth|1616684799974|START|Creating in-memory project|",
+      "[OPTRACE]|27069|124|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s04_regslice_0_synth_1/zcu104_base_s04_regslice_0.tcl|vivado_synth|1616684808712|END|Creating in-memory project|",
+      "[OPTRACE]|27069|125|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s04_regslice_0_synth_1/zcu104_base_s04_regslice_0.tcl|vivado_synth|1616684808712|START|Adding files|",
+      "[OPTRACE]|27069|126|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s04_regslice_0_synth_1/zcu104_base_s04_regslice_0.tcl|vivado_synth|1616684809027|END|Adding files|",
+      "[OPTRACE]|27069|127|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s04_regslice_0_synth_1/zcu104_base_s04_regslice_0.tcl|vivado_synth|1616684809028|START|Configure IP Cache|",
+      "[OPTRACE]|27069|128|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s04_regslice_0_synth_1/zcu104_base_s04_regslice_0.tcl|vivado_synth|1616684809039|END|Configure IP Cache|",
+      "[OPTRACE]|27069|129|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s04_regslice_0_synth_1/zcu104_base_s04_regslice_0.tcl|vivado_synth|1616684809039|END|zcu104_base_s04_regslice_0_synth_1|",
+      "[OPTRACE]|27259|130|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616684822054|START|zcu104_base_cornerupdate_accel_1_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|27259|131|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616684822055|START|Creating in-memory project|",
+      "[OPTRACE]|27259|132|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616684830472|END|Creating in-memory project|",
+      "[OPTRACE]|27259|133|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616684830472|START|Adding files|",
+      "[OPTRACE]|27259|134|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616684830737|END|Adding files|",
+      "[OPTRACE]|27259|135|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616684830738|START|Configure IP Cache|",
+      "[OPTRACE]|27259|136|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616684830739|END|Configure IP Cache|",
+      "[OPTRACE]|27259|137|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616684830739|START|synth_design|",
+      "[OPTRACE]|27259|316|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616685031727|END|synth_design|",
+      "[OPTRACE]|27259|317|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616685031728|START|Write IP Cache|",
+      "[OPTRACE]|27259|318|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616685035057|END|Write IP Cache|",
+      "[OPTRACE]|27259|319|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616685035059|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|27259|322|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616685037058|END|write_checkpoint|",
+      "[OPTRACE]|27259|323|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616685037058|START|synth reports|REPORT",
+      "[OPTRACE]|27259|326|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616685037236|END|synth reports|",
+      "[OPTRACE]|27259|329|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_cornerupdate_accel_1_0_synth_1/zcu104_base_cornerupdate_accel_1_0.tcl|vivado_synth|1616685038351|END|zcu104_base_cornerupdate_accel_1_0_synth_1|",
+      "[OPTRACE]|27486|150|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_6_synth_1/zcu104_base_auto_us_df_6.tcl|vivado_synth|1616684847678|START|zcu104_base_auto_us_df_6_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|27486|151|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_6_synth_1/zcu104_base_auto_us_df_6.tcl|vivado_synth|1616684847679|START|Creating in-memory project|",
+      "[OPTRACE]|27486|156|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_6_synth_1/zcu104_base_auto_us_df_6.tcl|vivado_synth|1616684855879|END|Creating in-memory project|",
+      "[OPTRACE]|27486|157|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_6_synth_1/zcu104_base_auto_us_df_6.tcl|vivado_synth|1616684855879|START|Adding files|",
+      "[OPTRACE]|27486|158|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_6_synth_1/zcu104_base_auto_us_df_6.tcl|vivado_synth|1616684856277|END|Adding files|",
+      "[OPTRACE]|27486|159|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_6_synth_1/zcu104_base_auto_us_df_6.tcl|vivado_synth|1616684856278|START|Configure IP Cache|",
+      "[OPTRACE]|27486|160|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_6_synth_1/zcu104_base_auto_us_df_6.tcl|vivado_synth|1616684856465|END|Configure IP Cache|",
+      "[OPTRACE]|27486|161|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_6_synth_1/zcu104_base_auto_us_df_6.tcl|vivado_synth|1616684856466|END|zcu104_base_auto_us_df_6_synth_1|",
+      "[OPTRACE]|27622|162|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s08_regslice_0_synth_1/zcu104_base_s08_regslice_0.tcl|vivado_synth|1616684864154|START|zcu104_base_s08_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|27622|163|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s08_regslice_0_synth_1/zcu104_base_s08_regslice_0.tcl|vivado_synth|1616684864155|START|Creating in-memory project|",
+      "[OPTRACE]|27622|166|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s08_regslice_0_synth_1/zcu104_base_s08_regslice_0.tcl|vivado_synth|1616684872536|END|Creating in-memory project|",
+      "[OPTRACE]|27622|167|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s08_regslice_0_synth_1/zcu104_base_s08_regslice_0.tcl|vivado_synth|1616684872536|START|Adding files|",
+      "[OPTRACE]|27622|168|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s08_regslice_0_synth_1/zcu104_base_s08_regslice_0.tcl|vivado_synth|1616684872805|END|Adding files|",
+      "[OPTRACE]|27622|169|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s08_regslice_0_synth_1/zcu104_base_s08_regslice_0.tcl|vivado_synth|1616684872806|START|Configure IP Cache|",
+      "[OPTRACE]|27622|170|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s08_regslice_0_synth_1/zcu104_base_s08_regslice_0.tcl|vivado_synth|1616684872816|END|Configure IP Cache|",
+      "[OPTRACE]|27622|171|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s08_regslice_0_synth_1/zcu104_base_s08_regslice_0.tcl|vivado_synth|1616684872817|END|zcu104_base_s08_regslice_0_synth_1|",
+      "[OPTRACE]|27687|164|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_7_synth_1/zcu104_base_auto_us_df_7.tcl|vivado_synth|1616684867343|START|zcu104_base_auto_us_df_7_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|27687|165|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_7_synth_1/zcu104_base_auto_us_df_7.tcl|vivado_synth|1616684867344|START|Creating in-memory project|",
+      "[OPTRACE]|27687|172|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_7_synth_1/zcu104_base_auto_us_df_7.tcl|vivado_synth|1616684875637|END|Creating in-memory project|",
+      "[OPTRACE]|27687|173|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_7_synth_1/zcu104_base_auto_us_df_7.tcl|vivado_synth|1616684875637|START|Adding files|",
+      "[OPTRACE]|27687|174|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_7_synth_1/zcu104_base_auto_us_df_7.tcl|vivado_synth|1616684875976|END|Adding files|",
+      "[OPTRACE]|27687|175|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_7_synth_1/zcu104_base_auto_us_df_7.tcl|vivado_synth|1616684875977|START|Configure IP Cache|",
+      "[OPTRACE]|27687|176|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_7_synth_1/zcu104_base_auto_us_df_7.tcl|vivado_synth|1616684876116|END|Configure IP Cache|",
+      "[OPTRACE]|27687|177|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_7_synth_1/zcu104_base_auto_us_df_7.tcl|vivado_synth|1616684876117|END|zcu104_base_auto_us_df_7_synth_1|",
+      "[OPTRACE]|27777|178|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_5_synth_1/zcu104_base_auto_us_df_5.tcl|vivado_synth|1616684884750|START|zcu104_base_auto_us_df_5_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|27777|179|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_5_synth_1/zcu104_base_auto_us_df_5.tcl|vivado_synth|1616684884751|START|Creating in-memory project|",
+      "[OPTRACE]|27777|182|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_5_synth_1/zcu104_base_auto_us_df_5.tcl|vivado_synth|1616684893903|END|Creating in-memory project|",
+      "[OPTRACE]|27777|183|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_5_synth_1/zcu104_base_auto_us_df_5.tcl|vivado_synth|1616684893903|START|Adding files|",
+      "[OPTRACE]|27777|184|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_5_synth_1/zcu104_base_auto_us_df_5.tcl|vivado_synth|1616684894204|END|Adding files|",
+      "[OPTRACE]|27777|185|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_5_synth_1/zcu104_base_auto_us_df_5.tcl|vivado_synth|1616684894205|START|Configure IP Cache|",
+      "[OPTRACE]|27777|186|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_5_synth_1/zcu104_base_auto_us_df_5.tcl|vivado_synth|1616684894327|END|Configure IP Cache|",
+      "[OPTRACE]|27777|187|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_5_synth_1/zcu104_base_auto_us_df_5.tcl|vivado_synth|1616684894328|END|zcu104_base_auto_us_df_5_synth_1|",
+      "[OPTRACE]|27837|180|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684889879|START|zcu104_base_axi_intc_0_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|27837|181|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684889880|START|Creating in-memory project|",
+      "[OPTRACE]|27837|188|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684899859|END|Creating in-memory project|",
+      "[OPTRACE]|27837|189|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684899860|START|Adding files|",
+      "[OPTRACE]|27837|190|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684900116|END|Adding files|",
+      "[OPTRACE]|27837|191|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684900117|START|Configure IP Cache|",
+      "[OPTRACE]|27837|192|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684900118|END|Configure IP Cache|",
+      "[OPTRACE]|27837|193|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684900119|START|synth_design|",
+      "[OPTRACE]|27837|266|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684996254|END|synth_design|",
+      "[OPTRACE]|27837|267|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684996254|START|Write IP Cache|",
+      "[OPTRACE]|27837|268|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684997109|END|Write IP Cache|",
+      "[OPTRACE]|27837|269|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684997110|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|27837|270|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684997313|END|write_checkpoint|",
+      "[OPTRACE]|27837|271|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684997313|START|synth reports|REPORT",
+      "[OPTRACE]|27837|272|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684997488|END|synth reports|",
+      "[OPTRACE]|27837|275|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_axi_intc_0_0_synth_1/zcu104_base_axi_intc_0_0.tcl|vivado_synth|1616684998193|END|zcu104_base_axi_intc_0_0_synth_1|",
+      "[OPTRACE]|27902|194|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s06_regslice_0_synth_1/zcu104_base_s06_regslice_0.tcl|vivado_synth|1616684908309|START|zcu104_base_s06_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|27902|195|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s06_regslice_0_synth_1/zcu104_base_s06_regslice_0.tcl|vivado_synth|1616684908310|START|Creating in-memory project|",
+      "[OPTRACE]|27902|196|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s06_regslice_0_synth_1/zcu104_base_s06_regslice_0.tcl|vivado_synth|1616684918845|END|Creating in-memory project|",
+      "[OPTRACE]|27902|197|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s06_regslice_0_synth_1/zcu104_base_s06_regslice_0.tcl|vivado_synth|1616684918845|START|Adding files|",
+      "[OPTRACE]|27902|198|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s06_regslice_0_synth_1/zcu104_base_s06_regslice_0.tcl|vivado_synth|1616684919213|END|Adding files|",
+      "[OPTRACE]|27902|199|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s06_regslice_0_synth_1/zcu104_base_s06_regslice_0.tcl|vivado_synth|1616684919214|START|Configure IP Cache|",
+      "[OPTRACE]|27902|200|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s06_regslice_0_synth_1/zcu104_base_s06_regslice_0.tcl|vivado_synth|1616684919229|END|Configure IP Cache|",
+      "[OPTRACE]|27902|201|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s06_regslice_0_synth_1/zcu104_base_s06_regslice_0.tcl|vivado_synth|1616684919230|END|zcu104_base_s06_regslice_0_synth_1|",
+      "[OPTRACE]|28018|204|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_4_synth_1/zcu104_base_auto_us_df_4.tcl|vivado_synth|1616684931556|START|zcu104_base_auto_us_df_4_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28018|205|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_4_synth_1/zcu104_base_auto_us_df_4.tcl|vivado_synth|1616684931556|START|Creating in-memory project|",
+      "[OPTRACE]|28018|214|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_4_synth_1/zcu104_base_auto_us_df_4.tcl|vivado_synth|1616684940024|END|Creating in-memory project|",
+      "[OPTRACE]|28018|215|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_4_synth_1/zcu104_base_auto_us_df_4.tcl|vivado_synth|1616684940024|START|Adding files|",
+      "[OPTRACE]|28018|216|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_4_synth_1/zcu104_base_auto_us_df_4.tcl|vivado_synth|1616684940297|END|Adding files|",
+      "[OPTRACE]|28018|217|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_4_synth_1/zcu104_base_auto_us_df_4.tcl|vivado_synth|1616684940297|START|Configure IP Cache|",
+      "[OPTRACE]|28018|218|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_4_synth_1/zcu104_base_auto_us_df_4.tcl|vivado_synth|1616684940416|END|Configure IP Cache|",
+      "[OPTRACE]|28018|219|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_4_synth_1/zcu104_base_auto_us_df_4.tcl|vivado_synth|1616684940417|END|zcu104_base_auto_us_df_4_synth_1|",
+      "[OPTRACE]|28119|226|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s05_regslice_0_synth_1/zcu104_base_s05_regslice_0.tcl|vivado_synth|1616684951837|START|zcu104_base_s05_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28119|227|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s05_regslice_0_synth_1/zcu104_base_s05_regslice_0.tcl|vivado_synth|1616684951837|START|Creating in-memory project|",
+      "[OPTRACE]|28119|230|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s05_regslice_0_synth_1/zcu104_base_s05_regslice_0.tcl|vivado_synth|1616684959946|END|Creating in-memory project|",
+      "[OPTRACE]|28119|231|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s05_regslice_0_synth_1/zcu104_base_s05_regslice_0.tcl|vivado_synth|1616684959946|START|Adding files|",
+      "[OPTRACE]|28119|232|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s05_regslice_0_synth_1/zcu104_base_s05_regslice_0.tcl|vivado_synth|1616684960242|END|Adding files|",
+      "[OPTRACE]|28119|233|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s05_regslice_0_synth_1/zcu104_base_s05_regslice_0.tcl|vivado_synth|1616684960243|START|Configure IP Cache|",
+      "[OPTRACE]|28119|234|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s05_regslice_0_synth_1/zcu104_base_s05_regslice_0.tcl|vivado_synth|1616684960255|END|Configure IP Cache|",
+      "[OPTRACE]|28119|235|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s05_regslice_0_synth_1/zcu104_base_s05_regslice_0.tcl|vivado_synth|1616684960255|END|zcu104_base_s05_regslice_0_synth_1|",
+      "[OPTRACE]|28176|228|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616684952806|START|zcu104_base_xbar_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28176|229|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616684952807|START|Creating in-memory project|",
+      "[OPTRACE]|28176|236|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616684961155|END|Creating in-memory project|",
+      "[OPTRACE]|28176|237|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616684961155|START|Adding files|",
+      "[OPTRACE]|28176|240|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616684961984|END|Adding files|",
+      "[OPTRACE]|28176|241|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616684961985|START|Configure IP Cache|",
+      "[OPTRACE]|28176|242|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616684962059|END|Configure IP Cache|",
+      "[OPTRACE]|28176|243|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616684962059|START|synth_design|",
+      "[OPTRACE]|28176|346|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616685066385|END|synth_design|",
+      "[OPTRACE]|28176|347|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616685066385|START|Write IP Cache|",
+      "[OPTRACE]|28176|352|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616685067311|END|Write IP Cache|",
+      "[OPTRACE]|28176|353|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616685067311|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|28176|354|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616685067465|END|write_checkpoint|",
+      "[OPTRACE]|28176|355|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616685067465|START|synth reports|REPORT",
+      "[OPTRACE]|28176|356|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616685067610|END|synth reports|",
+      "[OPTRACE]|28176|357|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_xbar_0_synth_1/zcu104_base_xbar_0.tcl|vivado_synth|1616685068136|END|zcu104_base_xbar_0_synth_1|",
+      "[OPTRACE]|28251|238|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s03_regslice_0_synth_1/zcu104_base_s03_regslice_0.tcl|vivado_synth|1616684961829|START|zcu104_base_s03_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28251|239|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s03_regslice_0_synth_1/zcu104_base_s03_regslice_0.tcl|vivado_synth|1616684961830|START|Creating in-memory project|",
+      "[OPTRACE]|28251|244|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s03_regslice_0_synth_1/zcu104_base_s03_regslice_0.tcl|vivado_synth|1616684969919|END|Creating in-memory project|",
+      "[OPTRACE]|28251|245|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s03_regslice_0_synth_1/zcu104_base_s03_regslice_0.tcl|vivado_synth|1616684969919|START|Adding files|",
+      "[OPTRACE]|28251|246|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s03_regslice_0_synth_1/zcu104_base_s03_regslice_0.tcl|vivado_synth|1616684970182|END|Adding files|",
+      "[OPTRACE]|28251|247|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s03_regslice_0_synth_1/zcu104_base_s03_regslice_0.tcl|vivado_synth|1616684970183|START|Configure IP Cache|",
+      "[OPTRACE]|28251|248|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s03_regslice_0_synth_1/zcu104_base_s03_regslice_0.tcl|vivado_synth|1616684970195|END|Configure IP Cache|",
+      "[OPTRACE]|28251|249|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s03_regslice_0_synth_1/zcu104_base_s03_regslice_0.tcl|vivado_synth|1616684970195|END|zcu104_base_s03_regslice_0_synth_1|",
+      "[OPTRACE]|28315|250|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_2_synth_1/zcu104_base_auto_us_df_2.tcl|vivado_synth|1616684974384|START|zcu104_base_auto_us_df_2_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28315|251|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_2_synth_1/zcu104_base_auto_us_df_2.tcl|vivado_synth|1616684974385|START|Creating in-memory project|",
+      "[OPTRACE]|28315|254|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_2_synth_1/zcu104_base_auto_us_df_2.tcl|vivado_synth|1616684985443|END|Creating in-memory project|",
+      "[OPTRACE]|28315|255|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_2_synth_1/zcu104_base_auto_us_df_2.tcl|vivado_synth|1616684985444|START|Adding files|",
+      "[OPTRACE]|28315|256|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_2_synth_1/zcu104_base_auto_us_df_2.tcl|vivado_synth|1616684985817|END|Adding files|",
+      "[OPTRACE]|28315|257|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_2_synth_1/zcu104_base_auto_us_df_2.tcl|vivado_synth|1616684985818|START|Configure IP Cache|",
+      "[OPTRACE]|28315|258|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_2_synth_1/zcu104_base_auto_us_df_2.tcl|vivado_synth|1616684986006|END|Configure IP Cache|",
+      "[OPTRACE]|28315|259|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_2_synth_1/zcu104_base_auto_us_df_2.tcl|vivado_synth|1616684986007|END|zcu104_base_auto_us_df_2_synth_1|",
+      "[OPTRACE]|28380|252|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s00_regslice_0_synth_1/zcu104_base_s00_regslice_0.tcl|vivado_synth|1616684981820|START|zcu104_base_s00_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28380|253|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s00_regslice_0_synth_1/zcu104_base_s00_regslice_0.tcl|vivado_synth|1616684981821|START|Creating in-memory project|",
+      "[OPTRACE]|28380|260|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s00_regslice_0_synth_1/zcu104_base_s00_regslice_0.tcl|vivado_synth|1616684990283|END|Creating in-memory project|",
+      "[OPTRACE]|28380|261|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s00_regslice_0_synth_1/zcu104_base_s00_regslice_0.tcl|vivado_synth|1616684990283|START|Adding files|",
+      "[OPTRACE]|28380|262|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s00_regslice_0_synth_1/zcu104_base_s00_regslice_0.tcl|vivado_synth|1616684990680|END|Adding files|",
+      "[OPTRACE]|28380|263|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s00_regslice_0_synth_1/zcu104_base_s00_regslice_0.tcl|vivado_synth|1616684990681|START|Configure IP Cache|",
+      "[OPTRACE]|28380|264|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s00_regslice_0_synth_1/zcu104_base_s00_regslice_0.tcl|vivado_synth|1616684990698|END|Configure IP Cache|",
+      "[OPTRACE]|28380|265|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s00_regslice_0_synth_1/zcu104_base_s00_regslice_0.tcl|vivado_synth|1616684990698|END|zcu104_base_s00_regslice_0_synth_1|",
+      "[OPTRACE]|28493|273|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_0_synth_1/zcu104_base_auto_us_df_0.tcl|vivado_synth|1616684997821|START|zcu104_base_auto_us_df_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28493|274|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_0_synth_1/zcu104_base_auto_us_df_0.tcl|vivado_synth|1616684997822|START|Creating in-memory project|",
+      "[OPTRACE]|28493|278|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_0_synth_1/zcu104_base_auto_us_df_0.tcl|vivado_synth|1616685005335|END|Creating in-memory project|",
+      "[OPTRACE]|28493|279|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_0_synth_1/zcu104_base_auto_us_df_0.tcl|vivado_synth|1616685005335|START|Adding files|",
+      "[OPTRACE]|28493|280|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_0_synth_1/zcu104_base_auto_us_df_0.tcl|vivado_synth|1616685005593|END|Adding files|",
+      "[OPTRACE]|28493|281|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_0_synth_1/zcu104_base_auto_us_df_0.tcl|vivado_synth|1616685005594|START|Configure IP Cache|",
+      "[OPTRACE]|28493|282|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_0_synth_1/zcu104_base_auto_us_df_0.tcl|vivado_synth|1616685005714|END|Configure IP Cache|",
+      "[OPTRACE]|28493|283|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_0_synth_1/zcu104_base_auto_us_df_0.tcl|vivado_synth|1616685005715|END|zcu104_base_auto_us_df_0_synth_1|",
+      "[OPTRACE]|28562|276|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s01_regslice_0_synth_1/zcu104_base_s01_regslice_0.tcl|vivado_synth|1616685002475|START|zcu104_base_s01_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28562|277|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s01_regslice_0_synth_1/zcu104_base_s01_regslice_0.tcl|vivado_synth|1616685002476|START|Creating in-memory project|",
+      "[OPTRACE]|28562|286|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s01_regslice_0_synth_1/zcu104_base_s01_regslice_0.tcl|vivado_synth|1616685011381|END|Creating in-memory project|",
+      "[OPTRACE]|28562|287|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s01_regslice_0_synth_1/zcu104_base_s01_regslice_0.tcl|vivado_synth|1616685011381|START|Adding files|",
+      "[OPTRACE]|28562|288|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s01_regslice_0_synth_1/zcu104_base_s01_regslice_0.tcl|vivado_synth|1616685011660|END|Adding files|",
+      "[OPTRACE]|28562|289|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s01_regslice_0_synth_1/zcu104_base_s01_regslice_0.tcl|vivado_synth|1616685011660|START|Configure IP Cache|",
+      "[OPTRACE]|28562|290|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s01_regslice_0_synth_1/zcu104_base_s01_regslice_0.tcl|vivado_synth|1616685011670|END|Configure IP Cache|",
+      "[OPTRACE]|28562|291|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s01_regslice_0_synth_1/zcu104_base_s01_regslice_0.tcl|vivado_synth|1616685011671|END|zcu104_base_s01_regslice_0_synth_1|",
+      "[OPTRACE]|28645|284|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_1_synth_1/zcu104_base_auto_us_df_1.tcl|vivado_synth|1616685010315|START|zcu104_base_auto_us_df_1_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28645|285|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_1_synth_1/zcu104_base_auto_us_df_1.tcl|vivado_synth|1616685010315|START|Creating in-memory project|",
+      "[OPTRACE]|28645|294|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_1_synth_1/zcu104_base_auto_us_df_1.tcl|vivado_synth|1616685018434|END|Creating in-memory project|",
+      "[OPTRACE]|28645|295|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_1_synth_1/zcu104_base_auto_us_df_1.tcl|vivado_synth|1616685018434|START|Adding files|",
+      "[OPTRACE]|28645|296|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_1_synth_1/zcu104_base_auto_us_df_1.tcl|vivado_synth|1616685018692|END|Adding files|",
+      "[OPTRACE]|28645|297|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_1_synth_1/zcu104_base_auto_us_df_1.tcl|vivado_synth|1616685018693|START|Configure IP Cache|",
+      "[OPTRACE]|28645|298|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_1_synth_1/zcu104_base_auto_us_df_1.tcl|vivado_synth|1616685018819|END|Configure IP Cache|",
+      "[OPTRACE]|28645|299|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_1_synth_1/zcu104_base_auto_us_df_1.tcl|vivado_synth|1616685018820|END|zcu104_base_auto_us_df_1_synth_1|",
+      "[OPTRACE]|28707|292|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685016633|START|zcu104_base_s02_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28707|293|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685016634|START|Creating in-memory project|",
+      "[OPTRACE]|28707|302|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685023953|END|Creating in-memory project|",
+      "[OPTRACE]|28707|303|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685023953|START|Adding files|",
+      "[OPTRACE]|28707|304|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685024202|END|Adding files|",
+      "[OPTRACE]|28707|305|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685024203|START|Configure IP Cache|",
+      "[OPTRACE]|28707|306|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685024204|END|Configure IP Cache|",
+      "[OPTRACE]|28707|307|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685024205|START|synth_design|",
+      "[OPTRACE]|28707|386|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685103777|END|synth_design|",
+      "[OPTRACE]|28707|387|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685103778|START|Write IP Cache|",
+      "[OPTRACE]|28707|390|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685104647|END|Write IP Cache|",
+      "[OPTRACE]|28707|391|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685104648|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|28707|392|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685104880|END|write_checkpoint|",
+      "[OPTRACE]|28707|393|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685104881|START|synth reports|REPORT",
+      "[OPTRACE]|28707|394|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685105066|END|synth reports|",
+      "[OPTRACE]|28707|395|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_regslice_0_synth_1/zcu104_base_s02_regslice_0.tcl|vivado_synth|1616685105779|END|zcu104_base_s02_regslice_0_synth_1|",
+      "[OPTRACE]|28769|300|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685020456|START|zcu104_base_s02_data_fifo_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28769|301|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685020457|START|Creating in-memory project|",
+      "[OPTRACE]|28769|308|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685027694|END|Creating in-memory project|",
+      "[OPTRACE]|28769|309|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685027694|START|Adding files|",
+      "[OPTRACE]|28769|310|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685027946|END|Adding files|",
+      "[OPTRACE]|28769|311|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685027946|START|Configure IP Cache|",
+      "[OPTRACE]|28769|312|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685027982|END|Configure IP Cache|",
+      "[OPTRACE]|28769|313|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685027983|START|synth_design|",
+      "[OPTRACE]|28769|434|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685148435|END|synth_design|",
+      "[OPTRACE]|28769|435|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685148435|START|Write IP Cache|",
+      "[OPTRACE]|28769|436|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685149551|END|Write IP Cache|",
+      "[OPTRACE]|28769|437|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685149552|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|28769|438|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685150040|END|write_checkpoint|",
+      "[OPTRACE]|28769|439|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685150040|START|synth reports|REPORT",
+      "[OPTRACE]|28769|440|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685150198|END|synth reports|",
+      "[OPTRACE]|28769|441|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s02_data_fifo_0_synth_1/zcu104_base_s02_data_fifo_0.tcl|vivado_synth|1616685150837|END|zcu104_base_s02_data_fifo_0_synth_1|",
+      "[OPTRACE]|28834|314|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_12_synth_1/zcu104_base_auto_us_df_12.tcl|vivado_synth|1616685029744|START|zcu104_base_auto_us_df_12_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28834|315|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_12_synth_1/zcu104_base_auto_us_df_12.tcl|vivado_synth|1616685029744|START|Creating in-memory project|",
+      "[OPTRACE]|28834|320|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_12_synth_1/zcu104_base_auto_us_df_12.tcl|vivado_synth|1616685036935|END|Creating in-memory project|",
+      "[OPTRACE]|28834|321|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_12_synth_1/zcu104_base_auto_us_df_12.tcl|vivado_synth|1616685036935|START|Adding files|",
+      "[OPTRACE]|28834|324|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_12_synth_1/zcu104_base_auto_us_df_12.tcl|vivado_synth|1616685037181|END|Adding files|",
+      "[OPTRACE]|28834|325|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_12_synth_1/zcu104_base_auto_us_df_12.tcl|vivado_synth|1616685037182|START|Configure IP Cache|",
+      "[OPTRACE]|28834|327|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_12_synth_1/zcu104_base_auto_us_df_12.tcl|vivado_synth|1616685037296|END|Configure IP Cache|",
+      "[OPTRACE]|28834|328|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_12_synth_1/zcu104_base_auto_us_df_12.tcl|vivado_synth|1616685037297|END|zcu104_base_auto_us_df_12_synth_1|",
+      "[OPTRACE]|28962|330|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s13_regslice_0_synth_1/zcu104_base_s13_regslice_0.tcl|vivado_synth|1616685048985|START|zcu104_base_s13_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|28962|331|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s13_regslice_0_synth_1/zcu104_base_s13_regslice_0.tcl|vivado_synth|1616685048985|START|Creating in-memory project|",
+      "[OPTRACE]|28962|334|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s13_regslice_0_synth_1/zcu104_base_s13_regslice_0.tcl|vivado_synth|1616685056342|END|Creating in-memory project|",
+      "[OPTRACE]|28962|335|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s13_regslice_0_synth_1/zcu104_base_s13_regslice_0.tcl|vivado_synth|1616685056342|START|Adding files|",
+      "[OPTRACE]|28962|336|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s13_regslice_0_synth_1/zcu104_base_s13_regslice_0.tcl|vivado_synth|1616685056603|END|Adding files|",
+      "[OPTRACE]|28962|337|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s13_regslice_0_synth_1/zcu104_base_s13_regslice_0.tcl|vivado_synth|1616685056604|START|Configure IP Cache|",
+      "[OPTRACE]|28962|338|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s13_regslice_0_synth_1/zcu104_base_s13_regslice_0.tcl|vivado_synth|1616685056619|END|Configure IP Cache|",
+      "[OPTRACE]|28962|339|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s13_regslice_0_synth_1/zcu104_base_s13_regslice_0.tcl|vivado_synth|1616685056620|END|zcu104_base_s13_regslice_0_synth_1|",
+      "[OPTRACE]|29020|332|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_11_synth_1/zcu104_base_auto_us_df_11.tcl|vivado_synth|1616685049562|START|zcu104_base_auto_us_df_11_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29020|333|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_11_synth_1/zcu104_base_auto_us_df_11.tcl|vivado_synth|1616685049562|START|Creating in-memory project|",
+      "[OPTRACE]|29020|340|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_11_synth_1/zcu104_base_auto_us_df_11.tcl|vivado_synth|1616685056893|END|Creating in-memory project|",
+      "[OPTRACE]|29020|341|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_11_synth_1/zcu104_base_auto_us_df_11.tcl|vivado_synth|1616685056893|START|Adding files|",
+      "[OPTRACE]|29020|342|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_11_synth_1/zcu104_base_auto_us_df_11.tcl|vivado_synth|1616685057132|END|Adding files|",
+      "[OPTRACE]|29020|343|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_11_synth_1/zcu104_base_auto_us_df_11.tcl|vivado_synth|1616685057132|START|Configure IP Cache|",
+      "[OPTRACE]|29020|344|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_11_synth_1/zcu104_base_auto_us_df_11.tcl|vivado_synth|1616685057257|END|Configure IP Cache|",
+      "[OPTRACE]|29020|345|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_11_synth_1/zcu104_base_auto_us_df_11.tcl|vivado_synth|1616685057258|END|zcu104_base_auto_us_df_11_synth_1|",
+      "[OPTRACE]|29213|348|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685067091|START|zcu104_base_auto_us_df_10_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29213|349|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685067092|START|Creating in-memory project|",
+      "[OPTRACE]|29213|360|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685074465|END|Creating in-memory project|",
+      "[OPTRACE]|29213|361|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685074465|START|Adding files|",
+      "[OPTRACE]|29213|366|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685074720|END|Adding files|",
+      "[OPTRACE]|29213|367|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685074721|START|Configure IP Cache|",
+      "[OPTRACE]|29213|368|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685074786|END|Configure IP Cache|",
+      "[OPTRACE]|29213|369|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685074787|START|synth_design|",
+      "[OPTRACE]|29213|466|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685193229|END|synth_design|",
+      "[OPTRACE]|29213|467|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685193229|START|Write IP Cache|",
+      "[OPTRACE]|29213|468|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685194753|END|Write IP Cache|",
+      "[OPTRACE]|29213|469|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685194756|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|29213|470|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685195515|END|write_checkpoint|",
+      "[OPTRACE]|29213|471|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685195515|START|synth reports|REPORT",
+      "[OPTRACE]|29213|472|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685195708|END|synth reports|",
+      "[OPTRACE]|29213|473|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_10_synth_1/zcu104_base_auto_us_df_10.tcl|vivado_synth|1616685196721|END|zcu104_base_auto_us_df_10_synth_1|",
+      "[OPTRACE]|29214|350|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s12_regslice_0_synth_1/zcu104_base_s12_regslice_0.tcl|vivado_synth|1616685067142|START|zcu104_base_s12_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29214|351|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s12_regslice_0_synth_1/zcu104_base_s12_regslice_0.tcl|vivado_synth|1616685067143|START|Creating in-memory project|",
+      "[OPTRACE]|29214|358|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s12_regslice_0_synth_1/zcu104_base_s12_regslice_0.tcl|vivado_synth|1616685074392|END|Creating in-memory project|",
+      "[OPTRACE]|29214|359|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s12_regslice_0_synth_1/zcu104_base_s12_regslice_0.tcl|vivado_synth|1616685074392|START|Adding files|",
+      "[OPTRACE]|29214|362|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s12_regslice_0_synth_1/zcu104_base_s12_regslice_0.tcl|vivado_synth|1616685074671|END|Adding files|",
+      "[OPTRACE]|29214|363|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s12_regslice_0_synth_1/zcu104_base_s12_regslice_0.tcl|vivado_synth|1616685074671|START|Configure IP Cache|",
+      "[OPTRACE]|29214|364|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s12_regslice_0_synth_1/zcu104_base_s12_regslice_0.tcl|vivado_synth|1616685074682|END|Configure IP Cache|",
+      "[OPTRACE]|29214|365|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s12_regslice_0_synth_1/zcu104_base_s12_regslice_0.tcl|vivado_synth|1616685074682|END|zcu104_base_s12_regslice_0_synth_1|",
+      "[OPTRACE]|29300|370|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685079038|START|zcu104_base_s11_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29300|371|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685079039|START|Creating in-memory project|",
+      "[OPTRACE]|29300|374|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685086441|END|Creating in-memory project|",
+      "[OPTRACE]|29300|375|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685086441|START|Adding files|",
+      "[OPTRACE]|29300|376|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685086715|END|Adding files|",
+      "[OPTRACE]|29300|377|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685086715|START|Configure IP Cache|",
+      "[OPTRACE]|29300|378|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685086717|END|Configure IP Cache|",
+      "[OPTRACE]|29300|379|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685086718|START|synth_design|",
+      "[OPTRACE]|29300|444|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685169323|END|synth_design|",
+      "[OPTRACE]|29300|445|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685169324|START|Write IP Cache|",
+      "[OPTRACE]|29300|446|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685169989|END|Write IP Cache|",
+      "[OPTRACE]|29300|447|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685169989|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|29300|448|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685170100|END|write_checkpoint|",
+      "[OPTRACE]|29300|449|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685170100|START|synth reports|REPORT",
+      "[OPTRACE]|29300|450|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685170224|END|synth reports|",
+      "[OPTRACE]|29300|457|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s11_regslice_0_synth_1/zcu104_base_s11_regslice_0.tcl|vivado_synth|1616685170691|END|zcu104_base_s11_regslice_0_synth_1|",
+      "[OPTRACE]|29362|372|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_9_synth_1/zcu104_base_auto_us_df_9.tcl|vivado_synth|1616685085778|START|zcu104_base_auto_us_df_9_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29362|373|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_9_synth_1/zcu104_base_auto_us_df_9.tcl|vivado_synth|1616685085779|START|Creating in-memory project|",
+      "[OPTRACE]|29362|380|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_9_synth_1/zcu104_base_auto_us_df_9.tcl|vivado_synth|1616685093270|END|Creating in-memory project|",
+      "[OPTRACE]|29362|381|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_9_synth_1/zcu104_base_auto_us_df_9.tcl|vivado_synth|1616685093270|START|Adding files|",
+      "[OPTRACE]|29362|382|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_9_synth_1/zcu104_base_auto_us_df_9.tcl|vivado_synth|1616685093535|END|Adding files|",
+      "[OPTRACE]|29362|383|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_9_synth_1/zcu104_base_auto_us_df_9.tcl|vivado_synth|1616685093536|START|Configure IP Cache|",
+      "[OPTRACE]|29362|384|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_9_synth_1/zcu104_base_auto_us_df_9.tcl|vivado_synth|1616685093670|END|Configure IP Cache|",
+      "[OPTRACE]|29362|385|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_9_synth_1/zcu104_base_auto_us_df_9.tcl|vivado_synth|1616685093671|END|zcu104_base_auto_us_df_9_synth_1|",
+      "[OPTRACE]|29478|388|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s10_regslice_0_synth_1/zcu104_base_s10_regslice_0.tcl|vivado_synth|1616685104093|START|zcu104_base_s10_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29478|389|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s10_regslice_0_synth_1/zcu104_base_s10_regslice_0.tcl|vivado_synth|1616685104094|START|Creating in-memory project|",
+      "[OPTRACE]|29478|396|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s10_regslice_0_synth_1/zcu104_base_s10_regslice_0.tcl|vivado_synth|1616685111531|END|Creating in-memory project|",
+      "[OPTRACE]|29478|397|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s10_regslice_0_synth_1/zcu104_base_s10_regslice_0.tcl|vivado_synth|1616685111532|START|Adding files|",
+      "[OPTRACE]|29478|398|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s10_regslice_0_synth_1/zcu104_base_s10_regslice_0.tcl|vivado_synth|1616685111778|END|Adding files|",
+      "[OPTRACE]|29478|399|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s10_regslice_0_synth_1/zcu104_base_s10_regslice_0.tcl|vivado_synth|1616685111779|START|Configure IP Cache|",
+      "[OPTRACE]|29478|400|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s10_regslice_0_synth_1/zcu104_base_s10_regslice_0.tcl|vivado_synth|1616685111789|END|Configure IP Cache|",
+      "[OPTRACE]|29478|401|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s10_regslice_0_synth_1/zcu104_base_s10_regslice_0.tcl|vivado_synth|1616685111789|END|zcu104_base_s10_regslice_0_synth_1|",
+      "[OPTRACE]|29610|402|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_8_synth_1/zcu104_base_auto_us_df_8.tcl|vivado_synth|1616685117240|START|zcu104_base_auto_us_df_8_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29610|403|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_8_synth_1/zcu104_base_auto_us_df_8.tcl|vivado_synth|1616685117240|START|Creating in-memory project|",
+      "[OPTRACE]|29610|406|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_8_synth_1/zcu104_base_auto_us_df_8.tcl|vivado_synth|1616685125073|END|Creating in-memory project|",
+      "[OPTRACE]|29610|407|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_8_synth_1/zcu104_base_auto_us_df_8.tcl|vivado_synth|1616685125073|START|Adding files|",
+      "[OPTRACE]|29610|408|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_8_synth_1/zcu104_base_auto_us_df_8.tcl|vivado_synth|1616685125323|END|Adding files|",
+      "[OPTRACE]|29610|409|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_8_synth_1/zcu104_base_auto_us_df_8.tcl|vivado_synth|1616685125323|START|Configure IP Cache|",
+      "[OPTRACE]|29610|410|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_8_synth_1/zcu104_base_auto_us_df_8.tcl|vivado_synth|1616685125438|END|Configure IP Cache|",
+      "[OPTRACE]|29610|411|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_us_df_8_synth_1/zcu104_base_auto_us_df_8.tcl|vivado_synth|1616685125438|END|zcu104_base_auto_us_df_8_synth_1|",
+      "[OPTRACE]|29680|404|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s09_regslice_0_synth_1/zcu104_base_s09_regslice_0.tcl|vivado_synth|1616685119402|START|zcu104_base_s09_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29680|405|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s09_regslice_0_synth_1/zcu104_base_s09_regslice_0.tcl|vivado_synth|1616685119402|START|Creating in-memory project|",
+      "[OPTRACE]|29680|412|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s09_regslice_0_synth_1/zcu104_base_s09_regslice_0.tcl|vivado_synth|1616685126764|END|Creating in-memory project|",
+      "[OPTRACE]|29680|413|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s09_regslice_0_synth_1/zcu104_base_s09_regslice_0.tcl|vivado_synth|1616685126764|START|Adding files|",
+      "[OPTRACE]|29680|414|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s09_regslice_0_synth_1/zcu104_base_s09_regslice_0.tcl|vivado_synth|1616685127003|END|Adding files|",
+      "[OPTRACE]|29680|415|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s09_regslice_0_synth_1/zcu104_base_s09_regslice_0.tcl|vivado_synth|1616685127004|START|Configure IP Cache|",
+      "[OPTRACE]|29680|416|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s09_regslice_0_synth_1/zcu104_base_s09_regslice_0.tcl|vivado_synth|1616685127013|END|Configure IP Cache|",
+      "[OPTRACE]|29680|417|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_s09_regslice_0_synth_1/zcu104_base_s09_regslice_0.tcl|vivado_synth|1616685127013|END|zcu104_base_s09_regslice_0_synth_1|",
+      "[OPTRACE]|29802|418|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685136040|START|zcu104_base_m00_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29802|419|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685136041|START|Creating in-memory project|",
+      "[OPTRACE]|29802|428|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685144567|END|Creating in-memory project|",
+      "[OPTRACE]|29802|429|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685144567|START|Adding files|",
+      "[OPTRACE]|29802|430|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685144813|END|Adding files|",
+      "[OPTRACE]|29802|431|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685144814|START|Configure IP Cache|",
+      "[OPTRACE]|29802|432|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685144816|END|Configure IP Cache|",
+      "[OPTRACE]|29802|433|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685144816|START|synth_design|",
+      "[OPTRACE]|29802|482|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685229352|END|synth_design|",
+      "[OPTRACE]|29802|483|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685229352|START|Write IP Cache|",
+      "[OPTRACE]|29802|484|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685230063|END|Write IP Cache|",
+      "[OPTRACE]|29802|485|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685230063|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|29802|486|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685230225|END|write_checkpoint|",
+      "[OPTRACE]|29802|487|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685230225|START|synth reports|REPORT",
+      "[OPTRACE]|29802|488|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685230343|END|synth reports|",
+      "[OPTRACE]|29802|489|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_regslice_0_synth_1/zcu104_base_m00_regslice_0.tcl|vivado_synth|1616685230837|END|zcu104_base_m00_regslice_0_synth_1|",
+      "[OPTRACE]|29803|420|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685136394|START|zcu104_base_m00_data_fifo_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29803|421|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685136395|START|Creating in-memory project|",
+      "[OPTRACE]|29803|422|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685143646|END|Creating in-memory project|",
+      "[OPTRACE]|29803|423|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685143646|START|Adding files|",
+      "[OPTRACE]|29803|424|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685143888|END|Adding files|",
+      "[OPTRACE]|29803|425|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685143889|START|Configure IP Cache|",
+      "[OPTRACE]|29803|426|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685143925|END|Configure IP Cache|",
+      "[OPTRACE]|29803|427|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685143926|START|synth_design|",
+      "[OPTRACE]|29803|508|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685264452|END|synth_design|",
+      "[OPTRACE]|29803|509|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685264452|START|Write IP Cache|",
+      "[OPTRACE]|29803|510|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685265637|END|Write IP Cache|",
+      "[OPTRACE]|29803|511|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685265639|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|29803|512|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685266092|END|write_checkpoint|",
+      "[OPTRACE]|29803|513|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685266093|START|synth reports|REPORT",
+      "[OPTRACE]|29803|514|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685266234|END|synth reports|",
+      "[OPTRACE]|29803|515|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m00_data_fifo_0_synth_1/zcu104_base_m00_data_fifo_0.tcl|vivado_synth|1616685266876|END|zcu104_base_m00_data_fifo_0_synth_1|",
+      "[OPTRACE]|29895|442|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685162245|START|zcu104_base_m01_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|29895|443|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685162246|START|Creating in-memory project|",
+      "[OPTRACE]|29895|451|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685170317|END|Creating in-memory project|",
+      "[OPTRACE]|29895|452|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685170318|START|Adding files|",
+      "[OPTRACE]|29895|453|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685170577|END|Adding files|",
+      "[OPTRACE]|29895|454|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685170578|START|Configure IP Cache|",
+      "[OPTRACE]|29895|455|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685170580|END|Configure IP Cache|",
+      "[OPTRACE]|29895|456|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685170580|START|synth_design|",
+      "[OPTRACE]|29895|498|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685251369|END|synth_design|",
+      "[OPTRACE]|29895|499|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685251369|START|Write IP Cache|",
+      "[OPTRACE]|29895|500|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685251929|END|Write IP Cache|",
+      "[OPTRACE]|29895|501|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685251929|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|29895|502|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685251977|END|write_checkpoint|",
+      "[OPTRACE]|29895|503|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685251977|START|synth reports|REPORT",
+      "[OPTRACE]|29895|504|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685252119|END|synth reports|",
+      "[OPTRACE]|29895|505|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m01_regslice_0_synth_1/zcu104_base_m01_regslice_0.tcl|vivado_synth|1616685252614|END|zcu104_base_m01_regslice_0_synth_1|",
+      "[OPTRACE]|30090|458|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685181440|START|zcu104_base_auto_cc_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|30090|459|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685181441|START|Creating in-memory project|",
+      "[OPTRACE]|30090|460|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685188967|END|Creating in-memory project|",
+      "[OPTRACE]|30090|461|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685188967|START|Adding files|",
+      "[OPTRACE]|30090|462|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685189234|END|Adding files|",
+      "[OPTRACE]|30090|463|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685189235|START|Configure IP Cache|",
+      "[OPTRACE]|30090|464|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685189271|END|Configure IP Cache|",
+      "[OPTRACE]|30090|465|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685189271|START|synth_design|",
+      "[OPTRACE]|30090|532|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685286614|END|synth_design|",
+      "[OPTRACE]|30090|533|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685286614|START|Write IP Cache|",
+      "[OPTRACE]|30090|534|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685287102|END|Write IP Cache|",
+      "[OPTRACE]|30090|535|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685287103|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|30090|536|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685287152|END|write_checkpoint|",
+      "[OPTRACE]|30090|537|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685287152|START|synth reports|REPORT",
+      "[OPTRACE]|30090|538|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685287273|END|synth reports|",
+      "[OPTRACE]|30090|539|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_0_synth_1/zcu104_base_auto_cc_0.tcl|vivado_synth|1616685287683|END|zcu104_base_auto_cc_0_synth_1|",
+      "[OPTRACE]|30222|474|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685210365|START|zcu104_base_m02_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|30222|475|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685210366|START|Creating in-memory project|",
+      "[OPTRACE]|30222|476|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685221393|END|Creating in-memory project|",
+      "[OPTRACE]|30222|477|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685221393|START|Adding files|",
+      "[OPTRACE]|30222|478|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685221648|END|Adding files|",
+      "[OPTRACE]|30222|479|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685221649|START|Configure IP Cache|",
+      "[OPTRACE]|30222|480|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685221651|END|Configure IP Cache|",
+      "[OPTRACE]|30222|481|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685221651|START|synth_design|",
+      "[OPTRACE]|30222|546|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685299051|END|synth_design|",
+      "[OPTRACE]|30222|547|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685299051|START|Write IP Cache|",
+      "[OPTRACE]|30222|548|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685299633|END|Write IP Cache|",
+      "[OPTRACE]|30222|549|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685299633|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|30222|550|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685299681|END|write_checkpoint|",
+      "[OPTRACE]|30222|551|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685299681|START|synth reports|REPORT",
+      "[OPTRACE]|30222|552|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685299805|END|synth reports|",
+      "[OPTRACE]|30222|553|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m02_regslice_0_synth_1/zcu104_base_m02_regslice_0.tcl|vivado_synth|1616685300267|END|zcu104_base_m02_regslice_0_synth_1|",
+      "[OPTRACE]|30370|490|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685242395|START|zcu104_base_auto_cc_1_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|30370|491|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685242396|START|Creating in-memory project|",
+      "[OPTRACE]|30370|492|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685249966|END|Creating in-memory project|",
+      "[OPTRACE]|30370|493|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685249966|START|Adding files|",
+      "[OPTRACE]|30370|494|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685250228|END|Adding files|",
+      "[OPTRACE]|30370|495|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685250229|START|Configure IP Cache|",
+      "[OPTRACE]|30370|496|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685250266|END|Configure IP Cache|",
+      "[OPTRACE]|30370|497|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685250266|START|synth_design|",
+      "[OPTRACE]|30370|570|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685340939|END|synth_design|",
+      "[OPTRACE]|30370|571|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685340939|START|Write IP Cache|",
+      "[OPTRACE]|30370|572|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685341425|END|Write IP Cache|",
+      "[OPTRACE]|30370|573|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685341426|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|30370|574|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685341474|END|write_checkpoint|",
+      "[OPTRACE]|30370|575|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685341474|START|synth reports|REPORT",
+      "[OPTRACE]|30370|576|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685341584|END|synth reports|",
+      "[OPTRACE]|30370|577|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_1_synth_1/zcu104_base_auto_cc_1.tcl|vivado_synth|1616685341995|END|zcu104_base_auto_cc_1_synth_1|",
+      "[OPTRACE]|30515|506|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/zcu104_base_m03_regslice_0.tcl|vivado_synth|1616685263506|START|zcu104_base_m03_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|30515|507|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/zcu104_base_m03_regslice_0.tcl|vivado_synth|1616685263507|START|Creating in-memory project|",
+      "[OPTRACE]|30515|516|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/zcu104_base_m03_regslice_0.tcl|vivado_synth|1616685270968|END|Creating in-memory project|",
+      "[OPTRACE]|30515|517|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/zcu104_base_m03_regslice_0.tcl|vivado_synth|1616685270968|START|Adding files|",
+      "[OPTRACE]|30515|518|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/zcu104_base_m03_regslice_0.tcl|vivado_synth|1616685271219|END|Adding files|",
+      "[OPTRACE]|30515|519|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/zcu104_base_m03_regslice_0.tcl|vivado_synth|1616685271220|START|Configure IP Cache|",
+      "[OPTRACE]|30515|520|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/zcu104_base_m03_regslice_0.tcl|vivado_synth|1616685271228|END|Configure IP Cache|",
+      "[OPTRACE]|30515|521|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m03_regslice_0_synth_1/zcu104_base_m03_regslice_0.tcl|vivado_synth|1616685271228|END|zcu104_base_m03_regslice_0_synth_1|",
+      "[OPTRACE]|30648|524|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m04_regslice_0_synth_1/zcu104_base_m04_regslice_0.tcl|vivado_synth|1616685277636|START|zcu104_base_m04_regslice_0_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|30648|525|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m04_regslice_0_synth_1/zcu104_base_m04_regslice_0.tcl|vivado_synth|1616685277636|START|Creating in-memory project|",
+      "[OPTRACE]|30648|526|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m04_regslice_0_synth_1/zcu104_base_m04_regslice_0.tcl|vivado_synth|1616685284481|END|Creating in-memory project|",
+      "[OPTRACE]|30648|527|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m04_regslice_0_synth_1/zcu104_base_m04_regslice_0.tcl|vivado_synth|1616685284481|START|Adding files|",
+      "[OPTRACE]|30648|528|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m04_regslice_0_synth_1/zcu104_base_m04_regslice_0.tcl|vivado_synth|1616685284726|END|Adding files|",
+      "[OPTRACE]|30648|529|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m04_regslice_0_synth_1/zcu104_base_m04_regslice_0.tcl|vivado_synth|1616685284727|START|Configure IP Cache|",
+      "[OPTRACE]|30648|530|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m04_regslice_0_synth_1/zcu104_base_m04_regslice_0.tcl|vivado_synth|1616685284733|END|Configure IP Cache|",
+      "[OPTRACE]|30648|531|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_m04_regslice_0_synth_1/zcu104_base_m04_regslice_0.tcl|vivado_synth|1616685284734|END|zcu104_base_m04_regslice_0_synth_1|",
+      "[OPTRACE]|30787|540|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_3_synth_1/zcu104_base_auto_cc_3.tcl|vivado_synth|1616685295324|START|zcu104_base_auto_cc_3_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|30787|541|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_3_synth_1/zcu104_base_auto_cc_3.tcl|vivado_synth|1616685295325|START|Creating in-memory project|",
+      "[OPTRACE]|30787|554|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_3_synth_1/zcu104_base_auto_cc_3.tcl|vivado_synth|1616685302277|END|Creating in-memory project|",
+      "[OPTRACE]|30787|555|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_3_synth_1/zcu104_base_auto_cc_3.tcl|vivado_synth|1616685302277|START|Adding files|",
+      "[OPTRACE]|30787|556|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_3_synth_1/zcu104_base_auto_cc_3.tcl|vivado_synth|1616685302513|END|Adding files|",
+      "[OPTRACE]|30787|557|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_3_synth_1/zcu104_base_auto_cc_3.tcl|vivado_synth|1616685302514|START|Configure IP Cache|",
+      "[OPTRACE]|30787|560|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_3_synth_1/zcu104_base_auto_cc_3.tcl|vivado_synth|1616685302552|END|Configure IP Cache|",
+      "[OPTRACE]|30787|561|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_3_synth_1/zcu104_base_auto_cc_3.tcl|vivado_synth|1616685302552|END|zcu104_base_auto_cc_3_synth_1|",
+      "[OPTRACE]|30788|542|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_2_synth_1/zcu104_base_auto_cc_2.tcl|vivado_synth|1616685295494|START|zcu104_base_auto_cc_2_synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|30788|543|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_2_synth_1/zcu104_base_auto_cc_2.tcl|vivado_synth|1616685295494|START|Creating in-memory project|",
+      "[OPTRACE]|30788|558|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_2_synth_1/zcu104_base_auto_cc_2.tcl|vivado_synth|1616685302536|END|Creating in-memory project|",
+      "[OPTRACE]|30788|559|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_2_synth_1/zcu104_base_auto_cc_2.tcl|vivado_synth|1616685302536|START|Adding files|",
+      "[OPTRACE]|30788|562|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_2_synth_1/zcu104_base_auto_cc_2.tcl|vivado_synth|1616685302764|END|Adding files|",
+      "[OPTRACE]|30788|563|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_2_synth_1/zcu104_base_auto_cc_2.tcl|vivado_synth|1616685302765|START|Configure IP Cache|",
+      "[OPTRACE]|30788|564|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_2_synth_1/zcu104_base_auto_cc_2.tcl|vivado_synth|1616685302804|END|Configure IP Cache|",
+      "[OPTRACE]|30788|565|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/zcu104_base_auto_cc_2_synth_1/zcu104_base_auto_cc_2.tcl|vivado_synth|1616685302804|END|zcu104_base_auto_cc_2_synth_1|",
+      "[OPTRACE]|30927|578|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685351776|START|synth_1|ROLLUP_AUTO",
+      "[OPTRACE]|30927|579|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685351776|START|Creating in-memory project|",
+      "[OPTRACE]|30927|580|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685358257|END|Creating in-memory project|",
+      "[OPTRACE]|30927|581|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685358257|START|Adding files|",
+      "[OPTRACE]|30927|582|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685361253|END|Adding files|",
+      "[OPTRACE]|30927|583|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685361261|START|synth_design|",
+      "[OPTRACE]|30927|584|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685442621|END|synth_design|",
+      "[OPTRACE]|30927|585|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685442621|START|write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|30927|586|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685443682|END|write_checkpoint|",
+      "[OPTRACE]|30927|587|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685443682|START|synth reports|REPORT",
+      "[OPTRACE]|30927|588|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685443682|END|synth reports|",
+      "[OPTRACE]|30927|589|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/synth_1/zcu104_base_wrapper.tcl|vivado_synth|1616685443683|END|synth_1|",
+      "[OPTRACE]|31261|590|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685456084|START|Implementation|ROLLUP_1",
+      "[OPTRACE]|31261|591|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685456085|START|Phase: Init Design|ROLLUP_AUTO",
+      "[OPTRACE]|31261|592|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685456085|START|Design Initialization: pre hook|",
+      "[OPTRACE]|31261|593|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685456101|END|Design Initialization: pre hook|",
+      "[OPTRACE]|31261|594|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685456102|START|create in-memory project|",
+      "[OPTRACE]|31261|595|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685457586|END|create in-memory project|",
+      "[OPTRACE]|31261|596|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685457586|START|set parameters|",
+      "[OPTRACE]|31261|597|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685462643|END|set parameters|",
+      "[OPTRACE]|31261|598|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685462643|START|add files|",
+      "[OPTRACE]|31261|599|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685465533|START|read constraints: implementation|",
+      "[OPTRACE]|31261|600|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685465534|END|read constraints: implementation|",
+      "[OPTRACE]|31261|601|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685465535|END|add files|",
+      "[OPTRACE]|31261|602|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685465535|START|link_design|",
+      "[OPTRACE]|31261|603|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685567338|END|link_design|",
+      "[OPTRACE]|31261|604|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685567338|START|gray box cells|",
+      "[OPTRACE]|31261|605|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685567338|END|gray box cells|",
+      "[OPTRACE]|31261|606|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685567338|START|Design Initialization: post hook|",
+      "[OPTRACE]|31261|607|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685567358|END|Design Initialization: post hook|",
+      "[OPTRACE]|31261|608|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685567358|START|init_design_reports|REPORT",
+      "[OPTRACE]|31261|609|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685567358|END|init_design_reports|",
+      "[OPTRACE]|31261|610|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685567358|START|init_design_write_hwdef|",
+      "[OPTRACE]|31261|611|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685568038|END|init_design_write_hwdef|",
+      "[OPTRACE]|31261|612|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685568038|END|Phase: Init Design|",
+      "[OPTRACE]|31261|613|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685568038|START|Phase: Opt Design|ROLLUP_AUTO",
+      "[OPTRACE]|31261|614|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685568039|START|Opt Design: pre hook|",
+      "[OPTRACE]|31261|615|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685570731|END|Opt Design: pre hook|",
+      "[OPTRACE]|31261|616|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685570731|START|read constraints: opt_design|",
+      "[OPTRACE]|31261|617|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685570731|END|read constraints: opt_design|",
+      "[OPTRACE]|31261|618|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685570731|START|opt_design|",
+      "[OPTRACE]|31261|619|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635678|END|opt_design|",
+      "[OPTRACE]|31261|620|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635678|START|read constraints: opt_design_post|",
+      "[OPTRACE]|31261|621|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635679|END|read constraints: opt_design_post|",
+      "[OPTRACE]|31261|622|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635679|START|Opt Design: post hook|",
+      "[OPTRACE]|31261|623|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635684|END|Opt Design: post hook|",
+      "[OPTRACE]|31261|624|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635684|START|opt_design reports|REPORT",
+      "[OPTRACE]|31261|625|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635684|END|opt_design reports|",
+      "[OPTRACE]|31261|626|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635684|END|Phase: Opt Design|",
+      "[OPTRACE]|31261|627|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635684|START|Phase: Place Design|ROLLUP_AUTO",
+      "[OPTRACE]|31261|628|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635685|START|Place Design: pre hook|",
+      "[OPTRACE]|31261|629|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635713|END|Place Design: pre hook|",
+      "[OPTRACE]|31261|630|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635714|START|read constraints: place_design|",
+      "[OPTRACE]|31261|631|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635714|END|read constraints: place_design|",
+      "[OPTRACE]|31261|632|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685635714|START|place_design|",
+      "[OPTRACE]|31261|633|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924515|END|place_design|",
+      "[OPTRACE]|31261|634|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924515|START|read constraints: place_design_post|",
+      "[OPTRACE]|31261|635|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924515|END|read constraints: place_design_post|",
+      "[OPTRACE]|31261|636|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924515|START|Place Design: post hook|",
+      "[OPTRACE]|31261|637|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924521|END|Place Design: post hook|",
+      "[OPTRACE]|31261|638|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924521|START|place_design reports|REPORT",
+      "[OPTRACE]|31261|639|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924521|END|place_design reports|",
+      "[OPTRACE]|31261|640|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924521|END|Phase: Place Design|",
+      "[OPTRACE]|31261|641|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924522|START|Phase: Physical Opt Design|ROLLUP_AUTO",
+      "[OPTRACE]|31261|642|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924522|START|read constraints: phys_opt_design|",
+      "[OPTRACE]|31261|643|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924522|END|read constraints: phys_opt_design|",
+      "[OPTRACE]|31261|644|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685924522|START|phys_opt_design|",
+      "[OPTRACE]|31261|645|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939149|END|phys_opt_design|",
+      "[OPTRACE]|31261|646|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939149|START|read constraints: phys_opt_design_post|",
+      "[OPTRACE]|31261|647|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939149|END|read constraints: phys_opt_design_post|",
+      "[OPTRACE]|31261|648|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939149|START|phys_opt_design report|REPORT",
+      "[OPTRACE]|31261|649|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939149|END|phys_opt_design report|",
+      "[OPTRACE]|31261|650|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939149|END|Phase: Physical Opt Design|",
+      "[OPTRACE]|31261|651|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939149|START|Phase: Route Design|ROLLUP_AUTO",
+      "[OPTRACE]|31261|652|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939150|START|read constraints: route_design|",
+      "[OPTRACE]|31261|653|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939150|END|read constraints: route_design|",
+      "[OPTRACE]|31261|654|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616685939150|START|route_design|",
+      "[OPTRACE]|31261|655|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686259558|END|route_design|",
+      "[OPTRACE]|31261|656|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686259558|START|read constraints: route_design_post|",
+      "[OPTRACE]|31261|657|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686259558|END|read constraints: route_design_post|",
+      "[OPTRACE]|31261|658|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686259558|START|Route Design: post hook|",
+      "[OPTRACE]|31261|659|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686276803|END|Route Design: post hook|",
+      "[OPTRACE]|31261|660|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686276803|START|Route Design: write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|31261|661|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686301897|END|Route Design: write_checkpoint|",
+      "[OPTRACE]|31261|662|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686301898|START|route_design reports|REPORT",
+      "[OPTRACE]|31261|663|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306326|END|route_design reports|",
+      "[OPTRACE]|31261|664|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306326|START|route_design misc|",
+      "[OPTRACE]|31261|665|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306326|START|route_design write_checkpoint|CHECKPOINT",
+      "[OPTRACE]|31261|666|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306326|END|route_design write_checkpoint|",
+      "[OPTRACE]|31261|667|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306326|END|route_design misc|",
+      "[OPTRACE]|31261|668|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306327|END|Phase: Route Design|",
+      "[OPTRACE]|31261|669|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306327|START|Phase: Write Bitstream|ROLLUP_AUTO",
+      "[OPTRACE]|31261|670|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306327|START|write_bitstream setup|",
+      "[OPTRACE]|31261|671|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306327|START|Write Bitstream: pre hook|",
+      "[OPTRACE]|31261|672|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306328|END|Write Bitstream: pre hook|",
+      "[OPTRACE]|31261|673|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306328|START|read constraints: write_bitstream|",
+      "[OPTRACE]|31261|674|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306328|END|read constraints: write_bitstream|",
+      "[OPTRACE]|31261|675|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306742|END|write_bitstream setup|",
+      "[OPTRACE]|31261|676|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686306743|START|write_bitstream|",
+      "[OPTRACE]|31261|677|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686346429|END|write_bitstream|",
+      "[OPTRACE]|31261|678|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686346429|START|write_bitstream misc|",
+      "[OPTRACE]|31261|679|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686346429|START|read constraints: write_bitstream_post|",
+      "[OPTRACE]|31261|680|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686346429|END|read constraints: write_bitstream_post|",
+      "[OPTRACE]|31261|681|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686346429|START|Write Bitstream: post hook|",
+      "[OPTRACE]|31261|682|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686346430|END|Write Bitstream: post hook|",
+      "[OPTRACE]|31261|683|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686346450|END|write_bitstream misc|",
+      "[OPTRACE]|31261|684|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686346450|END|Phase: Write Bitstream|",
+      "[OPTRACE]|31261|685|/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/link/vivado/vpl/prj/prj.runs/impl_1/zcu104_base_wrapper.tcl|vivado_impl|1616686346450|END|Implementation|"
+      ];
+
+  var legendData = [
+  { "title": "Report Generation",
+    "color": "#b9783f"
+  }, {
+    "title": "Write Checkpoint",
+    "color": "#cd82ad"
+  },
+  {
+    "title": "Incomplete Data",
+    "color": "#cc4748"
+  } ];
+
+  // -- Convert Raw data into something we can use ---------------------------
+  console.log("Convert log data (%s entries) to Javascript 'JSON' objects...", csvData.length);
+  var jsonData = csvArrayToJSON(header, csvData, "|");
+
+  // -- Clean up the JSON objects --------------------------------------------
+  for (var i = 0; i < jsonData.length; i++) {
+    jsonData[i].Action = jsonData[i].Action.toUpperCase();
+    jsonData[i].Tags = jsonData[i].Tags.toUpperCase();
+    jsonData[i].Tags = jsonData[i].Tags.trim();
+    jsonData[i].TimeStampMSec = parseInt(jsonData[i].TimeStampMSec, 10);
+    jsonData[i].pid = parseInt(jsonData[i].pid, 10);
+  }
+
+  // -- Sort JSON array ------------------------------------------------------
+  console.log("Sorting JSON objects (%s objects) according to timestamps...", jsonData.length);
+  jsonData.sort(compareByTimeStamp);
+
+  // Record the PID grouping order
+  var pidOrder = new Map();
+  for (var i = 0; i < jsonData.length; i++) {
+    if (pidOrder.has(jsonData[i].pid) == false) {
+      pidOrder.set(jsonData[i].pid, i);    // Simple ordering (lower is first)
+    }
+  }
+
+  // -- Create secondary data array for the chart data array -----------------
+  console.log("Preparing graph data...");
+
+  // Task limits
+  var m_startTS = 0;      // Earliest Timestamp
+  var m_endTS = 0;        // Latest Timestamp
+
+  if (jsonData.length > 0) {
+    m_startTS = jsonData[0].TimeStampMSec;
+    m_endTS = jsonData[jsonData.length - 1].TimeStampMSec;
+  }
+
+
+  var chartData = [ ];   // Empty JSON array
+
+
+  populateChartData();
+  tableCreate( chartData );
+
+  filterChartEntries();
+
+  // -- Search for "holes"
+  // -- Sort by common PID
+  // -- Create groupings by process
+
+  console.log("done");
+
+  var chart = AmCharts.makeChart("chartdiv", {
+    "type": "gantt",
+    "theme": "light",
+    "titles": [
+    { "text": "OPTrace", "size": 15}],
+    "marginRight": 70,
+    "period": "fff",                                     // X-Axis
+    "balloonDateFormat": "JJ:NN:SS",
+    "columnWidth": 0.5,                                 // Bar thickness
+    "valueAxis": {
+      "type": "numeric",
+      "title": "Time [HH:MM::SS]",
+      "duration": "ss",
+      "durationUnits": { DD: 'd. ', hh: ':', mm: ':', ss: '' },
+    },
+    "brightnessStep": 10,
+    "graph": {
+      "fillAlphas": 1,
+      "labelFunction": barLabelCallBack,
+      "labelText": " ",
+      "labelPosition": "right",
+      "balloonFunction": ballonLabelCallBack,
+      "balloonText": "<p align='left'> Task: [[task]]<br/>Start:[[start]]<br/>End:[[end]]<br/>Duration:[[duration]]</p>",
+      "bulletField": "bullet",
+      "bulletSize": 8
+    },
+    "rotate": true,
+    "categoryField": "category",
+    "segmentsField": "segments",
+    "colorField": "color",
+    "startDate": "2015-01-01 00:00:00",
+    "startField": "start",
+    "endField": "end",
+    "durationField": "duration",
+    "dataProvider": chartData,
+    "valueScrollbar": {
+      "autoGridCount": true
+    },
+    "chartScrollbar": {
+      "enable": true
+    },
+    "chartCursor": {
+      "cursorColor": "#55bb76",
+      "valueBalloonsEnabled": false,
+      "cursorAlpha": 0.1,
+      "valueLineAlpha": 0.5,
+      "valueLineBalloonEnabled": true,
+      "valueLineEnabled": true,
+      "zoomable": true,
+      "valueZoomable": true,
+      "fullWidth": true
+    },
+    "legend": {
+      "data": legendData,
+    },
+    "export": {
+      "enabled": true
+    }
+  });
+
+  // =========================================================================
+  // Call back methods
+  // =========================================================================
+function ballonLabelCallBack( _graphDataItem )
+{
+  var start = _graphDataItem.values.open;
+  var end = _graphDataItem.values.value;
+  var duration = end - start;
+
+  var result = "<p align='left'>Task: " + _graphDataItem.category + "<br/>Start: " + secondsToHHMMSS(start) + "<br/>End: " + secondsToHHMMSS( end ) + "<br/>Duration: " + secondsToHHMMSS( duration ) + "</p>";
+  return result;
+}
+
+
+function barLabelCallBack( _graphDataItem )
+{
+   var duration = _graphDataItem.values.value - _graphDataItem.values.open;
+
+   return secondsToHHMMSS( duration);
+}
+
+
+function userInputFormCallback()
+{
+  // Second filter
+  m_secondFilter = document.getElementById("userDurationFilterSecInput").value;
+  console.log("Setting second filter to: " + m_secondFilter + " seconds");
+
+  // Group PID Sort
+  m_groupPidSort = document.getElementById("userGroupPidSortSelected").checked;
+  console.log("Group PID filter is set to: " + m_groupPidSort);
+
+  // Rollup filter
+  m_showRollup = document.getElementById("userRollupSelected").checked;
+  console.log("Rollup filter is set to: " + m_showRollup);
+
+  // Individual filter
+  m_showIndividualEntry = document.getElementById("userIndividualEntrySelected").checked;
+  console.log("Individual filter is set to: " + m_showIndividualEntry);
+
+  // Checkpoint Report Entries filter
+  m_showCheckpointEntry = document.getElementById("userCheckpointEntrySelected").checked;
+  console.log("Checkpoint Entry filter is set to: " + m_showCheckpointEntry);
+
+  // Checkpoint Report Entries filter
+  m_showReportEntry = document.getElementById("userReportEntrySelected").checked;
+  console.log("Report Entry filter is set to: " + m_showReportEntry);
+
+  populateChartData();
+  filterChartEntries()
+  chart.dataProvider = chartData;
+  chart.validateData();
+}
+
+  // =========================================================================
+  // Utilities
+  // =========================================================================
+
+
+function populateChartData()
+{
+  chartData = [ ];
+  if (m_groupPidSort == false) {
+    jsonData.sort(compareByTimeStamp);
+  } else {
+    jsonData.sort(compareByGroupTimeStamp);
+  }
+
+  for (var i = 0; i < jsonData.length; i++) {
+    var timestamp = parseInt(jsonData[0].TimeStampMSec, 10);
+
+    if (m_startTS > timestamp) m_startTS = timestamp;
+    if (m_endTS < timestamp) m_endTS = timestamp;
+
+    for (var i = 0; i < jsonData.length; i++) {
+      switch (jsonData[i].Action) {
+      case "START":
+        var categoryEntry = { };
+        categoryEntry["category"] = jsonData[i].Task;
+        categoryEntry["pid"] = jsonData[i].pid;
+
+        var segmentEntry = { };
+        // Normalize entry and convert to seconds
+        segmentEntry["start"] = (jsonData[i].TimeStampMSec - m_startTS) / 1000;
+        segmentEntry["color"] = getTaskBarColor(jsonData[i].Tags)
+        segmentEntry["task"] = jsonData[i].Task;
+        segmentEntry["tags"] = jsonData[i].Tags;
+        segmentEntry["duration"] = -1;
+
+        categoryEntry["segments"] = [ ];
+        categoryEntry["segments"].push(segmentEntry);
+        chartData.push(categoryEntry);
+        break;
+
+      case "END":
+        var catagory = findCatagory(jsonData[i].pid, jsonData[i].Task, chartData);
+        if (catagory != null) {
+          var segmentsEntry = catagory.segments[0];
+          segmentsEntry["end"] = (jsonData[i].TimeStampMSec - m_startTS) / 1000;
+          segmentsEntry["duration"] = segmentsEntry.end - segmentsEntry.start;
+        } else {
+          console.log("Null entry found: pid:%s, Task: %s", jsonData[i].pid, jsonData[i].Task);
+        }
+
+        break;
+
+      default:
+        console.log("Default");
+        break;
+      }
+    }
+  }
+}
+
+function filterChartEntries()
+{
+  for(var i = chartData.length - 1; i >= 0; i--) {
+    var segment = chartData[i].segments[0];
+
+    // -- Remove entries less than 1 seconds
+    if ( segment["duration"] == -1) {
+      segment["bullet"] = "xError";
+      segment["color"] = "#cc4748";
+      segment["duration"] = ((m_endTS - m_startTS) / 1000) - segment["start"];
+    } else if (segment["duration"] <  m_secondFilter) {
+      chartData.splice(i, 1);
+      continue;
+    }
+  
+
+    // Filter by tags
+    var bHasRollup = false;
+    var bHasCheckpoint = false;
+    var bHasReport = false;
+
+    var tags = segment["tags"];
+    console.log("Tag: " + tags);
+    if (tags.search(/ROLLUP_/i) != -1) { bHasRollup = true; }
+    if (tags.search(/CHECKPOINT/i) != -1) { bHasCheckpoint = true; }
+    if (tags.search(/REPORT/i) != -1) { bHasReport = true; }
+
+    var bRemoveEntry = false;
+
+    // Remove rollups
+    if ((m_showRollup == false) && (bHasRollup == true)) {
+      bRemoveEntry = true;
+    }
+    
+    // Remove checkpoints    
+    if ((m_showCheckpointEntry == false) && (bHasCheckpoint == true)) {
+      bRemoveEntry = true;
+    }
+
+    // Remove reports
+    if ((m_showReportEntry == false) && (bHasReport == true)) {
+      bRemoveEntry = true;
+    }
+
+    // Remove individual entry
+    if (((m_showIndividualEntry == false) && 
+         ((bHasRollup == false) &&
+          (bHasCheckpoint == false) &&
+          (bHasReport == false)))) {
+      bRemoveEntry = true;
+    }
+
+    if (bRemoveEntry == true) {
+      chartData.splice(i, 1);
+      continue;
+    }
+  }
+
+  console.log("ChartData.length: " + chartData.length);
+}
+
+
+function getTaskBarColor( _tags )
+{
+  if (_tags == null)
+    return "#8dc49f";
+
+  if (_tags.search(/ROLLUP_AUTO/i) != -1){ return "#0099ff"; }
+  if (_tags.search(/ROLLUP_0/i) != -1)   { return "#006699"; }
+  if (_tags.search(/ROLLUP_1/i) != -1)   { return "#009933"; }
+  if (_tags.search(/ROLLUP_2/i) != -1)   { return "#66ccff"; }
+  if (_tags.search(/REPORT/i) != -1)     { return "#b9783f"; }
+  if (_tags.search(/CHECKPOINT/i) != -1) { return "#cd82ad"; }
+
+  return "#8dc49f"
+}
+
+
+function tableCreate( _chartData ){
+    var myTableDiv = document.getElementById("myDynamicTable");
+
+
+    for ( var i = 0; i < _chartData.length; i++) {
+      var tr = myTableDiv.insertRow();
+
+      var td_task = tr.insertCell();
+      td_task.appendChild(document.createTextNode( _chartData[i].category ));
+
+      var segmentEntry = _chartData[i].segments;
+      var td_start = tr.insertCell();
+      td_start.appendChild(document.createTextNode( secondsToHHMMSS(segmentEntry[0].start) ));
+
+      var td_duration = tr.insertCell();
+      td_duration.appendChild(document.createTextNode( secondsToHHMMSS(segmentEntry[0].duration) ));
+
+    }
+}
+
+function secondsToHHMMSS( _seconds )
+{
+  var hours = Math.floor(_seconds / 3600);
+  var minutes = Math.floor(_seconds % 3600 / 60);
+  var seconds = Math.floor(_seconds % 3600 % 60);
+
+  var result = hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds; 
+
+  return result;
+}
+
+
+  function findCatagory(_pid, _category, _catagoryArray) {
+    for (var i = (_catagoryArray.length - 1); i >= 0; i--) {
+      if (_pid == _catagoryArray[i].pid) {
+        if (_catagoryArray[i].category == _category) {
+          return  _catagoryArray[i];
+        }
+      }
+    }
+    return null;
+  }
+
+
+  // Compares the timestamps between to JSON objects
+  function compareByTimeStamp(_a, _b) {
+    if (_a.TimeStampMSec < _b.TimeStampMSec) return -1;
+    if (_a.TimeStampMSec > _b.TimeStampMSec) return 1;
+
+    if (_a.pid == _b.pid) {
+      if ((_a.Action == "START") && (_b.Action == "END")) return -1;
+      if ((_a.Action == "END") && (_b.Action == "START")) return 1;
+
+      if(_a.Entry < _b.Entry) return -1;
+      if(_a.Entry > _b.Entry) return 1;
+    }
+
+    return 0;
+  }
+
+
+  // Compares the timestamps between to JSON objects
+  function compareByGroupTimeStamp(_a, _b) {
+    if (pidOrder.get(_a.pid) < pidOrder.get(_b.pid)) return -1;
+
+    if (pidOrder.get(_a.pid) > pidOrder.get(_b.pid)) return 1;
+
+    return compareByTimeStamp(_a, _b);
+  }
+
+
+  // Return array of string values, or NULL if CSV string not well formed.
+  function CSVtoArray(_text, _sep) {
+    // Regex expressions
+    var re_valid_default = /^\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*(?:,\s*(?:'[^'\\]*(?:\\[\S\s][^'\\]*)*'|"[^"\\]*(?:\\[\S\s][^"\\]*)*"|[^,'"\s\\]*(?:\s+[^,'"\s\\]+)*)\s*)*$/;
+    var re_value_default = /(?!\s*$)\s*(?:'([^'\\]*(?:\\[\S\s][^'\\]*)*)'|"([^"\\]*(?:\\[\S\s][^"\\]*)*)"|([^,'"\s\\]*(?:\s+[^,'"\s\\]+)*))\s*(?:,|$)/g;
+    var re_special_default = /,\s*$/;
+
+    // Algorithm:
+    //   1) Convert regex expression to a string.
+    //   2) Remove leading regex escape character (e.g., '\')
+    //   3) Remove training regex escape character(s) (e.g., '\' or "\g")
+    //   4) Replace the comma (',') character witht he new delimiter character
+    //   5) Build the regex command
+
+    // Check delimiter, if special insert escapes
+    if (_sep == "|") _sep = "\\|";
+
+    var re_valid = new RegExp(re_valid_default.toString().substr(1).slice(0, -1).replace(/,/g, _sep));
+    var re_value = new RegExp(re_value_default.toString().substr(1).slice(0, -2).replace(/,/g, _sep), 'g');
+    var re_special = new RegExp(re_special_default.toString().substr(1).slice(0, -1).replace(/,/g, _sep));
+
+    // Validate the input string to determine if it is well formed
+    if (!re_valid.test(_text)) return null;
+
+    var a = [ ];                     // Initialize array to receive values.
+    _text.replace(re_value,           // "Walk" the string using replace with callback.
+                  function(m0, m1, m2, m3) {
+                      // Remove backslash from \' in single quoted values.
+                      if      (m1 !== undefined) a.push(m1.replace(/\\'/g, "'"));
+                      // Remove backslash from \" in double quoted values.
+                      else if (m2 !== undefined) a.push(m2.replace(/\\"/g, '"'));
+                      else if (m3 !== undefined) a.push(m3);
+                      return ''; // Return empty string.
+                  });
+
+    // Handle special case of empty last value.
+    if (re_special.test(_text)) a.push('');
+
+    return a;
+  };
+
+
+  // Converts the given CSV array & header into a JSON array
+  function csvArrayToJSON(_header, _csvArray, _sep) {
+    var result = [ ];
+    var headers = CSVtoArray(_header, _sep);
+
+    for (var i = 0; i < _csvArray.length; i++) {
+
+      var obj = { };
+      var currentline = CSVtoArray(_csvArray[i], _sep);
+
+      for (var j = 0; j < headers.length; j++) {
+        obj[headers[j]] = currentline[j];
+      }
+
+      result.push(obj);
+
+    }
+
+    return result; //JavaScript object
+  }
+
+
+</script>
+</body>
+
+</html>
+

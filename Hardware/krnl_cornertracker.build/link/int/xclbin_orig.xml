@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="krnl_cornertracker">
+  <platform vendor="xilinx" boardid="zcu104" name="zcu104_base" featureRomTime="0">
+    <version major="1" minor="0"/>
+    <description/>
+    <board name="xilinx.com:zcu104:1.1" vendor="xilinx.com" fpga="xczu7ev-ffvc1156-2-e">
+      <interfaces/>
+      <images>
+        <image name="zcu104_board.jpeg" type="HDPI"/>
+        <image name="" type="MDPI"/>
+        <image name="" type="LDPI"/>
+      </images>
+      <id>
+        <vendor/>
+        <device/>
+        <subsystem/>
+      </id>
+    </board>
+    <build_flow/>
+    <host architecture="unknown"/>
+    <device name="fpga0" fpgaDevice="zynquplus:xczu7ev:ffvc1156:-2:e" addrWidth="0">
+      <core name="OCL_REGION_0" target="bitstream" type="clc_region" clockFreq="0MHz" numComputeUnits="60">
+        <kernel name="cornerupdate_accel" language="c" vlnv="xilinx.com:hls:cornerupdate_accel:1.0" preferredWorkGroupSizeMultiple="0" workGroupSize="1" debug="false" interrupt="true" hwControlProtocol="ap_ctrl_chain">
+          <module name="cornerupdate_accel">
+            <module name="cornerUpdate_10000u_3u_1080u_1920u_1u_s" instName="grp_cornerUpdate_10000u_3u_1080u_1920u_1u_s_fu_112" type="NonDataflowHS">
+              <rtlPort name="m_axi_gmem7_AWVALID" object="gmem7" protocol="m_axi"/>
+              <rtlPort name="m_axi_gmem8_AWVALID" object="gmem8" protocol="m_axi"/>
+              <rtlPort name="m_axi_gmem9_AWVALID" object="gmem9" protocol="m_axi"/>
+              <rtlPort name="list_fix" object="list_fix" protocol="ap_none"/>
+              <rtlPort name="list" object="list" protocol="ap_none"/>
+              <rtlPort name="nCorners" object="nCorners" protocol="ap_none"/>
+              <rtlPort name="p_read" object="p_read" protocol="ap_none"/>
+              <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+              <rtlPort name="flow_vectors_4" object="flow_vectors_4" protocol="ap_none"/>
+              <rtlPort name="harris_flag" object="harris_flag" protocol="ap_none"/>
+            </module>
+          </module>
+          <port name="M_AXI_GMEM7" mode="master" range="0xFFFFFFFF" dataWidth="64" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM8" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM9" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="S_AXI_CONTROL" mode="slave" range="0x1000" dataWidth="32" portType="addressable" base="0x0"/>
+          <arg name="list_fix" addressQualifier="1" id="0" port="M_AXI_GMEM7" size="0x8" offset="0x10" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="list" addressQualifier="1" id="1" port="M_AXI_GMEM8" size="0x8" offset="0x1C" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="nCorners" addressQualifier="0" id="2" port="S_AXI_CONTROL" size="0x4" offset="0x28" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="flow_vectors" addressQualifier="1" id="3" port="M_AXI_GMEM9" size="0x8" offset="0x30" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="harris_flag" addressQualifier="0" id="4" port="S_AXI_CONTROL" size="0x4" offset="0x3C" hostOffset="0x0" hostSize="0x1" type="unsigned int"/>
+          <arg name="flow_rows" addressQualifier="0" id="5" port="S_AXI_CONTROL" size="0x4" offset="0x44" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="flow_cols" addressQualifier="0" id="6" port="S_AXI_CONTROL" size="0x4" offset="0x4C" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <compileWorkGroupSize x="1" y="1" z="1"/>
+          <maxWorkGroupSize x="1" y="1" z="1"/>
+          <string_table/>
+          <instance name="cornerupdate_accel_1"/>
+        </kernel>
+        <kernel name="pyr_down_accel" language="c" vlnv="xilinx.com:hls:pyr_down_accel:1.0" preferredWorkGroupSizeMultiple="0" workGroupSize="1" debug="false" interrupt="true" hwControlProtocol="ap_ctrl_chain">
+          <module name="pyr_down_accel">
+            <module name="pyrDown_0_1080_1920_1_false_7" instName="pyrDown_0_1080_1920_1_false_7_U0" type="DataflowHS">
+              <module name="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_s" instName="grp_xFpyrDownKernel_1080u_1920u_0u_1u_1_false_s_fu_42" type="DataflowHS">
+                <rtlPort name="in_rows" object="in_rows" protocol="ap_none"/>
+                <rtlPort name="in_cols" object="in_cols" protocol="ap_none"/>
+                <module name="xFPyrDownGaussianBlur_1080_1920_0_1_1_0_5_25_1_s" instName="xFPyrDownGaussianBlur_1080_1920_0_1_1_0_5_25_1_U0" type="DataflowHS">
+                  <module name="xf_pyrdown_gaussian_nxn_1080_1920_0_1_1_1922_5_25_1_s" instName="grp_xf_pyrdown_gaussian_nxn_1080_1920_0_1_1_1922_5_25_1_s_fu_64" type="NonDataflowHS">
+                    <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                    <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                  </module>
+                </module>
+                <module name="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_56_3_proc10" instName="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_56_3_proc10_U0" type="DataflowHS"/>
+                <module name="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_39_1_proc9" instName="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_39_1_proc9_U0" type="DataflowHS">
+                  <rtlPort name="in_rows" object="in_rows" protocol="ap_none"/>
+                  <rtlPort name="in_cols" object="in_cols" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="pyrDown_0_1080_1920_1_false_s" instName="pyrDown_0_1080_1920_1_false_U0" type="DataflowHS">
+              <module name="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_s" instName="grp_xFpyrDownKernel_1080u_1920u_0u_1u_1_false_s_fu_42" type="DataflowHS">
+                <rtlPort name="in_rows" object="in_rows" protocol="ap_none"/>
+                <rtlPort name="in_cols" object="in_cols" protocol="ap_none"/>
+                <module name="xFPyrDownGaussianBlur_1080_1920_0_1_1_0_5_25_1_s" instName="xFPyrDownGaussianBlur_1080_1920_0_1_1_0_5_25_1_U0" type="DataflowHS">
+                  <module name="xf_pyrdown_gaussian_nxn_1080_1920_0_1_1_1922_5_25_1_s" instName="grp_xf_pyrdown_gaussian_nxn_1080_1920_0_1_1_1922_5_25_1_s_fu_64" type="NonDataflowHS">
+                    <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                    <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                  </module>
+                </module>
+                <module name="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_56_3_proc10" instName="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_56_3_proc10_U0" type="DataflowHS"/>
+                <module name="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_39_1_proc9" instName="xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_39_1_proc9_U0" type="DataflowHS">
+                  <rtlPort name="in_rows" object="in_rows" protocol="ap_none"/>
+                  <rtlPort name="in_cols" object="in_cols" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="Array2xfMat_32_0_1080_1920_1_6" instName="Array2xfMat_32_0_1080_1920_1_6_U0" type="DataflowHS">
+              <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+              <module name="Axi2Mat" instName="grp_Axi2Mat_fu_78" type="DataflowHS">
+                <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                <rtlPort name="din" object="din" protocol="ap_none"/>
+                <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                <module name="AxiStream2MatStream" instName="AxiStream2MatStream_U0" type="DataflowHS"/>
+                <module name="Axi2AxiStream" instName="Axi2AxiStream_U0" type="DataflowHS">
+                  <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                  <rtlPort name="addrbound_V_read" object="addrbound_V_read" protocol="ap_none"/>
+                </module>
+                <module name="addrbound5" instName="addrbound5_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_entry3" instName="Axi2Mat_entry3_U0" type="DataflowHS">
+                  <rtlPort name="din" object="din" protocol="ap_none"/>
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                </module>
+                <module name="Axi2Mat_entry13" instName="Axi2Mat_entry13_U0" type="DataflowHS"/>
+                <module name="last_blk_pxl_width4" instName="last_blk_pxl_width4_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_Block_split37_proc" instName="Axi2Mat_Block_split37_proc_U0" type="DataflowHS">
+                  <rtlPort name="axibound_V_2" object="axibound_V_2" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="Array2xfMat_32_0_1080_1920_1_s" instName="Array2xfMat_32_0_1080_1920_1_U0" type="DataflowHS">
+              <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+              <module name="Axi2Mat" instName="grp_Axi2Mat_fu_78" type="DataflowHS">
+                <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                <rtlPort name="din" object="din" protocol="ap_none"/>
+                <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                <module name="AxiStream2MatStream" instName="AxiStream2MatStream_U0" type="DataflowHS"/>
+                <module name="Axi2AxiStream" instName="Axi2AxiStream_U0" type="DataflowHS">
+                  <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                  <rtlPort name="addrbound_V_read" object="addrbound_V_read" protocol="ap_none"/>
+                </module>
+                <module name="addrbound5" instName="addrbound5_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_entry3" instName="Axi2Mat_entry3_U0" type="DataflowHS">
+                  <rtlPort name="din" object="din" protocol="ap_none"/>
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                </module>
+                <module name="Axi2Mat_entry13" instName="Axi2Mat_entry13_U0" type="DataflowHS"/>
+                <module name="last_blk_pxl_width4" instName="last_blk_pxl_width4_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_Block_split37_proc" instName="Axi2Mat_Block_split37_proc_U0" type="DataflowHS">
+                  <rtlPort name="axibound_V_2" object="axibound_V_2" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="xfMat2Array_32_0_1080_1920_1_8" instName="xfMat2Array_32_0_1080_1920_1_8_U0" type="DataflowHS">
+              <rtlPort name="m_axi_gmem2_AWVALID" object="gmem2" protocol="m_axi"/>
+              <module name="Mat2Axi" instName="grp_Mat2Axi_fu_56" type="DataflowHS">
+                <rtlPort name="m_axi_gmem2_AWVALID" object="gmem2" protocol="m_axi"/>
+                <rtlPort name="dout" object="dout" protocol="ap_none"/>
+                <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                <module name="Mat2AxiStream" instName="Mat2AxiStream_U0" type="DataflowHS">
+                  <module name="MatStream2AxiStream" instName="MatStream2AxiStream_U0" type="DataflowHS">
+                    <rtlPort name="last_blk_width" object="last_blk_width" protocol="ap_none"/>
+                  </module>
+                  <module name="last_blk_pxl_width22" instName="last_blk_pxl_width22_U0" type="DataflowHS"/>
+                </module>
+                <module name="AxiStream2Axi" instName="AxiStream2Axi_U0" type="DataflowHS">
+                  <rtlPort name="m_axi_gmem2_AWVALID" object="gmem2" protocol="m_axi"/>
+                  <rtlPort name="addrbound_V_read" object="addrbound_V_read" protocol="ap_none"/>
+                </module>
+                <module name="addrbound" instName="addrbound_U0" type="DataflowHS"/>
+                <module name="Mat2Axi_entry25" instName="Mat2Axi_entry25_U0" type="DataflowHS">
+                  <rtlPort name="dout" object="dout" protocol="ap_none"/>
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                </module>
+                <module name="Mat2Axi_Block_split35_proc" instName="Mat2Axi_Block_split35_proc_U0" type="DataflowHS">
+                  <rtlPort name="axibound_V_1" object="axibound_V_1" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="xfMat2Array_32_0_1080_1920_1_s" instName="xfMat2Array_32_0_1080_1920_1_U0" type="DataflowHS">
+              <rtlPort name="m_axi_gmem2_AWVALID" object="gmem2" protocol="m_axi"/>
+              <module name="Mat2Axi" instName="grp_Mat2Axi_fu_56" type="DataflowHS">
+                <rtlPort name="m_axi_gmem2_AWVALID" object="gmem2" protocol="m_axi"/>
+                <rtlPort name="dout" object="dout" protocol="ap_none"/>
+                <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                <module name="Mat2AxiStream" instName="Mat2AxiStream_U0" type="DataflowHS">
+                  <module name="MatStream2AxiStream" instName="MatStream2AxiStream_U0" type="DataflowHS">
+                    <rtlPort name="last_blk_width" object="last_blk_width" protocol="ap_none"/>
+                  </module>
+                  <module name="last_blk_pxl_width22" instName="last_blk_pxl_width22_U0" type="DataflowHS"/>
+                </module>
+                <module name="AxiStream2Axi" instName="AxiStream2Axi_U0" type="DataflowHS">
+                  <rtlPort name="m_axi_gmem2_AWVALID" object="gmem2" protocol="m_axi"/>
+                  <rtlPort name="addrbound_V_read" object="addrbound_V_read" protocol="ap_none"/>
+                </module>
+                <module name="addrbound" instName="addrbound_U0" type="DataflowHS"/>
+                <module name="Mat2Axi_entry25" instName="Mat2Axi_entry25_U0" type="DataflowHS">
+                  <rtlPort name="dout" object="dout" protocol="ap_none"/>
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                </module>
+                <module name="Mat2Axi_Block_split35_proc" instName="Mat2Axi_Block_split35_proc_U0" type="DataflowHS">
+                  <rtlPort name="axibound_V_1" object="axibound_V_1" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="Block_split1_proc30" instName="Block_split1_proc30_U0" type="DataflowHS">
+              <rtlPort name="pyr_h" object="pyr_h" protocol="ap_none"/>
+              <rtlPort name="pyr_w" object="pyr_w" protocol="ap_none"/>
+              <rtlPort name="pyr_out_h" object="pyr_out_h" protocol="ap_none"/>
+              <rtlPort name="pyr_out_w" object="pyr_out_w" protocol="ap_none"/>
+              <rtlPort name="inImgPyr1" object="inImgPyr1" protocol="ap_none"/>
+              <rtlPort name="outImgPyr1" object="outImgPyr1" protocol="ap_none"/>
+              <rtlPort name="inImgPyr2" object="inImgPyr2" protocol="ap_none"/>
+              <rtlPort name="outImgPyr2" object="outImgPyr2" protocol="ap_none"/>
+            </module>
+          </module>
+          <port name="M_AXI_GMEM1" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM2" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM3" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM4" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="S_AXI_CONTROL" mode="slave" range="0x1000" dataWidth="32" portType="addressable" base="0x0"/>
+          <arg name="inImgPyr1" addressQualifier="1" id="0" port="M_AXI_GMEM1" size="0x8" offset="0x10" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="outImgPyr1" addressQualifier="1" id="1" port="M_AXI_GMEM2" size="0x8" offset="0x1C" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="inImgPyr2" addressQualifier="1" id="2" port="M_AXI_GMEM3" size="0x8" offset="0x28" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="outImgPyr2" addressQualifier="1" id="3" port="M_AXI_GMEM4" size="0x8" offset="0x34" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="pyr_h" addressQualifier="0" id="4" port="S_AXI_CONTROL" size="0x4" offset="0x40" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="pyr_w" addressQualifier="0" id="5" port="S_AXI_CONTROL" size="0x4" offset="0x48" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="pyr_out_h" addressQualifier="0" id="6" port="S_AXI_CONTROL" size="0x4" offset="0x50" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="pyr_out_w" addressQualifier="0" id="7" port="S_AXI_CONTROL" size="0x4" offset="0x58" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <compileWorkGroupSize x="1" y="1" z="1"/>
+          <maxWorkGroupSize x="1" y="1" z="1"/>
+          <string_table/>
+          <instance name="pyr_down_accel_1"/>
+        </kernel>
+        <kernel name="pyr_dense_optical_flow_accel" language="c" vlnv="xilinx.com:hls:pyr_dense_optical_flow_accel:1.0" preferredWorkGroupSizeMultiple="0" workGroupSize="1" debug="false" interrupt="true" hwControlProtocol="ap_ctrl_chain">
+          <module name="pyr_dense_optical_flow_accel">
+            <module name="densePyrOpticalFlow_5_50_11_16_10_0_1080_1920_1_false_s" instName="densePyrOpticalFlow_5_50_11_16_10_0_1080_1920_1_false_U0" type="DataflowHS">
+              <module name="xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s" instName="grp_xFLKOpticalFlowDenseKernel_unsigned_short_1080_unsigned_short_1920_5_50_11_16_10_false_s_fu_98" type="DataflowHS">
+                <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                <rtlPort name="prev_rows" object="prev_rows" protocol="ap_none"/>
+                <rtlPort name="prev_cols" object="prev_cols" protocol="ap_none"/>
+                <rtlPort name="level" object="level" protocol="ap_none"/>
+                <rtlPort name="scale_up_flag" object="scale_up_flag" protocol="ap_none"/>
+                <rtlPort name="scale_in" object="scale_in" protocol="ap_none"/>
+                <rtlPort name="init_flag" object="init_flag" protocol="ap_none"/>
+                <module name="auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_24" instName="auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_24_U0" type="DataflowHS">
+                  <module name="auMedian3x3_1080_1920_0_0_0_1922_5_25_16_10_false_s" instName="grp_auMedian3x3_1080_1920_0_0_0_1922_5_25_16_10_false_s_fu_66" type="NonDataflowHS">
+                    <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                    <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                  </module>
+                </module>
+                <module name="auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_s" instName="auMedianBlur_1080_1920_0_0_0_0_5_25_16_10_false_U0" type="DataflowHS">
+                  <module name="auMedian3x3_1080_1920_0_0_0_1922_5_25_16_10_false_s" instName="grp_auMedian3x3_1080_1920_0_0_0_1922_5_25_16_10_false_s_fu_44" type="NonDataflowHS">
+                    <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                    <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                  </module>
+                </module>
+                <module name="findGradients_unsigned_short_1080_unsigned_short_1920_5_50_11_17_9_32_22_16_10_48_16_false_s" instName="findGradients_unsigned_short_1080_unsigned_short_1920_5_50_11_17_9_32_22_16_10_48_16_false_U0" type="DataflowHS">
+                  <module name="findIntensity_unsigned_short_1080_unsigned_short_1920_50_17_9_32_22_16_10_48_16_s" instName="grp_findIntensity_unsigned_short_1080_unsigned_short_1920_50_17_9_32_22_16_10_48_16_s_fu_1601" type="NonDataflowHS">
+                    <rtlPort name="lineBuffer_q0" object="lineBuffer" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer_q1" object="lineBuffer" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer1_q0" object="lineBuffer1" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer1_q1" object="lineBuffer1" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer2_q0" object="lineBuffer2" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer2_q1" object="lineBuffer2" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer3_q0" object="lineBuffer3" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer3_q1" object="lineBuffer3" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer4_q0" object="lineBuffer4" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer4_q1" object="lineBuffer4" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer5_q0" object="lineBuffer5" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer5_q1" object="lineBuffer5" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer6_q0" object="lineBuffer6" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer6_q1" object="lineBuffer6" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer7_q0" object="lineBuffer7" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer7_q1" object="lineBuffer7" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer8_q0" object="lineBuffer8" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer8_q1" object="lineBuffer8" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer9_q0" object="lineBuffer9" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer9_q1" object="lineBuffer9" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer10_q0" object="lineBuffer10" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer10_q1" object="lineBuffer10" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer11_q0" object="lineBuffer11" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer11_q1" object="lineBuffer11" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer12_q0" object="lineBuffer12" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer12_q1" object="lineBuffer12" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer13_q0" object="lineBuffer13" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer13_q1" object="lineBuffer13" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer14_q0" object="lineBuffer14" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer14_q1" object="lineBuffer14" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer15_q0" object="lineBuffer15" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer15_q1" object="lineBuffer15" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer16_q0" object="lineBuffer16" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer16_q1" object="lineBuffer16" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer17_q0" object="lineBuffer17" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer17_q1" object="lineBuffer17" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer18_q0" object="lineBuffer18" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer18_q1" object="lineBuffer18" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer19_q0" object="lineBuffer19" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer19_q1" object="lineBuffer19" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer20_q0" object="lineBuffer20" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer20_q1" object="lineBuffer20" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer21_q0" object="lineBuffer21" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer21_q1" object="lineBuffer21" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer22_q0" object="lineBuffer22" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer22_q1" object="lineBuffer22" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer23_q0" object="lineBuffer23" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer23_q1" object="lineBuffer23" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer24_q0" object="lineBuffer24" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer24_q1" object="lineBuffer24" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer25_q0" object="lineBuffer25" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer25_q1" object="lineBuffer25" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer26_q0" object="lineBuffer26" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer26_q1" object="lineBuffer26" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer27_q0" object="lineBuffer27" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer27_q1" object="lineBuffer27" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer28_q0" object="lineBuffer28" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer28_q1" object="lineBuffer28" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer29_q0" object="lineBuffer29" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer29_q1" object="lineBuffer29" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer30_q0" object="lineBuffer30" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer30_q1" object="lineBuffer30" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer31_q0" object="lineBuffer31" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer31_q1" object="lineBuffer31" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer32_q0" object="lineBuffer32" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer32_q1" object="lineBuffer32" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer33_q0" object="lineBuffer33" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer33_q1" object="lineBuffer33" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer34_q0" object="lineBuffer34" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer34_q1" object="lineBuffer34" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer35_q0" object="lineBuffer35" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer35_q1" object="lineBuffer35" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer36_q0" object="lineBuffer36" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer36_q1" object="lineBuffer36" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer37_q0" object="lineBuffer37" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer37_q1" object="lineBuffer37" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer38_q0" object="lineBuffer38" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer38_q1" object="lineBuffer38" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer39_q0" object="lineBuffer39" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer39_q1" object="lineBuffer39" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer40_q0" object="lineBuffer40" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer40_q1" object="lineBuffer40" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer41_q0" object="lineBuffer41" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer41_q1" object="lineBuffer41" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer42_q0" object="lineBuffer42" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer42_q1" object="lineBuffer42" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer43_q0" object="lineBuffer43" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer43_q1" object="lineBuffer43" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer44_q0" object="lineBuffer44" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer44_q1" object="lineBuffer44" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer45_q0" object="lineBuffer45" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer45_q1" object="lineBuffer45" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer46_q0" object="lineBuffer46" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer46_q1" object="lineBuffer46" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer47_q0" object="lineBuffer47" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer47_q1" object="lineBuffer47" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer48_q0" object="lineBuffer48" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer48_q1" object="lineBuffer48" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer49_q0" object="lineBuffer49" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer49_q1" object="lineBuffer49" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer50_q0" object="lineBuffer50" protocol="ap_memory"/>
+                    <rtlPort name="lineBuffer50_q1" object="lineBuffer50" protocol="ap_memory"/>
+                    <rtlPort name="i" object="i" protocol="ap_none"/>
+                    <rtlPort name="j" object="j" protocol="ap_none"/>
+                    <rtlPort name="u" object="u" protocol="ap_none"/>
+                    <rtlPort name="v" object="v" protocol="ap_none"/>
+                    <rtlPort name="totalLinesInBuffer" object="totalLinesInBuffer" protocol="ap_none"/>
+                    <rtlPort name="effBufferedLines" object="effBufferedLines" protocol="ap_none"/>
+                    <rtlPort name="lineStore" object="lineStore" protocol="ap_none"/>
+                    <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                    <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                  </module>
+                </module>
+                <module name="find_G_and_b_matrix_unsigned_short_1080_unsigned_short_1920_11_17_9_27_25_34_26_false_s" instName="find_G_and_b_matrix_unsigned_short_1080_unsigned_short_1920_11_17_9_27_25_34_26_false_U0" type="DataflowHS"/>
+                <module name="find_flow_unsigned_short_1080_unsigned_short_1920_27_25_34_26_16_10_55_51_40_2_102_54_11_s" instName="find_flow_unsigned_short_1080_unsigned_short_1920_27_25_34_26_16_10_55_51_40_2_102_54_11_U0" type="DataflowHS"/>
+                <module name="scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_23" instName="scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_23_U0" type="DataflowHS">
+                  <module name="process_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_s" instName="grp_process_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_s_fu_286" type="NonDataflowHS">
+                    <rtlPort name="buf_r_q0" object="buf_r" protocol="ap_memory"/>
+                    <rtlPort name="buffer_r_d0" object="buffer_r" protocol="ap_memory"/>
+                    <rtlPort name="buffer_r_q1" object="buffer_r" protocol="ap_memory"/>
+                    <rtlPort name="buffer1_d0" object="buffer1" protocol="ap_memory"/>
+                    <rtlPort name="buffer1_q1" object="buffer1" protocol="ap_memory"/>
+                    <rtlPort name="outRows" object="outRows" protocol="ap_none"/>
+                    <rtlPort name="outCols" object="outCols" protocol="ap_none"/>
+                    <rtlPort name="flagLoaded" object="flagLoaded" protocol="ap_none"/>
+                    <rtlPort name="row" object="row" protocol="ap_none"/>
+                    <rtlPort name="scaleI" object="scaleI" protocol="ap_none"/>
+                    <rtlPort name="scaleJ" object="scaleJ" protocol="ap_none"/>
+                    <module name="compute_result_16_10_45_22_48_16_s" instName="grp_compute_result_16_10_45_22_48_16_s_fu_392">
+                      <rtlPort name="fracI" object="fracI" protocol="ap_none"/>
+                      <rtlPort name="fracJ" object="fracJ" protocol="ap_none"/>
+                      <rtlPort name="i0" object="i0" protocol="ap_none"/>
+                      <rtlPort name="i1" object="i1" protocol="ap_none"/>
+                      <rtlPort name="i2" object="i2" protocol="ap_none"/>
+                      <rtlPort name="i3" object="i3" protocol="ap_none"/>
+                    </module>
+                  </module>
+                  <module name="load_data_1920_16_10_45_22_17_1_s" instName="grp_load_data_1920_16_10_45_22_17_1_s_fu_302" type="NonDataflowHS">
+                    <rtlPort name="buf_r_d0" object="buf_r" protocol="ap_memory"/>
+                    <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                    <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                    <rtlPort name="inCurrRow" object="inCurrRow" protocol="ap_none"/>
+                    <rtlPort name="scaleI" object="scaleI" protocol="ap_none"/>
+                    <rtlPort name="prevIceil_read_5" object="prevIceil_read_5" protocol="ap_none"/>
+                    <rtlPort name="prevIceil_read" object="prevIceil_read" protocol="ap_none"/>
+                  </module>
+                </module>
+                <module name="scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_s" instName="scale_up_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_false_U0" type="DataflowHS">
+                  <module name="process_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_s" instName="grp_process_unsigned_short_1080_unsigned_short_1920_16_10_45_22_48_16_17_1_s_fu_262" type="NonDataflowHS">
+                    <rtlPort name="buf_r_q0" object="buf_r" protocol="ap_memory"/>
+                    <rtlPort name="buffer_r_d0" object="buffer_r" protocol="ap_memory"/>
+                    <rtlPort name="buffer_r_q1" object="buffer_r" protocol="ap_memory"/>
+                    <rtlPort name="buffer1_d0" object="buffer1" protocol="ap_memory"/>
+                    <rtlPort name="buffer1_q1" object="buffer1" protocol="ap_memory"/>
+                    <rtlPort name="outRows" object="outRows" protocol="ap_none"/>
+                    <rtlPort name="outCols" object="outCols" protocol="ap_none"/>
+                    <rtlPort name="flagLoaded" object="flagLoaded" protocol="ap_none"/>
+                    <rtlPort name="row" object="row" protocol="ap_none"/>
+                    <rtlPort name="scaleI" object="scaleI" protocol="ap_none"/>
+                    <rtlPort name="scaleJ" object="scaleJ" protocol="ap_none"/>
+                    <module name="compute_result_16_10_45_22_48_16_s" instName="grp_compute_result_16_10_45_22_48_16_s_fu_392">
+                      <rtlPort name="fracI" object="fracI" protocol="ap_none"/>
+                      <rtlPort name="fracJ" object="fracJ" protocol="ap_none"/>
+                      <rtlPort name="i0" object="i0" protocol="ap_none"/>
+                      <rtlPort name="i1" object="i1" protocol="ap_none"/>
+                      <rtlPort name="i2" object="i2" protocol="ap_none"/>
+                      <rtlPort name="i3" object="i3" protocol="ap_none"/>
+                    </module>
+                  </module>
+                  <module name="load_data_1920_16_10_45_22_17_1_s" instName="grp_load_data_1920_16_10_45_22_17_1_s_fu_278" type="NonDataflowHS">
+                    <rtlPort name="buf_r_d0" object="buf_r" protocol="ap_memory"/>
+                    <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                    <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                    <rtlPort name="inCurrRow" object="inCurrRow" protocol="ap_none"/>
+                    <rtlPort name="scaleI" object="scaleI" protocol="ap_none"/>
+                    <rtlPort name="prevIceil_read_5" object="prevIceil_read_5" protocol="ap_none"/>
+                    <rtlPort name="prevIceil_read" object="prevIceil_read" protocol="ap_none"/>
+                  </module>
+                </module>
+                <module name="split_stream_int_fixed_unsigned_short_1080_unsigned_short_1920_16_10_48" instName="split_stream_int_fixed_unsigned_short_1080_unsigned_short_1920_16_10_48_U0" type="DataflowHS">
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                  <rtlPort name="rows1" object="rows1" protocol="ap_none"/>
+                  <rtlPort name="cols2" object="cols2" protocol="ap_none"/>
+                  <rtlPort name="level" object="level" protocol="ap_none"/>
+                  <rtlPort name="scale_up_flag" object="scale_up_flag" protocol="ap_none"/>
+                  <rtlPort name="scale_in" object="scale_in" protocol="ap_none"/>
+                  <rtlPort name="init_flag" object="init_flag" protocol="ap_none"/>
+                </module>
+                <module name="stitch_stream_fixed_int_unsigned_short_1080_unsigned_short_1920_16_10_s" instName="stitch_stream_fixed_int_unsigned_short_1080_unsigned_short_1920_16_10_U0" type="DataflowHS"/>
+              </module>
+            </module>
+            <module name="Array2xfMat_32_3_1080_1920_1_s" instName="Array2xfMat_32_3_1080_1920_1_U0" type="DataflowHS">
+              <rtlPort name="m_axi_gmem3_AWVALID" object="gmem3" protocol="m_axi"/>
+              <module name="Axi2Mat" instName="grp_Axi2Mat_fu_56" type="DataflowHS">
+                <rtlPort name="m_axi_gmem3_AWVALID" object="gmem3" protocol="m_axi"/>
+                <rtlPort name="din" object="din" protocol="ap_none"/>
+                <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                <module name="AxiStream2MatStream" instName="AxiStream2MatStream_U0" type="DataflowHS"/>
+                <module name="Axi2AxiStream" instName="Axi2AxiStream_U0" type="DataflowHS">
+                  <rtlPort name="m_axi_gmem3_AWVALID" object="gmem3" protocol="m_axi"/>
+                  <rtlPort name="addrbound_V_read" object="addrbound_V_read" protocol="ap_none"/>
+                </module>
+                <module name="addrbound22" instName="addrbound22_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_entry6" instName="Axi2Mat_entry6_U0" type="DataflowHS">
+                  <rtlPort name="din" object="din" protocol="ap_none"/>
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                </module>
+                <module name="Axi2Mat_entry42" instName="Axi2Mat_entry42_U0" type="DataflowHS"/>
+                <module name="last_blk_pxl_width21" instName="last_blk_pxl_width21_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_Block_split15_proc" instName="Axi2Mat_Block_split15_proc_U0" type="DataflowHS">
+                  <rtlPort name="axibound_V_2" object="axibound_V_2" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="Array2xfMat_32_0_1080_1920_1_25" instName="Array2xfMat_32_0_1080_1920_1_25_U0" type="DataflowHS">
+              <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+              <module name="Axi2Mat_1" instName="grp_Axi2Mat_1_fu_78" type="DataflowHS">
+                <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                <rtlPort name="din" object="din" protocol="ap_none"/>
+                <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                <module name="AxiStream2MatStream_1" instName="AxiStream2MatStream_1_U0" type="DataflowHS"/>
+                <module name="Axi2AxiStream_1" instName="Axi2AxiStream_1_U0" type="DataflowHS">
+                  <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                  <rtlPort name="addrbound_V_read" object="addrbound_V_read" protocol="ap_none"/>
+                </module>
+                <module name="addrbound_1" instName="addrbound_1_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_1_entry3" instName="Axi2Mat_1_entry3_U0" type="DataflowHS">
+                  <rtlPort name="din" object="din" protocol="ap_none"/>
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                </module>
+                <module name="Axi2Mat_entry36" instName="Axi2Mat_entry36_U0" type="DataflowHS"/>
+                <module name="last_blk_pxl_width" instName="last_blk_pxl_width_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_Block_split37_proc" instName="Axi2Mat_Block_split37_proc_U0" type="DataflowHS">
+                  <rtlPort name="axibound_V_3" object="axibound_V_3" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="Array2xfMat_32_0_1080_1920_1_s" instName="Array2xfMat_32_0_1080_1920_1_U0" type="DataflowHS">
+              <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+              <rtlPort name="p_read" object="p_read" protocol="ap_none"/>
+              <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+              <module name="Axi2Mat_1" instName="grp_Axi2Mat_1_fu_56" type="DataflowHS">
+                <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                <rtlPort name="din" object="din" protocol="ap_none"/>
+                <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                <module name="AxiStream2MatStream_1" instName="AxiStream2MatStream_1_U0" type="DataflowHS"/>
+                <module name="Axi2AxiStream_1" instName="Axi2AxiStream_1_U0" type="DataflowHS">
+                  <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                  <rtlPort name="addrbound_V_read" object="addrbound_V_read" protocol="ap_none"/>
+                </module>
+                <module name="addrbound_1" instName="addrbound_1_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_1_entry3" instName="Axi2Mat_1_entry3_U0" type="DataflowHS">
+                  <rtlPort name="din" object="din" protocol="ap_none"/>
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                </module>
+                <module name="Axi2Mat_entry36" instName="Axi2Mat_entry36_U0" type="DataflowHS"/>
+                <module name="last_blk_pxl_width" instName="last_blk_pxl_width_U0" type="DataflowHS"/>
+                <module name="Axi2Mat_Block_split37_proc" instName="Axi2Mat_Block_split37_proc_U0" type="DataflowHS">
+                  <rtlPort name="axibound_V_3" object="axibound_V_3" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="xfMat2Array_32_3_1080_1920_1_s" instName="xfMat2Array_32_3_1080_1920_1_U0" type="DataflowHS">
+              <rtlPort name="m_axi_gmem4_AWVALID" object="gmem4" protocol="m_axi"/>
+              <module name="Mat2Axi" instName="grp_Mat2Axi_fu_56" type="DataflowHS">
+                <rtlPort name="m_axi_gmem4_AWVALID" object="gmem4" protocol="m_axi"/>
+                <rtlPort name="dout" object="dout" protocol="ap_none"/>
+                <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                <module name="Mat2AxiStream" instName="Mat2AxiStream_U0" type="DataflowHS">
+                  <module name="MatStream2AxiStream" instName="MatStream2AxiStream_U0" type="DataflowHS">
+                    <rtlPort name="last_blk_width" object="last_blk_width" protocol="ap_none"/>
+                  </module>
+                  <module name="last_blk_pxl_width58" instName="last_blk_pxl_width58_U0" type="DataflowHS"/>
+                </module>
+                <module name="AxiStream2Axi" instName="AxiStream2Axi_U0" type="DataflowHS">
+                  <rtlPort name="m_axi_gmem4_AWVALID" object="gmem4" protocol="m_axi"/>
+                  <rtlPort name="addrbound_V_read" object="addrbound_V_read" protocol="ap_none"/>
+                </module>
+                <module name="addrbound" instName="addrbound_U0" type="DataflowHS"/>
+                <module name="Mat2Axi_entry61" instName="Mat2Axi_entry61_U0" type="DataflowHS">
+                  <rtlPort name="dout" object="dout" protocol="ap_none"/>
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                </module>
+                <module name="Mat2Axi_Block_split13_proc" instName="Mat2Axi_Block_split13_proc_U0" type="DataflowHS">
+                  <rtlPort name="axibound_V_1" object="axibound_V_1" protocol="ap_none"/>
+                </module>
+              </module>
+            </module>
+            <module name="Block_split2_proc66" instName="Block_split2_proc66_U0" type="DataflowHS">
+              <rtlPort name="cur_img_rows" object="cur_img_rows" protocol="ap_none"/>
+              <rtlPort name="cur_img_cols" object="cur_img_cols" protocol="ap_none"/>
+              <rtlPort name="next_img_rows" object="next_img_rows" protocol="ap_none"/>
+              <rtlPort name="next_img_cols" object="next_img_cols" protocol="ap_none"/>
+              <rtlPort name="flow_rows" object="flow_rows" protocol="ap_none"/>
+              <rtlPort name="flow_cols" object="flow_cols" protocol="ap_none"/>
+              <rtlPort name="flow_iter_rows" object="flow_iter_rows" protocol="ap_none"/>
+              <rtlPort name="flow_iter_cols" object="flow_iter_cols" protocol="ap_none"/>
+              <rtlPort name="p_current_img" object="p_current_img" protocol="ap_none"/>
+              <rtlPort name="p_next_image" object="p_next_image" protocol="ap_none"/>
+              <rtlPort name="p_streamFlowin" object="p_streamFlowin" protocol="ap_none"/>
+              <rtlPort name="p_streamFlowout" object="p_streamFlowout" protocol="ap_none"/>
+              <rtlPort name="level" object="level" protocol="ap_none"/>
+              <rtlPort name="scale_up_flag" object="scale_up_flag" protocol="ap_none"/>
+              <rtlPort name="scale_in" object="scale_in" protocol="ap_none"/>
+              <rtlPort name="init_flag" object="init_flag" protocol="ap_none"/>
+            </module>
+          </module>
+          <port name="M_AXI_GMEM1" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM2" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM3" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM4" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="S_AXI_CONTROL" mode="slave" range="0x1000" dataWidth="32" portType="addressable" base="0x0"/>
+          <arg name="_current_img" addressQualifier="1" id="0" port="M_AXI_GMEM1" size="0x8" offset="0x10" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="_next_image" addressQualifier="1" id="1" port="M_AXI_GMEM2" size="0x8" offset="0x1C" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="_streamFlowin" addressQualifier="1" id="2" port="M_AXI_GMEM3" size="0x8" offset="0x28" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="_streamFlowout" addressQualifier="1" id="3" port="M_AXI_GMEM4" size="0x8" offset="0x34" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="level" addressQualifier="0" id="4" port="S_AXI_CONTROL" size="0x4" offset="0x40" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="scale_up_flag" addressQualifier="0" id="5" port="S_AXI_CONTROL" size="0x4" offset="0x48" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="scale_in" addressQualifier="0" id="6" port="S_AXI_CONTROL" size="0x4" offset="0x50" hostOffset="0x0" hostSize="0x4" type="float"/>
+          <arg name="init_flag" addressQualifier="0" id="7" port="S_AXI_CONTROL" size="0x4" offset="0x58" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="cur_img_rows" addressQualifier="0" id="8" port="S_AXI_CONTROL" size="0x4" offset="0x60" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="cur_img_cols" addressQualifier="0" id="9" port="S_AXI_CONTROL" size="0x4" offset="0x68" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="next_img_rows" addressQualifier="0" id="10" port="S_AXI_CONTROL" size="0x4" offset="0x70" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="next_img_cols" addressQualifier="0" id="11" port="S_AXI_CONTROL" size="0x4" offset="0x78" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="flow_rows" addressQualifier="0" id="12" port="S_AXI_CONTROL" size="0x4" offset="0x80" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="flow_cols" addressQualifier="0" id="13" port="S_AXI_CONTROL" size="0x4" offset="0x88" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="flow_iter_rows" addressQualifier="0" id="14" port="S_AXI_CONTROL" size="0x4" offset="0x90" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="flow_iter_cols" addressQualifier="0" id="15" port="S_AXI_CONTROL" size="0x4" offset="0x98" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <compileWorkGroupSize x="1" y="1" z="1"/>
+          <maxWorkGroupSize x="1" y="1" z="1"/>
+          <string_table/>
+          <instance name="pyr_dense_optical_flow_accel_1"/>
+        </kernel>
+        <kernel name="cornerTracker" language="c" vlnv="xilinx.com:hls:cornerTracker:1.0" preferredWorkGroupSizeMultiple="0" workGroupSize="1" debug="false" interrupt="true" hwControlProtocol="ap_ctrl_chain">
+          <module name="cornerTracker">
+            <module name="HarrisImg" instName="grp_HarrisImg_fu_150" type="DataflowHS">
+              <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+              <rtlPort name="m_axi_gmem2_AWVALID" object="gmem2" protocol="m_axi"/>
+              <rtlPort name="inHarris" object="inHarris" protocol="ap_none"/>
+              <rtlPort name="list" object="list" protocol="ap_none"/>
+              <rtlPort name="harris_rows" object="harris_rows" protocol="ap_none"/>
+              <rtlPort name="harris_cols" object="harris_cols" protocol="ap_none"/>
+              <rtlPort name="Thresh" object="Thresh" protocol="ap_none"/>
+              <module name="cornerHarris_3_3_1_0_1080_1920_1_false_s" instName="cornerHarris_3_3_1_0_1080_1920_1_false_U0" type="DataflowHS">
+                <module name="xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_s" instName="grp_xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_s_fu_52" type="DataflowHS">
+                  <rtlPort name="p_read" object="p_read" protocol="ap_none"/>
+                  <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                  <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                  <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                  <rtlPort name="p_threshold" object="p_threshold" protocol="ap_none"/>
+                  <module name="xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_s" instName="xFMaxSuppression_5_0_1080_1920_5_0_1_12_1_U0" type="DataflowHS">
+                    <module name="xFMaxSuppressionRad1_5_0_1080_1920_5_0_1_12_1_1920_s" instName="grp_xFMaxSuppressionRad1_5_0_1080_1920_5_0_1_12_1_1920_s_fu_42" type="NonDataflowHS">
+                      <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                      <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                      <module name="ProcessMax1_5_0_1080_1920_5_0_1_12_1_1920_s" instName="grp_ProcessMax1_5_0_1080_1920_5_0_1_12_1_1920_s_fu_363" type="NonDataflowHS">
+                        <rtlPort name="buf_r_q0" object="buf_r" protocol="ap_memory"/>
+                        <rtlPort name="buf_r_d1" object="buf_r" protocol="ap_memory"/>
+                        <rtlPort name="buf1_q0" object="buf1" protocol="ap_memory"/>
+                        <rtlPort name="buf1_d1" object="buf1" protocol="ap_memory"/>
+                        <rtlPort name="buf2_q0" object="buf2" protocol="ap_memory"/>
+                        <rtlPort name="buf2_d1" object="buf2" protocol="ap_memory"/>
+                        <rtlPort name="p_read2" object="p_read2" protocol="ap_none"/>
+                        <rtlPort name="p_read5" object="p_read5" protocol="ap_none"/>
+                        <rtlPort name="p_read8" object="p_read8" protocol="ap_none"/>
+                        <rtlPort name="p_read9" object="p_read9" protocol="ap_none"/>
+                        <rtlPort name="p_read10" object="p_read10" protocol="ap_none"/>
+                        <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                        <rtlPort name="row_ind" object="row_ind" protocol="ap_none"/>
+                        <rtlPort name="p_read111" object="p_read111" protocol="ap_none"/>
+                        <rtlPort name="tp" object="tp" protocol="ap_none"/>
+                        <rtlPort name="mid" object="mid" protocol="ap_none"/>
+                        <rtlPort name="bottom" object="bottom" protocol="ap_none"/>
+                        <rtlPort name="flag_offset" object="flag_offset" protocol="ap_none"/>
+                        <rtlPort name="p_read210" object="p_read210" protocol="ap_none"/>
+                        <rtlPort name="p_read312" object="p_read312" protocol="ap_none"/>
+                        <module name="xFSuppressionRad1_1_5_ap_uint_8_s" instName="call_ret_xFSuppressionRad1_1_5_ap_uint_8_s_fu_422">
+                          <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                          <rtlPort name="p_read2" object="p_read2" protocol="ap_none"/>
+                          <rtlPort name="p_read3" object="p_read3" protocol="ap_none"/>
+                          <rtlPort name="p_read4" object="p_read4" protocol="ap_none"/>
+                          <rtlPort name="p_read5" object="p_read5" protocol="ap_none"/>
+                          <module name="xFFindMaxRad1_ap_int_32_s" instName="Max_xFFindMaxRad1_ap_int_32_s_fu_44">
+                            <rtlPort name="t1" object="t1" protocol="ap_none"/>
+                            <rtlPort name="m0" object="m0" protocol="ap_none"/>
+                            <rtlPort name="m1" object="m1" protocol="ap_none"/>
+                            <rtlPort name="m2" object="m2" protocol="ap_none"/>
+                            <rtlPort name="b1" object="b1" protocol="ap_none"/>
+                          </module>
+                        </module>
+                        <module name="xfExtractPixels_1_12_5_s" instName="call_ret2_xfExtractPixels_1_12_5_s_fu_435">
+                          <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                        </module>
+                        <module name="xfExtractPixels_1_12_5_s" instName="call_ret3_xfExtractPixels_1_12_5_s_fu_440">
+                          <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                        </module>
+                        <module name="xfExtractPixels_1_12_5_s" instName="call_ret4_xfExtractPixels_1_12_5_s_fu_446">
+                          <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                        </module>
+                      </module>
+                      <module name="xFFindMaxRad1_ap_int_32_s" instName="grp_xFFindMaxRad1_ap_int_32_s_fu_400">
+                        <rtlPort name="t1" object="t1" protocol="ap_none"/>
+                        <rtlPort name="m0" object="m0" protocol="ap_none"/>
+                        <rtlPort name="m1" object="m1" protocol="ap_none"/>
+                        <rtlPort name="m2" object="m2" protocol="ap_none"/>
+                        <rtlPort name="b1" object="b1" protocol="ap_none"/>
+                      </module>
+                    </module>
+                  </module>
+                  <module name="Sobel_0_3_0_2_1080_1920_1_false_s" instName="Sobel_0_3_0_2_1080_1920_1_false_U0" type="DataflowHS">
+                    <module name="xFSobelFilter3x3_0_2_1080_1920_1_0_3_1_1_5_1920_false_s" instName="grp_xFSobelFilter3x3_0_2_1080_1920_1_0_3_1_1_5_1920_false_s_fu_44" type="NonDataflowHS">
+                      <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                      <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                      <module name="xFSobel3x3_1_1_0_3_s" instName="call_ret_xFSobel3x3_1_1_0_3_s_fu_332">
+                        <rtlPort name="p_read2" object="p_read2" protocol="ap_none"/>
+                        <rtlPort name="p_read5" object="p_read5" protocol="ap_none"/>
+                        <rtlPort name="p_read6" object="p_read6" protocol="ap_none"/>
+                        <rtlPort name="p_read7" object="p_read7" protocol="ap_none"/>
+                        <rtlPort name="p_read8" object="p_read8" protocol="ap_none"/>
+                        <rtlPort name="p_read9" object="p_read9" protocol="ap_none"/>
+                        <rtlPort name="p_read10" object="p_read10" protocol="ap_none"/>
+                        <rtlPort name="p_read11" object="p_read11" protocol="ap_none"/>
+                        <module name="xFGradientX3x3_0_3_s" instName="GradientvaluesX_V_write_assign_xFGradientX3x3_0_3_s_fu_72">
+                          <rtlPort name="t0" object="t0" protocol="ap_none"/>
+                          <rtlPort name="t2" object="t2" protocol="ap_none"/>
+                          <rtlPort name="m0" object="m0" protocol="ap_none"/>
+                          <rtlPort name="m2" object="m2" protocol="ap_none"/>
+                          <rtlPort name="b0" object="b0" protocol="ap_none"/>
+                          <rtlPort name="b2" object="b2" protocol="ap_none"/>
+                        </module>
+                        <module name="xFGradientY3x3_0_3_s" instName="GradientvaluesY_V_write_assign_xFGradientY3x3_0_3_s_fu_88">
+                          <rtlPort name="t0" object="t0" protocol="ap_none"/>
+                          <rtlPort name="t1" object="t1" protocol="ap_none"/>
+                          <rtlPort name="t2" object="t2" protocol="ap_none"/>
+                          <rtlPort name="b0" object="b0" protocol="ap_none"/>
+                          <rtlPort name="b1" object="b1" protocol="ap_none"/>
+                          <rtlPort name="b2" object="b2" protocol="ap_none"/>
+                        </module>
+                      </module>
+                      <module name="xFGradientX3x3_0_3_s" instName="p_Repl2_s_xFGradientX3x3_0_3_s_fu_349">
+                        <rtlPort name="t0" object="t0" protocol="ap_none"/>
+                        <rtlPort name="t2" object="t2" protocol="ap_none"/>
+                        <rtlPort name="m0" object="m0" protocol="ap_none"/>
+                        <rtlPort name="m2" object="m2" protocol="ap_none"/>
+                        <rtlPort name="b0" object="b0" protocol="ap_none"/>
+                        <rtlPort name="b2" object="b2" protocol="ap_none"/>
+                      </module>
+                      <module name="xFGradientY3x3_0_3_s" instName="p_Repl2_2_xFGradientY3x3_0_3_s_fu_365">
+                        <rtlPort name="t0" object="t0" protocol="ap_none"/>
+                        <rtlPort name="t1" object="t1" protocol="ap_none"/>
+                        <rtlPort name="t2" object="t2" protocol="ap_none"/>
+                        <rtlPort name="b0" object="b0" protocol="ap_none"/>
+                        <rtlPort name="b1" object="b1" protocol="ap_none"/>
+                        <rtlPort name="b2" object="b2" protocol="ap_none"/>
+                      </module>
+                    </module>
+                  </module>
+                  <module name="boxFilter_0_3_2_1080_1920_1_false_26" instName="boxFilter_0_3_2_1080_1920_1_false_26_U0" type="DataflowHS">
+                    <module name="xFBoxFilter3x3_2_1080_1920_3_1_5_5_1920_false_s" instName="grp_xFBoxFilter3x3_2_1080_1920_3_1_5_5_1920_false_s_fu_42" type="NonDataflowHS">
+                      <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                      <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                      <module name="xFApplyMask3x3_3_s" instName="grp_xFApplyMask3x3_3_s_fu_361">
+                        <rtlPort name="p_i00" object="p_i00" protocol="ap_none"/>
+                        <rtlPort name="p_i01" object="p_i01" protocol="ap_none"/>
+                        <rtlPort name="p_i02" object="p_i02" protocol="ap_none"/>
+                        <rtlPort name="p_i10" object="p_i10" protocol="ap_none"/>
+                        <rtlPort name="p_i11" object="p_i11" protocol="ap_none"/>
+                        <rtlPort name="p_i12" object="p_i12" protocol="ap_none"/>
+                        <rtlPort name="p_i20" object="p_i20" protocol="ap_none"/>
+                        <rtlPort name="p_i21" object="p_i21" protocol="ap_none"/>
+                        <rtlPort name="p_i22" object="p_i22" protocol="ap_none"/>
+                      </module>
+                    </module>
+                  </module>
+                  <module name="boxFilter_0_3_2_1080_1920_1_false_27" instName="boxFilter_0_3_2_1080_1920_1_false_27_U0" type="DataflowHS">
+                    <module name="xFBoxFilter3x3_2_1080_1920_3_1_5_5_1920_false_s" instName="grp_xFBoxFilter3x3_2_1080_1920_3_1_5_5_1920_false_s_fu_42" type="NonDataflowHS">
+                      <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                      <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                      <module name="xFApplyMask3x3_3_s" instName="grp_xFApplyMask3x3_3_s_fu_361">
+                        <rtlPort name="p_i00" object="p_i00" protocol="ap_none"/>
+                        <rtlPort name="p_i01" object="p_i01" protocol="ap_none"/>
+                        <rtlPort name="p_i02" object="p_i02" protocol="ap_none"/>
+                        <rtlPort name="p_i10" object="p_i10" protocol="ap_none"/>
+                        <rtlPort name="p_i11" object="p_i11" protocol="ap_none"/>
+                        <rtlPort name="p_i12" object="p_i12" protocol="ap_none"/>
+                        <rtlPort name="p_i20" object="p_i20" protocol="ap_none"/>
+                        <rtlPort name="p_i21" object="p_i21" protocol="ap_none"/>
+                        <rtlPort name="p_i22" object="p_i22" protocol="ap_none"/>
+                      </module>
+                    </module>
+                  </module>
+                  <module name="boxFilter_0_3_2_1080_1920_1_false_s" instName="boxFilter_0_3_2_1080_1920_1_false_U0" type="DataflowHS">
+                    <module name="xFBoxFilter3x3_2_1080_1920_3_1_5_5_1920_false_s" instName="grp_xFBoxFilter3x3_2_1080_1920_3_1_5_5_1920_false_s_fu_42" type="NonDataflowHS">
+                      <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                      <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                      <module name="xFApplyMask3x3_3_s" instName="grp_xFApplyMask3x3_3_s_fu_361">
+                        <rtlPort name="p_i00" object="p_i00" protocol="ap_none"/>
+                        <rtlPort name="p_i01" object="p_i01" protocol="ap_none"/>
+                        <rtlPort name="p_i02" object="p_i02" protocol="ap_none"/>
+                        <rtlPort name="p_i10" object="p_i10" protocol="ap_none"/>
+                        <rtlPort name="p_i11" object="p_i11" protocol="ap_none"/>
+                        <rtlPort name="p_i12" object="p_i12" protocol="ap_none"/>
+                        <rtlPort name="p_i20" object="p_i20" protocol="ap_none"/>
+                        <rtlPort name="p_i21" object="p_i21" protocol="ap_none"/>
+                        <rtlPort name="p_i22" object="p_i22" protocol="ap_none"/>
+                      </module>
+                    </module>
+                  </module>
+                  <module name="xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_s" instName="xFComputeScore_2_5_1080_1920_3_5_1_5_12_1920_U0" type="DataflowHS"/>
+                  <module name="xFThreshold_5_1080_1920_5_1_12_1920_s" instName="xFThreshold_5_1080_1920_5_1_12_1920_U0" type="DataflowHS"/>
+                  <module name="xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25" instName="xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_25_U0" type="DataflowHS">
+                    <module name="xfExtractPixels_1_5_3_s" instName="src_buf_V_0_xfExtractPixels_1_5_3_s_fu_137">
+                      <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                    </module>
+                  </module>
+                  <module name="xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_s" instName="xFSquare_2_2_1080_1920_3_3_1_5_5_1920_int_U0" type="DataflowHS">
+                    <module name="xfExtractPixels_1_5_3_s" instName="src_buf_V_0_xfExtractPixels_1_5_3_s_fu_115">
+                      <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                    </module>
+                  </module>
+                  <module name="xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_s" instName="xFMultiply_2_2_1080_1920_3_3_1_5_5_1920_int_U0" type="DataflowHS">
+                    <module name="xfExtractPixels_1_5_3_s" instName="src_buf1_V_0_xfExtractPixels_1_5_3_s_fu_117">
+                      <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                    </module>
+                    <module name="xfExtractPixels_1_5_3_s" instName="src_buf2_V_0_xfExtractPixels_1_5_3_s_fu_123">
+                      <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                    </module>
+                  </module>
+                  <module name="xFDuplicate_2_1080_1920_3_1_5_1920_24" instName="xFDuplicate_2_1080_1920_3_1_5_1920_24_U0" type="DataflowHS"/>
+                  <module name="xFDuplicate_2_1080_1920_3_1_5_1920_s" instName="xFDuplicate_2_1080_1920_3_1_5_1920_U0" type="DataflowHS"/>
+                  <module name="xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50" instName="xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_entry50_U0" type="DataflowHS">
+                    <rtlPort name="p_read" object="p_read" protocol="ap_none"/>
+                    <rtlPort name="p_read1" object="p_read1" protocol="ap_none"/>
+                    <rtlPort name="img_height" object="img_height" protocol="ap_none"/>
+                    <rtlPort name="img_width" object="img_width" protocol="ap_none"/>
+                    <rtlPort name="p_threshold" object="p_threshold" protocol="ap_none"/>
+                  </module>
+                  <module name="xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc" instName="xFCornerHarrisDetector_3_3_0_1080_1920_1_0_1_1_12_1920_5_12_false_Block_ZN2xf2cv3MatILi2ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc_U0" type="DataflowHS"/>
+                </module>
+              </module>
+              <module name="Array2xfMat_32_0_1080_1920_1_s" instName="Array2xfMat_32_0_1080_1920_1_U0" type="DataflowHS">
+                <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                <module name="Axi2Mat" instName="grp_Axi2Mat_fu_78" type="DataflowHS">
+                  <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                  <rtlPort name="din" object="din" protocol="ap_none"/>
+                  <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                  <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                  <module name="AxiStream2MatStream" instName="AxiStream2MatStream_U0" type="DataflowHS"/>
+                  <module name="Axi2AxiStream" instName="Axi2AxiStream_U0" type="DataflowHS">
+                    <rtlPort name="m_axi_gmem1_AWVALID" object="gmem1" protocol="m_axi"/>
+                    <rtlPort name="addrbound_V_read" object="addrbound_V_read" protocol="ap_none"/>
+                  </module>
+                  <module name="addrbound" instName="addrbound_U0" type="DataflowHS"/>
+                  <module name="Axi2Mat_entry3" instName="Axi2Mat_entry3_U0" type="DataflowHS">
+                    <rtlPort name="din" object="din" protocol="ap_none"/>
+                    <rtlPort name="rows" object="rows" protocol="ap_none"/>
+                    <rtlPort name="cols" object="cols" protocol="ap_none"/>
+                  </module>
+                  <module name="Axi2Mat_entry44" instName="Axi2Mat_entry44_U0" type="DataflowHS"/>
+                  <module name="last_blk_pxl_width" instName="last_blk_pxl_width_U0" type="DataflowHS"/>
+                  <module name="Axi2Mat_Block_split15_proc" instName="Axi2Mat_Block_split15_proc_U0" type="DataflowHS">
+                    <rtlPort name="axibound_V_1" object="axibound_V_1" protocol="ap_none"/>
+                  </module>
+                </module>
+              </module>
+              <module name="cornersImgToList_10000u_0u_1080u_1920u_1u_s" instName="cornersImgToList_10000u_0u_1080u_1920u_1u_U0" type="DataflowHS">
+                <rtlPort name="m_axi_gmem2_AWVALID" object="gmem2" protocol="m_axi"/>
+              </module>
+              <module name="HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65" instName="HarrisImg_Block_ZN2xf2cv3MatILi0ELi1080ELi1920ELi1ELi2EEC2Eii_exit1_proc65_U0" type="DataflowHS">
+                <rtlPort name="harris_rows" object="harris_rows" protocol="ap_none"/>
+                <rtlPort name="harris_cols" object="harris_cols" protocol="ap_none"/>
+                <rtlPort name="inHarris" object="inHarris" protocol="ap_none"/>
+                <rtlPort name="list" object="list" protocol="ap_none"/>
+                <rtlPort name="Thresh" object="Thresh" protocol="ap_none"/>
+              </module>
+            </module>
+          </module>
+          <port name="M_AXI_GMEM1" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM2" mode="master" range="0xFFFFFFFF" dataWidth="32" portType="addressable" base="0x0"/>
+          <port name="M_AXI_GMEM3" mode="master" range="0xFFFFFFFF" dataWidth="128" portType="addressable" base="0x0"/>
+          <port name="S_AXI_CONTROL" mode="slave" range="0x1000" dataWidth="32" portType="addressable" base="0x0"/>
+          <arg name="inHarris" addressQualifier="1" id="0" port="M_AXI_GMEM1" size="0x8" offset="0x10" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="list" addressQualifier="1" id="1" port="M_AXI_GMEM2" size="0x8" offset="0x1C" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="params" addressQualifier="1" id="2" port="M_AXI_GMEM3" size="0x8" offset="0x28" hostOffset="0x0" hostSize="0x8" type="void*"/>
+          <arg name="harris_rows" addressQualifier="0" id="3" port="S_AXI_CONTROL" size="0x4" offset="0x34" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <arg name="harris_cols" addressQualifier="0" id="4" port="S_AXI_CONTROL" size="0x4" offset="0x3C" hostOffset="0x0" hostSize="0x4" type="unsigned int"/>
+          <compileWorkGroupSize x="1" y="1" z="1"/>
+          <maxWorkGroupSize x="1" y="1" z="1"/>
+          <string_table/>
+          <instance name="cornerTracker_1"/>
+        </kernel>
+      </core>
+    </device>
+  </platform>
+</project>

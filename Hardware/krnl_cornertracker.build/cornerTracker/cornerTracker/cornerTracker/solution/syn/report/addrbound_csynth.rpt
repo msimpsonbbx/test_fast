@@ -1,0 +1,150 @@
+
+
+================================================================
+== Vitis HLS Report for 'addrbound'
+================================================================
+* Date:           Thu Mar 25 14:57:20 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        cornerTracker
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 3.676 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |  Latency (cycles) |   Latency (absolute)  |  Interval | Pipeline|
+    |   min   |   max   |    min    |    max    | min | max |   Type  |
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |        3|        3| 20.001 ns | 20.001 ns |    3|    3|   none  |
+    +---------+---------+-----------+-----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+------+--------+--------+-----+
+|       Name      | BRAM_18K|  DSP |   FF   |   LUT  | URAM|
++-----------------+---------+------+--------+--------+-----+
+|DSP              |        -|     1|       -|       -|    -|
+|Expression       |        -|     -|       0|      34|    -|
+|FIFO             |        -|     -|       -|       -|    -|
+|Instance         |        -|     -|       -|       -|    -|
+|Memory           |        -|     -|       -|       -|    -|
+|Multiplexer      |        -|     -|       -|      81|    -|
+|Register         |        -|     -|      25|       -|    -|
++-----------------+---------+------+--------+--------+-----+
+|Total            |        0|     1|      25|     115|    0|
++-----------------+---------+------+--------+--------+-----+
+|Available        |      624|  1728|  460800|  230400|   96|
++-----------------+---------+------+--------+--------+-----+
+|Utilization (%)  |        0|  ~0  |   ~0   |   ~0   |    0|
++-----------------+---------+------+--------+--------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP: 
+    +------------------------------+--------------------------+-----------+
+    |           Instance           |          Module          | Expression|
+    +------------------------------+--------------------------+-----------+
+    |mul_mul_11ns_11ns_22_4_1_U26  |mul_mul_11ns_11ns_22_4_1  |  i0 * i1  |
+    +------------------------------+--------------------------+-----------+
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------------+----------+----+---+----+------------+------------+
+    |    Variable Name   | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------+----------+----+---+----+------------+------------+
+    |add_ln976_fu_92_p2  |     +    |   0|  0|  32|          25|           5|
+    |ap_block_state1     |    or    |   0|  0|   2|           1|           1|
+    +--------------------+----------+----+---+----+------------+------------+
+    |Total               |          |   0|  0|  34|          26|           6|
+    +--------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------+----+-----------+-----+-----------+
+    |      Name      | LUT| Input Size| Bits| Total Bits|
+    +----------------+----+-----------+-----+-----------+
+    |ap_NS_fsm       |  27|          5|    1|          5|
+    |ap_done         |   9|          2|    1|          2|
+    |cols_blk_n      |   9|          2|    1|          2|
+    |cols_out_blk_n  |   9|          2|    1|          2|
+    |return_r        |   9|          2|   20|         40|
+    |rows_blk_n      |   9|          2|    1|          2|
+    |rows_out_blk_n  |   9|          2|    1|          2|
+    +----------------+----+-----------+-----+-----------+
+    |Total           |  81|         17|   26|         55|
+    +----------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------+----+----+-----+-----------+
+    |      Name     | FF | LUT| Bits| Const Bits|
+    +---------------+----+----+-----+-----------+
+    |ap_CS_fsm      |   4|   0|    4|          0|
+    |ap_done_reg    |   1|   0|    1|          0|
+    |return_r_preg  |  20|   0|   20|          0|
+    +---------------+----+----+-----+-----------+
+    |Total          |  25|   0|   25|          0|
+    +---------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------+-----+-----+------------+--------------+--------------+
+|    RTL Ports    | Dir | Bits|  Protocol  | Source Object|    C Type    |
++-----------------+-----+-----+------------+--------------+--------------+
+|ap_clk           |  in |    1| ap_ctrl_hs |   addrbound  | return value |
+|ap_rst           |  in |    1| ap_ctrl_hs |   addrbound  | return value |
+|ap_start         |  in |    1| ap_ctrl_hs |   addrbound  | return value |
+|ap_done          | out |    1| ap_ctrl_hs |   addrbound  | return value |
+|ap_continue      |  in |    1| ap_ctrl_hs |   addrbound  | return value |
+|ap_idle          | out |    1| ap_ctrl_hs |   addrbound  | return value |
+|ap_ready         | out |    1| ap_ctrl_hs |   addrbound  | return value |
+|return_r         | out |   20|   ap_vld   |   return_r   |    pointer   |
+|return_r_ap_vld  | out |    1|   ap_vld   |   return_r   |    pointer   |
+|rows_dout        |  in |   11|   ap_fifo  |     rows     |    pointer   |
+|rows_empty_n     |  in |    1|   ap_fifo  |     rows     |    pointer   |
+|rows_read        | out |    1|   ap_fifo  |     rows     |    pointer   |
+|cols_dout        |  in |   11|   ap_fifo  |     cols     |    pointer   |
+|cols_empty_n     |  in |    1|   ap_fifo  |     cols     |    pointer   |
+|cols_read        | out |    1|   ap_fifo  |     cols     |    pointer   |
+|rows_out_din     | out |   11|   ap_fifo  |   rows_out   |    pointer   |
+|rows_out_full_n  |  in |    1|   ap_fifo  |   rows_out   |    pointer   |
+|rows_out_write   | out |    1|   ap_fifo  |   rows_out   |    pointer   |
+|cols_out_din     | out |   11|   ap_fifo  |   cols_out   |    pointer   |
+|cols_out_full_n  |  in |    1|   ap_fifo  |   cols_out   |    pointer   |
+|cols_out_write   | out |    1|   ap_fifo  |   cols_out   |    pointer   |
++-----------------+-----+-----+------------+--------------+--------------+
+

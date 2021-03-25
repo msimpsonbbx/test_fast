@@ -1,0 +1,123 @@
+===============================================================================
+Version:    v++ v2020.1.1 (64-bit)
+Build:      SW Build 2960000 on Wed Aug  5 22:57:21 MDT 2020
+Copyright:  Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+Created:    Thu Mar 25 15:02:11 2021
+===============================================================================
+
+-------------------------------------------------------------------------------
+Design Name:             pyr_down_accel
+Target Device:           xilinx:zcu104:zcu104_base:1.0
+Target Clock:            150.000000MHz
+Total number of kernels: 1
+-------------------------------------------------------------------------------
+
+Kernel Summary
+Kernel Name     Type  Target              OpenCL Library  Compute Units
+--------------  ----  ------------------  --------------  -------------
+pyr_down_accel  c     fpga0:OCL_REGION_0  pyr_down_accel  1
+
+
+-------------------------------------------------------------------------------
+OpenCL Binary:     pyr_down_accel
+Kernels mapped to: clc_region
+
+Timing Information (MHz)
+Compute Unit      Kernel Name     Module Name                                                            Target Frequency  Estimated Frequency
+----------------  --------------  ---------------------------------------------------------------------  ----------------  -------------------
+pyr_down_accel_1  pyr_down_accel  Block_split1_proc30                                                    149.925034        544.069641
+pyr_down_accel_1  pyr_down_accel  Axi2Mat_entry3                                                         149.925034        544.069641
+pyr_down_accel_1  pyr_down_accel  Axi2Mat_entry13                                                        149.925034        272.034821
+pyr_down_accel_1  pyr_down_accel  last_blk_pxl_width4                                                    149.925034        544.069641
+pyr_down_accel_1  pyr_down_accel  addrbound5                                                             149.925034        220.361389
+pyr_down_accel_1  pyr_down_accel  Axi2Mat_Block_split37_proc                                             149.925034        inf
+pyr_down_accel_1  pyr_down_accel  Axi2AxiStream                                                          149.925034        205.465378
+pyr_down_accel_1  pyr_down_accel  AxiStream2MatStream                                                    149.925034        198.255341
+pyr_down_accel_1  pyr_down_accel  Axi2Mat                                                                149.925034        198.255341
+pyr_down_accel_1  pyr_down_accel  Array2xfMat_32_0_1080_1920_1_6                                         149.925034        198.255341
+pyr_down_accel_1  pyr_down_accel  xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_39_1_proc9   149.925034        278.706787
+pyr_down_accel_1  pyr_down_accel  xf_pyrdown_gaussian_nxn_1080_1920_0_1_1_1922_5_25_1_s                  149.925034        215.749725
+pyr_down_accel_1  pyr_down_accel  xFPyrDownGaussianBlur_1080_1920_0_1_1_0_5_25_1_s                       149.925034        215.749725
+pyr_down_accel_1  pyr_down_accel  xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_56_3_proc10  149.925034        278.706787
+pyr_down_accel_1  pyr_down_accel  xFpyrDownKernel_1080u_1920u_0u_1u_1_false_s                            149.925034        215.749725
+pyr_down_accel_1  pyr_down_accel  pyrDown_0_1080_1920_1_false_7                                          149.925034        215.749725
+pyr_down_accel_1  pyr_down_accel  Mat2Axi_entry25                                                        149.925034        544.069641
+pyr_down_accel_1  pyr_down_accel  addrbound                                                              149.925034        220.361389
+pyr_down_accel_1  pyr_down_accel  Mat2Axi_Block_split35_proc                                             149.925034        inf
+pyr_down_accel_1  pyr_down_accel  last_blk_pxl_width22                                                   149.925034        272.034821
+pyr_down_accel_1  pyr_down_accel  MatStream2AxiStream                                                    149.925034        231.000229
+pyr_down_accel_1  pyr_down_accel  Mat2AxiStream                                                          149.925034        231.000229
+pyr_down_accel_1  pyr_down_accel  AxiStream2Axi                                                          149.925034        205.465378
+pyr_down_accel_1  pyr_down_accel  Mat2Axi                                                                149.925034        205.465378
+pyr_down_accel_1  pyr_down_accel  xfMat2Array_32_0_1080_1920_1_8                                         149.925034        205.465378
+pyr_down_accel_1  pyr_down_accel  Array2xfMat_32_0_1080_1920_1_s                                         149.925034        198.255341
+pyr_down_accel_1  pyr_down_accel  pyrDown_0_1080_1920_1_false_s                                          149.925034        215.749725
+pyr_down_accel_1  pyr_down_accel  xfMat2Array_32_0_1080_1920_1_s                                         149.925034        205.465378
+pyr_down_accel_1  pyr_down_accel  pyr_down_accel                                                         149.925034        198.255341
+
+Latency Information
+Compute Unit      Kernel Name     Module Name                                                            Start Interval  Best (cycles)  Avg (cycles)  Worst (cycles)  Best (absolute)  Avg (absolute)  Worst (absolute)
+----------------  --------------  ---------------------------------------------------------------------  --------------  -------------  ------------  --------------  ---------------  --------------  ----------------
+pyr_down_accel_1  pyr_down_accel  Block_split1_proc30                                                    0               0              0             0               0 ns             0 ns            0 ns
+pyr_down_accel_1  pyr_down_accel  Axi2Mat_entry3                                                         0               0              0             0               0 ns             0 ns            0 ns
+pyr_down_accel_1  pyr_down_accel  Axi2Mat_entry13                                                        0               0              0             0               0 ns             0 ns            0 ns
+pyr_down_accel_1  pyr_down_accel  last_blk_pxl_width4                                                    0               0              0             0               0 ns             0 ns            0 ns
+pyr_down_accel_1  pyr_down_accel  addrbound5                                                             1               1              1             1               6.667 ns         6.667 ns        6.667 ns
+pyr_down_accel_1  pyr_down_accel  Axi2Mat_Block_split37_proc                                             0               0              0             0               0 ns             0 ns            0 ns
+pyr_down_accel_1  pyr_down_accel  Axi2AxiStream                                                          1 ~ 518473      1              129637        518473          6.667 ns         0.864 ms        3.457 ms
+pyr_down_accel_1  pyr_down_accel  AxiStream2MatStream                                                    5 ~ 2073604     5              1036804       2073604         33.335 ns        6.912 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  Axi2Mat                                                                6 ~ 2073605     78             1036877       2073677         0.520 us         6.913 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  Array2xfMat_32_0_1080_1920_1_6                                         79 ~ 2073678    79             1036878       2073678         0.527 us         6.913 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_39_1_proc9   6 ~ 2073605     6              518405        2073605         40.002 ns        3.456 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  xf_pyrdown_gaussian_nxn_1080_1920_0_1_1_1922_5_25_1_s                  24 ~ 2093798    24             526044        2093798         0.160 us         3.507 ms        13.959 ms
+pyr_down_accel_1  pyr_down_accel  xFPyrDownGaussianBlur_1080_1920_0_1_1_0_5_25_1_s                       25 ~ 2093799    25             526045        2093799         0.167 us         3.507 ms        13.959 ms
+pyr_down_accel_1  pyr_down_accel  xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_56_3_proc10  6 ~ 2073605     6              518405        2073605         40.002 ns        3.456 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  xFpyrDownKernel_1080u_1920u_0u_1u_1_false_s                            26 ~ 2093800    26             526046        2093800         0.173 us         3.507 ms        13.959 ms
+pyr_down_accel_1  pyr_down_accel  pyrDown_0_1080_1920_1_false_7                                          27 ~ 2093801    27             526047        2093801         0.180 us         3.507 ms        13.959 ms
+pyr_down_accel_1  pyr_down_accel  Mat2Axi_entry25                                                        0               0              0             0               0 ns             0 ns            0 ns
+pyr_down_accel_1  pyr_down_accel  addrbound                                                              1               1              1             1               6.667 ns         6.667 ns        6.667 ns
+pyr_down_accel_1  pyr_down_accel  Mat2Axi_Block_split35_proc                                             0               0              0             0               0 ns             0 ns            0 ns
+pyr_down_accel_1  pyr_down_accel  last_blk_pxl_width22                                                   0               0              0             0               0 ns             0 ns            0 ns
+pyr_down_accel_1  pyr_down_accel  MatStream2AxiStream                                                    4 ~ 2073603     4              518403        2073603         26.668 ns        3.456 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  Mat2AxiStream                                                          5 ~ 2073604     5              518404        2073604         33.335 ns        3.456 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  AxiStream2Axi                                                          1 ~ 518471      1              129636        518471          6.667 ns         0.864 ms        3.457 ms
+pyr_down_accel_1  pyr_down_accel  Mat2Axi                                                                5 ~ 2073604     6              518405        2073605         40.002 ns        3.456 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  xfMat2Array_32_0_1080_1920_1_8                                         7 ~ 2073606     7              518406        2073606         46.669 ns        3.456 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  Array2xfMat_32_0_1080_1920_1_s                                         79 ~ 2073678    79             1036878       2073678         0.527 us         6.913 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  pyrDown_0_1080_1920_1_false_s                                          27 ~ 2093801    27             526047        2093801         0.180 us         3.507 ms        13.959 ms
+pyr_down_accel_1  pyr_down_accel  xfMat2Array_32_0_1080_1920_1_s                                         7 ~ 2073606     7              518406        2073606         46.669 ns        3.456 ms        13.825 ms
+pyr_down_accel_1  pyr_down_accel  pyr_down_accel                                                         80 ~ 2093802    80             1036879       2093808         0.533 us         6.913 ms        13.959 ms
+
+Area Information
+Compute Unit      Kernel Name     Module Name                                                            FF     LUT    DSP  BRAM  URAM
+----------------  --------------  ---------------------------------------------------------------------  -----  -----  ---  ----  ----
+pyr_down_accel_1  pyr_down_accel  Block_split1_proc30                                                    3      128    0    0     0
+pyr_down_accel_1  pyr_down_accel  Axi2Mat_entry3                                                         3      47     0    0     0
+pyr_down_accel_1  pyr_down_accel  Axi2Mat_entry13                                                        3      74     0    0     0
+pyr_down_accel_1  pyr_down_accel  last_blk_pxl_width4                                                    3      29     0    0     0
+pyr_down_accel_1  pyr_down_accel  addrbound5                                                             25     116    0    0     0
+pyr_down_accel_1  pyr_down_accel  Axi2Mat_Block_split37_proc                                             22     20     0    0     0
+pyr_down_accel_1  pyr_down_accel  Axi2AxiStream                                                          195    480    0    0     0
+pyr_down_accel_1  pyr_down_accel  AxiStream2MatStream                                                    422    1690   0    0     0
+pyr_down_accel_1  pyr_down_accel  Axi2Mat                                                                1870   3358   0    0     0
+pyr_down_accel_1  pyr_down_accel  Array2xfMat_32_0_1080_1920_1_6                                         2005   3469   0    0     0
+pyr_down_accel_1  pyr_down_accel  xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_39_1_proc9   75     185    0    0     0
+pyr_down_accel_1  pyr_down_accel  xf_pyrdown_gaussian_nxn_1080_1920_0_1_1_1922_5_25_1_s                  878    2210   0    5     0
+pyr_down_accel_1  pyr_down_accel  xFPyrDownGaussianBlur_1080_1920_0_1_1_0_5_25_1_s                       915    2299   0    5     0
+pyr_down_accel_1  pyr_down_accel  xFpyrDownKernel_1080u_1920u_0u_1u_1_false_Loop_VITIS_LOOP_56_3_proc10  139    296    0    0     0
+pyr_down_accel_1  pyr_down_accel  xFpyrDownKernel_1080u_1920u_0u_1u_1_false_s                            1723   3184   0    5     0
+pyr_down_accel_1  pyr_down_accel  pyrDown_0_1080_1920_1_false_7                                          1761   3250   0    5     0
+pyr_down_accel_1  pyr_down_accel  Mat2Axi_entry25                                                        3      65     0    0     0
+pyr_down_accel_1  pyr_down_accel  addrbound                                                              25     98     0    0     0
+pyr_down_accel_1  pyr_down_accel  Mat2Axi_Block_split35_proc                                             22     20     0    0     0
+pyr_down_accel_1  pyr_down_accel  last_blk_pxl_width22                                                   2      47     0    0     0
+pyr_down_accel_1  pyr_down_accel  MatStream2AxiStream                                                    312    923    0    0     0
+pyr_down_accel_1  pyr_down_accel  Mat2AxiStream                                                          617    1237   0    0     0
+pyr_down_accel_1  pyr_down_accel  AxiStream2Axi                                                          194    485    0    0     0
+pyr_down_accel_1  pyr_down_accel  Mat2Axi                                                                1659   2507   0    0     0
+pyr_down_accel_1  pyr_down_accel  xfMat2Array_32_0_1080_1920_1_8                                         1793   2600   0    0     0
+pyr_down_accel_1  pyr_down_accel  Array2xfMat_32_0_1080_1920_1_s                                         2005   3469   0    0     0
+pyr_down_accel_1  pyr_down_accel  pyrDown_0_1080_1920_1_false_s                                          1761   3250   0    5     0
+pyr_down_accel_1  pyr_down_accel  xfMat2Array_32_0_1080_1920_1_s                                         1793   2600   0    0     0
+pyr_down_accel_1  pyr_down_accel  pyr_down_accel                                                         15885  23317  0    22    0
+-------------------------------------------------------------------------------

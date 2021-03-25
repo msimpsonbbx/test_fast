@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xd:repository xmlns:xd="http://www.xilinx.com/xd">
+    <xd:fcnMap xd:fcnName="pyr_dense_optical_flow_accel" xd:type="hls_opencl" xd:clockId="0" xd:flow="explicit" xd:componentRef="pyr_dense_optical_flow_accel">
+        <xd:interrupt xd:busInterfaceRef="interrupt"/>
+        <xd:ctrlReg xd:busInterface="s_axi_control" xd:portInterfaceType="axilite" xd:name="control" xd:type="ap_ctrl_chain" xd:offset="0x0"/>
+        <xd:arg xd:name="_current_img" xd:swRootName="_current_img" xd:dataWidth="64" xd:offset="0x10" xd:portInterfaceType="axilite" xd:direction="in" xd:id="0" xd:busInterfaceRef="s_axi_control" xd:aximmMasterRef="m_axi_gmem1" xd:aximmMasterDirection="inout" xd:aximmMasterDataWidth="64"/>
+        <xd:arg xd:name="_next_image" xd:swRootName="_next_image" xd:dataWidth="64" xd:offset="0x1C" xd:portInterfaceType="axilite" xd:direction="in" xd:id="1" xd:busInterfaceRef="s_axi_control" xd:aximmMasterRef="m_axi_gmem2" xd:aximmMasterDirection="inout" xd:aximmMasterDataWidth="64"/>
+        <xd:arg xd:name="_streamFlowin" xd:swRootName="_streamFlowin" xd:dataWidth="64" xd:offset="0x28" xd:portInterfaceType="axilite" xd:direction="in" xd:id="2" xd:busInterfaceRef="s_axi_control" xd:aximmMasterRef="m_axi_gmem3" xd:aximmMasterDirection="inout" xd:aximmMasterDataWidth="64"/>
+        <xd:arg xd:name="_streamFlowout" xd:swRootName="_streamFlowout" xd:dataWidth="64" xd:offset="0x34" xd:portInterfaceType="axilite" xd:direction="in" xd:id="3" xd:busInterfaceRef="s_axi_control" xd:aximmMasterRef="m_axi_gmem4" xd:aximmMasterDirection="inout" xd:aximmMasterDataWidth="64"/>
+        <xd:arg xd:name="level" xd:swRootName="level" xd:dataWidth="32" xd:offset="0x40" xd:portInterfaceType="axilite" xd:direction="in" xd:id="4" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="scale_up_flag" xd:swRootName="scale_up_flag" xd:dataWidth="32" xd:offset="0x48" xd:portInterfaceType="axilite" xd:direction="in" xd:id="5" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="scale_in" xd:swRootName="scale_in" xd:dataWidth="32" xd:offset="0x50" xd:portInterfaceType="axilite" xd:direction="in" xd:id="6" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="init_flag" xd:swRootName="init_flag" xd:dataWidth="32" xd:offset="0x58" xd:portInterfaceType="axilite" xd:direction="in" xd:id="7" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="cur_img_rows" xd:swRootName="cur_img_rows" xd:dataWidth="32" xd:offset="0x60" xd:portInterfaceType="axilite" xd:direction="in" xd:id="8" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="cur_img_cols" xd:swRootName="cur_img_cols" xd:dataWidth="32" xd:offset="0x68" xd:portInterfaceType="axilite" xd:direction="in" xd:id="9" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="next_img_rows" xd:swRootName="next_img_rows" xd:dataWidth="32" xd:offset="0x70" xd:portInterfaceType="axilite" xd:direction="in" xd:id="10" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="next_img_cols" xd:swRootName="next_img_cols" xd:dataWidth="32" xd:offset="0x78" xd:portInterfaceType="axilite" xd:direction="in" xd:id="11" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="flow_rows" xd:swRootName="flow_rows" xd:dataWidth="32" xd:offset="0x80" xd:portInterfaceType="axilite" xd:direction="in" xd:id="12" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="flow_cols" xd:swRootName="flow_cols" xd:dataWidth="32" xd:offset="0x88" xd:portInterfaceType="axilite" xd:direction="in" xd:id="13" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="flow_iter_rows" xd:swRootName="flow_iter_rows" xd:dataWidth="32" xd:offset="0x90" xd:portInterfaceType="axilite" xd:direction="in" xd:id="14" xd:busInterfaceRef="s_axi_control"/>
+        <xd:arg xd:name="flow_iter_cols" xd:swRootName="flow_iter_cols" xd:dataWidth="32" xd:offset="0x98" xd:portInterfaceType="axilite" xd:direction="in" xd:id="15" xd:busInterfaceRef="s_axi_control"/>
+    </xd:fcnMap>
+</xd:repository>

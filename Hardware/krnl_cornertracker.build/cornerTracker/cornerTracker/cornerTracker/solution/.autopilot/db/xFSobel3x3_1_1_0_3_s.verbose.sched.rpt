@@ -1,0 +1,124 @@
+
+
+================================================================
+== Vitis HLS Report for 'xFSobel3x3_1_1_0_3_s'
+================================================================
+* Date:           Thu Mar 25 14:57:14 2021
+
+* Version:        2020.1.1 (Build 2960000 on Wed Aug 05 23:18:37 MDT 2020)
+* Project:        cornerTracker
+* Solution:       solution (Vitis Kernel Flow Target)
+* Product family: zynquplus
+* Target device:  xczu7ev-ffvc1156-2-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 6.67 ns | 1.691 ns |   1.80 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |        0|        0|   0 ns   |   0 ns   |    1|    1| function |
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 1
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 1
+* Pipeline : 1
+  Pipeline-0 : II = 1, D = 1, States = { 1 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.69>
+ST_1 : Operation 2 [1/1] (0.00ns)   --->   "%p_read = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %p_read11" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:136]   --->   Operation 2 'read' 'p_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 3 [1/1] (0.00ns)   --->   "%p_read_3 = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %p_read10" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:136]   --->   Operation 3 'read' 'p_read_3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "%p_read_4 = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %p_read9" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:136]   --->   Operation 4 'read' 'p_read_4' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%p_read_5 = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %p_read8" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:136]   --->   Operation 5 'read' 'p_read_5' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%p_read74 = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %p_read7" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:136]   --->   Operation 6 'read' 'p_read74' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "%p_read63 = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %p_read6" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:136]   --->   Operation 7 'read' 'p_read63' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%p_read52 = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %p_read5" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:136]   --->   Operation 8 'read' 'p_read52' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "%p_read21 = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %p_read2" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:136]   --->   Operation 9 'read' 'p_read21' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (1.69ns)   --->   "%GradientvaluesX_V_write_assign = call i11 @xFGradientX3x3<0, 3>, i8 %p_read21, i8 %p_read63, i8 %p_read74, i8 %p_read_5, i8 %p_read_4, i8 %p_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:157]   --->   Operation 10 'call' 'GradientvaluesX_V_write_assign' <Predicate = true> <Delay = 1.69> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%sext_ln162 = sext i11 %GradientvaluesX_V_write_assign" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:162]   --->   Operation 11 'sext' 'sext_ln162' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [1/1] (1.69ns)   --->   "%GradientvaluesY_V_write_assign = call i11 @xFGradientY3x3<0, 3>, i8 %p_read21, i8 %p_read52, i8 %p_read63, i8 %p_read_4, i8 %p_read_3, i8 %p_read" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:162]   --->   Operation 12 'call' 'GradientvaluesY_V_write_assign' <Predicate = true> <Delay = 1.69> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_1 : Operation 13 [1/1] (0.00ns)   --->   "%sext_ln134 = sext i11 %GradientvaluesY_V_write_assign" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:134]   --->   Operation 13 'sext' 'sext_ln134' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 14 [1/1] (0.00ns)   --->   "%mrv = insertvalue i32, i16 %sext_ln162" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:169]   --->   Operation 14 'insertvalue' 'mrv' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 15 [1/1] (0.00ns)   --->   "%mrv_1 = insertvalue i32 %mrv, i16 %sext_ln134" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:169]   --->   Operation 15 'insertvalue' 'mrv_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 16 [1/1] (0.00ns)   --->   "%ret_ln169 = ret i32 %mrv_1" [/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:169]   --->   Operation 16 'ret' 'ret_ln169' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 6.67ns, clock uncertainty: 1.8ns.
+
+ <State 1>: 1.69ns
+The critical path consists of the following:
+	wire read on port 'p_read11' (/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:136) [9]  (0 ns)
+	'call' operation ('GradientvaluesX.V', /tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include/imgproc/xf_sobel.hpp:157) to 'xFGradientX3x3<0, 3>' [17]  (1.69 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

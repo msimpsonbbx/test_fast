@@ -1,0 +1,237 @@
+<ENTRY>
+{
+ "thisFile": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/cornerupdate_accel.xo.compile_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Thu Mar 25 15:02:12 2021",
+ "timestampMillis": "1616684532532",
+ "buildStep": {
+  "cmdId": "6d0161e0-63aa-42c3-a0ff-a4831503237d",
+  "name": "v++",
+  "logFile": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/cornerupdate_accel/cornerupdate_accel.steps.log",
+  "commandLine": "/tools/Xilinx/Vitis/2020.1/bin/unwrapped/lnx64.o/v++  --xp \"vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" --target hw --compile -I../src -D__SDA_MEM_MAP__ --config common-config.cfg --config krnl_cornertracker-cornerupdate_accel-compile.cfg -I/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include -I/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/build -okrnl_cornertracker.build/cornerupdate_accel.xo ../src/xf_cornerupdate_accel.cpp ",
+  "args": [
+   "--target",
+   "hw",
+   "--compile",
+   "-I../src",
+   "-D__SDA_MEM_MAP__",
+   "--config",
+   "common-config.cfg",
+   "--config",
+   "krnl_cornertracker-cornerupdate_accel-compile.cfg",
+   "-I/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include",
+   "-I/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/build",
+   "-okrnl_cornertracker.build/cornerupdate_accel.xo",
+   "../src/xf_cornerupdate_accel.cpp"
+  ],
+  "iniFiles": [
+   {
+    "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/common-config.cfg",
+    "content": "platform=xilinx_zcu104_base_202010_1\nsave-temps=1\n"
+   },
+   {
+    "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker-cornerupdate_accel-compile.cfg",
+    "content": "kernel=cornerupdate_accel\nmessageDb=krnl_cornertracker.build/cornerupdate_accel.mdb\ntemp_dir=krnl_cornertracker.build\nreport_dir=krnl_cornertracker.build/reports\nlog_dir=krnl_cornertracker.build/logs\n\n[advanced]\nmisc=solution_name=cornerupdate_accel\n"
+   }
+  ],
+  "cwd": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Mar 25 15:02:12 2021",
+ "timestampMillis": "1616684532532",
+ "status": {
+  "cmdId": "6d0161e0-63aa-42c3-a0ff-a4831503237d",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Thu Mar 25 15:02:22 2021",
+ "timestampMillis": "1616684542843",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_zcu104_base_202010_1.xpfm",
+  "hardwareDsa": "xilinx_zcu104_base_202010_1.xsa",
+  "platformDirectory": "/tools/Xilinx/Vitis/2020.1/platforms/xilinx_zcu104_base_202010_1",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_COMPILE",
+  "target": "TT_HW",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "cornerupdate_accel",
+     "file": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/cornerupdate_accel.xo",
+     "reports": []
+    },
+    "sources": [
+     "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/xf_cornerupdate_accel.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS"
+   }
+  ],
+  "toolVersion": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Thu Mar 25 15:02:22 2021",
+ "timestampMillis": "1616684542845",
+ "buildStep": {
+  "cmdId": "3fed1c4b-7f4f-49f0-8b61-b98ccaea1177",
+  "name": "vitis_hls",
+  "logFile": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/cornerupdate_accel/cornerupdate_accel/vitis_hls.log",
+  "commandLine": "vitis_hls -f /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/cornerupdate_accel/cornerupdate_accel/cornerupdate_accel.tcl -messageDb vitis_hls.pb",
+  "args": [
+   "vitis_hls",
+   "-f",
+   "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/cornerupdate_accel/cornerupdate_accel/cornerupdate_accel.tcl",
+   "-messageDb",
+   "vitis_hls.pb"
+  ],
+  "iniFiles": [],
+  "cwd": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Mar 25 15:02:22 2021",
+ "timestampMillis": "1616684542846",
+ "status": {
+  "cmdId": "3fed1c4b-7f4f-49f0-8b61-b98ccaea1177",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Mar 25 15:02:57 2021",
+ "timestampMillis": "1616684577788",
+ "status": {
+  "cmdId": "3fed1c4b-7f4f-49f0-8b61-b98ccaea1177",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Mar 25 15:02:57 2021",
+ "timestampMillis": "1616684577797",
+ "report": {
+  "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/cornerupdate_accel/cornerupdate_accel/cornerupdate_accel/solution/.autopilot/db/cornerupdate_accel.design.xml",
+  "name": "cornerupdate_accel",
+  "fileType": "XML",
+  "reportType": "KERNEL_HLS_REPORT"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Mar 25 15:02:57 2021",
+ "timestampMillis": "1616684577797",
+ "report": {
+  "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/cornerupdate_accel/cornerupdate_accel/cornerupdate_accel/solution/.autopilot/db/.message_syn.xml",
+  "name": "cornerupdate_accel",
+  "fileType": "XML",
+  "reportType": "KERNEL_HLS_DRC_SYNTHESIS"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Mar 25 15:02:57 2021",
+ "timestampMillis": "1616684577798",
+ "report": {
+  "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/reports/cornerupdate_accel/hls_reports/cornerupdate_accel_csynth.rpt",
+  "name": "cornerupdate_accel",
+  "fileType": "TEXT",
+  "reportType": "KERNEL_HLS_CSYNTH"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Mar 25 15:02:57 2021",
+ "timestampMillis": "1616684577798",
+ "report": {
+  "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/cornerupdate_accel/cornerupdate_accel/cornerupdate_accel/solution/syn/report/cornerupdate_accel_csynth.xml",
+  "name": "cornerupdate_accel",
+  "fileType": "XML",
+  "reportType": "KERNEL_HLS_CSYNTH"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Mar 25 15:02:57 2021",
+ "timestampMillis": "1616684577802",
+ "report": {
+  "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/reports/cornerupdate_accel/system_estimate_cornerupdate_accel.xtxt",
+  "name": "",
+  "fileType": "TEXT",
+  "reportType": "GLOBAL_SYSTEM_ESTIMATE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Mar 25 15:02:57 2021",
+ "timestampMillis": "1616684577839",
+ "report": {
+  "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Mar 25 15:02:57 2021",
+ "timestampMillis": "1616684577839",
+ "report": {
+  "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/guidance.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Mar 25 15:02:57 2021",
+ "timestampMillis": "1616684577839",
+ "status": {
+  "cmdId": "6d0161e0-63aa-42c3-a0ff-a4831503237d",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>

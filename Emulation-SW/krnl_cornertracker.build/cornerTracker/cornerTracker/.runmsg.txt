@@ -1,0 +1,2 @@
+performing high-level synthesis for kernel: cornerTracker
+Log file: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/krnl_cornertracker.build/cornerTracker/cornerTracker/vitis_hls.log

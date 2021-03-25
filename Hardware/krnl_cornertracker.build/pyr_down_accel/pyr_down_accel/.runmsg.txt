@@ -1,0 +1,2 @@
+performing high-level synthesis for kernel: pyr_down_accel
+Log file: /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Hardware/krnl_cornertracker.build/pyr_down_accel/pyr_down_accel/vitis_hls.log

@@ -1,0 +1,10 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="pyr_dense_optical_flow_accel" label="" functionLabel="">
+            <pragma name="TOP">
+                <option name="name" value="pyr_dense_optical_flow_accel"/>
+            </pragma>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

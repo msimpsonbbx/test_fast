@@ -1,0 +1,171 @@
+<ENTRY>
+{
+ "thisFile": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/krnl_cornertracker.build/pyr_down_accel.xo.compile_summary",
+ "connectId": "",
+ "serverToken": "",
+ "timestamp": "0"
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_CmdStep",
+ "dateTimestamp": "Thu Mar 25 14:44:04 2021",
+ "timestampMillis": "1616683444834",
+ "buildStep": {
+  "cmdId": "5a9c8a86-9950-47ba-9492-f66212c93d10",
+  "name": "v++",
+  "logFile": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/krnl_cornertracker.build/pyr_down_accel/pyr_down_accel.steps.log",
+  "commandLine": "/tools/Xilinx/Vitis/2020.1/bin/unwrapped/lnx64.o/v++  --xp \"vivado_prop:run.__KERNEL__.{STEPS.SYNTH_DESIGN.ARGS.MORE OPTIONS}={-directive sdx_optimization_effort_high}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_route_design_summary steps {route_design} runs {impl_1} options {-max_paths 10}\" --xp \"misc:report=type report_timing_summary name impl_report_timing_summary_post_route_phys_opt_design_summary steps {post_route_phys_opt_design} runs {impl_1} options {-max_paths 10}\" --target sw_emu --compile -I../src --config common-config.cfg --config krnl_cornertracker-pyr_down_accel-compile.cfg -I/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include -I/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/build -okrnl_cornertracker.build/pyr_down_accel.xo ../src/xf_pyr_down_accel.cpp ",
+  "args": [
+   "--target",
+   "sw_emu",
+   "--compile",
+   "-I../src",
+   "--config",
+   "common-config.cfg",
+   "--config",
+   "krnl_cornertracker-pyr_down_accel-compile.cfg",
+   "-I/tools/Xilinx/Vitis/2020.1/workspace/test_fast/libs/xf_opencv/L1/include",
+   "-I/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/build",
+   "-okrnl_cornertracker.build/pyr_down_accel.xo",
+   "../src/xf_pyr_down_accel.cpp"
+  ],
+  "iniFiles": [
+   {
+    "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/common-config.cfg",
+    "content": "platform=xilinx_zcu104_base_202010_1\nsave-temps=1\n"
+   },
+   {
+    "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/krnl_cornertracker-pyr_down_accel-compile.cfg",
+    "content": "kernel=pyr_down_accel\ndebug=1\nmessageDb=krnl_cornertracker.build/pyr_down_accel.mdb\ntemp_dir=krnl_cornertracker.build\nreport_dir=krnl_cornertracker.build/reports\nlog_dir=krnl_cornertracker.build/logs\n\n[advanced]\nmisc=solution_name=pyr_down_accel\n"
+   }
+  ],
+  "cwd": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Mar 25 14:44:04 2021",
+ "timestampMillis": "1616683444835",
+ "status": {
+  "cmdId": "5a9c8a86-9950-47ba-9492-f66212c93d10",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_FlowMetaData",
+ "dateTimestamp": "Thu Mar 25 14:44:15 2021",
+ "timestampMillis": "1616683455161",
+ "buildSummary": {
+  "hardwarePlatform": "xilinx_zcu104_base_202010_1.xpfm",
+  "hardwareDsa": "xilinx_zcu104_base_202010_1.xsa",
+  "platformDirectory": "/tools/Xilinx/Vitis/2020.1/platforms/xilinx_zcu104_base_202010_1",
+  "runtime": "OpenCL",
+  "systemConfig": "Linux",
+  "flow": "BF_COMPILE",
+  "target": "TT_SW_EMU",
+  "kernels": [
+   {
+    "base": {
+     "type": "KERNEL",
+     "name": "pyr_down_accel",
+     "file": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/krnl_cornertracker.build/pyr_down_accel.xo",
+     "reports": []
+    },
+    "sources": [
+     "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/src/xf_pyr_down_accel.cpp"
+    ],
+    "psSources": [],
+    "cuNames": [],
+    "type": "HLS"
+   }
+  ],
+  "toolVersion": ""
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_SubCmdStep",
+ "dateTimestamp": "Thu Mar 25 14:44:15 2021",
+ "timestampMillis": "1616683455163",
+ "buildStep": {
+  "cmdId": "0ef47b34-3f23-4877-9bad-553f7b56c05d",
+  "name": "vitis_hls",
+  "logFile": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/krnl_cornertracker.build/pyr_down_accel/pyr_down_accel/vitis_hls.log",
+  "commandLine": "vitis_hls -f /tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/krnl_cornertracker.build/pyr_down_accel/pyr_down_accel/pyr_down_accel.tcl -messageDb vitis_hls.pb",
+  "args": [
+   "vitis_hls",
+   "-f",
+   "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/krnl_cornertracker.build/pyr_down_accel/pyr_down_accel/pyr_down_accel.tcl",
+   "-messageDb",
+   "vitis_hls.pb"
+  ],
+  "iniFiles": [],
+  "cwd": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Mar 25 14:44:15 2021",
+ "timestampMillis": "1616683455163",
+ "status": {
+  "cmdId": "0ef47b34-3f23-4877-9bad-553f7b56c05d",
+  "state": "CS_RUNNING"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Mar 25 14:44:48 2021",
+ "timestampMillis": "1616683488478",
+ "status": {
+  "cmdId": "0ef47b34-3f23-4877-9bad-553f7b56c05d",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Mar 25 14:44:48 2021",
+ "timestampMillis": "1616683488483",
+ "report": {
+  "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/guidance.html",
+  "name": "",
+  "fileType": "HTML",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Report",
+ "dateTimestamp": "Thu Mar 25 14:44:48 2021",
+ "timestampMillis": "1616683488484",
+ "report": {
+  "path": "/tools/Xilinx/Vitis/2020.1/workspace/test_fast/Emulation-SW/guidance.pb",
+  "name": "",
+  "fileType": "BINARY_PROTOBUF",
+  "reportType": "GLOBAL_RULECHECK_GUIDANCE"
+ }
+}
+</ENTRY>
+<ENTRY>
+{
+ "type": "ET_Status",
+ "dateTimestamp": "Thu Mar 25 14:44:48 2021",
+ "timestampMillis": "1616683488484",
+ "status": {
+  "cmdId": "5a9c8a86-9950-47ba-9492-f66212c93d10",
+  "state": "CS_PASSED"
+ }
+}
+</ENTRY>

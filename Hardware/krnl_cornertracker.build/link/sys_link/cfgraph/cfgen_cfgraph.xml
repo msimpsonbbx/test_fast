@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<cf:model cf:cpu="cortex_a53" cf:partition="0" cf:prefix="p_0_" cf:name="dr" xd:type="design" xmlns:xd="http://www.xilinx.com/xd" xmlns:cf="http://www.xilinx.com/connections">
+  <cf:block cf:name="hwblk_cornerTracker">
+    <cf:port cf:name="s_axi_control" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="inHarris" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="list" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="params" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="harris_rows" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="harris_cols" cf:portType="stream" cf:direction="in"/>
+  </cf:block>
+  <cf:block cf:name="swblk_cornerTracker">
+    <cf:port cf:name="s_axi_control" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="inHarris" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="list" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="params" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="harris_rows" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="harris_cols" cf:portType="stream" cf:direction="out"/>
+  </cf:block>
+  <cf:block cf:name="hwblk_pyr_dense_optical_flow_accel">
+    <cf:port cf:name="s_axi_control" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="_current_img" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="_next_image" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="_streamFlowin" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="_streamFlowout" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="level" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="scale_up_flag" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="scale_in" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="init_flag" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="cur_img_rows" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="cur_img_cols" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="next_img_rows" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="next_img_cols" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="flow_rows" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="flow_cols" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="flow_iter_rows" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="flow_iter_cols" cf:portType="stream" cf:direction="in"/>
+  </cf:block>
+  <cf:block cf:name="swblk_pyr_dense_optical_flow_accel">
+    <cf:port cf:name="s_axi_control" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="_current_img" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="_next_image" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="_streamFlowin" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="_streamFlowout" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="level" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="scale_up_flag" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="scale_in" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="init_flag" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="cur_img_rows" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="cur_img_cols" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="next_img_rows" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="next_img_cols" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="flow_rows" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="flow_cols" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="flow_iter_rows" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="flow_iter_cols" cf:portType="stream" cf:direction="out"/>
+  </cf:block>
+  <cf:block cf:name="hwblk_pyr_down_accel">
+    <cf:port cf:name="s_axi_control" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="inImgPyr1" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="outImgPyr1" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="inImgPyr2" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="outImgPyr2" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="pyr_h" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="pyr_w" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="pyr_out_h" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="pyr_out_w" cf:portType="stream" cf:direction="in"/>
+  </cf:block>
+  <cf:block cf:name="swblk_pyr_down_accel">
+    <cf:port cf:name="s_axi_control" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="inImgPyr1" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="outImgPyr1" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="inImgPyr2" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="outImgPyr2" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="pyr_h" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="pyr_w" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="pyr_out_h" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="pyr_out_w" cf:portType="stream" cf:direction="out"/>
+  </cf:block>
+  <cf:block cf:name="hwblk_cornerupdate_accel">
+    <cf:port cf:name="s_axi_control" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="list_fix" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="list" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="nCorners" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="flow_vectors" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="harris_flag" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="flow_rows" cf:portType="stream" cf:direction="in"/>
+    <cf:port cf:name="flow_cols" cf:portType="stream" cf:direction="in"/>
+  </cf:block>
+  <cf:block cf:name="swblk_cornerupdate_accel">
+    <cf:port cf:name="s_axi_control" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="list_fix" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="list" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="nCorners" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="flow_vectors" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="harris_flag" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="flow_rows" cf:portType="stream" cf:direction="out"/>
+    <cf:port cf:name="flow_cols" cf:portType="stream" cf:direction="out"/>
+  </cf:block>
+  <cf:comp cf:name="zcu104_base" xd:componentRef="zcu104_base" xd:clockId="0"/>
+  <cf:comp cf:name="cornerTracker_1" xd:componentRef="cornerTracker" xd:clockId="0"/>
+  <cf:comp cf:name="pyr_dense_optical_flow_accel_1" xd:componentRef="pyr_dense_optical_flow_accel" xd:clockId="0"/>
+  <cf:comp cf:name="pyr_down_accel_1" xd:componentRef="pyr_down_accel" xd:clockId="0"/>
+  <cf:comp cf:name="cornerupdate_accel_1" xd:componentRef="cornerupdate_accel" xd:clockId="0"/>
+  <cf:instance cf:name="hwinst_cornerTracker_1" cf:blockName="hwblk_cornerTracker" cf:compName="cornerTracker_1">
+    <cf:portMap cf:blockPort="s_axi_control" cf:compPort="s_axi_control" xd:register="0x0"/>
+    <cf:portMap cf:blockPort="inHarris" cf:compPort="m_axi_gmem1" cf:ctrlPort="s_axi_control" xd:register="0x10"/>
+    <cf:portMap cf:blockPort="list" cf:compPort="m_axi_gmem2" cf:ctrlPort="s_axi_control" xd:register="0x1C"/>
+    <cf:portMap cf:blockPort="params" cf:compPort="m_axi_gmem3" cf:ctrlPort="s_axi_control" xd:register="0x28"/>
+    <cf:portMap cf:blockPort="harris_rows" cf:compPort="s_axi_control" xd:register="0x34"/>
+    <cf:portMap cf:blockPort="harris_cols" cf:compPort="s_axi_control" xd:register="0x3C"/>
+  </cf:instance>
+  <cf:instance cf:name="swinst_cornerTracker_1" cf:blockName="swblk_cornerTracker" cf:compName="zcu104_base">
+    <cf:portMap cf:blockPort="s_axi_control" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="inHarris" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="list" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="params" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="harris_rows" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="harris_cols" cf:compPort="interconnect_axilite_M01_AXI"/>
+  </cf:instance>
+  <cf:instance cf:name="hwinst_pyr_dense_optical_flow_accel_1" cf:blockName="hwblk_pyr_dense_optical_flow_accel" cf:compName="pyr_dense_optical_flow_accel_1">
+    <cf:portMap cf:blockPort="s_axi_control" cf:compPort="s_axi_control" xd:register="0x0"/>
+    <cf:portMap cf:blockPort="_current_img" cf:compPort="m_axi_gmem1" cf:ctrlPort="s_axi_control" xd:register="0x10"/>
+    <cf:portMap cf:blockPort="_next_image" cf:compPort="m_axi_gmem2" cf:ctrlPort="s_axi_control" xd:register="0x1C"/>
+    <cf:portMap cf:blockPort="_streamFlowin" cf:compPort="m_axi_gmem3" cf:ctrlPort="s_axi_control" xd:register="0x28"/>
+    <cf:portMap cf:blockPort="_streamFlowout" cf:compPort="m_axi_gmem4" cf:ctrlPort="s_axi_control" xd:register="0x34"/>
+    <cf:portMap cf:blockPort="level" cf:compPort="s_axi_control" xd:register="0x40"/>
+    <cf:portMap cf:blockPort="scale_up_flag" cf:compPort="s_axi_control" xd:register="0x48"/>
+    <cf:portMap cf:blockPort="scale_in" cf:compPort="s_axi_control" xd:register="0x50"/>
+    <cf:portMap cf:blockPort="init_flag" cf:compPort="s_axi_control" xd:register="0x58"/>
+    <cf:portMap cf:blockPort="cur_img_rows" cf:compPort="s_axi_control" xd:register="0x60"/>
+    <cf:portMap cf:blockPort="cur_img_cols" cf:compPort="s_axi_control" xd:register="0x68"/>
+    <cf:portMap cf:blockPort="next_img_rows" cf:compPort="s_axi_control" xd:register="0x70"/>
+    <cf:portMap cf:blockPort="next_img_cols" cf:compPort="s_axi_control" xd:register="0x78"/>
+    <cf:portMap cf:blockPort="flow_rows" cf:compPort="s_axi_control" xd:register="0x80"/>
+    <cf:portMap cf:blockPort="flow_cols" cf:compPort="s_axi_control" xd:register="0x88"/>
+    <cf:portMap cf:blockPort="flow_iter_rows" cf:compPort="s_axi_control" xd:register="0x90"/>
+    <cf:portMap cf:blockPort="flow_iter_cols" cf:compPort="s_axi_control" xd:register="0x98"/>
+  </cf:instance>
+  <cf:instance cf:name="swinst_pyr_dense_optical_flow_accel_1" cf:blockName="swblk_pyr_dense_optical_flow_accel" cf:compName="zcu104_base">
+    <cf:portMap cf:blockPort="s_axi_control" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="_current_img" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="_next_image" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="_streamFlowin" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="_streamFlowout" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="level" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="scale_up_flag" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="scale_in" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="init_flag" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="cur_img_rows" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="cur_img_cols" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="next_img_rows" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="next_img_cols" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="flow_rows" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="flow_cols" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="flow_iter_rows" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="flow_iter_cols" cf:compPort="interconnect_axilite_M01_AXI"/>
+  </cf:instance>
+  <cf:instance cf:name="hwinst_pyr_down_accel_1" cf:blockName="hwblk_pyr_down_accel" cf:compName="pyr_down_accel_1">
+    <cf:portMap cf:blockPort="s_axi_control" cf:compPort="s_axi_control" xd:register="0x0"/>
+    <cf:portMap cf:blockPort="inImgPyr1" cf:compPort="m_axi_gmem1" cf:ctrlPort="s_axi_control" xd:register="0x10"/>
+    <cf:portMap cf:blockPort="outImgPyr1" cf:compPort="m_axi_gmem2" cf:ctrlPort="s_axi_control" xd:register="0x1C"/>
+    <cf:portMap cf:blockPort="inImgPyr2" cf:compPort="m_axi_gmem3" cf:ctrlPort="s_axi_control" xd:register="0x28"/>
+    <cf:portMap cf:blockPort="outImgPyr2" cf:compPort="m_axi_gmem4" cf:ctrlPort="s_axi_control" xd:register="0x34"/>
+    <cf:portMap cf:blockPort="pyr_h" cf:compPort="s_axi_control" xd:register="0x40"/>
+    <cf:portMap cf:blockPort="pyr_w" cf:compPort="s_axi_control" xd:register="0x48"/>
+    <cf:portMap cf:blockPort="pyr_out_h" cf:compPort="s_axi_control" xd:register="0x50"/>
+    <cf:portMap cf:blockPort="pyr_out_w" cf:compPort="s_axi_control" xd:register="0x58"/>
+  </cf:instance>
+  <cf:instance cf:name="swinst_pyr_down_accel_1" cf:blockName="swblk_pyr_down_accel" cf:compName="zcu104_base">
+    <cf:portMap cf:blockPort="s_axi_control" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="inImgPyr1" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="outImgPyr1" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="inImgPyr2" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="outImgPyr2" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="pyr_h" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="pyr_w" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="pyr_out_h" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="pyr_out_w" cf:compPort="interconnect_axilite_M01_AXI"/>
+  </cf:instance>
+  <cf:instance cf:name="hwinst_cornerupdate_accel_1" cf:blockName="hwblk_cornerupdate_accel" cf:compName="cornerupdate_accel_1">
+    <cf:portMap cf:blockPort="s_axi_control" cf:compPort="s_axi_control" xd:register="0x0"/>
+    <cf:portMap cf:blockPort="list_fix" cf:compPort="m_axi_gmem7" cf:ctrlPort="s_axi_control" xd:register="0x10"/>
+    <cf:portMap cf:blockPort="list" cf:compPort="m_axi_gmem8" cf:ctrlPort="s_axi_control" xd:register="0x1C"/>
+    <cf:portMap cf:blockPort="nCorners" cf:compPort="s_axi_control" xd:register="0x28"/>
+    <cf:portMap cf:blockPort="flow_vectors" cf:compPort="m_axi_gmem9" cf:ctrlPort="s_axi_control" xd:register="0x30"/>
+    <cf:portMap cf:blockPort="harris_flag" cf:compPort="s_axi_control" xd:register="0x3C"/>
+    <cf:portMap cf:blockPort="flow_rows" cf:compPort="s_axi_control" xd:register="0x44"/>
+    <cf:portMap cf:blockPort="flow_cols" cf:compPort="s_axi_control" xd:register="0x4C"/>
+  </cf:instance>
+  <cf:instance cf:name="swinst_cornerupdate_accel_1" cf:blockName="swblk_cornerupdate_accel" cf:compName="zcu104_base">
+    <cf:portMap cf:blockPort="s_axi_control" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="list_fix" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="list" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="nCorners" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="flow_vectors" cf:compPort="ps_e_S_AXI_HP0_FPD" cf:ctrlPort="interconnect_axilite_M01_AXI" cf:sptag="HP0"/>
+    <cf:portMap cf:blockPort="harris_flag" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="flow_rows" cf:compPort="interconnect_axilite_M01_AXI"/>
+    <cf:portMap cf:blockPort="flow_cols" cf:compPort="interconnect_axilite_M01_AXI"/>
+  </cf:instance>
+  <cf:connection cf:srcInst="swinst_cornerTracker_1" cf:srcPort="s_axi_control" cf:dstInst="hwinst_cornerTracker_1" cf:dstPort="s_axi_control">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerTracker_1" cf:srcPort="inHarris" cf:dstInst="hwinst_cornerTracker_1" cf:dstPort="inHarris">
+    <cf:dataMover cf:compName="cornerTracker_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerTracker_1" cf:srcPort="list" cf:dstInst="hwinst_cornerTracker_1" cf:dstPort="list">
+    <cf:dataMover cf:compName="cornerTracker_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerTracker_1" cf:srcPort="params" cf:dstInst="hwinst_cornerTracker_1" cf:dstPort="params">
+    <cf:dataMover cf:compName="cornerTracker_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerTracker_1" cf:srcPort="harris_rows" cf:dstInst="hwinst_cornerTracker_1" cf:dstPort="harris_rows">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerTracker_1" cf:srcPort="harris_cols" cf:dstInst="hwinst_cornerTracker_1" cf:dstPort="harris_cols">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="s_axi_control" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="s_axi_control">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="_current_img" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="_current_img">
+    <cf:dataMover cf:compName="pyr_dense_optical_flow_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="_next_image" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="_next_image">
+    <cf:dataMover cf:compName="pyr_dense_optical_flow_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="_streamFlowin" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="_streamFlowin">
+    <cf:dataMover cf:compName="pyr_dense_optical_flow_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="_streamFlowout" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="_streamFlowout">
+    <cf:dataMover cf:compName="pyr_dense_optical_flow_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="level" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="level">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="scale_up_flag" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="scale_up_flag">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="scale_in" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="scale_in">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="init_flag" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="init_flag">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="cur_img_rows" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="cur_img_rows">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="cur_img_cols" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="cur_img_cols">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="next_img_rows" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="next_img_rows">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="next_img_cols" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="next_img_cols">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="flow_rows" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="flow_rows">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="flow_cols" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="flow_cols">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="flow_iter_rows" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="flow_iter_rows">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_dense_optical_flow_accel_1" cf:srcPort="flow_iter_cols" cf:dstInst="hwinst_pyr_dense_optical_flow_accel_1" cf:dstPort="flow_iter_cols">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_down_accel_1" cf:srcPort="s_axi_control" cf:dstInst="hwinst_pyr_down_accel_1" cf:dstPort="s_axi_control">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_down_accel_1" cf:srcPort="inImgPyr1" cf:dstInst="hwinst_pyr_down_accel_1" cf:dstPort="inImgPyr1">
+    <cf:dataMover cf:compName="pyr_down_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_down_accel_1" cf:srcPort="outImgPyr1" cf:dstInst="hwinst_pyr_down_accel_1" cf:dstPort="outImgPyr1">
+    <cf:dataMover cf:compName="pyr_down_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_down_accel_1" cf:srcPort="inImgPyr2" cf:dstInst="hwinst_pyr_down_accel_1" cf:dstPort="inImgPyr2">
+    <cf:dataMover cf:compName="pyr_down_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_down_accel_1" cf:srcPort="outImgPyr2" cf:dstInst="hwinst_pyr_down_accel_1" cf:dstPort="outImgPyr2">
+    <cf:dataMover cf:compName="pyr_down_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_down_accel_1" cf:srcPort="pyr_h" cf:dstInst="hwinst_pyr_down_accel_1" cf:dstPort="pyr_h">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_down_accel_1" cf:srcPort="pyr_w" cf:dstInst="hwinst_pyr_down_accel_1" cf:dstPort="pyr_w">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_down_accel_1" cf:srcPort="pyr_out_h" cf:dstInst="hwinst_pyr_down_accel_1" cf:dstPort="pyr_out_h">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_pyr_down_accel_1" cf:srcPort="pyr_out_w" cf:dstInst="hwinst_pyr_down_accel_1" cf:dstPort="pyr_out_w">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerupdate_accel_1" cf:srcPort="s_axi_control" cf:dstInst="hwinst_cornerupdate_accel_1" cf:dstPort="s_axi_control">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerupdate_accel_1" cf:srcPort="list_fix" cf:dstInst="hwinst_cornerupdate_accel_1" cf:dstPort="list_fix">
+    <cf:dataMover cf:compName="cornerupdate_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerupdate_accel_1" cf:srcPort="list" cf:dstInst="hwinst_cornerupdate_accel_1" cf:dstPort="list">
+    <cf:dataMover cf:compName="cornerupdate_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerupdate_accel_1" cf:srcPort="nCorners" cf:dstInst="hwinst_cornerupdate_accel_1" cf:dstPort="nCorners">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerupdate_accel_1" cf:srcPort="flow_vectors" cf:dstInst="hwinst_cornerupdate_accel_1" cf:dstPort="flow_vectors">
+    <cf:dataMover cf:compName="cornerupdate_accel_1" cf:softwareLib="zero_copy"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerupdate_accel_1" cf:srcPort="harris_flag" cf:dstInst="hwinst_cornerupdate_accel_1" cf:dstPort="harris_flag">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerupdate_accel_1" cf:srcPort="flow_rows" cf:dstInst="hwinst_cornerupdate_accel_1" cf:dstPort="flow_rows">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+  <cf:connection cf:srcInst="swinst_cornerupdate_accel_1" cf:srcPort="flow_cols" cf:dstInst="hwinst_cornerupdate_accel_1" cf:dstPort="flow_cols">
+    <cf:dataMover cf:compName="zcu104_base" cf:softwareLib="axi_lite"/>
+  </cf:connection>
+</cf:model>
